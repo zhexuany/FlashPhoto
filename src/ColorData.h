@@ -8,18 +8,17 @@
 
 /** This color data class stores color in floating point format.
     The Red, Green, Blue, and Alpha channels range from 0.0 to 1.0. */
-class ColorData 
-{
+class ColorData{
 public:
 	ColorData();
 	ColorData(float r, float g, float b );
 	ColorData(float r, float g, float b, float a);
-	
+
 	void setRed(float r);
 	void setBlue(float b);
 	void setGreen(float g);
 	void setAlpha(float a);
-	
+
 	float getRed() const;
 	float getBlue() const;
 	float getGreen() const;
@@ -36,13 +35,13 @@ public:
 	friend ColorData operator* (const ColorData& a, float f);
 	friend ColorData operator+ (const ColorData& a, const ColorData& b);
 	friend ColorData operator- (const ColorData& a, const ColorData& b);
-	
+
 private:
 
 	// General helper function for clamping values between 0 and 1
 	static inline float clampValue(float input, float a, float b)
 	{return input < a ? a : (input > b ? b : input);}
-	
+
 	float m_red;
 	float m_green;
 	float m_blue;

@@ -1,7 +1,7 @@
 
 #Exclude executable files and directory
-build
-BrushWork
+build/
+!Makefile
 *.o
 
 # Packages #

@@ -1,6 +1,8 @@
 
 #Exclude executable files and directory
 build/
+glui/build/
+glui/lib/
 !Makefile
 *.o
 

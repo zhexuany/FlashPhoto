@@ -17,13 +17,12 @@ class PixelBuffer;
     It creates two graphics windows, one for 2D painting and one for the buttons and other
     UI widgets to control the brushes.
 */
-class BrushWorkApp : public BaseGfxApp 
-{
+class BrushWorkApp : public BaseGfxApp{
 public:
-	
+
 	BrushWorkApp(int argc, char* argv[], int width, int height, ColorData backgroundColor);
 	virtual ~BrushWorkApp();
-	
+
 	// Glut overrided function
 	void mouseDragged(int x, int y) ;
 	void mouseMoved(int x, int y);
@@ -31,13 +30,12 @@ public:
 	void leftMouseUp(int x, int y);
 	void display();
 	void gluiControl(int controlID);
-	
-	
+
+
 private:
 
 	// GLUI INTERFACE ELEMENTS
-	enum UIControlType 
-	{
+    enum UIControlType{
 		UI_TOOLTYPE,
 		UI_COLOR_R,
 		UI_COLOR_G,

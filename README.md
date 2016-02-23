@@ -13,7 +13,7 @@ Group #: TwelfthNight
 
 Members:
 
-      - Jake Reynolds
+      - Jake Reynolds 
 
       - Zhexuan Zachary Yang
 

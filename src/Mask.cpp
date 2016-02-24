@@ -1,6 +1,6 @@
 #include "Mask.h"
 
-Mask::Mask(int w, int h) : weight(w), height(h){
+Mask::Mask(int w, int h) : height(h), width(w) {
   influence = new double*[height];
   for(int i = 0; i < height; i++){
     influence[i]  = new float[width];
@@ -20,7 +20,7 @@ int Mask::getHeight() const{
 int Mask::getWidth() const{
   return width;
 }
-
+// influence need fill in different draw tool classes
 float const ** const Mask::getInfluence() const{
   return influence;
 }

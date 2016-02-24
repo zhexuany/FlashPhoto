@@ -5,13 +5,12 @@ class Mask{
 public:
     Mask(int w, int h);
     virtual ~Mask();
-    virtual void fillInfluence();
-    virtual int getHeight() const;
-    virtual int getWidth() const;
+    int getHeight() const;
+    int getWidth() const;
     float const ** const getInfluence() const;
 private:
     int height;
-    int weight;
+    int width;
     float** influence;
 };
 #endif

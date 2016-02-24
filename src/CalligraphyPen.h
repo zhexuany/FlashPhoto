@@ -1,11 +1,15 @@
-#ifdef CALIGRAPHYPEN_H
-#define CALIGRAPHYPEN_H
-#include "Drawtool.h"
+#ifndef CALLIGRAPHYPEN_H
+#define CALLIGRAPHYPEN_H
 
-class CaligraphyPen : public DrawTool {
+#include "Drawtool.h"
+#include "PixelBuffer.h"
+#include "ColorData.h"
+
+class CalligraphyPen : public DrawTool {
  public :
-  CaligraphyPen(ColorData* toolColor, int height, int width);
-  ~CaligraphyPen();
-  virtual void fillInfluence();
-}
-#endif // CALIGRAPHYPEN_H
+  CalligraphyPen(ColorData* toolColor, int height, int width);
+  ~CalligraphyPen();
+  void fillInfluence();
+};
+
+#endif // CALLIGRAPHYPEN_H

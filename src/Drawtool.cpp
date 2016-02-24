@@ -8,7 +8,12 @@ DrawTool::DrawTool(ColorData* toolColor, int width, int height){
   m_mask = new Mask(width, height);
   fillInfluence();
 }
+DrawTool::DrawTool(int width, int height){
+  m_toolColor = new ColorData(0, 0, 0);
+  m_mask = new Mask(width, height);
+  fillInfluence();
 
+}
 DrawTool::~DrawTool(){
   delete m_toolColor;
   delete m_mask;

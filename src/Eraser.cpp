@@ -1,7 +1,7 @@
 #include "Eraser.h"
 
-Eraser::Eraser(ColorData* backgroundColor, int radius)
-    : DrawTool(backgroundColor, radius, radius){
+Eraser::Eraser(int radius)
+    : DrawTool(radius, radius){
   fillInfluence();
 }
 

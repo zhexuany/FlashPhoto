@@ -1,7 +1,7 @@
 #include "Pen.h"
 
-Pen::Pen(ColorData* toolColor, int w, int h)
-    : DrawTool(toolColor, w, h) {
+Pen::Pen(ColorData* toolColor, int radius)
+    : DrawTool(toolColor, radius, radius) {
   fillInfluence();
 }
 

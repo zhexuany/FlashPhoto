@@ -1,14 +1,14 @@
 #include "CalligraphyPen.h"
 
-CaligraphyPen::CaligraphyPen(ColorData* toolColor, int height, int width)
+CalligraphyPen::CalligraphyPen(ColorData* toolColor, int height, int width)
     : DrawTool(toolColor, height, width){
   fillInfluence();
 }
 
-CaligraphyPen::~CaligraphyPen(){
+CalligraphyPen::~CalligraphyPen(){
 }
 
-void CaligraphyPen::fillInfluence(){
+void CalligraphyPen::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();
   int width = mask -> getWidth();

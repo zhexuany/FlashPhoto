@@ -7,6 +7,7 @@
 class DrawTool {
 public:
     DrawTool(ColorData* toolColor, int width, int height);
+    DrawTool(int width, int height);
     virtual ~DrawTool();
     virtual void fillInfluence();
     virtual void paint(int x, int y, PixelBuffer* buffer);

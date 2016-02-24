@@ -27,8 +27,32 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
 }
 
 void BrushWorkApp::display() {
-    // TODO: Update the contents of the display buffer
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
+    // draw some stuff
+    if(m_tool) delete m_tool;
+    ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
+    switch (m_curTool) {
+      case PEN: {
+        m_tool = new Pen(toolColor, 3);
+        break;
+      }
+      case ERASER: {
+        m_tool = new Eraser(21);
+        break;
+      }
+      case SPRAYCAN: {
+        m_tool = new SprayCan(toolColor, 41);
+        break;
+      }
+      case CALIGRAPHYPEN: {
+        m_tool = new CalligraphyPen(toolColor, 5, 15);
+        break;
+      }
+      case HIGHLIGHTER: {
+        m_tool = new Highlighter(toolColor, 5, 15);
+        break;
+      }
+    }
 }
 
 
@@ -41,20 +65,26 @@ BrushWorkApp::~BrushWorkApp() {
 
 
 void BrushWorkApp::mouseDragged(int x, int y) {
-
+    m_tool -> paint(x, y, m_displayBuffer);
+    std::cout << "mouseDragged " << x << " " << y << std::endl;
 }
 
 void BrushWorkApp::mouseMoved(int x, int y) {
-
+    std::cout << "mouseMoved " << x << " " << y << std::endl;
+    if(m_drag){
+      mouseDragged(x, y);
+    }
 }
 
 
 void BrushWorkApp::leftMouseDown(int x, int y) {
     std::cout << "mousePressed " << x << " " << y << std::endl;
+    m_drag = true;
 }
 
 void BrushWorkApp::leftMouseUp(int x, int y) {
     std::cout << "mouseReleased " << x << " " << y << std::endl;
+    m_drag = false;
 }
 
 void BrushWorkApp::initializeBuffers(ColorData backgroundColor, int width, int height) {
@@ -74,6 +104,7 @@ void BrushWorkApp::initGlui() {
     new GLUI_RadioButton(radio, "Spray Can");
     new GLUI_RadioButton(radio, "Caligraphy Pen");
     new GLUI_RadioButton(radio, "Highlighter");
+    new GLUI_RadioButton(radio, "Ruler");
 
     GLUI_Panel *colPanel = new GLUI_Panel(m_glui, "Tool Color");
 
@@ -116,7 +147,7 @@ void BrushWorkApp::initGraphics() {
 }
 
 
-
+// catch mouse change color option in panel
 void BrushWorkApp::gluiControl(int controlID) {
     switch (controlID) {
         case UI_PRESET_RED:

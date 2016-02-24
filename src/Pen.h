@@ -4,7 +4,7 @@
 
 class Pen : public DrawTool {
  public:
-  Pen(ColorData* toolColor, int height, int width);
+  Pen(ColorData* toolColor, int radius);
   ~Pen();
   void fillInfluence();
 };

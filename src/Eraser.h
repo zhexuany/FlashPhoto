@@ -7,7 +7,7 @@ class CycleMask;
 // mask for eraser is cycle with 21 pixel
 class Eraser : public DrawTool{
 public:
-  Eraser(ColorData* backgroundColor, int radius);
+  Eraser(int radius);
   ~Eraser();
   void paint(int x, int y, PixelBuffer* buffer);
   void fillInfluence();

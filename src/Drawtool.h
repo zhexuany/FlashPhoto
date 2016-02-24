@@ -1,20 +1,21 @@
 #ifndef DRAWTOOL_H
 #define DRAWTOOL_H
-class Mask;
+#include "PixelBuffer.h"
+#include "Mask.h"
+#include "ColorData.h"
+#include <iostream>
 class DrawTool {
 public:
-    DrawTool(int red, int green, int blue);
+    DrawTool(ColorData* toolColor, int width, int height);
     virtual ~DrawTool();
-    virtual void paint();
-    virtual void setMask(int h, int w);
-    Mask getMask() const;
+    virtual void fillInfluence();
+    virtual void paint(int x, int y, PixelBuffer* buffer);
+    Mask const * getMask() const;
+    ColorData const * getToolColor() const;
+  // printfInfluence use for debuging
+    void printfInfluence();
 private:
     Mask* m_mask;
-    ColorData* m_CurrentColor;
-    const int maskHeight = 3;
-    const int maskWidth = 3;
-}
-
-
-
-#endif DRAWTOOL_H
+    ColorData* m_toolColor;
+};
+#endif

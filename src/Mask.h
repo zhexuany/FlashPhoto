@@ -7,7 +7,7 @@ public:
     virtual ~Mask();
     int getHeight() const;
     int getWidth() const;
-    float const ** const getInfluence() const;
+    float** getInfluence() const;
 private:
     int height;
     int width;

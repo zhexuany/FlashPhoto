@@ -20,7 +20,6 @@ void Highlighter::fillInfluence(){
   }
 }
 
-
 void Highlighter::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
   float xIncrement = prevX;
   float yIncrement = prevY;

@@ -7,7 +7,6 @@ Highlighter::Highlighter(ColorData* toolColor, int width, int height)
 
 Highlighter::~Highlighter(){
 }
-
 void Highlighter::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();

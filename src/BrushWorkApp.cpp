@@ -216,6 +216,7 @@ void BrushWorkApp::gluiControl(int controlID) {
             m_curColorGreen = 0;
             m_curColorBlue = 0;
             break;
+        //Case 0 is the tool selection, selected tool resides in m_curTool
         case 0:
             updateCurrentTool();
             break;

@@ -8,7 +8,7 @@ Mask::Mask(int w, int h) : height(h), width(w) {
 }
 
 Mask::~Mask(){
-  for(int i = 0; i < height; i++){
+  for(int i = 0; i < width; i++){
     delete [] influence[i];
   }
   delete [] influence;

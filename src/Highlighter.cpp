@@ -13,28 +13,29 @@ void Highlighter::fillInfluence(){
   float** influence = mask -> getInfluence();
   int width = mask -> getWidth();
   int height = mask -> getHeight();
-  for(int i = 0; i < height; i++){
-    for(int j = 0; j < width; j++){
+  for(int i = 0; i < width; i++){
+    for(int j = 0; j < height; j++){
       influence[i][j] = 0.4;
     }
   }
 }
 
 void Highlighter::paint(int x, int y, PixelBuffer* buffer){
-  ColorData const * currentColor = buffer -> getData();
   ColorData const * toolColor = getToolColor();
   Mask const * mask = getMask();
   int height = mask-> getHeight();
   int width =  mask -> getWidth();
+  int bufferHeight = buffer -> getHeight();
   x -= width/2;
-  y -= height/2;
+  y = bufferHeight - y - height/2;
+  ColorData currentColor = buffer -> getPixel(x, y);
   float ** influence =  mask -> getInfluence();
   for(int i = 0; i < width; i++){
-    for(int j = 0; i < height; j++){
-      float intensity = influence[i][j]* currentColor -> getLuminance();
+    for(int j = 0; j < height; j++){
+      float intensity = influence[i][j]* currentColor.getLuminance();
       ColorData newColor = (*toolColor)*intensity
-                            + (*currentColor)*(1.0 - intensity);
-      buffer -> setPixel(x++, y++, newColor);
+                            + currentColor*(1.0 - intensity);
+      buffer -> setPixel(x+i, y+j, newColor);
     }
   }
 

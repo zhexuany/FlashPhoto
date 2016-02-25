@@ -28,7 +28,6 @@ void Eraser::paint(int x, int y, PixelBuffer* buffer){
   ColorData backgroundColor = buffer -> getBackgroundColor();
   x -= width/2;
   y = bufferHeight - y - height/2;
-  float ** influence = mask -> getInfluence();
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
       buffer -> setPixel(x + i, y + j, backgroundColor);

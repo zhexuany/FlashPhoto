@@ -4,6 +4,7 @@
 #include "Mask.h"
 #include "ColorData.h"
 #include <iostream>
+#include <cmath>
 class DrawTool {
 public:
     DrawTool(ColorData* toolColor, int width, int height);

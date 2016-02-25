@@ -14,9 +14,10 @@ public:
     virtual void paint(int x, int y, PixelBuffer* buffer);
     Mask const * getMask() const;
     ColorData const * getToolColor() const;
+    void setToolColor(ColorData* color);
   // printfInfluence use for debuging
     void printfInfluence();
-private:
+protected:
     Mask* m_mask;
     ColorData* m_toolColor;
 };

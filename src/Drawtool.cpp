@@ -26,6 +26,9 @@ Mask const * DrawTool::getMask() const {
 ColorData const * DrawTool::getToolColor() const{
   return m_toolColor;
 }
+void DrawTool::setToolColor(ColorData* color){
+  m_toolColor = color;
+}
 void DrawTool::paint(int x, int y, PixelBuffer* buffer){
   int height = m_mask-> getHeight();
   int width = m_mask -> getWidth();

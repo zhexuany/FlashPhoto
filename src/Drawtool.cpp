@@ -29,8 +29,9 @@ ColorData const * DrawTool::getToolColor() const{
 void DrawTool::paint(int x, int y, PixelBuffer* buffer){
   int height = m_mask-> getHeight();
   int width = m_mask -> getWidth();
+  int bufferHeight = buffer -> getHeight();
   x -= width/2;
-  y -= height/2;
+  y = bufferHeight - y - height/2;
   float ** influence = m_mask -> getInfluence();
   printfInfluence();
   for(int i = 0; i < width; i++){

@@ -9,7 +9,7 @@ class Eraser : public DrawTool{
 public:
   Eraser(int radius);
   ~Eraser();
-  void paint(int x, int y, PixelBuffer* buffer);
+  void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
 };
 

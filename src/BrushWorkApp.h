@@ -65,12 +65,17 @@ private:
     PixelBuffer* m_displayBuffer;
     DrawTool* m_tool;
     DrawTool** toolList;
+    //Stores previous x and y positions
+    int m_prevX;
+    int m_prevY;
     // These are used to store the selections from the GLUI user interface
     int m_curTool;
+    
     float m_curColorRed, m_curColorGreen, m_curColorBlue;
     GLUI_Spinner *m_spinnerR;
     GLUI_Spinner *m_spinnerG;
     GLUI_Spinner *m_spinnerB;
+    
     // const int value use for switch current tool
     enum ToolType{
       PEN,

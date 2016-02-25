@@ -8,6 +8,10 @@ SprayCan::SprayCan(ColorData* toolColor, int radius)
 SprayCan::~SprayCan(){
 }
 
+void SprayCan::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
+  applyInfluence(x, y, buffer);
+}
+
 void SprayCan::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();

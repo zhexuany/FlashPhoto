@@ -9,6 +9,6 @@ class Highlighter : public DrawTool {
   Highlighter(ColorData* toolColor, int width, int height);
   ~Highlighter();
   void fillInfluence();
-  void paint(int x, int y, PixelBuffer* buffer);
+  void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
 };
 #endif

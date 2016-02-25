@@ -21,15 +21,17 @@ void Eraser::fillInfluence(){
 }
 
 void Eraser::paint(int x, int y, PixelBuffer* buffer){
-  ColorData backgroundColor = buffer -> getBackgroundColor();
   Mask const * mask = getMask();
   int height = mask -> getHeight();
   int width = mask -> getWidth();
+  int bufferHeight = buffer -> getHeight();
+  ColorData backgroundColor = buffer -> getBackgroundColor();
   x -= width/2;
-  y -= height/2;
-  for(int i = 0; i< height; i++){
-    for(int j = 0; j < width; j++){
-      buffer -> setPixel(x, y, backgroundColor);
+  y = bufferHeight - y - height/2;
+  float ** influence = mask -> getInfluence();
+  for(int i = 0; i < width; i++){
+    for(int j = 0; j < height; j++){
+      buffer -> setPixel(x + i, y + j, backgroundColor);
     }
   }
 }

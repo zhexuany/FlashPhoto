@@ -21,11 +21,20 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
 
     // Initialize Interface
     initializeBuffers(backgroundColor, width, height);
-
+    // Initialize drawTools
+    initDrawTool();
     initGlui();
     initGraphics();
 }
-
+void BrushWorkApp::initDrawTool(){
+  toolList = new DrawTool*[6];
+  ColorData* color = new ColorData(0,0,0);
+  toolList[0] = new Pen(color, 3);
+  toolList[1] = new Eraser(21);
+  toolList[2] = new SprayCan(color, 41);
+  toolList[3] = new CalligraphyPen(color, 5, 15);
+  toolList[4] = new Highlighter(color, 5, 15);
+}
 void BrushWorkApp::display() {
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
     int err;
@@ -35,32 +44,35 @@ void BrushWorkApp::display() {
     }
 
     // draw some stuff
-    if(m_tool) delete m_tool;
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     switch (m_curTool) {
       case PEN: {
-        m_tool = new Pen(toolColor, 3);
+        m_tool = toolList[0];
+        m_tool -> setToolColor(toolColor);
         break;
       }
       case ERASER: {
-        m_tool = new Eraser(21);
+        m_tool = toolList[1];
+        m_tool -> setToolColor(toolColor);
         break;
       }
       case SPRAYCAN: {
-        m_tool = new SprayCan(toolColor, 41);
+        m_tool = toolList[2];
+        m_tool -> setToolColor(toolColor);
         break;
       }
       case CALIGRAPHYPEN: {
-        m_tool = new CalligraphyPen(toolColor, 5, 15);
+        m_tool = toolList[3];
+        m_tool -> setToolColor(toolColor);
+
         break;
       }
       case HIGHLIGHTER: {
-        m_tool = new Highlighter(toolColor, 5, 15);
+        m_tool = toolList[4];
+        m_tool -> setToolColor(toolColor);
         break;
       }
     }
-
-    drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
 }
 
 
@@ -69,12 +81,19 @@ BrushWorkApp::~BrushWorkApp() {
     if (m_displayBuffer) {
         delete m_displayBuffer;
     }
+
+    for(int i = 0; i < 6; i++){
+      if(toolList[i]){
+        delete toolList[i];
+      }
+    }
+    if(toolList) delete toolList;
 }
 
 
 void BrushWorkApp::mouseDragged(int x, int y) {
     m_tool -> paint(x, y, m_displayBuffer);
-    std::cout << "mouseDragged " << x << " " << y << std::endl;
+    //std::cout << "mouseDragged " << x << " " << y << std::endl;
 }
 
 void BrushWorkApp::mouseMoved(int x, int y) {
@@ -86,12 +105,12 @@ void BrushWorkApp::mouseMoved(int x, int y) {
 
 void BrushWorkApp::leftMouseDown(int x, int y) {
     m_tool -> paint(x, y, m_displayBuffer);
-    std::cout << "mousePressed " << x << " " << y << std::endl;
+    //std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
 }
 
 void BrushWorkApp::leftMouseUp(int x, int y) {
-    std::cout << "mouseReleased " << x << " " << y << std::endl;
+  //std::cout << "mouseReleased " << x << " " << y << std::endl;
     m_drag = false;
 }
 

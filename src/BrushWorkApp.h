@@ -58,10 +58,12 @@ private:
     // BrushWork-specific functions
     void initGlui();
     void initGraphics();
+    void initDrawTool();
     void initializeBuffers(ColorData initialColor, int width, int height);
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
     DrawTool* m_tool;
+    DrawTool** toolList;
     // These are used to store the selections from the GLUI user interface
     int m_curTool;
     float m_curColorRed, m_curColorGreen, m_curColorBlue;

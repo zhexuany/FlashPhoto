@@ -29,6 +29,7 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
 void BrushWorkApp::initDrawTool(){
   toolList = new DrawTool*[6];
   ColorData* color = new ColorData(0,0,0);
+  m_tool = new DrawTool(color, 0, 0);
   toolList[0] = new Pen(color, 3);
   toolList[1] = new Eraser(21);
   toolList[2] = new SprayCan(color, 41);
@@ -82,7 +83,7 @@ BrushWorkApp::~BrushWorkApp() {
     if (m_displayBuffer) {
         delete m_displayBuffer;
     }
-
+    if(m_tool) delete m_tool;
     for(int i = 0; i < 6; i++){
       if(toolList[i]){
         delete toolList[i];
@@ -220,8 +221,8 @@ void BrushWorkApp::gluiControl(int controlID) {
             m_curColorGreen = 0;
             m_curColorBlue = 0;
             break;
-        //Case 0 is the tool selection, selected tool resides in m_curTool
-        case 0:
+        //Case UI_TOOLTYPE is the case define in UIControlType, selected tool resides in m_curTool
+        case UI_TOOLTYPE:
             updateCurrentTool();
             break;
         default:

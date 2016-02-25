@@ -8,7 +8,7 @@ public:
     int getHeight() const;
     int getWidth() const;
     float** getInfluence() const;
-private:
+protected:
     int height;
     int width;
     float** influence;

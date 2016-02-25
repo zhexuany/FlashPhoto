@@ -41,7 +41,7 @@ void PixelBuffer::setPixel(int x, int y, const ColorData& newPixel) {
         cerr << "setPixel: x,y out of range: " << x << " " << y << endl;
     }
     else {
-        int index = x + m_width*(y); //x + m_width*(m_height-(y+1));
+        int index = x + m_width*(y);
         m_pixels[index] = newPixel;
     }
 }

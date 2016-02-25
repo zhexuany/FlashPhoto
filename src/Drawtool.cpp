@@ -27,17 +27,18 @@ ColorData const * DrawTool::getToolColor() const{
   return m_toolColor;
 }
 void DrawTool::paint(int x, int y, PixelBuffer* buffer){
-  ColorData const * currentColor = buffer -> getData();
   int height = m_mask-> getHeight();
   int width = m_mask -> getWidth();
   x -= width/2;
   y -= height/2;
   float ** influence = m_mask -> getInfluence();
+  printfInfluence();
   for(int i = 0; i < width; i++){
-    for(int j = 0; i < height; j++){
-      ColorData newColor = ((*m_toolColor)*influence[i][j])
-                           + (*currentColor)*(1 - influence[i][j]);
-      buffer -> setPixel(x++, y++, newColor);
+    for(int j = 0; j < height; j++){
+      ColorData currentColor = buffer -> getPixel(x, y);
+      ColorData newColor =((*m_toolColor)*influence[i][j])
+                          + currentColor*(1 - influence[i][j]);
+      buffer -> setPixel(x + i, y + j, newColor);
     }
   }
 }
@@ -62,7 +63,7 @@ void DrawTool::fillInfluence(){
   int height = mask -> getHeight();
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
-      influence[i][j] = 0;
+      influence[i][j] = 1;
     }
   }
 }

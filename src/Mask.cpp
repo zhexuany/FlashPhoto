@@ -1,9 +1,9 @@
 #include "Mask.h"
 
 Mask::Mask(int w, int h) : height(h), width(w) {
-  influence = new float *[height];
-  for(int i = 0; i < height; i++){
-    influence[i]  = new float[width];
+  influence = new float *[width];
+  for(int i = 0; i < width; i++){
+    influence[i]  = new float[height];
   }
 }
 

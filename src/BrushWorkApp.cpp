@@ -13,7 +13,7 @@
 
 using std::cout;
 using std::endl;
-
+using std::cerr;
 BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) :
     BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50) {
     // Set the name of the window
@@ -28,6 +28,12 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
 
 void BrushWorkApp::display() {
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
+    int err;
+    if ((err = glGetError()) != GL_NO_ERROR) {
+      cerr << "GL is in an error state after call to glDrawPixels()" << endl;
+      cerr << "(GL error code " << err << ")\n";
+    }
+
     // draw some stuff
     if(m_tool) delete m_tool;
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
@@ -53,6 +59,8 @@ void BrushWorkApp::display() {
         break;
       }
     }
+
+    drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
 }
 
 
@@ -70,7 +78,6 @@ void BrushWorkApp::mouseDragged(int x, int y) {
 }
 
 void BrushWorkApp::mouseMoved(int x, int y) {
-    std::cout << "mouseMoved " << x << " " << y << std::endl;
     if(m_drag){
       mouseDragged(x, y);
     }
@@ -78,6 +85,7 @@ void BrushWorkApp::mouseMoved(int x, int y) {
 
 
 void BrushWorkApp::leftMouseDown(int x, int y) {
+    m_tool -> paint(x, y, m_displayBuffer);
     std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
 }
@@ -127,8 +135,6 @@ void BrushWorkApp::initGlui() {
     new GLUI_Button(colPanel, "Purple", UI_PRESET_PURPLE, s_gluicallback);
     new GLUI_Button(colPanel, "White", UI_PRESET_WHITE, s_gluicallback);
     new GLUI_Button(colPanel, "Black", UI_PRESET_BLACK, s_gluicallback);
-
-
     new GLUI_Button(m_glui, "Quit", UI_QUIT, (GLUI_Update_CB)exit);
 }
 

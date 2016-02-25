@@ -15,7 +15,7 @@ void Pen:: fillInfluence(){
     int height = mask -> getHeight();
     for(int i = 0; i < width; i++){
       for(int j = 0; j < height; j++){
-        influence[i][j] = 0;
+        influence[i][j] = 1;
       }
     }
 }

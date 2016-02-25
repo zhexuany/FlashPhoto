@@ -34,6 +34,7 @@ void BrushWorkApp::initDrawTool(){
   toolList[2] = new SprayCan(color, 41);
   toolList[3] = new CalligraphyPen(color, 5, 15);
   toolList[4] = new Highlighter(color, 5, 15);
+  m_tool = toolList[0];
 }
 void BrushWorkApp::display() {
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
@@ -42,8 +43,9 @@ void BrushWorkApp::display() {
       cerr << "GL is in an error state after call to glDrawPixels()" << endl;
       cerr << "(GL error code " << err << ")\n";
     }
+}
 
-    // draw some stuff
+void BrushWorkApp::updateCurrentTool() {
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     switch (m_curTool) {
       case PEN: {
@@ -74,7 +76,6 @@ void BrushWorkApp::display() {
       }
     }
 }
-
 
 
 BrushWorkApp::~BrushWorkApp() {
@@ -215,6 +216,9 @@ void BrushWorkApp::gluiControl(int controlID) {
             m_curColorGreen = 0;
             m_curColorBlue = 0;
             break;
+        case 0:
+            updateCurrentTool();
+            break;
         default:
             break;
     }
@@ -222,4 +226,7 @@ void BrushWorkApp::gluiControl(int controlID) {
     m_spinnerB->set_float_val(m_curColorBlue);
     m_spinnerG->set_float_val(m_curColorGreen);
     m_spinnerR->set_float_val(m_curColorRed);
+    
+    ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
+    m_tool -> setToolColor(toolColor);
 }

@@ -60,6 +60,7 @@ private:
     void initGraphics();
     void initDrawTool();
     void initializeBuffers(ColorData initialColor, int width, int height);
+    void updateCurrentTool();
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
     DrawTool* m_tool;

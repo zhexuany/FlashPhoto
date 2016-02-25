@@ -33,7 +33,7 @@ void DrawTool::paint(int x, int y, PixelBuffer* buffer){
   x -= width/2;
   y = bufferHeight - y - height/2;
   float ** influence = m_mask -> getInfluence();
-  printfInfluence();
+  //  printfInfluence();
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
       ColorData currentColor = buffer -> getPixel(x, y);

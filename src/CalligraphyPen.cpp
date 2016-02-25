@@ -1,7 +1,7 @@
 #include "CalligraphyPen.h"
 
-CalligraphyPen::CalligraphyPen(ColorData* toolColor, int height, int width)
-    : DrawTool(toolColor, height, width){
+CalligraphyPen::CalligraphyPen(ColorData* toolColor, int width, int height)
+    : DrawTool(toolColor, width, height){
   fillInfluence();
 }
 

@@ -93,7 +93,9 @@ BrushWorkApp::~BrushWorkApp() {
 
 
 void BrushWorkApp::mouseDragged(int x, int y) {
-    m_tool -> paint(x, y, m_displayBuffer);
+    m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
+    m_prevX = x;
+    m_prevY = y;
     //std::cout << "mouseDragged " << x << " " << y << std::endl;
 }
 
@@ -105,7 +107,9 @@ void BrushWorkApp::mouseMoved(int x, int y) {
 
 
 void BrushWorkApp::leftMouseDown(int x, int y) {
-    m_tool -> paint(x, y, m_displayBuffer);
+    m_prevX = x;
+    m_prevY = y;
+    m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
     //std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
 }

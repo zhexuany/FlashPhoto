@@ -20,7 +20,7 @@ void Eraser::fillInfluence(){
   }
 }
 
-void Eraser::paint(int x, int y, PixelBuffer* buffer){
+void Eraser::applyInfluence(int x, int y, PixelBuffer* buffer){
   Mask const * mask = getMask();
   int height = mask -> getHeight();
   int width = mask -> getWidth();

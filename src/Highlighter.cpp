@@ -28,10 +28,10 @@ void Highlighter::paint(int x, int y, PixelBuffer* buffer){
   int bufferHeight = buffer -> getHeight();
   x -= width/2;
   y = bufferHeight - y - height/2;
-  ColorData currentColor = buffer -> getPixel(x, y);
   float ** influence =  mask -> getInfluence();
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
+      ColorData currentColor = buffer -> getPixel(x + i, y + j);
       float intensity = influence[i][j]* currentColor.getLuminance();
       ColorData newColor = (*toolColor)*intensity
                             + currentColor*(1.0 - intensity);

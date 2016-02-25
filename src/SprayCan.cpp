@@ -41,4 +41,12 @@ void SprayCan::fillInfluence(){
     yStart++;
     width -= 2;
   }
+  // int centre = width/2;
+  // int distance = centre*centre;
+  // for(int i = 0; i < width; i++){
+  //   for(int j = 0; j < width; j++){
+  //     if(((i - centre)*(i - centre) + (j - centre)*(j - centre)) > distance)
+  //       influence[i][j] = 0;
+  //   }
+  // }
 }

@@ -7,7 +7,6 @@ class SprayCan : public DrawTool{
   ~SprayCan();
   void fillInfluence();
   void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
-  void applyInfluence(int x, int y, PixelBuffer* buffer);
 };
 
 #endif // SPRAYCAN_H

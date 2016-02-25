@@ -1,6 +1,5 @@
 //
 //  main.cpp
-//  Originally created by the CSci-3081W TAs.
 //
 
 

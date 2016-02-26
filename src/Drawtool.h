@@ -5,6 +5,7 @@
 #include "ColorData.h"
 #include <iostream>
 #include <cmath>
+#include <complex>
 class DrawTool {
 public:
     DrawTool(ColorData* toolColor, int width, int height);

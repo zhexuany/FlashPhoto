@@ -31,20 +31,20 @@ void DrawTool::setToolColor(ColorData* color){
   m_toolColor = color;
 }
 void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
-  applyInfluence(x, y, buffer);
+    applyInfluence(x, y, buffer);
     float xIncrement = prevX;
     float yIncrement = prevY;
     float distance = sqrt(std::abs(pow(x-prevX, 2) - pow(y-prevY,2)));
     float xDiff = (x-prevX)/distance;
     float yDiff = (y-prevY)/distance;
-    std::cout << "distance " << distance << std::endl;
     int i;
     for (i = 0; i < distance; i++) {
         applyInfluence(xIncrement, yIncrement, buffer);
         xIncrement += xDiff;
         yIncrement += yDiff;
     }
-} 
+}
+
 void DrawTool::applyInfluence(int x, int y, PixelBuffer* buffer) {
   int height = m_mask-> getHeight();
   int width = m_mask -> getWidth();

@@ -7,7 +7,6 @@
 #include "BrushWorkApp.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
-
 #include <cmath>
 #include <iostream>
 
@@ -35,6 +34,7 @@ void BrushWorkApp::initDrawTool(){
   toolList[2] = new SprayCan(color, 41);
   toolList[3] = new CalligraphyPen(color, 5, 15);
   toolList[4] = new Highlighter(color, 5, 15);
+  toolList[5] = new WaterColor(color, 31);
   m_tool = toolList[0];
 }
 void BrushWorkApp::display() {
@@ -67,13 +67,16 @@ void BrushWorkApp::updateCurrentTool() {
       case CALIGRAPHYPEN: {
         m_tool = toolList[3];
         m_tool -> setToolColor(toolColor);
-
         break;
       }
       case HIGHLIGHTER: {
         m_tool = toolList[4];
         m_tool -> setToolColor(toolColor);
         break;
+      }
+      case WATERCOLOR:{
+        m_tool = toolList[5];
+        m_tool -> setToolColor(toolColor);
       }
     }
 }
@@ -106,7 +109,6 @@ void BrushWorkApp::mouseMoved(int x, int y) {
     }
 }
 
-
 void BrushWorkApp::leftMouseDown(int x, int y) {
     m_prevX = x;
     m_prevY = y;
@@ -137,7 +139,7 @@ void BrushWorkApp::initGlui() {
     new GLUI_RadioButton(radio, "Spray Can");
     new GLUI_RadioButton(radio, "Caligraphy Pen");
     new GLUI_RadioButton(radio, "Highlighter");
-    new GLUI_RadioButton(radio, "Ruler");
+    new GLUI_RadioButton(radio, "WaterColor Brush");
 
     GLUI_Panel *colPanel = new GLUI_Panel(m_glui, "Tool Color");
 

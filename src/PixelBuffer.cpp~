@@ -66,7 +66,7 @@ void PixelBuffer::fillPixelBufferWithColor(ColorData color) {
     fill(m_pixels, m_pixels+m_width*m_height, color);
 }
 
-void PixelBuffer::setBackgroundColor(ColorData* color) {
+void PixelBuffer::setBackgroundColor(ColorData color) {
     m_backgroundColor = color;
 }
 

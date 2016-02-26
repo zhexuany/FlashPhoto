@@ -14,6 +14,7 @@
 #include "CalligraphyPen.h"
 #include "Highlighter.h"
 #include "WaterColor.h"
+#include "FillTool.h"
 class PixelBuffer;
 class DrawTool;
 class ColorData;
@@ -84,7 +85,8 @@ private:
       SPRAYCAN,
       CALIGRAPHYPEN,
       HIGHLIGHTER,
-      WATERCOLOR
+      WATERCOLOR,
+      FILLTOOL
   };
 };
 

@@ -35,6 +35,7 @@ void BrushWorkApp::initDrawTool(){
   toolList[3] = new CalligraphyPen(color, 5, 15);
   toolList[4] = new Highlighter(color, 5, 15);
   toolList[5] = new WaterColor(color, 31);
+  toolList[6] = new FillTool(color, m_width, m_height);
   m_tool = toolList[0];
 }
 void BrushWorkApp::display() {
@@ -78,6 +79,10 @@ void BrushWorkApp::updateCurrentTool() {
         m_tool = toolList[5];
         m_tool -> setToolColor(toolColor);
       }
+      case FILLTOOL:{
+	m_tool = toolList[6];
+	m_tool -> setToolColor(toolColor);
+      }
     }
     if (toolColor) delete toolColor;
 }
@@ -98,9 +103,11 @@ BrushWorkApp::~BrushWorkApp() {
 
 
 void BrushWorkApp::mouseDragged(int x, int y) {
-    m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
-    m_prevX = x;
-    m_prevY = y;
+    if (m_tool -> allowDrag) {
+        m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
+        m_prevX = x;
+        m_prevY = y;
+    }
     //std::cout << "mouseDragged " << x << " " << y << std::endl;
 }
 
@@ -141,6 +148,7 @@ void BrushWorkApp::initGlui() {
     new GLUI_RadioButton(radio, "Caligraphy Pen");
     new GLUI_RadioButton(radio, "Highlighter");
     new GLUI_RadioButton(radio, "WaterColor Brush");
+    new GLUI_RadioButton(radio, "Fill Tool");
 
     GLUI_Panel *colPanel = new GLUI_Panel(m_glui, "Tool Color");
 

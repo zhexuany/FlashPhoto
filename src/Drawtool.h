@@ -19,6 +19,7 @@ public:
     void setToolColor(ColorData* color);
   // printfInfluence use for debuging
     void printfInfluence();
+    bool allowDrag;
 protected:
     Mask* m_mask;
     ColorData* m_toolColor;

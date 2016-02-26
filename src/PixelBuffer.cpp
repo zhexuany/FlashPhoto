@@ -66,6 +66,10 @@ void PixelBuffer::fillPixelBufferWithColor(ColorData color) {
     fill(m_pixels, m_pixels+m_width*m_height, color);
 }
 
+void PixelBuffer::setBackgroundColor(ColorData* color) {
+    m_backgroundColor = color;
+}
+
 void PixelBuffer::copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * destinationBuffer) {
     if (destinationBuffer->getWidth() != sourceBuffer->getWidth() || destinationBuffer->getHeight() != sourceBuffer->getHeight()) {
         cerr << "copyPixelBuffer: " << "dimension mismatch" << endl;

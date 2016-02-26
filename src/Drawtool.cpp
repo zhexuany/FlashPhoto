@@ -7,6 +7,7 @@ using std::endl;
 DrawTool::DrawTool(ColorData* toolColor, int width, int height){
   m_toolColor = toolColor;
   m_mask = new Mask(width, height);
+  allowDrag = true;
   fillInfluence();
 }
 DrawTool::DrawTool(int width, int height){

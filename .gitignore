@@ -7,6 +7,7 @@ glui/build/
 glui/lib/
 !Makefile
 *.o
+*.*~
 BrushWork
 .ycm_extra_conf.py
 GPATH

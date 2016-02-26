@@ -8,7 +8,7 @@ class FillTool : public DrawTool{
 public:
   FillTool(ColorData* toolColor, int height, int width);
   ~FillTool();
-  void print(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
+  void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
   void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
 private:

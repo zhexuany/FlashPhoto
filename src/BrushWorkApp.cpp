@@ -26,7 +26,7 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
     initGraphics();
 }
 void BrushWorkApp::initDrawTool(){
-  toolList = new DrawTool*[6];
+  toolList = new DrawTool*[8];
   ColorData* color = new ColorData(0,0,0);
   m_tool = new DrawTool(color, 0, 0);
   toolList[0] = new Pen(color, 3);
@@ -78,10 +78,12 @@ void BrushWorkApp::updateCurrentTool() {
       case WATERCOLOR:{
         m_tool = toolList[5];
         m_tool -> setToolColor(toolColor);
+        break;
       }
       case FILLTOOL:{
-	m_tool = toolList[6];
-	m_tool -> setToolColor(toolColor);
+	    m_tool = toolList[6];
+	    m_tool -> setToolColor(toolColor);
+        break;
       }
     }
     if (toolColor) delete toolColor;
@@ -171,6 +173,7 @@ void BrushWorkApp::initGlui() {
     new GLUI_Button(colPanel, "Purple", UI_PRESET_PURPLE, s_gluicallback);
     new GLUI_Button(colPanel, "White", UI_PRESET_WHITE, s_gluicallback);
     new GLUI_Button(colPanel, "Black", UI_PRESET_BLACK, s_gluicallback);
+    new GLUI_Button(m_glui, "Clear", UI_CLEAR, s_gluicallback);
     new GLUI_Button(m_glui, "Quit", UI_QUIT, (GLUI_Update_CB)exit);
 }
 
@@ -236,6 +239,9 @@ void BrushWorkApp::gluiControl(int controlID) {
         case UI_TOOLTYPE:
             updateCurrentTool();
             break;
+        case UI_CLEAR:
+            clearPixelBuffer();
+            break;
         default:
             break;
     }
@@ -246,4 +252,8 @@ void BrushWorkApp::gluiControl(int controlID) {
     
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     m_tool -> setToolColor(toolColor);
+}
+
+void BrushWorkApp::clearPixelBuffer() {
+    m_displayBuffer -> fillPixelBufferWithColor(m_displayBuffer -> getBackgroundColor());
 }

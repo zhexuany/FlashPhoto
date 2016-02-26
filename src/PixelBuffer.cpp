@@ -62,12 +62,13 @@ ColorData PixelBuffer::getBackgroundColor() {
     return *m_backgroundColor;
 }
 
-void PixelBuffer::fillPixelBufferWithColor(ColorData color) {
-    fill(m_pixels, m_pixels+m_width*m_height, color);
+void PixelBuffer::setBackgroundColor(ColorData* color) {
+    if (m_backgroundColor) delete m_backgroundColor;
+    m_backgroundColor = new ColorData(*color);
 }
 
-void PixelBuffer::setBackgroundColor(ColorData* color) {
-    m_backgroundColor = color;
+void PixelBuffer::fillPixelBufferWithColor(ColorData color) {
+    fill(m_pixels, m_pixels+m_width*m_height, color);
 }
 
 void PixelBuffer::copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * destinationBuffer) {

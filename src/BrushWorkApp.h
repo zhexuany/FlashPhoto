@@ -54,6 +54,7 @@ private:
         UI_PRESET_PURPLE,
         UI_PRESET_WHITE,
         UI_PRESET_BLACK,
+        UI_CLEAR,
         UI_QUIT
     };
 
@@ -63,6 +64,7 @@ private:
     void initDrawTool();
     void initializeBuffers(ColorData initialColor, int width, int height);
     void updateCurrentTool();
+    void clearPixelBuffer();
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
     DrawTool* m_tool;

@@ -21,7 +21,7 @@ void FillTool::fillInfluence(){
   }
 }
 
-void FillTool::print(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
+void FillTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
   applyInfluence(x, y, buffer);
   buffer -> setBackgroundColor(m_toolColor);
 }

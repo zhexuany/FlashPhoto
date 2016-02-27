@@ -3,34 +3,66 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
-// this cpp file may be not necessary. DrawTool serve as interface
+/*
+* \Overloaded constructor taking in a color
+* \color for tool, width of drawtool, height of drawtool
+* \constructor
+*/
 DrawTool::DrawTool(ColorData* toolColor, int width, int height){
   m_toolColor = toolColor;
   m_mask = new Mask(width, height);
   allowDrag = true;
   fillInfluence();
 }
+/*
+* \Overloaded constructor with a default color of black
+* \width of drawtool, height of drawtool
+* \constructor
+*/
 DrawTool::DrawTool(int width, int height){
   m_toolColor = new ColorData(0, 0, 0);
   m_mask = new Mask(width, height);
   fillInfluence();
 
 }
+/*
+* \Destructor for the drawtool
+* \none
+* \destructor
+*/
 DrawTool::~DrawTool(){
   delete m_toolColor;
   delete m_mask;
 }
-
+/*
+* \Gets the current mask for the draw tool
+* \none
+* \Returns a const pointer to the mask
+*/
 Mask const * DrawTool::getMask() const {
   return m_mask;
 }
-
+/*
+* \Gets the tool color
+* \none
+* \Const pointer to the ColorData of the current tool
+*/
 ColorData const * DrawTool::getToolColor() const{
   return m_toolColor;
 }
+/*
+* \Sets the tool color
+* \The ColorData to change the tool to
+* \void
+*/
 void DrawTool::setToolColor(ColorData* color){
   m_toolColor = color;
 }
+/*
+* \Apply the mask to the buffer at x,y and fill gap from prevX, prevY
+* \x coord, y coord, previous x coord, previous y coord, the pixel buffer to draw on
+* \void
+*/
 void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
     applyInfluence(x, y, buffer);
     float xIncrement = prevX;
@@ -45,7 +77,11 @@ void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
         yIncrement += yDiff;
     }
 }
-
+/*
+* \Apply the mask to the buffer centered at x,y
+* \x coord, y coord, buffer to draw on
+* \void
+*/
 void DrawTool::applyInfluence(int x, int y, PixelBuffer* buffer) {
   int height = m_mask-> getHeight();
   int width = m_mask -> getWidth();
@@ -64,6 +100,11 @@ void DrawTool::applyInfluence(int x, int y, PixelBuffer* buffer) {
   }
 }
 
+/*
+* Print the influence of the current mask
+* \none
+* \void
+*/
 void DrawTool::printfInfluence(){
   Mask const* mask = getMask();
   float** influence = mask -> getInfluence();
@@ -76,7 +117,11 @@ void DrawTool::printfInfluence(){
     cout << endl;
   }
 }
-/*This function need to be overloading in its derived class*/
+/*
+* \Virtual function to set influence on the mask, should be overrode in sub class
+* \none
+* \void
+*/
 void DrawTool::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();

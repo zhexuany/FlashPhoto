@@ -25,6 +25,11 @@ BrushWorkApp::BrushWorkApp(int argc, char* argv[], int width, int height, ColorD
     initGlui();
     initGraphics();
 }
+/*
+* \Initialize the draw tool on load
+* \none
+* \void
+*/
 void BrushWorkApp::initDrawTool(){
   toolList = new DrawTool*[8];
   ColorData* color = new ColorData(0,0,0);
@@ -47,7 +52,11 @@ void BrushWorkApp::display() {
       cerr << "(GL error code " << err << ")\n";
     }
 }
-
+/*
+* Update the current tool that is selected in the UI (stored in m_curTool)
+* \none
+* \void
+*/
 void BrushWorkApp::updateCurrentTool() {
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     switch (m_curTool) {
@@ -260,6 +269,11 @@ void BrushWorkApp::gluiControl(int controlID) {
     m_tool -> setToolColor(toolColor);
 }
 
+/*
+* \Clear the pixel buffer back to the default buffer color
+* \none
+* \void
+*/
 void BrushWorkApp::clearPixelBuffer() {
     ColorData newBackground = m_displayBuffer -> getDefaultBackgroundColor();
     m_displayBuffer -> fillPixelBufferWithColor(newBackground);

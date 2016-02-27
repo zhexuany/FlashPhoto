@@ -14,13 +14,28 @@ Mask::~Mask(){
   delete [] influence;
 }
 
+/*
+* \Get the height of the mask
+* \none
+* \returns the height of the mask
+*/
 int Mask::getHeight() const{
   return height;
 }
+/*
+* \Get the width of the mask
+* \none
+* \returns the width of the mask
+*/
 int Mask::getWidth() const{
   return width;
 }
-// influence need fill in different draw tool classes
+
+/*
+* \Get the influence array of the mask
+* \none
+* \returns a pointer to the array of influence for the mask
+*/
 float** Mask::getInfluence() const{
   return influence;
 }

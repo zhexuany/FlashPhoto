@@ -18,4 +18,12 @@ Members:
       - Zhexuan Zachary Yang
 
       - Juhwan Park
-      
+
+Comment Style:
+```
+/*!
+* \brief
+* \param
+* \return
+*/
+```

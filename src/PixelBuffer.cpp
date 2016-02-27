@@ -64,10 +64,13 @@ ColorData PixelBuffer::getBackgroundColor() {
     return *m_backgroundColor;
 }
 
+<<<<<<< HEAD
 ColorData PixelBuffer::getDefaultBackgroundColor() {
     return *m_defaultBackgroundColor;
 }
 
+=======
+>>>>>>> 8b80f7de430a3c3fdc2ecfab9286fe4aa2894201
 void PixelBuffer::setBackgroundColor(ColorData* color) {
     if (m_backgroundColor) delete m_backgroundColor;
     m_backgroundColor = new ColorData(*color);

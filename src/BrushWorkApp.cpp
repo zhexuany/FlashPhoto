@@ -104,7 +104,6 @@ void BrushWorkApp::updateCurrentTool() {
     if (toolColor) delete toolColor;
 }
 
-
 BrushWorkApp::~BrushWorkApp() {
     if (m_displayBuffer) {
         delete m_displayBuffer;

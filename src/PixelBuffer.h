@@ -29,8 +29,11 @@ public:
 	// Returns a pointer to the raw ColorData array for fast access to ColorData
 	ColorData const * const getData() const;
 
-	// Returns the background color that was used to initialize the PixelBuffer
+	// Returns the background color for the PixelBuffer
 	ColorData getBackgroundColor();
+
+	// Returns the background color that was used to initialize the PixelBuffer
+	ColorData getDefaultBackgroundColor();
 
 	int getHeight() const;
 	int getWidth() const;
@@ -47,7 +50,9 @@ private:
 
 	// Pointer to the single color used as the "background color" to initialize the PixelBuffer
 	ColorData * m_backgroundColor;
-
+    
+    //A backup background color for the fill tool
+    ColorData * m_defaultBackgroundColor;
 	// Dimensions
 	const int m_width;
 	const int m_height;

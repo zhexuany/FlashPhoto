@@ -14,6 +14,7 @@ using std::fill;
 
 PixelBuffer::PixelBuffer(int w, int h, ColorData backgroundColor) : m_width(w), m_height(h) {
     m_backgroundColor = new ColorData(backgroundColor);
+    m_defaultBackgroundColor = new ColorData(backgroundColor);
     m_pixels = new ColorData[w*h];
     fillPixelBufferWithColor(backgroundColor);
 }
@@ -21,6 +22,7 @@ PixelBuffer::PixelBuffer(int w, int h, ColorData backgroundColor) : m_width(w), 
 PixelBuffer::~PixelBuffer() {
     delete [] m_pixels;
     delete m_backgroundColor;
+    delete m_defaultBackgroundColor;
 }
 
 ColorData PixelBuffer::getPixel(int x, int y) const {
@@ -60,6 +62,10 @@ int PixelBuffer::getWidth() const {
 
 ColorData PixelBuffer::getBackgroundColor() {
     return *m_backgroundColor;
+}
+
+ColorData PixelBuffer::getDefaultBackgroundColor() {
+    return *m_defaultBackgroundColor;
 }
 
 void PixelBuffer::setBackgroundColor(ColorData* color) {

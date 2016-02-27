@@ -261,5 +261,7 @@ void BrushWorkApp::gluiControl(int controlID) {
 }
 
 void BrushWorkApp::clearPixelBuffer() {
-    m_displayBuffer -> fillPixelBufferWithColor(m_displayBuffer -> getBackgroundColor());
+    ColorData newBackground = m_displayBuffer -> getDefaultBackgroundColor();
+    m_displayBuffer -> fillPixelBufferWithColor(newBackground);
+    m_displayBuffer -> setBackgroundColor(&newBackground);
 }

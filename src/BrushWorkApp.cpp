@@ -36,6 +36,7 @@ void BrushWorkApp::initDrawTool(){
   toolList[4] = new Highlighter(color, 5, 15);
   toolList[5] = new WaterColor(color, 31);
   toolList[6] = new FillTool(color, m_width, m_height);
+  toolList[7] = new Crayon(color, 30);
   m_tool = toolList[0];
 }
 void BrushWorkApp::display() {
@@ -83,6 +84,11 @@ void BrushWorkApp::updateCurrentTool() {
       case FILLTOOL:{
 	    m_tool = toolList[6];
 	    m_tool -> setToolColor(toolColor);
+        break;
+      }
+      case CRAYON:{
+      m_tool = toolList[7];
+      m_tool -> setToolColor(toolColor);
         break;
       }
     }
@@ -151,7 +157,7 @@ void BrushWorkApp::initGlui() {
     new GLUI_RadioButton(radio, "Highlighter");
     new GLUI_RadioButton(radio, "WaterColor Brush");
     new GLUI_RadioButton(radio, "Fill Tool");
-
+    new GLUI_RadioButton(radio, "Crayon");
     GLUI_Panel *colPanel = new GLUI_Panel(m_glui, "Tool Color");
 
     m_curColorRed = 0;
@@ -249,7 +255,7 @@ void BrushWorkApp::gluiControl(int controlID) {
     m_spinnerB->set_float_val(m_curColorBlue);
     m_spinnerG->set_float_val(m_curColorGreen);
     m_spinnerR->set_float_val(m_curColorRed);
-    
+
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     m_tool -> setToolColor(toolColor);
 }

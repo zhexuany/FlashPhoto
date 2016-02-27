@@ -36,7 +36,7 @@ void BrushWorkApp::initDrawTool(){
   toolList[4] = new Highlighter(color, 5, 15);
   toolList[5] = new WaterColor(color, 31);
   toolList[6] = new FillTool(color, m_width, m_height);
-  toolList[7] = new Crayon(color, 30);
+  toolList[7] = new Crayon(color, 20);
   m_tool = toolList[0];
 }
 void BrushWorkApp::display() {

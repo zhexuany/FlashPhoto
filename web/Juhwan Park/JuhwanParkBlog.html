@@ -1,0 +1,40 @@
+<head>
+<title>Juhwan Park: Programmer's Blog</title>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="files/style.css" type="text/css" media="screen" />
+</head>
+<body>
+<a name="top"></a>
+<div id="header">Juhwan Park </br> </br> </br> Programmer's Blog</div>
+<ul id="navtop">
+  <li><a href="./index.html">Iteration 1</a></li>
+  <li><a href="./index.html">Iteration 2</a></li>
+  <li><a href="./index.html">Iteration 3</a></li>
+  <li><a href="./index.html">Final</a></li>
+</ul>
+<div id="maincontainer">
+  <div id="contentwrapper">
+    <div id="contentcolumn">
+      <h1>Iteration 1</h1>
+      </br></br></br>
+      <p> The part of this project I wrote that I tried to start coding in C++ and put most effort on was the Crayon Tool.
+        It is one of the tools that takes circle masks and randomly choose pixels to fill the mask.
+        So this tool looks pretty rough surface at the edge of each mark it draws.  </p>
+      <p><img class="imgleft" src="files/code.jpg" width="300" height="500" alt="" /><p/>
+      <p> This snippet is from the Crayon tool class, which is the class I wrote for our team.
+        On our final design, we decided to make DrawTool class to implement basic methods for each tool classes, and we inherited each classes from DrawTool class.</br></br>
+        The implementation of this is an override of one of the virtual methods from DrawTool class, fillInfluence class.
+        I followed the basic syntax for all of our application, as we discussed at the start of our project.
+        We decided to use camelCase variable and function names, brackets on the same lines as their statement and short functions. </p>
+      <p> This code takes radius as parameter and default value is 20. It calculates each distance from center of circle mask,
+        and uses standard library function rand() to generate random number between 0 to 1 and put it into each pixels.
+      <img class="imgright" src="files/screenshot.jpg" width="300" height="180" alt="" /> </p>
+      <p>In this way, this tool looks rough surface at the edge like crayon.
+        Maybe next iteration, I would elaborate some more by putting random transparancy into each pixels of mask to look more like real Crayon drawing. </p>
+    </div>
+  </div>
+  <div id="footer"> All contents of Author: Juhwan Park</a><br />
+    <p align="right"><a href="#top">top</a></p>
+  </div>
+</div>
+</html>

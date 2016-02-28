@@ -8,6 +8,9 @@ SprayCan::SprayCan(ColorData* toolColor, int radius)
 SprayCan::~SprayCan(){
 }
 
+/*
+* \Overriding the paint function so the spray can doesn't have gaps filled, this caused it to be too dark
+*/
 void SprayCan::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
   applyInfluence(x, y, buffer);
 }

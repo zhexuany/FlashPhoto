@@ -1,20 +1,30 @@
-<html style="background: gray; color: white; font-family: 'Roboto', sans-serif;">
+<html style="background: #36454f; color: white;">
 
 <head>
     <title>Jake Reynolds</title>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-    <h1 style="text-align: center;">Jake Reynolds</h1>
-    <h2 style="text-align: center;">Blog entry</h2>
-    <section>
+<body style="font-family: 'Roboto', sans-serif; font-size: 18px; margin: 0; padding: 0;">
+    <section style="width: 100% - 10px; background: #36454f; padding: 5px; color:white">
+        <h1 style="text-align: center; font-size: 36px;">Jacob Reynolds</h1>
+        <h2 style="text-align: center;">Blog entry</h2>
+    </section>
+    <section style="padding:10px; color: white;">
         <h2>My contribution</h2>
-        <p>The part of the code I wrote that I most enjoyed was the Fill Tool.
-            <br>It is a simple tool that takes the current mask color and applies it to any pixel that is equal to the current background color. An example can be seen below</p>
-        <img style="display: inline-block; float:left; margin-right: 10px;" src="helloworld.gif" />
-        <span style="vertical-align:top;">
+        <p>
+            The part of the code I wrote that I most enjoyed was the Fill Tool. It is a simple tool that takes the current mask color and applies it to any pixel that is equal to the current background color. An example can be seen below.</p>
+        <hr/>
+        <img style="display: inline-block; float:left; margin-right: 10px; width: 400px;" src="helloworld.gif" />
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;The implementation of this is an override of the virtual applyInfluence function for our DrawTool. This code follows the basic syntax for all of our application. We want camelCase variable and function names, brackets on the same lines as their statement and short functions. Because of this tool I added a new member variable to our DrawTool class. This tool is click-position independent. No matter where the user clicks, it will still apply to the whole page. It also shouldn't be draggable, it is a one-time apply. Because of this I added a boolean allowDrag to the public member properties of DrawTool. DrawTools with this boolean set to false (it defaults to true) will only be called the user click callback is initiated. The mouseDragged event will not call these functions.
+        </p>
+        <hr/>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;Since we could fill the canvas, we wanted to have a clear button to reset the canvas. This button would allow us to reset the full PixelBuffer back to the initialized color. We added a member property m_defaultBackgroundColor to the PixelBuffer class. This would allow us to update the background color to whatever the fill color was so that line 15 of the above code would work. When the clear button in the UI is clicked, it calls the PixelBuffer's fillPixelBufferWithColor() function and sets it to the m_defaultBackgroundColor.
+        </p>
+        <hr/>
+        <span style="vertical-align:top; float:right;">
             <pre class="brush: cpp">
 void FillTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
   applyInfluence(x, y, buffer);
@@ -38,16 +48,9 @@ void FillTool::applyInfluence(int x, int y, PixelBuffer* buffer){
 }
             </pre>
         </span>
-        <br>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;The implementation of this is an override of the virtual applyInfluence function for our DrawTool.  This code follows the basic syntax for all of our application.  We want camelCase variable and function names, brackets on the same lines as their statement and short functions.<br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Because of this tool I added a new member variable to our DrawTool class.  This tool is click-position independent.  No matter where the user clicks, it will still apply to the whole page.  It also shouldn't be draggable, it is a one-time apply.  Because of this I added a boolean allowDrag to the public member properties of DrawTool.  DrawTools with this boolean set to false (it defaults to true) will only be called the user click callback is initiated.  The mouseDragged event will not call these functions.
-        </span>
-        <br>
-        <br>
-        <span>
-        &nbsp;&nbsp;&nbsp;&nbsp;Since we could fill the canvas, we wanted to have a clear button to reset the canvas.  This button would allow us to reset the full PixelBuffer back to the initialized color.  We added a member property m_defaultBackgroundColor to the PixelBuffer class.  This would allow us to update the background color to whatever the fill color was so that line 15 of the above code would work.  When the clear button in the UI is clicked, it calls the PixelBuffer's fillPixelBufferWithColor() function and sets it to the m_defaultBackgroundColor.
-        </span>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;My favorite part of this function is that it preserves whatever is currently on the canvas so you can update the background color. In the future I hope to implement this much like MSPaint's fill tool, which doesn't fill in anything with a full line around it. For now I am pretty happy with this implementation though.</p>
+        <hr/>
+        <h2>Iteration 1: This blog post is done in entirety by Jacob Reynolds.</h2>
     </section>
 
 

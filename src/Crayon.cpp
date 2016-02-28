@@ -22,8 +22,10 @@ void Crayon::fillInfluence() {
       dy = (radius - j)*(radius - j);
       dist  = sqrt(dx + dy);
       int randNum = rand() % 2;
+      int randNum2 = rand() % 2;
+      float randNum3 = (rand() % 100)/100.0;
       if (dist <= radius) {
-        influence[i][j] = (float) randNum;
+        influence[i][j] = ((float) (randNum * randNum2)) * randNum3;
       } else {
         influence[i][j] = 0.0;
       }

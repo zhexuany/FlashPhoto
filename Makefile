@@ -32,7 +32,7 @@ LDFLAGS = -g
 # also need to add compiler and linker arguments for GLUI.
 GLUI_PATH = ./glui
 INCLUDE += -I$(GLUI_PATH)/include
-LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui
+LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread
 GLUI_LIB = $(GLUI_PATH)/lib/libglui.a
 
 

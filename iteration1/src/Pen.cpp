@@ -9,7 +9,6 @@ Pen::~Pen(){
 }
 
 void Pen:: fillInfluence(){
-  cerr << "caled\n";
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();
   int width = mask -> getWidth();

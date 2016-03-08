@@ -3,7 +3,6 @@
 #include "Drawtool.h"
 #include "PixelBuffer.h"
 #include "ColorData.h"
-// mask for eraser is cycle with 21 pixel
 class FillTool : public DrawTool{
 public:
   FillTool(ColorData* toolColor, int height, int width);

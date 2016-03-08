@@ -13,7 +13,7 @@ OBJECT_DIR = build
 # of the .cpp files in the source directory.
 CPPFILES = $(wildcard $(SOURCE_DIR)/*.cpp)
 
-# For each of the .cpp files found above, determine the name of the 
+# For each of the .cpp files found above, determine the name of the
 # corresponding .o file to create.
 OBJFILES = $(addprefix $(OBJECT_DIR)/,  $(notdir $(CPPFILES:.cpp=.o)))
 

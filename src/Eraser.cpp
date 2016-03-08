@@ -3,6 +3,7 @@
 Eraser::Eraser(int radius)
     : DrawTool(radius, radius){
   fillInfluence();
+  // allowDrag = true;
 }
 
 Eraser::~Eraser(){

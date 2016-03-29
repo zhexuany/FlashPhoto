@@ -41,8 +41,8 @@ public:
     // A static method to copy one pixel buffer to another
 	static void copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * destinationBuffer);
 
-        void setBackgroundColor(ColorData* color);
-
+    void setBackgroundColor(ColorData* color);
+    
 private:
 
 	// Array of pixel colors

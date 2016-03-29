@@ -1,9 +1,8 @@
 #include "FlashPhotoApp.h"
+
 #include "ColorData.h"
 #include "PixelBuffer.h"
-
 #include <cmath>
-
 #include <iostream>
 
 using std::cout;
@@ -98,7 +97,7 @@ void FlashPhotoApp::updateCurrentTool() {
 void FlashPhotoApp::display()
 {
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
-}
+}     
 
 FlashPhotoApp::~FlashPhotoApp()
 {
@@ -475,6 +474,12 @@ void FlashPhotoApp::gluiControl(int controlID)
 void FlashPhotoApp::loadImageToCanvas()
 {
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
+    ImageLoader *loader = new ImageLoader();
+    long Height, Width;
+    PixelBuffer *newBuffer = loader->loadpng(fopen(m_fileName.c_str(), "rb"), Height, Width);
+    setWindowDimensions(Width, Height);
+    initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
+    m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
 }
 
 void FlashPhotoApp::loadImageToStamp()

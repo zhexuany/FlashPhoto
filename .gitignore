@@ -20,6 +20,8 @@ libpng/lib/
 libpng/share/
 libpng/.deps/
 libpng/.libs/
+libpng/*.lo
+libpng/*.o
 !Makefile
 *.o
 *.*~

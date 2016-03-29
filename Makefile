@@ -31,10 +31,13 @@ LDFLAGS = -g
 # We use the GLUI library for our graphical user interface.  So, we
 # also need to add compiler and linker arguments for GLUI.
 GLUI_PATH = ./glui
-INCLUDE += -I$(GLUI_PATH)/include
-LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread
+PNG_PATH = ./libpng
+JPEG_PATH = ./libjpeg
+INCLUDE += -I$(GLUI_PATH)/include -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
+LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg
 GLUI_LIB = $(GLUI_PATH)/lib/libglui.a
-
+PNG_LIB = $(PNG_PATH)/lib/libpng.a
+JPEG_LIB = $(JPEG_PATH)/lib/libjpeg.a
 
 # For graphics support, we also need to link with the Glut and OpenGL libraries.
 # This is specified differently depending on whether we are on linux or OSX.
@@ -75,7 +78,7 @@ setup: | $(OBJECT_DIR)
 $(OBJECT_DIR): 
 	mkdir -p $(OBJECT_DIR)
 
-$(EXECUTABLE): $(OBJFILES) $(GLUI_LIB)
+$(EXECUTABLE): $(OBJFILES) $(GLUI_LIB) $(LIB_PNG) $(LIB_JPEG)
 	$(CC) $(LDFLAGS) $(OBJFILES) $(LINK_LIBS) -o $@
 
 $(OBJECT_DIR)/%.o: $(SOURCE_DIR)/%.cpp
@@ -86,3 +89,11 @@ clean:
 
 $(GLUI_LIB): 
 	$(MAKE) -C $(GLUI_PATH) all
+
+$(PNG_LIB):
+	cd $(PNG_PATH); ./configure --prefix=${PWD}/$(PNG_PATH) --enable-shared=no
+	$(MAKE) -C $(PNG_PATH) all
+
+$(JPEG_LIB):
+	cd $(JPEG_PATH); ./configure --prefix=${PWD}/$(JPEG_PATH) --enable-shared=no
+	$(MAKE) -C $(JPEG_PATH) all

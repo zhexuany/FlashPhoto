@@ -15,6 +15,7 @@
 #include "WaterColor.h"
 #include "FillTool.h"
 #include "Crayon.h"
+#include "ImageLoader.h"
 class ColorData;
 class PixelBuffer;
 
@@ -144,8 +145,7 @@ private:
     } m_gluiControlHooks;
     
     
-
-    
+    int loadpng(FILE *fp);
     void clearPixelBuffer();
     DrawTool** toolList;
     //Stores previous x and y positions

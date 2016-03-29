@@ -1,4 +1,5 @@
-
+.idea/
+CMakeLists.txt
 #Exclude executable files and directory
 build/
 log.md

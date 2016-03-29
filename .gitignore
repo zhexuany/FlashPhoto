@@ -12,6 +12,8 @@ libjpeg/lib/
 libjpeg/share/
 libjpeg/.deps/
 libjpeg/.libs/
+libjpeg/*.o
+libjpeg/*.lo
 libpng/bin/
 libpng/include/
 libpng/lib/

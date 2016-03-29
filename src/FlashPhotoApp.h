@@ -15,7 +15,7 @@
 #include "WaterColor.h"
 #include "FillTool.h"
 #include "Crayon.h"
-#include "ImageLoader.h"
+#include "ImageHandler.h"
 class ColorData;
 class PixelBuffer;
 
@@ -144,7 +144,7 @@ private:
         
     } m_gluiControlHooks;
     
-    
+    bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);
     void clearPixelBuffer();
     DrawTool** toolList;

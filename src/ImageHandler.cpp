@@ -1,16 +1,20 @@
-#include "ImageLoader.h"
+#include "ImageHandler.h"
 #include <iostream>
 using std::cout;
 using std::endl;
-ImageLoader::ImageLoader(){}
+ImageHandler::ImageHandler(){}
   
 
-ImageLoader::~ImageLoader(){
+ImageHandler::~ImageHandler(){
+    
+}
+
+void ImageHandler::savepng(char* filename) {
     
 }
 
 //taken from https://www.w3.org/People/maxf/textorizer/textorizer.c
-PixelBuffer* ImageLoader::loadpng(FILE *fp, long &Height, long &Width) {
+PixelBuffer* ImageHandler::loadpng(FILE *fp, long &Height, long &Width) {
     struct pixel
     {
         unsigned char r,g,b,a;
@@ -135,27 +139,39 @@ PixelBuffer* ImageLoader::loadpng(FILE *fp, long &Height, long &Width) {
   return newBuffer;
 }
 
-void ImageLoader::loadjpg(const char* Name) {
+void ImageHandler::loadjpg(FILE *infile, long &Height, long &Width) {
   unsigned char a, r, g, b;
   int width, height;
-  struct jpeg_decompress_struct cinfo;
-  struct jpeg_error_mgr jerr;
+  /*struct jpeg_decompress_struct cinfo;
 
-  FILE * infile;        /* source file */
-  JSAMPARRAY pJpegBuffer;       /* Output row buffer */
-  int row_stride;       /* physical row width in output buffer */
-  if ((infile = fopen(Name, "rb")) == NULL) {
-    fprintf(stderr, "can't open %s\n", Name);
+  JSAMPARRAY pJpegBuffer;       
+  int row_stride;    
+  if (infile == NULL) {
+    fprintf(stderr, "can't open file");
     return;
   }
-  cinfo.err = jpeg_std_error(&jerr);
   jpeg_create_decompress(&cinfo);
   jpeg_stdio_src(&cinfo, infile);
+  std::cout << "test" << std::endl;
+  jpeg_read_header(&cinfo, TRUE);*/
+  struct jpeg_decompress_struct cinfo;
+  /* We use our private extension JPEG error handler.
+   * Note that this struct must live as long as the main JPEG parameter
+   * struct, to avoid dangling-pointer problems.
+   */
+  /* More stuff */
+  JSAMPARRAY pJpegBuffer;		/* Output row buffer */
+  int row_stride;		/* physical row width in output buffer */
+
+  jpeg_create_decompress(&cinfo);
+
+  jpeg_stdio_src(&cinfo, infile);
+
   (void) jpeg_read_header(&cinfo, TRUE);
-  (void) jpeg_start_decompress(&cinfo);
+    std::cout << "test" << std::endl;
+  jpeg_start_decompress(&cinfo);
   width = cinfo.output_width;
   height = cinfo.output_height;
-
   unsigned char * pDummy = new unsigned char [width*height*4];
   if (!pDummy) {
     printf("NO MEM FOR JPEG CONVERT!\n");

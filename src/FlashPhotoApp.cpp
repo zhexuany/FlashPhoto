@@ -343,7 +343,6 @@ void FlashPhotoApp::initGlui()
 
 void FlashPhotoApp::gluiControl(int controlID)
 {
-    
     switch (controlID) {
         case UI_PRESET_RED:
             m_curColorRed = 1;
@@ -474,12 +473,16 @@ void FlashPhotoApp::gluiControl(int controlID)
 void FlashPhotoApp::loadImageToCanvas()
 {
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
-    ImageLoader *loader = new ImageLoader();
+    ImageHandler *loader = new ImageHandler();
     long Height, Width;
-    PixelBuffer *newBuffer = loader->loadpng(fopen(m_fileName.c_str(), "rb"), Height, Width);
-    setWindowDimensions(Width, Height);
-    initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
-    m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    if (isjpeg(m_fileName)) {
+        loader->loadjpg(fopen(m_fileName.c_str(), "rb"), Height, Width);
+    } else {
+        PixelBuffer *newBuffer = loader->loadpng(fopen(m_fileName.c_str(), "rb"), Height, Width);
+        setWindowDimensions(Width, Height);
+        initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
+        m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    }
 }
 
 void FlashPhotoApp::loadImageToStamp()
@@ -619,6 +622,16 @@ bool FlashPhotoApp::isValidImageFile(const std::string & name) {
     }
     return isValid;
 }
+
+bool FlashPhotoApp::isjpeg(const std::string & name) {
+        if (hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg")
+        )
+        return true;
+    else
+        return false;
+}
+
+
 
 void FlashPhotoApp::setImageFile(const std::string & fileName)
 {

@@ -10,10 +10,14 @@ libjpeg/bin/
 libjpeg/include/
 libjpeg/lib/
 libjpeg/share/
+libjpeg/.deps/
+libjpeg/.libs/
 libpng/bin/
 libpng/include/
 libpng/lib/
 libpng/share/
+libpng/.deps/
+libpng/.libs/
 !Makefile
 *.o
 *.*~

@@ -34,7 +34,7 @@ GLUI_PATH = ./glui
 PNG_PATH = ./libpng
 JPEG_PATH = ./libjpeg
 INCLUDE += -I$(GLUI_PATH)/include -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
-LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg
+LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg -lz
 GLUI_LIB = $(GLUI_PATH)/lib/libglui.a
 PNG_LIB = $(PNG_PATH)/lib/libpng.a
 JPEG_LIB = $(JPEG_PATH)/lib/libjpeg.a
@@ -78,7 +78,7 @@ setup: | $(OBJECT_DIR)
 $(OBJECT_DIR): 
 	mkdir -p $(OBJECT_DIR)
 
-$(EXECUTABLE): $(OBJFILES) $(GLUI_LIB) $(LIB_PNG) $(LIB_JPEG)
+$(EXECUTABLE): $(OBJFILES) $(GLUI_LIB) $(PNG_LIB) $(JPEG_LIB)
 	$(CC) $(LDFLAGS) $(OBJFILES) $(LINK_LIBS) -o $@
 
 $(OBJECT_DIR)/%.o: $(SOURCE_DIR)/%.cpp
@@ -92,8 +92,8 @@ $(GLUI_LIB):
 
 $(PNG_LIB):
 	cd $(PNG_PATH); ./configure --prefix=${PWD}/$(PNG_PATH) --enable-shared=no
-	$(MAKE) -C $(PNG_PATH) all
+	$(MAKE) -C $(PNG_PATH) install
 
 $(JPEG_LIB):
 	cd $(JPEG_PATH); ./configure --prefix=${PWD}/$(JPEG_PATH) --enable-shared=no
-	$(MAKE) -C $(JPEG_PATH) all
+	$(MAKE) -C $(JPEG_PATH) install

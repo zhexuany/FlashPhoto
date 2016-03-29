@@ -4,7 +4,7 @@
 ### Definitions Section ###
 
 # Name of the executable to create
-EXECUTABLE = BrushWork
+EXECUTABLE = FlashPhoto
 SOURCE_DIR = src
 OBJECT_DIR = build
 

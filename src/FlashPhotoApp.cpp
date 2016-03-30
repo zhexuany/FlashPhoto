@@ -505,23 +505,13 @@ void FlashPhotoApp::loadImageToStamp()
     if (toolList[8]) {
         delete toolList[8];
     }
-    if (isjpeg(m_fileName)) {
-        PixelBuffer *newBuffer = loader->loadjpg(fopen(m_fileName.c_str(), "rb"), Height, Width);
-        m_stampHeight = Height;
-        m_stampWidth = Width;
-        // Creating new stamp based on new image on newBuffer
-        // and re-assign it to m_tool, so it doesn't have to click on stamp button again.
-        toolList[8] = new Stamp(newBuffer, m_stampWidth, m_stampHeight);
-        m_tool = toolList[8];
-    } else {
-        PixelBuffer *newBuffer = loader->loadpng(fopen(m_fileName.c_str(), "rb"), Height, Width);
-        m_stampHeight = Height;
-        m_stampWidth = Width;
-        // Creating new stamp based on new image on newBuffer
-        // and re-assign it to m_tool, so it doesn't have to click on stamp button again.
-        toolList[8] = new Stamp(newBuffer, m_stampWidth, m_stampHeight);
-        m_tool = toolList[8];
-    }
+    PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+    m_stampHeight = Height;
+    m_stampWidth = Width;
+    // Creating new stamp based on new image on newBuffer
+    // and re-assign it to m_tool, so it doesn't have to click on stamp button again.
+    toolList[8] = new Stamp(newBuffer, m_stampWidth, m_stampHeight);
+    m_tool = toolList[8];
 }
 
 /*

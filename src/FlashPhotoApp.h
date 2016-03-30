@@ -15,25 +15,26 @@
 #include "WaterColor.h"
 #include "FillTool.h"
 #include "Crayon.h"
+#include "Stamp.h"
 #include "ImageHandler.h"
 class ColorData;
 class PixelBuffer;
 
 class FlashPhotoApp : public BaseGfxApp {
 public:
-    
+
     FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor);
     virtual ~FlashPhotoApp();
-    
+
     void mouseDragged(int x, int y) ;
     void mouseMoved(int x, int y);
     void leftMouseDown(int x, int y);
     void leftMouseUp(int x, int y);
     void display();
     void gluiControl(int controlID);
-    
+
 private:
-    
+
     // GLUI INTERFACE ELEMENTS
     enum UIControlType {
         UI_TOOLTYPE,
@@ -79,13 +80,13 @@ private:
     void loadCanvasEnabled(bool enabled);
     void loadStampEnabled(bool enabled);
     void updateColors();
-    
+
     void initDrawTool();
     void updateCurrentTool();
     void loadImageToCanvas();
     void loadImageToStamp();
     void saveCanvasToFile();
-    
+
     void applyFilterBlur();
     void applyFilterSharpen();
     void applyFilterMotionBlur();
@@ -95,23 +96,23 @@ private:
     void applyFilterSaturate();
     void applyFilterQuantize();
     void applyFilterSpecial();
-    
+
     void undoOperation();
     void redoOperation();
-    
-    
+
+
 
     void initGlui();
     void initGraphics();
     void initializeBuffers(ColorData initialColor, int width, int height);
-    
+
     enum UIMotionBlurDirections {
         DIR_N_S,
         DIR_E_W,
         DIR_NE_SW,
         DIR_NW_SE
     };
-    
+
     struct {
         float channel_colorRed;
         float channel_colorGreen;
@@ -124,7 +125,7 @@ private:
         int motionBlur_direction;
         int quantize_bins;
     } m_filterParameters;
-    
+
     struct {
         GLUI_FileBrowser* fileBrowser;
         GLUI_Button *loadCanvasButton;
@@ -135,15 +136,15 @@ private:
         GLUI_StaticText * currentFileLabel;
         GLUI_EditText* fileNameBox;
         GLUI_StaticText * saveFileLabel;
-        
+
         GLUI_Spinner *spinnerRed;
         GLUI_Spinner *spinnerGreen;
         GLUI_Spinner *spinnerBlue;
-        
-        
-        
+
+
+
     } m_gluiControlHooks;
-    
+
     bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);
     void clearPixelBuffer();
@@ -151,9 +152,12 @@ private:
     //Stores previous x and y positions
     int m_prevX;
     int m_prevY;
+    //Stroes stamp image's height and width
+    long m_stampHeight;
+    long m_stampWidth;
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
-    
+
     // These are used to store the selections from the GLUI user interface
     DrawTool* m_tool;
     int m_curTool;
@@ -168,7 +172,8 @@ private:
       HIGHLIGHTER,
       WATERCOLOR,
       FILLTOOL,
-      CRAYON
+      CRAYON,
+      STAMP
     };
 };
 

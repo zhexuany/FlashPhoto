@@ -500,7 +500,7 @@ void FlashPhotoApp::saveCanvasToFile()
     if (isjpeg(m_fileName)) {
         loader->savejpg(fopen(m_fileName.c_str(), "wb"), m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
     } else {
-        loader->savepng(fopen(m_fileName.c_str(), "wb"), m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth());
+        loader->savepng(fopen(m_fileName.c_str(), "wb"), m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
     }
 }
 

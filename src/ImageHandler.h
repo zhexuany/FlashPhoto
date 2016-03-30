@@ -13,7 +13,7 @@ class ImageHandler  {
   ImageHandler();
   ~ImageHandler();
   PixelBuffer* loadpng(FILE *fp, long &Height, long &Width);
-  void loadjpg(FILE *infile, long &Height, long &Width);
+  PixelBuffer* loadjpg(FILE *infile, long &Height, long &Width);
     void savepng(char* filename);
 };
 

@@ -46,11 +46,6 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, long &Height, long &Width) {
 
   png_init_io(png_ptr, fp);
 
-  /* read file information */
-
-   /* If we have already read some of the signature */
-  // png_set_sig_bytes(png_ptr, 8);
-
   png_read_info(png_ptr, info_ptr);
 
   png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, 
@@ -139,69 +134,47 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, long &Height, long &Width) {
   return newBuffer;
 }
 
-void ImageHandler::loadjpg(FILE *infile, long &Height, long &Width) {
-  unsigned char a, r, g, b;
-  int width, height;
-  /*struct jpeg_decompress_struct cinfo;
+PixelBuffer* ImageHandler::loadjpg(FILE* infile, long& Height, long& Width)
+{
+    double r, g, b;
+    struct jpeg_decompress_struct cinfo;
+    struct jpeg_error_mgr jerr;
 
-  JSAMPARRAY pJpegBuffer;       
-  int row_stride;    
-  if (infile == NULL) {
-    fprintf(stderr, "can't open file");
-    return;
-  }
-  jpeg_create_decompress(&cinfo);
-  jpeg_stdio_src(&cinfo, infile);
-  std::cout << "test" << std::endl;
-  jpeg_read_header(&cinfo, TRUE);*/
-  struct jpeg_decompress_struct cinfo;
-  /* We use our private extension JPEG error handler.
-   * Note that this struct must live as long as the main JPEG parameter
-   * struct, to avoid dangling-pointer problems.
-   */
-  /* More stuff */
-  JSAMPARRAY pJpegBuffer;		/* Output row buffer */
-  int row_stride;		/* physical row width in output buffer */
-
-  jpeg_create_decompress(&cinfo);
-
-  jpeg_stdio_src(&cinfo, infile);
-
-  (void) jpeg_read_header(&cinfo, TRUE);
-    std::cout << "test" << std::endl;
-  jpeg_start_decompress(&cinfo);
-  width = cinfo.output_width;
-  height = cinfo.output_height;
-  unsigned char * pDummy = new unsigned char [width*height*4];
-  if (!pDummy) {
-    printf("NO MEM FOR JPEG CONVERT!\n");
-    return;
-  }
-  row_stride = width * cinfo.output_components;
-  pJpegBuffer = (*cinfo.mem->alloc_sarray)
-    ((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
-
-  while (cinfo.output_scanline < cinfo.output_height) {
-    (void) jpeg_read_scanlines(&cinfo, pJpegBuffer, 1);
-    for (int x = 0; x < width; x++) {
-      a = 0; // alpha value is not supported on jpg
-      r = pJpegBuffer[0][cinfo.output_components * x];
-      if (cinfo.output_components > 2) {
-        g = pJpegBuffer[0][cinfo.output_components * x + 1];
-        b = pJpegBuffer[0][cinfo.output_components * x + 2];
-      } else {
-        g = r;
-        b = r;
-      }
-        std::cout << "r: " << r << " g: " << g << " b: " << b << std::endl;
-      *(pDummy++) = b;
-      *(pDummy++) = g;
-      *(pDummy++) = r;
-      *(pDummy++) = a;
+    cinfo.err = jpeg_std_error(&jerr);
+    jpeg_create_decompress(&cinfo);
+    if (infile == NULL) {
+        perror("fopen fail");
+        return 0;
     }
-  }
-  fclose(infile);
-  (void) jpeg_finish_decompress(&cinfo);
-  jpeg_destroy_decompress(&cinfo);
+    jpeg_stdio_src(&cinfo, infile);
+    (void)jpeg_read_header(&cinfo, TRUE);
+    cinfo.out_color_space = JCS_RGB;
+    (void)jpeg_start_decompress(&cinfo);
+    JSAMPARRAY pJpegBuffer;
 
+    int row_stride = cinfo.output_width * cinfo.output_components;
+    pJpegBuffer = (*cinfo.mem->alloc_sarray)((j_common_ptr)&cinfo, JPOOL_IMAGE, row_stride, 1);
+    Height = cinfo.output_height;
+    Width = cinfo.output_width;
+    PixelBuffer* newBuffer = new PixelBuffer(Width, Height, ColorData(255, 255, 255));
+
+    while (cinfo.output_scanline < cinfo.output_height) {
+        (void)jpeg_read_scanlines(&cinfo, pJpegBuffer, 1);
+        for (int x = 0; x < Width; x++) {
+            r = pJpegBuffer[0][cinfo.output_components * x];
+            if (cinfo.output_components > 2) {
+                g = pJpegBuffer[0][cinfo.output_components * x + 1];
+                b = pJpegBuffer[0][cinfo.output_components * x + 2];
+            }
+            else {
+                g = r;
+                b = r;
+            }
+            newBuffer->setPixel((int)x, Height - cinfo.output_scanline, ColorData(r / 255, g / 255, b / 255));
+        }
+    }
+    fclose(infile);
+    (void)jpeg_finish_decompress(&cinfo);
+    jpeg_destroy_decompress(&cinfo);
+    return newBuffer;
 }

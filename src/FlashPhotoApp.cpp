@@ -476,7 +476,10 @@ void FlashPhotoApp::loadImageToCanvas()
     ImageHandler *loader = new ImageHandler();
     long Height, Width;
     if (isjpeg(m_fileName)) {
-        loader->loadjpg(fopen(m_fileName.c_str(), "rb"), Height, Width);
+        PixelBuffer *newBuffer = loader->loadjpg(fopen(m_fileName.c_str(), "rb"), Height, Width);
+        setWindowDimensions(Width, Height);
+        initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
+        m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
     } else {
         PixelBuffer *newBuffer = loader->loadpng(fopen(m_fileName.c_str(), "rb"), Height, Width);
         setWindowDimensions(Width, Height);

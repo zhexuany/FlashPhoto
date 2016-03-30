@@ -9,8 +9,81 @@ ImageHandler::~ImageHandler(){
     
 }
 
-void ImageHandler::savepng(FILE *file, int height, int width) {
+void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer) {
+    int pixel_size = 3;
+    int depth = 8;
+    png_structp png_ptr = NULL;
+    png_infop info_ptr = NULL;
+    int x, y;
+    png_byte ** row_pointers = NULL;
+    png_ptr = png_create_write_struct (PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    if (png_ptr == NULL) {
+        goto png_create_write_struct_failed;
+    }
     
+    info_ptr = png_create_info_struct (png_ptr);
+    if (info_ptr == NULL) {
+        goto png_create_info_struct_failed;
+    }
+    
+    /* Set up error handling. */
+
+    if (setjmp (png_jmpbuf (png_ptr))) {
+        goto png_failure;
+    }
+    
+    /* Set image attributes. */
+
+    png_set_IHDR (png_ptr,
+                  info_ptr,
+                  width,
+                  height,
+                  depth,
+                  PNG_COLOR_TYPE_RGB,
+                  PNG_INTERLACE_NONE,
+                  PNG_COMPRESSION_TYPE_DEFAULT,
+                  PNG_FILTER_TYPE_DEFAULT);
+    
+    /* Initialize rows of PNG. */
+
+    row_pointers = (png_byte**)png_malloc(png_ptr, height * sizeof (png_byte *));
+    for (y = 0; y < height; ++y) {
+        png_byte *row = (png_byte*)png_malloc(png_ptr, sizeof(int) * width * pixel_size);
+        row_pointers[y] = row;
+        ColorData color;
+        int r,g,b;
+        for (x = 0; x < width; ++x) {
+            color = buffer->getPixel(x, height-y);
+            r = (color.getRed()*255);
+            g = (color.getGreen()*255);
+            b = (color.getBlue()*255);
+            *row++ = r;
+            *row++ = g;
+            *row++ = b;
+        }
+    }
+    
+    /* Write the image data to "fp". */
+
+    png_init_io (png_ptr, fp);
+    png_set_rows (png_ptr, info_ptr, row_pointers);
+    png_write_png (png_ptr, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
+
+    /* The routine has successfully written the file, so we set
+       "status" to a value which indicates success. */
+
+    
+    for (y = 0; y < height; y++) {
+        png_free (png_ptr, row_pointers[y]);
+    }
+    png_free (png_ptr, row_pointers);
+    
+ png_failure:
+ png_create_info_struct_failed:
+    png_destroy_write_struct (&png_ptr, &info_ptr);
+ png_create_write_struct_failed:
+    fclose (fp);
+    return;
 }
 
 //taken from https://www.w3.org/People/maxf/textorizer/textorizer.c
@@ -262,7 +335,6 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
   row_stride = width * 3;	/* JSAMPLEs per row in image_buffer */
     unsigned char *raw_image = NULL;
     raw_image = (unsigned char *)malloc(row_stride);
-    JSAMPLE arrayVals[width*3];
   while (cinfo.next_scanline < cinfo.image_height) {
     /* jpeg_write_scanlines expects an array of pointers to scanlines.
      * Here the array is only one element long, but you could pass

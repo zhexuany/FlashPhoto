@@ -14,7 +14,7 @@ class ImageHandler  {
   ~ImageHandler();
   PixelBuffer* loadpng(FILE *fp, long &Height, long &Width);
   PixelBuffer* loadjpg(FILE *infile, long &Height, long &Width);
-  void savepng(FILE* file, int height, int width);
+  void savepng(FILE* file, int height, int width, PixelBuffer *buffer);
   void savejpg(FILE* infile, int height, int width, PixelBuffer *buffer);
 };
 

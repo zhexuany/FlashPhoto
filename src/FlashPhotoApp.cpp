@@ -470,13 +470,22 @@ void FlashPhotoApp::gluiControl(int controlID)
 // for how FlashPhotoApp should respond to the
 // button presses.
 
+/*
+* \Load an image on to the canvas
+* \none
+* \void
+*/
 void FlashPhotoApp::loadImageToCanvas()
 {
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
+    
+    //Pass in height and width by reference so we can resize the window after
     int Height, Width;
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
     setWindowDimensions(Width, Height);
+    
+    //Reset the display buffer size so we can use copyPixelBuffer
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
     m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
 }
@@ -486,6 +495,11 @@ void FlashPhotoApp::loadImageToStamp()
     cout << "Load Stamp has been clicked for file " << m_fileName << endl;
 }
 
+/*
+* \Save a canvas to file
+* \none
+* \void
+*/
 void FlashPhotoApp::saveCanvasToFile()
 {
     cout << "Save Canvas been clicked for file " << m_fileName << endl;

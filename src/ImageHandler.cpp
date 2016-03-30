@@ -9,18 +9,11 @@ ImageHandler::~ImageHandler(){
     
 }
 
-bool ImageHandler::isjpeg(const std::string & name) {
-        if (hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg")
-        )
-        return true;
-    else
-        return false;
-}
-
-bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){
-    return str.find(suffix,str.length()-suffix.length()) != std::string::npos;
-}
-
+/*
+* \Save an image to the file
+* \filename, height of image, width of image, image
+* \void
+*/
 void ImageHandler::saveimage(const std::string & filename, int height, int width, PixelBuffer* buffer) {
     if (isjpeg(filename)) {
         savejpg(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
@@ -29,6 +22,11 @@ void ImageHandler::saveimage(const std::string & filename, int height, int width
     }
 }
 
+/*
+* \Load an image in to the pixel buffer
+* \filename, height reference, width reference
+* \The pixel buffer with the image loaded
+*/
 PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width) {
     if (isjpeg(filename)) {
         PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width);
@@ -39,6 +37,11 @@ PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, 
     }
 }
 
+/*
+* \Save a png to the file
+* \file pointer, height of image, width of image, image
+* \void
+*/
 void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer) {
     int pixel_size = 3;
     int depth = 8;
@@ -116,7 +119,11 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
     return;
 }
 
-//taken from https://www.w3.org/People/maxf/textorizer/textorizer.c
+/*
+* \Load a png from the file
+* \file pointer, height of image, width of image
+* \PixelBuffer containing the image
+*/
 PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
     struct pixel
     {
@@ -237,6 +244,11 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
   return newBuffer;
 }
 
+/*
+* \Load a jpg from the file
+* \file pointer, height of image, width of image
+* \PixelBuffer containing the image
+*/
 PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
 {
     double r, g, b;
@@ -282,7 +294,11 @@ PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
     return newBuffer;
 }
 
-
+/*
+* \save a jpg to the file
+* \file pointer, height of image, width of image, image
+* \void
+*/
 void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* buffer) {
     /* This struct contains the JPEG compression parameters and pointers to
    * working space (which is allocated as needed by the JPEG library).
@@ -397,4 +413,16 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
   jpeg_destroy_compress(&cinfo);
 
   /* And we're done! */
+}
+
+bool ImageHandler::isjpeg(const std::string & name) {
+        if (hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg")
+        )
+        return true;
+    else
+        return false;
+}
+
+bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){
+    return str.find(suffix,str.length()-suffix.length()) != std::string::npos;
 }

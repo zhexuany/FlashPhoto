@@ -9,6 +9,36 @@ ImageHandler::~ImageHandler(){
     
 }
 
+bool ImageHandler::isjpeg(const std::string & name) {
+        if (hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg")
+        )
+        return true;
+    else
+        return false;
+}
+
+bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){
+    return str.find(suffix,str.length()-suffix.length()) != std::string::npos;
+}
+
+void ImageHandler::saveimage(const std::string & filename, int height, int width, PixelBuffer* buffer) {
+    if (isjpeg(filename)) {
+        savejpg(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
+    } else {
+        savepng(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
+    }
+}
+
+PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width) {
+    if (isjpeg(filename)) {
+        PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width);
+        return newBuffer;
+    } else {
+        PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width);
+        return newBuffer;
+    }
+}
+
 void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer) {
     int pixel_size = 3;
     int depth = 8;
@@ -87,7 +117,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
 }
 
 //taken from https://www.w3.org/People/maxf/textorizer/textorizer.c
-PixelBuffer* ImageHandler::loadpng(FILE *fp, long &Height, long &Width) {
+PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
     struct pixel
     {
         unsigned char r,g,b,a;
@@ -207,7 +237,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, long &Height, long &Width) {
   return newBuffer;
 }
 
-PixelBuffer* ImageHandler::loadjpg(FILE* infile, long& Height, long& Width)
+PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
 {
     double r, g, b;
     struct jpeg_decompress_struct cinfo;

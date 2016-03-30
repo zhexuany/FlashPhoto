@@ -153,8 +153,8 @@ private:
     int m_prevX;
     int m_prevY;
     //Stroes stamp image's height and width
-    long m_stampHeight;
-    long m_stampWidth;
+    int m_stampHeight;
+    int m_stampWidth;
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
 

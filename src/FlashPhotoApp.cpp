@@ -500,7 +500,7 @@ void FlashPhotoApp::loadImageToStamp()
 {
     cout << "Load Stamp has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
-    long Height, Width;
+    int Height, Width;
     // Deleting previous stamp tool.
     if (toolList[8]) {
         delete toolList[8];

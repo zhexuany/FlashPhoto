@@ -10,6 +10,7 @@ class DrawTool {
 public:
     DrawTool(ColorData* toolColor, int width, int height);
     DrawTool(int width, int height);
+    DrawTool(PixelBuffer* newBuffer, int width, int height);
     virtual ~DrawTool();
     virtual void fillInfluence();
     virtual void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
@@ -23,5 +24,6 @@ public:
 protected:
     Mask* m_mask;
     ColorData* m_toolColor;
+    PixelBuffer* imageBuffer;
 };
 #endif

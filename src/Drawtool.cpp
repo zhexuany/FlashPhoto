@@ -25,6 +25,14 @@ DrawTool::DrawTool(int width, int height){
   fillInfluence();
 
 }
+
+DrawTool::DrawTool(PixelBuffer* newBuffer, int width, int height){
+  imageBuffer = newBuffer;
+  m_toolColor = new ColorData(0, 0, 0);
+  m_mask = new Mask(width, height);
+  fillInfluence();
+
+}
 /*
 * \Destructor for the drawtool
 * \none

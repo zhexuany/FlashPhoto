@@ -145,9 +145,6 @@ void FlashPhotoApp::leftMouseDown(int x, int y)
     m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
     //std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
-    /*if ((int)undoQueue.size() > m_queueSize) {
-        undoQueue.pop();
-    }*/
 }
 
 void FlashPhotoApp::updateUndo() {

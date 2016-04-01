@@ -14,7 +14,6 @@ class PixelBuffer{
 public:
 
 	PixelBuffer(int w, int h, ColorData backgroundColor);
-    PixelBuffer(int w, int h, ColorData backgroundColor, ColorData * pixels);
 	virtual ~PixelBuffer();
 
 	// Sets the color of a specific pixel

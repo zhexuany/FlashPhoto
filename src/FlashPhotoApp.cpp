@@ -19,6 +19,7 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
     initGlui();
     initGraphics();
     initDrawTool();
+    m_queueSize = 10;
 }
 
 /*
@@ -138,11 +139,30 @@ void FlashPhotoApp::mouseMoved(int x, int y)
 
 void FlashPhotoApp::leftMouseDown(int x, int y)
 {
+    updateUndo();
     m_prevX = x;
     m_prevY = y;
     m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
     //std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
+    /*if ((int)undoQueue.size() > m_queueSize) {
+        undoQueue.pop();
+    }*/
+}
+
+void FlashPhotoApp::updateUndo() {
+    //Enable undo and disable redo
+    undoEnabled(true);
+    redoEnabled(false);
+    
+    //Clear the redo stack
+    std::stack<PixelBuffer*> empty;
+    std::swap(redoQueue, empty);
+    
+    //Make a copy and save the current buffer
+    PixelBuffer *newBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
+    newBuffer->copyPixelBuffer(m_displayBuffer, newBuffer);
+    undoQueue.push(newBuffer);
 }
 
 void FlashPhotoApp::leftMouseUp(int x, int y)
@@ -483,6 +503,7 @@ void FlashPhotoApp::gluiControl(int controlID)
 */
 void FlashPhotoApp::loadImageToCanvas()
 {
+    updateUndo();
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
 
@@ -493,7 +514,8 @@ void FlashPhotoApp::loadImageToCanvas()
 
     //Reset the display buffer size so we can use copyPixelBuffer
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
-    m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    //m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    m_displayBuffer = newBuffer;
 }
 
 void FlashPhotoApp::loadImageToStamp()
@@ -574,11 +596,55 @@ void FlashPhotoApp::applyFilterSpecial() {
 void FlashPhotoApp::undoOperation()
 {
     cout << "Undoing..." << endl;
+    updateCanvas(undoQueue, redoQueue, true);
 }
 
 void FlashPhotoApp::redoOperation()
 {
     cout << "Redoing..." << endl;
+    updateCanvas(redoQueue, undoQueue, false);
+}
+
+/*
+*Update the canvas with the top of the alpha stack, push current buffer onto beta stack
+*stack to pop from, stack to push to, if it is an undo
+*void
+*TODO: there is currently no size limiting on the queue, I have not run into 
+*issues with size so far but it could be an issue in the future.
+*/
+void FlashPhotoApp::updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo) {
+    if (alpha.size() > 0) {        
+        //Save beta history
+        PixelBuffer *betaBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
+        betaBuffer->copyPixelBuffer(m_displayBuffer, betaBuffer);
+        beta.push(betaBuffer);
+        
+        //Update pixel buffer with alpha buffer
+        PixelBuffer *newBuffer = alpha.top();
+        alpha.pop();
+        int height = newBuffer->getHeight();
+        int width = newBuffer->getWidth();
+        if (height != m_displayBuffer->getHeight() || width != m_displayBuffer->getWidth()) {
+            initializeBuffers(newBuffer->getBackgroundColor(),width, height);
+            setWindowDimensions(width, height);
+        }
+        m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+        delete newBuffer;
+    }
+    if (isUndo) {
+        redoEnabled(true);
+    } else {
+        undoEnabled(true);
+    }
+    //incase size is 0 after the pop
+    //that's why we don't use else here
+    if (alpha.size() == 0) {
+        if (isUndo) {
+            undoEnabled(false);
+        } else {
+            redoEnabled(false);
+        }
+    }
 }
 // ** END OF CALLBACKS **
 // **********************

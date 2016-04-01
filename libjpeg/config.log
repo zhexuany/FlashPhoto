@@ -740,7 +740,6 @@ on jasper
 
 config.status:1103: creating Makefile
 config.status:1103: creating jconfig.h
-config.status:1284: jconfig.h is unchanged
 config.status:1332: executing depfiles commands
 config.status:1332: executing libtool commands
 

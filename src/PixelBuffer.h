@@ -54,8 +54,8 @@ private:
     //A backup background color for the fill tool
     ColorData * m_defaultBackgroundColor;
 	// Dimensions
-	int m_width;
-	int m_height;
+	const int m_width;
+	const int m_height;
 };
 
 #endif

@@ -19,6 +19,14 @@ PixelBuffer::PixelBuffer(int w, int h, ColorData backgroundColor) : m_width(w), 
     fillPixelBufferWithColor(backgroundColor);
 }
 
+PixelBuffer::PixelBuffer(int w, int h, ColorData backgroundColor, ColorData * pixels) : m_width(w), m_height(h) {
+    m_backgroundColor = new ColorData(backgroundColor);
+    m_defaultBackgroundColor = new ColorData(backgroundColor);
+    m_pixels = new ColorData[w*h];
+    //fillPixelBufferWithColor(backgroundColor);
+    //m_pixels = pixels;
+}
+
 PixelBuffer::~PixelBuffer() {
     delete [] m_pixels;
     delete m_backgroundColor;
@@ -85,3 +93,27 @@ void PixelBuffer::copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * dest
         memcpy ( (void*)destinationBuffer->m_pixels, (void*) sourceBuffer->m_pixels, sizeof(ColorData)*destinationBuffer->m_height*destinationBuffer->m_width );
     }
 }
+
+void PixelBuffer::copyPixelBuffer(PixelBuffer sourceBuffer, PixelBuffer * destinationBuffer) {
+    std::cout << "test" << std::endl;
+    if (destinationBuffer->getWidth() != sourceBuffer.getWidth() || destinationBuffer->getHeight() != sourceBuffer.getHeight()) {
+        cerr << "copyPixelBuffer: " << "dimension mismatch" << endl;
+    }
+    else {
+        memcpy ( (void*)destinationBuffer->m_pixels, (void*) sourceBuffer.m_pixels, sizeof(ColorData)*destinationBuffer->m_height*destinationBuffer->m_width );
+    }
+}
+
+/*PixelBuffer* PixelBuffer::operator= (PixelBuffer source) {
+    if (m_width == source.getWidth() && m_height == source.getHeight()) {
+        std::cout << "same size" << std::endl;
+    } else {
+        std::cout << "different size" << std::endl;
+        this->m_width = source.getWidth();
+        this->m_height = source.getHeight();
+        this->m_pixels = new ColorData[this->m_width*this->m_height];
+    }
+    memcpy ((void*)this->m_pixels, (void*)source.m_pixels, sizeof(ColorData)*this->m_height*this->m_width);
+    return this;
+}
+*/

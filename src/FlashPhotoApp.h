@@ -17,6 +17,7 @@
 #include "Crayon.h"
 #include "Stamp.h"
 #include "ImageHandler.h"
+#include <stack>
 class ColorData;
 class PixelBuffer;
 
@@ -34,7 +35,6 @@ public:
     void gluiControl(int controlID);
 
 private:
-
     // GLUI INTERFACE ELEMENTS
     enum UIControlType {
         UI_TOOLTYPE,
@@ -100,7 +100,7 @@ private:
     void undoOperation();
     void redoOperation();
 
-
+    void updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo);
 
     void initGlui();
     void initGraphics();
@@ -144,7 +144,9 @@ private:
 
 
     } m_gluiControlHooks;
-
+    int m_queueSize;
+    std::stack<PixelBuffer*> undoQueue;
+    std::stack<PixelBuffer*> redoQueue;
     bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);
     void clearPixelBuffer();
@@ -157,6 +159,7 @@ private:
     int m_stampWidth;
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
+    void updateUndo();
 
     // These are used to store the selections from the GLUI user interface
     DrawTool* m_tool;

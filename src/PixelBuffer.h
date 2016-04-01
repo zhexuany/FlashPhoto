@@ -14,6 +14,7 @@ class PixelBuffer{
 public:
 
 	PixelBuffer(int w, int h, ColorData backgroundColor);
+    PixelBuffer(int w, int h, ColorData backgroundColor, ColorData * pixels);
 	virtual ~PixelBuffer();
 
 	// Sets the color of a specific pixel
@@ -28,7 +29,7 @@ public:
 
 	// Returns a pointer to the raw ColorData array for fast access to ColorData
 	ColorData const * const getData() const;
-
+    
 	// Returns the background color for the PixelBuffer
 	ColorData getBackgroundColor();
 
@@ -40,7 +41,7 @@ public:
 
     // A static method to copy one pixel buffer to another
 	static void copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * destinationBuffer);
-
+    static void copyPixelBuffer(PixelBuffer sourceBuffer, PixelBuffer * destinationBuffer);
     void setBackgroundColor(ColorData* color);
     
 private:
@@ -54,8 +55,8 @@ private:
     //A backup background color for the fill tool
     ColorData * m_defaultBackgroundColor;
 	// Dimensions
-	const int m_width;
-	const int m_height;
+	int m_width;
+	int m_height;
 };
 
 #endif

@@ -16,23 +16,18 @@ void Pen:: fillInfluence(){
   if(width != height){
     cerr << "Mask dimension does not agree\n";
   }
-  //float dx, dy, dist;
-  //int radius = width/2;
+  float dx, dy, dist;
+  int radius = width/2;
   for(int i = 0; i < width; i++){
     for(int j = 0; j < width; j++){
-      //dx = (radius - i)*(radius - i);
-      //dy = (radius - j)*(radius - j);
-      //dist  = sqrt(dx + dy);
-      //if(dist <= radius){
-      influence[i][j] = 1.0;
-        //}else{
-        //influence[i][j] = 0.0;
-      //}
+      dx = (radius - i)*(radius - i);
+      dy = (radius - j)*(radius - j);
+      dist  = sqrt(dx + dy);
+      if(dist <= radius){
+        influence[i][j] = 1.0;
+      }else{
+        influence[i][j] = 0.0;
+      }
     }
   }
-  influence[0][0] = 0;
-  influence[0][2] = 0;
-  influence[2][0] = 0;
-  influence[2][2] = 0;
 }
-

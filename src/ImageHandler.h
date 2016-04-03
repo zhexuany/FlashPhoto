@@ -9,14 +9,14 @@
 #include <setjmp.h>
 #include <string>
 
-class ImageHandler  {
- public :
+class ImageHandler{
+public :
   ImageHandler();
   ~ImageHandler();
   PixelBuffer* loadimage(const std::string & filename, int &height, int &width);
   void saveimage(const std::string & filename, int height, int width, PixelBuffer *buffer);
-    
- private:
+
+private:
   bool isjpeg(const std::string & name);
   bool hasSuffix(const std::string & str, const std::string & suffix);
   void savepng(FILE* file, int height, int width, PixelBuffer *buffer);

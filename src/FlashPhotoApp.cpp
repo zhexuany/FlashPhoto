@@ -582,6 +582,12 @@ void FlashPhotoApp::applyFilterSaturate()
 void FlashPhotoApp::applyFilterBlur()
 {
     cout << "Apply has been clicked for Blur with amount = " << m_filterParameters.blur_amount << endl;
+    m_filters[FilterFactory::FILTER_BLUR]
+      -> setFilterParameter(m_filterParameters.blur_amount);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_BLUR]
+      -> applyFilter(m_displayBuffer);
+
 }
 
 void FlashPhotoApp::applyFilterSharpen()

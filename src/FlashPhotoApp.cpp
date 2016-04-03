@@ -268,7 +268,7 @@ void FlashPhotoApp::initGlui(){
             GLUI_RadioGroup *dirBlur = new GLUI_RadioGroup(motionBlurPanel, &m_filterParameters.motionBlur_direction);
             new GLUI_RadioButton(dirBlur, "North/South");
             new GLUI_RadioButton(dirBlur, "East/West");
-            new GLUI_RadioButton(dirBlur, "NorthEast/SouthWest");
+            new GLUI_RadioButton(dirBlur, "NorthEawwst/SouthWest");
             new GLUI_RadioButton(dirBlur, "NorthWest/SouthEast");
 
             new GLUI_Button(motionBlurPanel, "Apply", UI_APPLY_MOTION_BLUR, s_gluicallback);

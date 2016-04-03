@@ -6,8 +6,6 @@ FSharpen::FSharpen(){
 }
 
 void FSharpen::applyFilter(PixelBuffer* imageBuffer){
-  int width = imageBuffer -> getWidth();
-  int height = imageBuffer -> getHeight();
 }
 
 std::string FSharpen::getName(){

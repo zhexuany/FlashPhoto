@@ -25,8 +25,7 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
 void FlashPhotoApp::initFilter(){
   m_filters = new Filter* [FilterFactory::getNumFilters()];
   for(int i = 0; i < FilterFactory::getNumFilters(); i++){
-    //m_filters[i] = FilterFactory::createFilter(i);
-      m_filters[0] = FilterFactory::createFilter(0);
+    m_filters[i] = FilterFactory::createFilter(i);
   }
 }
 /*
@@ -554,7 +553,7 @@ void FlashPhotoApp::saveCanvasToFile()
 
 void FlashPhotoApp::applyFilterThreshold(){
     cout << "Apply has been clicked for Threshold has been clicked with amount =" << m_filterParameters.threshold_amount << endl;
-
+    updateUndo();
     m_filters[FilterFactory::FILTER_THRESHOLD] -> setFilterParameter(m_filterParameters.threshold_amount);
     m_filters[FilterFactory::FILTER_THRESHOLD] -> applyFilter(m_displayBuffer);
 }
@@ -564,12 +563,20 @@ void FlashPhotoApp::applyFilterChannel()
     cout << "Apply has been clicked for Channels with red = " << m_filterParameters.channel_colorRed
     << ", green = " << m_filterParameters.channel_colorGreen
     << ", blue = " << m_filterParameters.channel_colorBlue << endl;
+    m_filters[FilterFactory::FILTER_CHANNEL]
+      -> setFilterParameter(ColorData(m_filterParameters.channel_colorRed,
+                                      m_filterParameters.channel_colorGreen,
+                                      m_filterParameters.channel_colorBlue));
+    updateUndo();
+    m_filters[FilterFactory::FILTER_CHANNEL] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterSaturate()
 {
     cout << "Apply has been clicked for Saturate with amount = " << m_filterParameters.saturation_amount << endl;
     m_filters[FilterFactory::FILTER_SATURATION] -> setFilterParameter(m_filterParameters.saturation_amount);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_SATURATION] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterBlur()
@@ -594,6 +601,9 @@ void FlashPhotoApp::applyFilterEdgeDetect() {
 
 void FlashPhotoApp::applyFilterQuantize() {
     cout << "Apply has been clicked for Quantize with bins = " << m_filterParameters.quantize_bins << endl;
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> setFilterParameter((float) m_filterParameters.quantize_bins);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterSpecial() {

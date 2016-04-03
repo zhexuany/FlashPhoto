@@ -67,6 +67,10 @@ ColorData operator* (const ColorData& a, float f) {
     return ColorData(a.m_red*f, a.m_green*f, a.m_blue*f, a.m_alpha*f);
 }
 
+ColorData operator* (const ColorData& a, const ColorData& b) {
+  return ColorData(a.m_red * b.m_red, a.m_green * b.m_green, a.m_blue * b.m_blue, a.m_alpha * b.m_alpha);
+}
+
 ColorData operator+ (const ColorData& a, const ColorData& b) {
     return ColorData(a.m_red + b.m_red, a.m_green + b.m_green, a.m_blue + b.m_blue, a.m_alpha + b.m_alpha);
 }

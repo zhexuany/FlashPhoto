@@ -3,11 +3,7 @@
 using std::cout;
 using std::endl;
 ImageHandler::ImageHandler(){}
-
-
-ImageHandler::~ImageHandler(){
-
-}
+ImageHandler::~ImageHandler(){}
 
 /*
 * \Save an image to the file
@@ -53,18 +49,18 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
     if (png_ptr == NULL) {
         goto png_create_write_struct_failed;
     }
-    
+
     info_ptr = png_create_info_struct (png_ptr);
     if (info_ptr == NULL) {
         goto png_create_info_struct_failed;
     }
-    
+
     /* Set up error handling. */
 
     if (setjmp (png_jmpbuf (png_ptr))) {
         goto png_failure;
     }
-    
+
     /* Set image attributes. */
 
     png_set_IHDR (png_ptr,
@@ -76,7 +72,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
                   PNG_INTERLACE_NONE,
                   PNG_COMPRESSION_TYPE_DEFAULT,
                   PNG_FILTER_TYPE_DEFAULT);
-    
+
     /* Initialize rows of PNG. */
 
     row_pointers = (png_byte**)png_malloc(png_ptr, height * sizeof (png_byte *));
@@ -95,7 +91,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
             *row++ = b;
         }
     }
-    
+
     /* Write the image data to "fp". */
 
     png_init_io (png_ptr, fp);
@@ -105,7 +101,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
     /* The routine has successfully written the file, so we set
        "status" to a value which indicates success. */
 
-    
+
     for (y = 0; y < height; y++) {
         png_free (png_ptr, row_pointers[y]);
     }
@@ -238,6 +234,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
   /* clean up after the read, and free any memory allocated - REQUIRED */
   png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
 
+  //TODO put this into deconstructor
   for (i = 0; i < height; i++)
     free(row_pointers[i]);
   free(row_pointers);
@@ -416,7 +413,7 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
 }
 
 bool ImageHandler::isjpeg(const std::string & name) {
-  return hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg");
+    return hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg");
 }
 
 bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){

@@ -1,10 +1,4 @@
 #include "FlashPhotoApp.h"
-
-#include "ColorData.h"
-#include "PixelBuffer.h"
-#include <cmath>
-#include <iostream>
-
 using std::cout;
 using std::endl;
 
@@ -19,9 +13,22 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
     initGlui();
     initGraphics();
     initDrawTool();
+    initFilter();
     m_queueSize = 10;
 }
 
+/*
+* \Initialize the filter on load
+* \none
+* \void
+*/
+void FlashPhotoApp::initFilter(){
+  m_filters = new Filter* [FilterFactory::getNumFilters()];
+  for(int i = 0; i < FilterFactory::getNumFilters(); i++){
+    //m_filters[i] = FilterFactory::createFilter(i);
+      m_filters[0] = FilterFactory::createFilter(0);
+  }
+}
 /*
 * \Initialize the draw tool on load
 * \none
@@ -151,11 +158,11 @@ void FlashPhotoApp::updateUndo() {
     //Enable undo and disable redo
     undoEnabled(true);
     redoEnabled(false);
-    
+
     //Clear the redo stack
     std::stack<PixelBuffer*> empty;
     std::swap(redoQueue, empty);
-    
+
     //Make a copy and save the current buffer
     PixelBuffer *newBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
     newBuffer->copyPixelBuffer(m_displayBuffer, newBuffer);
@@ -183,8 +190,7 @@ void FlashPhotoApp::initializeBuffers(ColorData backgroundColor, int width, int 
     m_displayBuffer = new PixelBuffer(width, height, backgroundColor);
 }
 
-void FlashPhotoApp::initGlui()
-{
+void FlashPhotoApp::initGlui(){
     // Select first tool (this activates the first radio button in glui)
     m_curTool = 0;
 
@@ -509,10 +515,11 @@ void FlashPhotoApp::loadImageToCanvas()
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
     setWindowDimensions(Width, Height);
 
+    std::cout << Width << Height << "\n";
     //Reset the display buffer size so we can use copyPixelBuffer
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
-    //m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
-    m_displayBuffer = newBuffer;
+    m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    //m_displayBuffer = newBuffer;
 }
 
 void FlashPhotoApp::loadImageToStamp()
@@ -545,9 +552,11 @@ void FlashPhotoApp::saveCanvasToFile()
     loader->saveimage(m_fileName, m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterThreshold()
-{
+void FlashPhotoApp::applyFilterThreshold(){
     cout << "Apply has been clicked for Threshold has been clicked with amount =" << m_filterParameters.threshold_amount << endl;
+
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> setFilterParameter(m_filterParameters.threshold_amount);
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterChannel()
@@ -560,6 +569,7 @@ void FlashPhotoApp::applyFilterChannel()
 void FlashPhotoApp::applyFilterSaturate()
 {
     cout << "Apply has been clicked for Saturate with amount = " << m_filterParameters.saturation_amount << endl;
+    m_filters[FilterFactory::FILTER_SATURATION] -> setFilterParameter(m_filterParameters.saturation_amount);
 }
 
 void FlashPhotoApp::applyFilterBlur()
@@ -606,16 +616,16 @@ void FlashPhotoApp::redoOperation()
 *Update the canvas with the top of the alpha stack, push current buffer onto beta stack
 *stack to pop from, stack to push to, if it is an undo
 *void
-*TODO: there is currently no size limiting on the queue, I have not run into 
+*TODO: there is currently no size limiting on the queue, I have not run into
 *issues with size so far but it could be an issue in the future.
 */
 void FlashPhotoApp::updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo) {
-    if (alpha.size() > 0) {        
+    if (alpha.size() > 0) {
         //Save beta history
         PixelBuffer *betaBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
         betaBuffer->copyPixelBuffer(m_displayBuffer, betaBuffer);
         beta.push(betaBuffer);
-        
+
         //Update pixel buffer with alpha buffer
         PixelBuffer *newBuffer = alpha.top();
         alpha.pop();

@@ -48,7 +48,7 @@ void PixelBuffer::setPixel(int x, int y, const ColorData& newPixel) {
     }
 }
 
-ColorData const * const PixelBuffer::getData() const {
+ColorData const * PixelBuffer::getData() const {
     return m_pixels;
 }
 

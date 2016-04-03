@@ -1,8 +1,10 @@
-#ifndef FILTERFACTORY_H
-#define FILTERFACTORY_H
+//
+// FilterFactory.cpp
+//
+// created by Zhexuan Yang on 01/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
 
 #include "FilterFactory.h"
-#include "Filter.h"
 #include "FBlur.h"
 #include "FChannel.h"
 #include "FEdgeDetection.h"
@@ -46,4 +48,3 @@ Filter* FilterFactory::createFilter(int filterID){
     }
     return filter;
 }
-#endif // FILTERFACTORY_H

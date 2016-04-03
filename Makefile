@@ -22,7 +22,7 @@ OBJFILES = $(addprefix $(OBJECT_DIR)/,  $(notdir $(CPPFILES:.cpp=.o)))
 CC = g++
 
 # Basic C++ compiler arguments
-CFLAGS = -g -c -Wall
+CFLAGS = -g -c -Wall -std=c++11
 
 # Basic C++ linker arguments
 LDFLAGS = -g

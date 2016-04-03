@@ -17,6 +17,14 @@
 #include "Crayon.h"
 #include "Stamp.h"
 #include "ImageHandler.h"
+#include "ColorData.h"
+#include "PixelBuffer.h"
+// include filter files
+#include "FilterFactory.h"
+#include "FThreshold.h"
+#include <cmath>
+#include <iostream>
+
 #include <stack>
 class ColorData;
 class PixelBuffer;
@@ -80,13 +88,15 @@ private:
     void loadCanvasEnabled(bool enabled);
     void loadStampEnabled(bool enabled);
     void updateColors();
-
+    // function for load picture files
     void initDrawTool();
+    void initFilter();
     void updateCurrentTool();
     void loadImageToCanvas();
     void loadImageToStamp();
     void saveCanvasToFile();
 
+    // function for filter operation
     void applyFilterBlur();
     void applyFilterSharpen();
     void applyFilterMotionBlur();
@@ -97,6 +107,7 @@ private:
     void applyFilterQuantize();
     void applyFilterSpecial();
 
+    // function for redo/undo operation
     void undoOperation();
     void redoOperation();
 
@@ -147,10 +158,10 @@ private:
     int m_queueSize;
     std::stack<PixelBuffer*> undoQueue;
     std::stack<PixelBuffer*> redoQueue;
+    //TODO move isjpeg function into ImageHandler function.
     bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);
     void clearPixelBuffer();
-    DrawTool** toolList;
     //Stores previous x and y positions
     int m_prevX;
     int m_prevY;
@@ -162,8 +173,11 @@ private:
     void updateUndo();
 
     // These are used to store the selections from the GLUI user interface
+    DrawTool** toolList;
     DrawTool* m_tool;
     int m_curTool;
+    Filter** m_filters;
+    int m_curFilter;
     float m_curColorRed, m_curColorGreen, m_curColorBlue;
     std::string m_fileName;
     // const int value use for switch current tool

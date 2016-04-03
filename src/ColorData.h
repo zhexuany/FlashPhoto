@@ -32,7 +32,8 @@ public:
 	ColorData clampedColor() const;
 
 	// Arithmatic operators (friends so that non-member functions can access private variables)
-	friend ColorData operator* (const ColorData& a, float f);
+  friend ColorData operator* (const ColorData& a, float f);
+  friend ColorData operator* (const ColorData& a, const ColorData& b);
 	friend ColorData operator+ (const ColorData& a, const ColorData& b);
 	friend ColorData operator- (const ColorData& a, const ColorData& b);
 
@@ -41,7 +42,7 @@ private:
 	// General helper function for clamping values between 0 and 1
 	static inline float clampValue(float input, float a, float b)
 	{return input < a ? a : (input > b ? b : input);}
-    
+
 	float m_red;
 	float m_green;
 	float m_blue;

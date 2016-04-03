@@ -10,10 +10,5 @@ public:
   ~FSaturation();
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
-  void setFilterParameter(float threshold);
-private:
-  ColorData white;
-  ColorData black;
-  float threshold;
 };
 #endif //FSATURATION_H

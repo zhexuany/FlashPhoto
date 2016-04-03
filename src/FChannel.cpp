@@ -1,3 +1,10 @@
+//
+// FilterChannel.cpp
+//
+// created by Zhexuan Yang on 01/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
+
+
 #include "FChannel.h"
 #include "PixelBuffer.h"
 FChannel::FChannel(){

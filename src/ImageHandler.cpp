@@ -3,10 +3,10 @@
 using std::cout;
 using std::endl;
 ImageHandler::ImageHandler(){}
-  
+
 
 ImageHandler::~ImageHandler(){
-    
+
 }
 
 /*
@@ -416,11 +416,7 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
 }
 
 bool ImageHandler::isjpeg(const std::string & name) {
-        if (hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg")
-        )
-        return true;
-    else
-        return false;
+  return hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg");
 }
 
 bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){

@@ -1,6 +1,7 @@
 #ifndef FQUANTIZE_H
 #define FQUANTIZE_H
 #include <string>
+#include <cmath>
 #include "Filter.h"
 #include "ColorData.h"
 class PixelBuffer;
@@ -10,11 +11,6 @@ public:
   ~FQuantize();
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
-  void setFilterParameter(float parameter);
 private:
-  PixelBuffer* imageBuffer;
-  ColorData white;
-  ColorData black;
-  float threshold;
 };
 #endif //FQUANTIZE_H

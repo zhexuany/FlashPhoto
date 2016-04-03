@@ -27,7 +27,7 @@ public:
 	ColorData getPixel(int x, int y) const;
 
 	// Returns a pointer to the raw ColorData array for fast access to ColorData
-	ColorData const * const getData() const;
+  ColorData const * getData() const;
     
 	// Returns the background color for the PixelBuffer
 	ColorData getBackgroundColor();

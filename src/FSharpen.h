@@ -1,3 +1,10 @@
+//
+// FilterSharpen.h
+//
+// created by Zhexuan Yang on 01/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
+
+
 #ifndef FSHARPEN_H
 #define FSHARPEN_H
 #include <string>
@@ -12,8 +19,6 @@ public:
   std::string getName();
   void setFilterParameter(float parameter);
 private:
-  ColorData white;
-  ColorData black;
-  float threshold;
+  float sharpen;
 };
 #endif //FSHARPEN_H

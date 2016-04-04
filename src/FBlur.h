@@ -1,5 +1,5 @@
 //
-// FilterBlur.h
+// FBlur.h
 //
 // created by Zhexuan Yang on 01/4/2016
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
+#include <cmath>
 #include "Filter.h"
 #include "ColorData.h"
 typedef std::vector<float> kernelRow;
@@ -21,7 +23,9 @@ public:
   ~FBlur();
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
-  kernelType getKernel();
+  kernelType boxFilter(int radius);
+  kernelType GaussianBlur(float sigma);
+  void setKernel(kernelType kernel){this -> kernel = kernel;}
 private:
   kernelType kernel;
 };

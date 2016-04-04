@@ -3,25 +3,26 @@
 //
 // created by Zhexuan Yang on 01/4/2016
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
-
-
 #ifndef FEDGEDETECTION_H
 #define FEDGEDETECTION_H
 #include <string>
-#include "Filter.h"
+#include <vector>
+#include "FBlur.h"
 #include "ColorData.h"
-class PixelBuffer;
-class FEdgeDetection : public Filter{
+#include "PixelBuffer.h"
+class FEdgeDetection : public FBlur{
 public:
   FEdgeDetection();
   ~FEdgeDetection();
-  void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
-  void setFilterParameter(float parameter);
+  //PixelBuffer ProcessImage(PixelBuffer* imageBuffer, float sigma, float lowThreshold, float hightThresold);
+  //void PreProcessImage(float sigma);
+  // void PostProcessImage();
+  // void GaussianBlur();
+  // void EdgeDetection();
+  // void NonMaxSuppressin();
+  // void Hystersis(float lowThreshold, float hightThresold);
 private:
-  PixelBuffer* imageBuffer;
-  ColorData white;
-  ColorData black;
-  float threshold;
+  const int size = 3;
 };
 #endif //FEDGEDETECTION_H

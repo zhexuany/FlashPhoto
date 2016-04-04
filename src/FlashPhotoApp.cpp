@@ -514,7 +514,6 @@ void FlashPhotoApp::loadImageToCanvas()
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
     setWindowDimensions(Width, Height);
 
-    std::cout << Width << Height << "\n";
     //Reset the display buffer size so we can use copyPixelBuffer
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
     m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
@@ -590,19 +589,26 @@ void FlashPhotoApp::applyFilterBlur()
 
 }
 
-void FlashPhotoApp::applyFilterSharpen()
-{
+void FlashPhotoApp::applyFilterSharpen(){
     cout << "Apply has been clicked for Sharpen with amount = " << m_filterParameters.sharpen_amount << endl;
+    m_filters[FilterFactory::FILTER_SHARPEN]
+      -> setFilterParameter(m_filterParameters.sharpen_amount);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_SHARPEN] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterMotionBlur()
 {
     cout << "Apply has been clicked for Sharpen with amount = " << m_filterParameters.motionBlur_amount
     << " and direction " << m_filterParameters.motionBlur_direction << endl;
+    updateUndo();
+    m_filters[FilterFactory::FILTER_MOTION_BLUR] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterEdgeDetect() {
     cout << "Apply has been clicked for Edge Detect" << endl;
+    updateUndo();
+    m_filters[FilterFactory::FILTER_DETECT_EDGES] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterQuantize() {
@@ -614,6 +620,8 @@ void FlashPhotoApp::applyFilterQuantize() {
 
 void FlashPhotoApp::applyFilterSpecial() {
     cout << "Apply has been clicked for Special" << endl;
+    updateUndo();
+    m_filters[FilterFactory::FILTER_SPECIAL] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::undoOperation()

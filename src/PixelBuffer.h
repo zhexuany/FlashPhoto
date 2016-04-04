@@ -22,7 +22,7 @@ public:
 	// Fills the enitre pixel buffer with the specified color
 	void fillPixelBufferWithColor(ColorData color);
 
-
+  void convertToLuminance();
 	// Returns the color of a specific pixel
 	ColorData getPixel(int x, int y) const;
 

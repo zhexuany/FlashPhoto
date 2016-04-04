@@ -16,6 +16,7 @@
 #include "FillTool.h"
 #include "Crayon.h"
 #include "Stamp.h"
+#include "Blur.h"
 #include "ImageHandler.h"
 class ColorData;
 class PixelBuffer;
@@ -173,7 +174,8 @@ private:
       WATERCOLOR,
       FILLTOOL,
       CRAYON,
-      STAMP
+      STAMP,
+      BLUR
     };
 };
 

@@ -52,6 +52,9 @@ float ColorData::getLuminance() const {
     return 0.2126*m_red + 0.7152*m_green + 0.0722*m_blue;
 }
 
+float ColorData::getColorSum() const {
+  return m_red + m_green + m_blue;
+}
 ColorData ColorData::clampedColor() const {
     float clampedRed = ColorData::clampValue(this->getRed(), 0.f, 1.f);
     float clampedGreen = ColorData::clampValue(this->getGreen(), 0.f, 1.f);

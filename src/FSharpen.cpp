@@ -10,15 +10,18 @@
 #include "PixelBuffer.h"
 
 FSharpen::FSharpen(){
-}
-
-void FSharpen::applyFilter(PixelBuffer* imageBuffer){
+  kernelType kernel(size, kernelRow(size));
+  float factor = getFloatParameter();
+  for(int i = 0; i < size; i++){
+    for(int j = 0; j < size; j++){
+    kernel[i][j] = -1.0;
+    }
+  }
+  std::cout << factor;
+  kernel[size/2][size/2] = 9.0 + factor/DEFAULT_FACTOR;
+  setKernel(kernel);
 }
 
 std::string FSharpen::getName(){
   return "FSharpen";
-}
-
-void FSharpen::setFilterParameter(float parameter){
-  this -> sharpen = parameter;
 }

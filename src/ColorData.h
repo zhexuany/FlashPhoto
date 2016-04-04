@@ -26,8 +26,10 @@ public:
 
 	// Returns the "brightness" of the color according to a perceptual metric that
 	// weights the red, green, and blue components of the color non-uniformly.
-	float getLuminance() const;
+  float getLuminance() const;
 
+  // get the sume of all RGB color
+  float getColorSum() const;
 	// Return a clamped version of this ColorData
 	ColorData clampedColor() const;
 

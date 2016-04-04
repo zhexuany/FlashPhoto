@@ -1,57 +1,80 @@
 //
-// FilterBlur.h
+// FBlur.h
 //
 // created by Zhexuan Yang on 01/4/2016
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
-
-
 #include "FBlur.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
+
 FBlur::FBlur(){
+}
+FBlur::~FBlur(){
+
 }
 
 void FBlur::applyFilter(PixelBuffer* imageBuffer){
-  kernel =  getKernel();
+  // if kernel is already initialized, do not need initialize it again.
+  if(kernel.size() == 0)
+    kernel = boxFilter(std::ceil(getFloatParameter()));
+  if(getName() == "FEdgeDetection"){
+    imageBuffer -> convertToLuminance();
+  }
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
+  PixelBuffer* newImageBuffer = new PixelBuffer(width, height, imageBuffer -> getBackgroundColor());
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
       float newRed = 0;
       float newGreen = 0;
       float newBlue = 0;
-      for(size_t row = 0; row < kernel.size(); row++){
-        for(size_t col = 0; col < kernel[row].size(); col++){
-          int imageI = (i - kernel.size()/2 + row + width) % width;
-          int imageJ = (j - kernel[row].size()/2 + col + height) % height;
+      for(size_t filterI = 0; filterI < kernel.size(); filterI++){
+        for(size_t filterJ = 0; filterJ < kernel[filterI].size(); filterJ++){
+          //The location imageI and imageJ is calculated so that
+          //for the center element of the filter it'll be i, j
+          int imageI = (i - kernel.size()/2 + filterI + width) % width;
+          int imageJ = (j - kernel[filterI].size()/2 + filterJ + height) % height;
           ColorData currPixel = imageBuffer -> getPixel(imageI, imageJ);
-          newRed += currPixel.getRed() * kernel[row][col];
-          newBlue += currPixel.getBlue() * kernel[row][col];
-          newGreen += currPixel.getGreen()*kernel[row][col];
+          newRed += currPixel.getRed() * kernel[filterI][filterJ];
+          newGreen += currPixel.getGreen()*kernel[filterI][filterJ];
+          newBlue += currPixel.getBlue()*kernel[filterI][filterJ];
         }
       }
       ColorData newPixel = ColorData(newRed, newGreen, newBlue);
-      //truncate values smaller than 0.0 and larger than 1.0
       newPixel = newPixel.clampedColor();
-      imageBuffer -> setPixel(i, j, newPixel);
+      newImageBuffer -> setPixel(i, j, newPixel);
     }
   }
+  newImageBuffer -> copyPixelBuffer(newImageBuffer, imageBuffer);
 }
 
-kernelType FBlur::getKernel(){
-  kernelRow row;
-  int radius = std::ceil(getFloatParameter());
+kernelType FBlur::boxFilter(int radius){
+  kernelRow filterI;
   //any integer divied by 2 will give us another integer.
   //multiply it by 2 and puls 1 will give us a odd number
   int kSize = 2*radius/2+1;
   kernelType filter(kSize, kernelRow(kSize));
   float factor =(float) kSize*kSize;
-  for (size_t row = 0; row < filter.size(); row++) {
-    for (size_t col = 0; col < filter[row].size(); col++){
-      filter[row][col] = 1/factor;
+  for (size_t filterI = 0; filterI < filter.size(); filterI++) {
+    for (size_t filterJ = 0; filterJ < filter[filterI].size(); filterJ++){
+      filter[filterI][filterJ] = 1/factor;
     }
   }
   return filter;
+}
+//TODO need fix a bug on this function
+kernelType FBlur::GaussianBlur(float sigma){
+  int kSize = 2*std::round(std::sqrt(-std::log(0.3)*2*sigma*sigma)) + 1;
+  float squareSigma = sigma*sigma;
+  float constant = 2 * M_PI * squareSigma;
+  kernelType gaussianKernel(kSize, kernelRow(kSize));
+  for (int i = 0; i <= kSize; i++) {
+    for (int j = 0; j <= kSize; j++) {
+      gaussianKernel[i][j]
+        = (1 / constant) * std::exp(-(i * i + j * j ) / (squareSigma));
+    }
+  }
+  return gaussianKernel;
 }
 
 std::string FBlur::getName(){

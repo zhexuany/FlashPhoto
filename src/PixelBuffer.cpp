@@ -85,3 +85,13 @@ void PixelBuffer::copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * dest
         memcpy ( (void*)destinationBuffer->m_pixels, (void*) sourceBuffer->m_pixels, sizeof(ColorData)*destinationBuffer->m_height*destinationBuffer->m_width );
     }
 }
+
+void PixelBuffer::convertToLuminance(){
+  for(int i = 0; i < m_width; i++){
+    for(int j = 0; j < m_height; j++){
+      ColorData currPixel = getPixel(i, j);
+      float lumaince = currPixel.getLuminance();
+      setPixel(i, j,  ColorData(lumaince, lumaince, lumaince));
+    }
+  }
+}

@@ -8,6 +8,7 @@
 using std::cout;
 using std::endl;
 
+
 FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50)
 {
     // Set the name of the window
@@ -40,6 +41,7 @@ void FlashPhotoApp::initDrawTool(){
   toolList[6] = new FillTool(color, m_width, m_height);
   toolList[7] = new Crayon(color, 20);
   toolList[8] = new Stamp(init, 0, 0);
+  toolList[9] = new Blur(30);
   m_tool = toolList[0];
 }
 
@@ -96,6 +98,10 @@ void FlashPhotoApp::updateCurrentTool() {
       m_tool = toolList[8];
         break;
       }
+      case BLUR:{
+      m_tool = toolList[9];
+        break;
+      }
     }
     if (toolColor) delete toolColor;
 }
@@ -111,7 +117,7 @@ FlashPhotoApp::~FlashPhotoApp()
         delete m_displayBuffer;
     }
     if(m_tool) delete m_tool;
-    for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 10; i++){
       if(toolList[i]){
         delete toolList[i];
       }

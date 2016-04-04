@@ -22,7 +22,7 @@ OBJFILES = $(addprefix $(OBJECT_DIR)/,  $(notdir $(CPPFILES:.cpp=.o)))
 CC = g++
 
 # Basic C++ compiler arguments
-CFLAGS = -g -c -Wall -std=c++11
+CFLAGS = -g -c -Wall
 
 # Basic C++ linker arguments
 LDFLAGS = -g
@@ -44,8 +44,10 @@ JPEG_LIB = $(JPEG_PATH)/lib/libjpeg.a
 UNAME = $(shell uname)
 ifeq ($(UNAME), Darwin) # Mac OSX 
 	LINK_LIBS += -framework glut -framework opengl
+	CFLAGS += -std=c++11
 else # LINUX
 	LINK_LIBS += -lglut -lGL -lGLU
+	CFLAGS += -std=c++0x
 endif
 
 # On some lab machines the glut and opengl libraries are located in the directory

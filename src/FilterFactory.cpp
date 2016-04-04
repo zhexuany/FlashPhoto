@@ -19,7 +19,7 @@
 int FilterFactory::getNumFilters() {return NUMFILTERS;}
 
 Filter* FilterFactory::createFilter(int filterID){
-    Filter* filter = nullptr;
+    Filter* filter = NULL;
     switch(filterID) {
         case FILTER_THRESHOLD:
             filter = new FThreshold();

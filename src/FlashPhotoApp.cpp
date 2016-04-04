@@ -1,13 +1,6 @@
 #include "FlashPhotoApp.h"
-
-#include "ColorData.h"
-#include "PixelBuffer.h"
-#include <cmath>
-#include <iostream>
-
 using std::cout;
 using std::endl;
-
 
 FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50)
 {
@@ -20,8 +13,21 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
     initGlui();
     initGraphics();
     initDrawTool();
+    initFilter();
+    m_queueSize = 10;
 }
 
+/*
+* \Initialize the filter on load
+* \none
+* \void
+*/
+void FlashPhotoApp::initFilter(){
+  m_filters = new Filter* [FilterFactory::getNumFilters()];
+  for(int i = 0; i < FilterFactory::getNumFilters(); i++){
+    m_filters[i] = FilterFactory::createFilter(i);
+  }
+}
 /*
 * \Initialize the draw tool on load
 * \none
@@ -144,11 +150,27 @@ void FlashPhotoApp::mouseMoved(int x, int y)
 
 void FlashPhotoApp::leftMouseDown(int x, int y)
 {
+    updateUndo();
     m_prevX = x;
     m_prevY = y;
     m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
     //std::cout << "mousePressed " << x << " " << y << std::endl;
     m_drag = true;
+}
+
+void FlashPhotoApp::updateUndo() {
+    //Enable undo and disable redo
+    undoEnabled(true);
+    redoEnabled(false);
+
+    //Clear the redo stack
+    std::stack<PixelBuffer*> empty;
+    std::swap(redoQueue, empty);
+
+    //Make a copy and save the current buffer
+    PixelBuffer *newBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
+    newBuffer->copyPixelBuffer(m_displayBuffer, newBuffer);
+    undoQueue.push(newBuffer);
 }
 
 void FlashPhotoApp::leftMouseUp(int x, int y)
@@ -172,8 +194,7 @@ void FlashPhotoApp::initializeBuffers(ColorData backgroundColor, int width, int 
     m_displayBuffer = new PixelBuffer(width, height, backgroundColor);
 }
 
-void FlashPhotoApp::initGlui()
-{
+void FlashPhotoApp::initGlui(){
     // Select first tool (this activates the first radio button in glui)
     m_curTool = 0;
 
@@ -489,6 +510,7 @@ void FlashPhotoApp::gluiControl(int controlID)
 */
 void FlashPhotoApp::loadImageToCanvas()
 {
+    updateUndo();
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
 
@@ -497,9 +519,11 @@ void FlashPhotoApp::loadImageToCanvas()
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
     setWindowDimensions(Width, Height);
 
+    std::cout << Width << Height << "\n";
     //Reset the display buffer size so we can use copyPixelBuffer
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
     m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+    //m_displayBuffer = newBuffer;
 }
 
 void FlashPhotoApp::loadImageToStamp()
@@ -532,9 +556,11 @@ void FlashPhotoApp::saveCanvasToFile()
     loader->saveimage(m_fileName, m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterThreshold()
-{
+void FlashPhotoApp::applyFilterThreshold(){
     cout << "Apply has been clicked for Threshold has been clicked with amount =" << m_filterParameters.threshold_amount << endl;
+    updateUndo();
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> setFilterParameter(m_filterParameters.threshold_amount);
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterChannel()
@@ -542,16 +568,31 @@ void FlashPhotoApp::applyFilterChannel()
     cout << "Apply has been clicked for Channels with red = " << m_filterParameters.channel_colorRed
     << ", green = " << m_filterParameters.channel_colorGreen
     << ", blue = " << m_filterParameters.channel_colorBlue << endl;
+    m_filters[FilterFactory::FILTER_CHANNEL]
+      -> setFilterParameter(ColorData(m_filterParameters.channel_colorRed,
+                                      m_filterParameters.channel_colorGreen,
+                                      m_filterParameters.channel_colorBlue));
+    updateUndo();
+    m_filters[FilterFactory::FILTER_CHANNEL] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterSaturate()
 {
     cout << "Apply has been clicked for Saturate with amount = " << m_filterParameters.saturation_amount << endl;
+    m_filters[FilterFactory::FILTER_SATURATION] -> setFilterParameter(m_filterParameters.saturation_amount);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_SATURATION] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterBlur()
 {
     cout << "Apply has been clicked for Blur with amount = " << m_filterParameters.blur_amount << endl;
+    m_filters[FilterFactory::FILTER_BLUR]
+      -> setFilterParameter(m_filterParameters.blur_amount);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_BLUR]
+      -> applyFilter(m_displayBuffer);
+
 }
 
 void FlashPhotoApp::applyFilterSharpen()
@@ -571,6 +612,9 @@ void FlashPhotoApp::applyFilterEdgeDetect() {
 
 void FlashPhotoApp::applyFilterQuantize() {
     cout << "Apply has been clicked for Quantize with bins = " << m_filterParameters.quantize_bins << endl;
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> setFilterParameter((float) m_filterParameters.quantize_bins);
+    updateUndo();
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> applyFilter(m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterSpecial() {
@@ -580,11 +624,55 @@ void FlashPhotoApp::applyFilterSpecial() {
 void FlashPhotoApp::undoOperation()
 {
     cout << "Undoing..." << endl;
+    updateCanvas(undoQueue, redoQueue, true);
 }
 
 void FlashPhotoApp::redoOperation()
 {
     cout << "Redoing..." << endl;
+    updateCanvas(redoQueue, undoQueue, false);
+}
+
+/*
+*Update the canvas with the top of the alpha stack, push current buffer onto beta stack
+*stack to pop from, stack to push to, if it is an undo
+*void
+*TODO: there is currently no size limiting on the queue, I have not run into
+*issues with size so far but it could be an issue in the future.
+*/
+void FlashPhotoApp::updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo) {
+    if (alpha.size() > 0) {
+        //Save beta history
+        PixelBuffer *betaBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
+        betaBuffer->copyPixelBuffer(m_displayBuffer, betaBuffer);
+        beta.push(betaBuffer);
+
+        //Update pixel buffer with alpha buffer
+        PixelBuffer *newBuffer = alpha.top();
+        alpha.pop();
+        int height = newBuffer->getHeight();
+        int width = newBuffer->getWidth();
+        if (height != m_displayBuffer->getHeight() || width != m_displayBuffer->getWidth()) {
+            initializeBuffers(newBuffer->getBackgroundColor(),width, height);
+            setWindowDimensions(width, height);
+        }
+        m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
+        delete newBuffer;
+    }
+    if (isUndo) {
+        redoEnabled(true);
+    } else {
+        undoEnabled(true);
+    }
+    //incase size is 0 after the pop
+    //that's why we don't use else here
+    if (alpha.size() == 0) {
+        if (isUndo) {
+            undoEnabled(false);
+        } else {
+            redoEnabled(false);
+        }
+    }
 }
 // ** END OF CALLBACKS **
 // **********************

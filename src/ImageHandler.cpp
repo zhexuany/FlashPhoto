@@ -106,7 +106,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
         png_free (png_ptr, row_pointers[y]);
     }
     png_free (png_ptr, row_pointers);
-    
+
  png_failure:
  png_create_info_struct_failed:
     png_destroy_write_struct (&png_ptr, &info_ptr);
@@ -133,7 +133,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
   png_bytep *row_pointers;
   int bit_depth, color_type;
   int interlace_type, compression_type, filter_type;
-  
+
 
   /* create the png data structures */
   png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);

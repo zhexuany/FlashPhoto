@@ -13,6 +13,7 @@
 #include "FSharpen.h"
 #include "FThreshold.h"
 #include "FSaturation.h"
+#include "FSpecial.h"
 #include "PixelBuffer.h"
 //TODO special tool
 
@@ -44,6 +45,9 @@ Filter* FilterFactory::createFilter(int filterID){
             break;
         case FILTER_DETECT_EDGES:
             filter = new FEdgeDetection();
+            break;
+        case FILTER_SPECIAL:
+            filter = new FSpecial();
             break;
     }
     return filter;

@@ -24,10 +24,12 @@ void ImageHandler::saveimage(const std::string & filename, int height, int width
 * \The pixel buffer with the image loaded
 */
 PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width) {
+  //TODO need write a function call ispng
     if (isjpeg(filename)) {
         PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width);
         return newBuffer;
     } else {
+      //TODO possible bug
         PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width);
         return newBuffer;
     }

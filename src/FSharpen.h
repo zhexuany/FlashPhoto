@@ -17,7 +17,7 @@ public:
   ~FSharpen();
   std::string getName();
 private:
-  const int size= 3;
+  const int size = 3;
   const float DEFAULT_FACTOR = 1000.0;
 };
 #endif //FSHARPEN_H

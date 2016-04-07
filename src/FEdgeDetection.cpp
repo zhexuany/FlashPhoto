@@ -6,6 +6,9 @@
 #include "FEdgeDetection.h"
 
 FEdgeDetection::FEdgeDetection(){
+}
+
+kernelType FEdgeDetection::buildKernel(int radius){
   setFilterParameter(size);
   kernelType kernel(size, kernelRow(size));
   for(int i = 0; i < size; i++){
@@ -14,9 +17,8 @@ FEdgeDetection::FEdgeDetection(){
     }
   }
   kernel[size/2][size/2] = 8.0;
-  setKernel(kernel);
+  return kernel;
 }
-
 std::string FEdgeDetection::getName(){
   return "FEdgeDetection";
 }

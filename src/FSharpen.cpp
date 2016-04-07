@@ -9,17 +9,18 @@
 #include "ColorData.h"
 #include "PixelBuffer.h"
 
-FSharpen::FSharpen(){
+FSharpen::FSharpen(){}
+
+kernelType FSharpen::buildKernel(int radius){
   kernelType kernel(size, kernelRow(size));
   for(int i = 0; i < size; i++){
     for(int j = 0; j < size; j++){
-    kernel[i][j] = -1.0;
+      kernel[i][j] = -1.0;
     }
   }
-  kernel[size/2][size/2] = 9.0;
-  setKernel(kernel);
+  kernel[size/2][size/2] = 9.0 + getFloatParameter() / DEFAULT_FACTOR;
+  return kernel;
 }
-
 std::string FSharpen::getName(){
   return "FSharpen";
 }

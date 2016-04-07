@@ -23,9 +23,13 @@ public:
   ~FBlur();
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
+  virtual kernelType buildKernel(int radius);
   kernelType boxFilter(int radius);
+  kernelType emptyFilter(int radius);
   kernelType GaussianBlur(float sigma);
-  void setKernel(kernelType kernel){this -> kernel = kernel;}
+  kernelType getKernel(){ return kernel;}
+  //this is debug only
+  void printKernel();
 private:
   kernelType kernel;
 };

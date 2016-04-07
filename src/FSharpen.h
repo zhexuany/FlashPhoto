@@ -16,8 +16,9 @@ public:
   FSharpen();
   ~FSharpen();
   std::string getName();
+  kernelType buildKernel(int radius);
 private:
   const int size = 3;
-  const float DEFAULT_FACTOR = 1000.0;
+  const float DEFAULT_FACTOR = 100.0;
 };
 #endif //FSHARPEN_H

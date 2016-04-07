@@ -7,28 +7,28 @@
 #include "ColorData.h"
 #include "PixelBuffer.h"
 
-FBlur::FBlur(){
-}
-FBlur::~FBlur(){
+FBlur::FBlur(){}
+FBlur::~FBlur(){}
 
+kernelType FBlur::buildKernel(int radius){
+  return boxFilter(radius);
 }
 
 void FBlur::applyFilter(PixelBuffer* imageBuffer){
   // if kernel is already initialized, do not need initialize it again.
-  if(kernel.size() == 0)
-    kernel = boxFilter(std::ceil(getFloatParameter()));
+  kernel = buildKernel(std::round(getFloatParameter()));
+
+  //printKernel();
+
   if(getName() == "FEdgeDetection"){
     imageBuffer -> convertToLuminance();
   }
-  //TODO think about how to get use of the factor pass from FlashPhotoApp
-  if(getName() == "FSharpen"){
-    int centre = kernel.size()/2;
-    kernel[centre][centre] += getFloatParameter() / 100.0;
-    std::cout << kernel[centre][centre];
-  }
+
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
-  PixelBuffer* newImageBuffer = new PixelBuffer(width, height, imageBuffer -> getBackgroundColor());
+  //create a new pixel buffer for storing the convolution result.
+  PixelBuffer* newImageBuffer
+    = new PixelBuffer(width, height, imageBuffer -> getBackgroundColor());
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
       float newRed = 0;
@@ -54,10 +54,23 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
   newImageBuffer -> copyPixelBuffer(newImageBuffer, imageBuffer);
 }
 
+kernelType FBlur::emptyFilter(int radius){
+  //any integer divied by 2 will give us another integer.
+  //multiply it by 2 and puls 1 will give us a odd number
+  int kSize = 2*(radius/2)+1;
+  kernelType filter(kSize, kernelRow(kSize));
+  for (size_t filterI = 0; filterI < filter.size(); filterI++) {
+    for (size_t filterJ = 0; filterJ < filter[filterI].size(); filterJ++){
+      filter[filterI][filterJ] = 0;
+    }
+  }
+  return filter;
+}
+
 kernelType FBlur::boxFilter(int radius){
   //any integer divied by 2 will give us another integer.
   //multiply it by 2 and puls 1 will give us a odd number
-  int kSize = 2*radius/2+1;
+  int kSize = 2*(radius/2)+1;
   kernelType filter(kSize, kernelRow(kSize));
   float factor =(float) kSize*kSize;
   for (size_t filterI = 0; filterI < filter.size(); filterI++) {
@@ -80,6 +93,15 @@ kernelType FBlur::GaussianBlur(float sigma){
     }
   }
   return gaussianKernel;
+}
+
+void FBlur::printKernel(){
+  for(size_t i = 0; i < kernel.size(); i++){
+    for(size_t j = 0; j < kernel.size(); j++){
+      std::cout << kernel[i][j] << "   ";
+    }
+    std::cout << "\n";
+  }
 }
 
 std::string FBlur::getName(){

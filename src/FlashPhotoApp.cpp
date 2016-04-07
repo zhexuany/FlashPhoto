@@ -2,8 +2,7 @@
 using std::cout;
 using std::endl;
 
-FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50)
-{
+FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50){
     // Set the name of the window
     setCaption("FlashPhoto");
 
@@ -57,7 +56,7 @@ void FlashPhotoApp::initDrawTool(){
 * \none
 * \void
 */
-void FlashPhotoApp::updateCurrentTool() {
+void FlashPhotoApp::updateCurrentTool(){
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
     switch (m_curTool) {
       case PEN: {
@@ -117,8 +116,7 @@ void FlashPhotoApp::display()
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
 }
 
-FlashPhotoApp::~FlashPhotoApp()
-{
+FlashPhotoApp::~FlashPhotoApp(){
     if (m_displayBuffer) {
         delete m_displayBuffer;
     }
@@ -132,8 +130,7 @@ FlashPhotoApp::~FlashPhotoApp()
 }
 
 
-void FlashPhotoApp::mouseDragged(int x, int y)
-{
+void FlashPhotoApp::mouseDragged(int x, int y){
     if (m_tool -> allowDrag) {
         m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
         m_prevX = x;
@@ -141,15 +138,13 @@ void FlashPhotoApp::mouseDragged(int x, int y)
     }
 }
 
-void FlashPhotoApp::mouseMoved(int x, int y)
-{
+void FlashPhotoApp::mouseMoved(int x, int y){
     if(m_drag){
       mouseDragged(x, y);
     }
 }
 
-void FlashPhotoApp::leftMouseDown(int x, int y)
-{
+void FlashPhotoApp::leftMouseDown(int x, int y){
     updateUndo();
     m_prevX = x;
     m_prevY = y;
@@ -158,7 +153,7 @@ void FlashPhotoApp::leftMouseDown(int x, int y)
     m_drag = true;
 }
 
-void FlashPhotoApp::updateUndo() {
+void FlashPhotoApp::updateUndo(){
     //Enable undo and disable redo
     undoEnabled(true);
     redoEnabled(false);
@@ -374,8 +369,7 @@ void FlashPhotoApp::initGlui(){
     return;
 }
 
-void FlashPhotoApp::gluiControl(int controlID)
-{
+void FlashPhotoApp::gluiControl(int controlID){
     switch (controlID) {
         case UI_PRESET_RED:
             m_curColorRed = 1;
@@ -508,8 +502,7 @@ void FlashPhotoApp::gluiControl(int controlID)
 * \none
 * \void
 */
-void FlashPhotoApp::loadImageToCanvas()
-{
+void FlashPhotoApp::loadImageToCanvas(){
     updateUndo();
     cout << "Load Canvas has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
@@ -523,10 +516,10 @@ void FlashPhotoApp::loadImageToCanvas()
     initializeBuffers(m_displayBuffer->getBackgroundColor(), Width, Height);
     m_displayBuffer->copyPixelBuffer(newBuffer, m_displayBuffer);
     //m_displayBuffer = newBuffer;
+    delete newBuffer;
 }
 
-void FlashPhotoApp::loadImageToStamp()
-{
+void FlashPhotoApp::loadImageToStamp(){
     cout << "Load Stamp has been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
     int Height, Width;
@@ -548,8 +541,7 @@ void FlashPhotoApp::loadImageToStamp()
 * \none
 * \void
 */
-void FlashPhotoApp::saveCanvasToFile()
-{
+void FlashPhotoApp::saveCanvasToFile(){
     cout << "Save Canvas been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
     loader->saveimage(m_fileName, m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
@@ -562,8 +554,7 @@ void FlashPhotoApp::applyFilterThreshold(){
     m_filters[FilterFactory::FILTER_THRESHOLD] -> applyFilter(m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterChannel()
-{
+void FlashPhotoApp::applyFilterChannel(){
     cout << "Apply has been clicked for Channels with red = " << m_filterParameters.channel_colorRed
     << ", green = " << m_filterParameters.channel_colorGreen
     << ", blue = " << m_filterParameters.channel_colorBlue << endl;
@@ -575,16 +566,14 @@ void FlashPhotoApp::applyFilterChannel()
     m_filters[FilterFactory::FILTER_CHANNEL] -> applyFilter(m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterSaturate()
-{
+void FlashPhotoApp::applyFilterSaturate(){
     cout << "Apply has been clicked for Saturate with amount = " << m_filterParameters.saturation_amount << endl;
     m_filters[FilterFactory::FILTER_SATURATION] -> setFilterParameter(m_filterParameters.saturation_amount);
     updateUndo();
     m_filters[FilterFactory::FILTER_SATURATION] -> applyFilter(m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterBlur()
-{
+void FlashPhotoApp::applyFilterBlur(){
     cout << "Apply has been clicked for Blur with amount = " << m_filterParameters.blur_amount << endl;
     m_filters[FilterFactory::FILTER_BLUR]
       -> setFilterParameter(m_filterParameters.blur_amount);
@@ -602,8 +591,7 @@ void FlashPhotoApp::applyFilterSharpen(){
     m_filters[FilterFactory::FILTER_SHARPEN] -> applyFilter(m_displayBuffer);
 }
 
-void FlashPhotoApp::applyFilterMotionBlur()
-{
+void FlashPhotoApp::applyFilterMotionBlur(){
     cout << "Apply has been clicked for Sharpen with amount = " << m_filterParameters.motionBlur_amount
     << " and direction " << m_filterParameters.motionBlur_direction << endl;
     m_filters[FilterFactory::FILTER_MOTION_BLUR] -> setFilterParameter(m_filterParameters.motionBlur_amount);

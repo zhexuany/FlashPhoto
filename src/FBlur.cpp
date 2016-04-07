@@ -20,6 +20,12 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
   if(getName() == "FEdgeDetection"){
     imageBuffer -> convertToLuminance();
   }
+  //TODO think about how to get use of the factor pass from FlashPhotoApp
+  if(getName() == "FSharpen"){
+    int centre = kernel.size()/2;
+    kernel[centre][centre] += getFloatParameter() / 100.0;
+    std::cout << kernel[centre][centre];
+  }
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
   PixelBuffer* newImageBuffer = new PixelBuffer(width, height, imageBuffer -> getBackgroundColor());
@@ -49,7 +55,6 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
 }
 
 kernelType FBlur::boxFilter(int radius){
-  kernelRow filterI;
   //any integer divied by 2 will give us another integer.
   //multiply it by 2 and puls 1 will give us a odd number
   int kSize = 2*radius/2+1;

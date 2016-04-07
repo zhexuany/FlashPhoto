@@ -15,7 +15,6 @@
 #include "FSaturation.h"
 #include "FSpecial.h"
 #include "PixelBuffer.h"
-//TODO special tool
 
 int FilterFactory::getNumFilters() {return NUMFILTERS;}
 

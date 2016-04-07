@@ -16,7 +16,13 @@ public:
   FMotionBlur();
   ~FMotionBlur();
   std::string getName();
+  kernelType buildKernel(int radius);
 private:
-  const int size = 9;
+  enum MotionBlurDirections {
+    DIR_N_S,
+    DIR_E_W,
+    DIR_NE_SW,
+    DIR_NW_SE
+  };
 };
 #endif //FMOTIONBLUR_H

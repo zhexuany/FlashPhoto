@@ -15,6 +15,7 @@ public:
   FEdgeDetection();
   ~FEdgeDetection();
   std::string getName();
+  kernelType buildKernel(int radius);
   //PixelBuffer ProcessImage(PixelBuffer* imageBuffer, float sigma, float lowThreshold, float hightThresold);
   //void PreProcessImage(float sigma);
   // void PostProcessImage();

@@ -18,7 +18,7 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
   // if kernel is already initialized, do not need initialize it again.
   kernel = buildKernel(std::round(getFloatParameter()));
 
-  //printKernel();
+  printKernel();
 
   if(getName() == "FEdgeDetection"){
     imageBuffer -> convertToLuminance();

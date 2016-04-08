@@ -1,5 +1,5 @@
 //
-// FilterSaturation.cpp
+// FSaturation.cpp
 //
 // created by Zhexuan Yang on 01/4/2016
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
@@ -17,7 +17,9 @@ void FSaturation::applyFilter(PixelBuffer* imageBuffer){
     for(int j = 0; j < height; j++){
       ColorData currPixel = imageBuffer -> getPixel(i, j);
       float grayscale = currPixel.getLuminance();
-      ColorData newPixel = currPixel * saturation - ColorData(grayscale, grayscale, grayscale)*(saturation - currPixel.getAlpha());
+      ColorData newPixel =
+        currPixel * saturation - ColorData(grayscale, grayscale, grayscale)
+        *(saturation - currPixel.getAlpha());
       newPixel = newPixel.clampedColor();
       imageBuffer -> setPixel(i, j, newPixel);
     }

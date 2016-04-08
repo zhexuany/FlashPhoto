@@ -1,5 +1,5 @@
 //
-// FilterSharpen.cpp
+// FSharpen.cpp
 //
 // created by Zhexuan Yang on 01/4/2016
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
@@ -11,6 +11,10 @@
 
 FSharpen::FSharpen(){}
 
+/*
+ *\parama radius: the size of the kernel matrix
+ *\return a kernel matirx will userd for convolution-based filter
+ */
 kernelType FSharpen::buildKernel(int radius){
   kernelType kernel(size, kernelRow(size));
   for(int i = 0; i < size; i++){
@@ -21,6 +25,7 @@ kernelType FSharpen::buildKernel(int radius){
   kernel[size/2][size/2] = 9.0 + getFloatParameter() / DEFAULT_FACTOR;
   return kernel;
 }
+
 std::string FSharpen::getName(){
   return "FSharpen";
 }

@@ -156,7 +156,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
 
   png_read_info(png_ptr, info_ptr);
 
-  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, 
+  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type,
                &interlace_type, &compression_type, &filter_type);
 
   /* tell libpng to strip 16 bit/color files down to 8 bits/color */
@@ -166,26 +166,26 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
    * byte into separate bytes (useful for paletted and grayscale images).
    */
   png_set_packing(png_ptr);
-  
+
   /* Expand grayscale images to the full 8 bits from 1, 2, or 4 bits/pixel */
   if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
     png_set_expand(png_ptr);
-  
+
   /* Expand paletted colors into true RGB triplets */
   if (color_type == PNG_COLOR_TYPE_PALETTE)
     png_set_expand(png_ptr);
-  
+
   /* Expand paletted or RGB images with transparency to full alpha channels
    * so the data will be available as RGBA quartets.
    */
   if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
     png_set_expand(png_ptr);
-  
+
   /* Add filler (or alpha) byte (before/after each RGB triplet) */
 /*    if (bit_depth == 8 &&  */
 /*        (color_type == PNG_COLOR_TYPE_RGB||color_type == PNG_COLOR_TYPE_GRAY)) */
-  png_set_filler(png_ptr, 0x000000ff, PNG_FILLER_AFTER);  
-  
+  png_set_filler(png_ptr, 0x000000ff, PNG_FILLER_AFTER);
+
   /* update info_ptr from the transforms. used to get a correct value for
    * png_get_rowbytes */
   png_read_update_info(png_ptr, info_ptr);
@@ -211,16 +211,16 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
       Pixels[k].g = row_pointers[i][4*j+1];
       Pixels[k++].b = row_pointers[i][4*j+2];
     }
-    
+
   double r,g,b;
   for (i=0;i<Height;i++)
     for (j=0;j<Width;j++) {
         r = Pixels[i*Width+j].r/255.0;
         g = Pixels[i*Width+j].g/255.0;
         b = Pixels[i*Width+j].b/255.0;
-        
+
         newBuffer -> setPixel((int)j, Height-i, ColorData(r,g,b));
-        
+
         /*
         std::cout << "r " << r << " g " <<  g << " b " << b << std::endl;
         ColorData colorTest = buffer -> getPixel((int)j, (int)i);
@@ -232,7 +232,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
     //buffer = *newBuffer;
   /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
   png_read_end(png_ptr, info_ptr);
-  
+
   /* clean up after the read, and free any memory allocated - REQUIRED */
   png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
 

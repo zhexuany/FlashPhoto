@@ -17,7 +17,10 @@
 #include "PixelBuffer.h"
 
 int FilterFactory::getNumFilters() {return NUMFILTERS;}
-
+/*
+ *\parama filterID which filter you want to created
+ *\return a filter instance
+ */
 Filter* FilterFactory::createFilter(int filterID){
     Filter* filter = NULL;
     switch(filterID) {

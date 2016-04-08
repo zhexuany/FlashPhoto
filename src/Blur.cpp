@@ -24,7 +24,7 @@ void Blur::fillInfluence(){
       dy = (radius - j)*(radius - j);
       dist  = sqrt(dx + dy);
       if(dist <= radius - 1.5){
-        influence[i][j] = 1.0;
+        influence[i][j] = 1.0 - (dist / (radius - 1.5));
       }else{
         influence[i][j] = 0.0;
       }

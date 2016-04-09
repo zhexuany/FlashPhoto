@@ -28,12 +28,12 @@ kernelType FMotionBlur::buildKernel(int radius){
       break;
     case DIR_NE_SW:
       for(int i = 0; i < size; i++){
-        kernel[size - i - 1][i] = 1 /(float)size;
+        kernel[i][i] = 1/(float)size;
       }
       break;
     case DIR_NW_SE:
       for(int i = 0; i < size; i++){
-        kernel[i][i] = 1/(float)size;
+        kernel[size - i - 1][i] = 1 /(float)size;
       }
       break;
   }

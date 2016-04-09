@@ -218,7 +218,6 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
         r = Pixels[i*Width+j].r/255.0;
         g = Pixels[i*Width+j].g/255.0;
         b = Pixels[i*Width+j].b/255.0;
-
         newBuffer -> setPixel((int)j, Height-i, ColorData(r,g,b));
 
         /*

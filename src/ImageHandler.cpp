@@ -25,13 +25,13 @@ void ImageHandler::saveimage(const std::string & filename, PixelBuffer* buffer) 
 * \filename, height reference, width reference
 * \The pixel buffer with the image loaded
 */
-PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width) {
+PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width, ColorData backgroundColor) {
   //TODO need write a function call ispng
     if (isjpeg(filename)) {
-        PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width);
+        PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width, backgroundColor);
         return newBuffer;
     } else if(ispng(filename)) {
-        PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width);
+        PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width, backgroundColor);
         return newBuffer;
     } else {
         return NULL;
@@ -121,7 +121,7 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
 * \file pointer, height of image, width of image
 * \PixelBuffer containing the image
 */
-PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
+PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width, ColorData backgroundColor) {
     struct pixel
     {
         unsigned char r,g,b,a;
@@ -199,7 +199,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
   /* malloc pixmap data */
   Width = width;
   Height = height;
-  PixelBuffer *newBuffer = new PixelBuffer(Width, Height, ColorData(255,255,255));
+  PixelBuffer *newBuffer = new PixelBuffer(Width, Height, backgroundColor);
   Pixels = (struct pixel *)malloc((size_t)Width*
                                          (size_t)Height*
                                          sizeof(struct pixel));
@@ -208,16 +208,24 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
     for (j=0;j<Width;j++) {
       Pixels[k].r = row_pointers[i][4*j];
       Pixels[k].g = row_pointers[i][4*j+1];
-      Pixels[k++].b = row_pointers[i][4*j+2];
+      Pixels[k].b = row_pointers[i][4*j+2];
+      Pixels[k++].a = row_pointers[i][4*j+3];
     }
 
-  double r,g,b;
+  double r,g,b,a;
+  ColorData newAlpha = backgroundColor;
+  newAlpha.setAlpha(0.0f);
   for (i=0;i<Height;i++)
     for (j=0;j<Width;j++) {
         r = Pixels[i*Width+j].r/255.0;
         g = Pixels[i*Width+j].g/255.0;
         b = Pixels[i*Width+j].b/255.0;
-        newBuffer -> setPixel((int)j, Height-1-i, ColorData(r,g,b));
+        a = Pixels[i*Width+j].a/255.0;
+        if (a==0.0) {
+            newBuffer -> setPixel((int)j, Height-1-i, newAlpha);
+        } else {
+            newBuffer -> setPixel((int)j, Height-1-i, ColorData(r,g,b,a));
+        }
     }
   /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
   png_read_end(png_ptr, info_ptr);
@@ -237,7 +245,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
 * \file pointer, height of image, width of image
 * \PixelBuffer containing the image
 */
-PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
+PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width, ColorData backgroundColor)
 {
     double r, g, b;
     struct jpeg_decompress_struct cinfo;
@@ -259,7 +267,7 @@ PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
     pJpegBuffer = (*cinfo.mem->alloc_sarray)((j_common_ptr)&cinfo, JPOOL_IMAGE, row_stride, 1);
     Height = cinfo.output_height;
     Width = cinfo.output_width;
-    PixelBuffer* newBuffer = new PixelBuffer(Width, Height, ColorData(255, 255, 255));
+    PixelBuffer* newBuffer = new PixelBuffer(Width, Height, backgroundColor);
 
     while (cinfo.output_scanline < cinfo.output_height) {
         (void)jpeg_read_scanlines(&cinfo, pJpegBuffer, 1);

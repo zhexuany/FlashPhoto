@@ -13,7 +13,7 @@ class ImageHandler{
 public :
   ImageHandler();
   ~ImageHandler();
-  PixelBuffer* loadimage(const std::string & filename, int &height, int &width);
+  PixelBuffer* loadimage(const std::string & filename, int &height, int &width, ColorData backgroundColor);
   void saveimage(const std::string & filename, PixelBuffer *buffer);
 private :
   bool isjpeg(const std::string & name);
@@ -23,8 +23,8 @@ private :
   bool hasSuffix(const std::string & str, const std::string & suffix);
   void savepng(FILE* file, int height, int width, PixelBuffer *buffer);
   void savejpg(FILE* infile, int height, int width, PixelBuffer *buffer);
-  PixelBuffer* loadpng(FILE *fp, int &height, int &width);
-  PixelBuffer* loadjpg(FILE *infile, int &height, int &width);
+  PixelBuffer* loadpng(FILE *fp, int &height, int &width, ColorData backgroundColor);
+  PixelBuffer* loadjpg(FILE *infile, int &height, int &width, ColorData backgroundColor);
 };
 
 #endif // IMAGEHANDLER_H

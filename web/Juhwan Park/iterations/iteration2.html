@@ -1,0 +1,41 @@
+<head>
+<title>Juhwan Park: Programmer's Blog</title>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../files/style.css" type="text/css" media="screen" />
+</head>
+<body>
+<a name="top"></a>
+<div id="header">Juhwan Park </br> </br> </br> Programmer's Blog</div>
+<ul id="navtop">
+  <li><a href="../JuhwanParkBlog.html">Iteration 1</a></li>
+  <li><a href="./iteration2.html">Iteration 2</a></li>
+  <li><a href="./index.html">Iteration 3</a></li>
+  <li><a href="./index.html">Final</a></li>
+</ul>
+<div id="maincontainer">
+  <div id="contentwrapper">
+    <div id="contentcolumn">
+      <h1>Iteration 2</h1>
+      </br></br></br>
+      <p> The part of iteration2 I wrote that I tried to put effort on was the Stamp tool.
+        It is one of the tools that takes loads image buffer and overwrite exist pixel buffer based on the dimension of the image loaded, and mouse pointer.
+        </p>
+      <p><img class="imgleft" src="../files/stamp2.jpg" width="380" height="160" alt="" />
+       This snippet is from the stamp tool class, which is the class I wrote for our team.
+          The implementation of this is an override of two of the virtual methods from DrawTool class, fillInfluence function, and applyInfluence function, like other tools we implemented during iteration 1.
+        The difference with other tool is it takes pixel buffer and actual image's dimension from image loaded. </p>
+      </br></br>
+      <img class="imgleft" src="../files/stamp1.jpg" width="380" height="600" alt="" />
+      <p> This code takes image dimension from loadedImageToStamp function. If you see the code,
+        it uses ImageHandler() function which wrote by our team member, Jake, to load an image on new buffer, and it also enables to get the actual demension of the loaded image.
+        With all of the information, it calls stamp construction and create stamp to be ready.
+      </p>
+      <p>In this way, this tool contains image pixel buffer, and ready to stamp on the canvas based on mouse pointer as you can see on the screenshot.</p>
+      <p><img class="imgright" src="../files/stamp.jpg" width="350" height="180" alt="" /><p/>
+    </div>
+  </div>
+  <div id="footer"> All contents of Author: Juhwan Park</a><br />
+    <p align="right"><a href="#top">top</a></p>
+  </div>
+</div>
+</html>

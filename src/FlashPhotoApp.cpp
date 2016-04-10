@@ -512,7 +512,7 @@ void FlashPhotoApp::loadImageToCanvas(){
 
     //Pass in height and width by reference so we can resize the window after
     int Height, Width;
-    PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+    PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width, m_displayBuffer->getBackgroundColor());
     if (newBuffer == NULL) {
         std::cout << "Error loading image" << std::endl;
     }
@@ -531,9 +531,9 @@ void FlashPhotoApp::loadImageToStamp(){
     int Height, Width;
     // Deleting previous stamp tool.
     if (toolList[8]) {
-        delete toolList[8];
+       // delete toolList[8];
     }
-    PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+    PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width, m_displayBuffer->getBackgroundColor());
     if (newBuffer == NULL) {
         std::cout << "Error loading stamp" << std::endl;
     }
@@ -542,7 +542,7 @@ void FlashPhotoApp::loadImageToStamp(){
     // Creating new stamp based on new image on newBuffer
     // and re-assign it to m_tool, so it doesn't have to click on stamp button again.
     toolList[8] = new Stamp(newBuffer, m_stampWidth, m_stampHeight);
-    m_tool = toolList[8];
+    if (m_curTool == STAMP) m_tool = toolList[8];
 }
 
 /*

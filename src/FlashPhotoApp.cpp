@@ -13,7 +13,7 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
     initGraphics();
     initDrawTool();
     initFilter();
-    m_queueSize = 10;
+    m_queueSize = 20;
 }
 
 /*
@@ -158,14 +158,17 @@ void FlashPhotoApp::updateUndo(){
     undoEnabled(true);
     redoEnabled(false);
 
-    //Clear the redo stack
-    std::stack<PixelBuffer*> empty;
+    //Clear the redo queue
+    std::deque<PixelBuffer*> empty;
     std::swap(redoQueue, empty);
 
     //Make a copy and save the current buffer
     PixelBuffer *newBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
     newBuffer->copyPixelBuffer(m_displayBuffer, newBuffer);
-    undoQueue.push(newBuffer);
+    if ((int)undoQueue.size() >= m_queueSize) {
+        undoQueue.pop_back();
+    }
+    undoQueue.push_front(newBuffer);
 }
 
 void FlashPhotoApp::leftMouseUp(int x, int y)
@@ -510,6 +513,9 @@ void FlashPhotoApp::loadImageToCanvas(){
     //Pass in height and width by reference so we can resize the window after
     int Height, Width;
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+    if (newBuffer == NULL) {
+        std::cout << "Error loading image" << std::endl;
+    }
     setWindowDimensions(Width, Height);
 
     //Reset the display buffer size so we can use copyPixelBuffer
@@ -528,6 +534,9 @@ void FlashPhotoApp::loadImageToStamp(){
         delete toolList[8];
     }
     PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+    if (newBuffer == NULL) {
+        std::cout << "Error loading stamp" << std::endl;
+    }
     m_stampHeight = Height;
     m_stampWidth = Width;
     // Creating new stamp based on new image on newBuffer
@@ -632,22 +641,22 @@ void FlashPhotoApp::redoOperation()
 }
 
 /*
-*Update the canvas with the top of the alpha stack, push current buffer onto beta stack
-*stack to pop from, stack to push to, if it is an undo
+*Update the canvas with the top of the alpha deque, push current buffer onto beta deque
+*deque to pop from, deque to push to, if it is an undo
 *void
 *TODO: there is currently no size limiting on the queue, I have not run into
 *issues with size so far but it could be an issue in the future.
 */
-void FlashPhotoApp::updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo) {
+void FlashPhotoApp::updateCanvas(std::deque<PixelBuffer*> &alpha, std::deque<PixelBuffer*> &beta, bool isUndo) {
     if (alpha.size() > 0) {
         //Save beta history
         PixelBuffer *betaBuffer = new PixelBuffer(m_displayBuffer->getWidth(), m_displayBuffer->getHeight(), m_displayBuffer->getBackgroundColor());
         betaBuffer->copyPixelBuffer(m_displayBuffer, betaBuffer);
-        beta.push(betaBuffer);
+        beta.push_front(betaBuffer);
 
         //Update pixel buffer with alpha buffer
-        PixelBuffer *newBuffer = alpha.top();
-        alpha.pop();
+        PixelBuffer *newBuffer = alpha.front();
+        alpha.pop_front();
         int height = newBuffer->getHeight();
         int width = newBuffer->getWidth();
         if (height != m_displayBuffer->getHeight() || width != m_displayBuffer->getWidth()) {

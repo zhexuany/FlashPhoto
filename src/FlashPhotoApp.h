@@ -26,7 +26,7 @@
 #include <cmath>
 #include <iostream>
 
-#include <stack>
+#include <deque>
 class ColorData;
 class PixelBuffer;
 
@@ -112,7 +112,7 @@ private:
     void undoOperation();
     void redoOperation();
 
-    void updateCanvas(std::stack<PixelBuffer*> &alpha, std::stack<PixelBuffer*> &beta, bool isUndo);
+    void updateCanvas(std::deque<PixelBuffer*> &alpha, std::deque<PixelBuffer*> &beta, bool isUndo);
 
     void initGlui();
     void initGraphics();
@@ -157,8 +157,8 @@ private:
 
     } m_gluiControlHooks;
     int m_queueSize;
-    std::stack<PixelBuffer*> undoQueue;
-    std::stack<PixelBuffer*> redoQueue;
+    std::deque<PixelBuffer*> undoQueue;
+    std::deque<PixelBuffer*> redoQueue;
     //TODO move isjpeg function into ImageHandler function.
     bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);

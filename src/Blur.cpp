@@ -44,30 +44,39 @@ void Blur::applyInfluence(int x, int y, PixelBuffer* buffer){
   int height = mask -> getHeight();
   int width = mask -> getWidth();
   int bufferHeight = buffer -> getHeight(); // canvas's buffer's height
+  int bufferWidth = buffer -> getWidth();
   x -= width/2;
   y = bufferHeight - y - height/2;
   float** influence = mask -> getInfluence();
 
-  for(int i = 0; i < width; i++){
-    for(int j = 0; j < height; j++){
+  for (int i = 0; i < width; i++) {
+    for (int j = 0; j < height; j++) {
 
       float red = 0.0, green = 0.0, blue = 0.0;
 
-      for(int filterY = 0; filterY < filterHeight; filterY++){
-        for(int filterX = 0; filterX < filterWidth; filterX++){
-          int X = x + ((i - filterWidth / 2 + filterX + width) % width);
-          int Y = y + ((j - filterHeight / 2 + filterY + height) % height);
-          ColorData currentPixelColor = buffer -> getPixel(X, Y);
-          red += currentPixelColor.getRed() * filter[filterY][filterX];
-          green += currentPixelColor.getGreen() * filter[filterY][filterX];
-          blue += currentPixelColor.getBlue() * filter[filterY][filterX];
+      for (int filterY = 0; filterY < filterHeight; filterY++) {
+        for (int filterX = 0; filterX < filterWidth; filterX++) {
+					int X = x + ((i - filterWidth / 2 + filterX + width) % width);
+					int Y = y + ((j - filterHeight / 2 + filterY + height) % height);
+
+					if (X < 0 || X >= bufferWidth || Y < 0 || Y >= bufferHeight) {
+						continue;
+					}
+
+					ColorData currentPixelColor = buffer -> getPixel(X, Y);
+					red += (float) (currentPixelColor.getRed() * filter[filterY][filterX]);
+					green += (float) (currentPixelColor.getGreen() * filter[filterY][filterX]);
+					blue += (float) (currentPixelColor.getBlue() * filter[filterY][filterX]);
         }
       }
 
-      ColorData newPixel = ColorData(red, green, blue);
+	  	ColorData newPixel = ColorData(red, green, blue);
       newPixel = newPixel.clampedColor();
-      if(influence[i][j] > 0.0) {
-        buffer -> setPixel(x + i, y + j, newPixel);
+
+      if (influence[i][j] > 0.0) {
+				if (x + i > 0 && x + i < bufferWidth -1 && y + j > 0 && y + j < bufferHeight -1) {
+					 buffer -> setPixel(x + i, y + j, newPixel);
+				}
       }
     }
   }

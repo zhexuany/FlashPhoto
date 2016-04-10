@@ -214,7 +214,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width, ColorData 
 
   double r,g,b,a;
   ColorData newAlpha = backgroundColor;
-  newAlpha.setAlpha(0.0f);
+  newAlpha.setAlpha(0.00f);
   for (i=0;i<Height;i++)
     for (j=0;j<Width;j++) {
         r = Pixels[i*Width+j].r/255.0;

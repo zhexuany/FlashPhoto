@@ -553,7 +553,7 @@ void FlashPhotoApp::loadImageToStamp(){
 void FlashPhotoApp::saveCanvasToFile(){
     cout << "Save Canvas been clicked for file " << m_fileName << endl;
     ImageHandler *loader = new ImageHandler();
-    loader->saveimage(m_fileName, m_displayBuffer -> getHeight(), m_displayBuffer -> getWidth(), m_displayBuffer);
+    loader->saveimage(m_fileName, m_displayBuffer);
 }
 
 void FlashPhotoApp::applyFilterThreshold(){

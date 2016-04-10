@@ -10,7 +10,7 @@ ImageHandler::~ImageHandler(){}
 * \filename, height of image, width of image, image
 * \void
 */
-void ImageHandler::saveimage(const std::string & filename, int height, int width, PixelBuffer* buffer) {
+void ImageHandler::saveimage(const std::string & filename, PixelBuffer* buffer) {
     if (isjpeg(filename)) {
         savejpg(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
     } else if(ispng(filename)) {
@@ -217,7 +217,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
         r = Pixels[i*Width+j].r/255.0;
         g = Pixels[i*Width+j].g/255.0;
         b = Pixels[i*Width+j].b/255.0;
-        newBuffer -> setPixel((int)j, Height-i, ColorData(r,g,b));
+        newBuffer -> setPixel((int)j, Height-1-i, ColorData(r,g,b));
     }
   /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
   png_read_end(png_ptr, info_ptr);
@@ -273,7 +273,7 @@ PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
                 g = r;
                 b = r;
             }
-            newBuffer->setPixel((int)x, Height - cinfo.output_scanline, ColorData(r / 255, g / 255, b / 255));
+            newBuffer->setPixel((int)x, (Height - cinfo.output_scanline), ColorData(r / 255, g / 255, b / 255));
         }
     }
     fclose(infile);

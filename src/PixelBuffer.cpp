@@ -29,7 +29,7 @@ ColorData PixelBuffer::getPixel(int x, int y) const {
     ColorData pixelData;
 
     if ((x < 0) || (x >= m_width) || (y < 0) || (y >= m_height)) {
-        //cerr << "getPixel: x,y out of range: " << x << " " << y << endl;
+        cerr << "getPixel: x,y out of range: " << x << " " << y << endl;
     }
     else {
         int index = x + m_width*(y);
@@ -40,7 +40,7 @@ ColorData PixelBuffer::getPixel(int x, int y) const {
 
 void PixelBuffer::setPixel(int x, int y, const ColorData& newPixel) {
     if ((x < 0) || (x >= m_width) || (y < 0) || (y >= m_height)) {
-        //cerr << "setPixel: x,y out of range: " << x << " " << y << endl;
+        cerr << "setPixel: x,y out of range: " << x << " " << y << endl;
     }
     else {
         int index = x + m_width*(y);

@@ -15,6 +15,7 @@ public :
   ~ImageHandler();
   PixelBuffer* loadimage(const std::string & filename, int &height, int &width);
   void saveimage(const std::string & filename, int height, int width, PixelBuffer *buffer);
+private :
   bool isjpeg(const std::string & name);
   bool ispng(const std::string & name);
   bool isValidImageFileName(const std::string & name);

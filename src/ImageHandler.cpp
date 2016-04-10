@@ -13,8 +13,10 @@ ImageHandler::~ImageHandler(){}
 void ImageHandler::saveimage(const std::string & filename, int height, int width, PixelBuffer* buffer) {
     if (isjpeg(filename)) {
         savejpg(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
-    } else {
+    } else if(ispng(filename)) {
         savepng(fopen(filename.c_str(), "wb"), buffer -> getHeight(), buffer -> getWidth(), buffer);
+    } else {
+        std::cout << "Error saving image" << std::endl;
     }
 }
 
@@ -28,10 +30,11 @@ PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, 
     if (isjpeg(filename)) {
         PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width);
         return newBuffer;
-    } else {
-      //TODO possible bug
+    } else if(ispng(filename)) {
         PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width);
         return newBuffer;
+    } else {
+        return NULL;
     }
 }
 
@@ -99,10 +102,6 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
     png_init_io (png_ptr, fp);
     png_set_rows (png_ptr, info_ptr, row_pointers);
     png_write_png (png_ptr, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
-
-    /* The routine has successfully written the file, so we set
-       "status" to a value which indicates success. */
-
 
     for (y = 0; y < height; y++) {
         png_free (png_ptr, row_pointers[y]);
@@ -219,16 +218,7 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width) {
         g = Pixels[i*Width+j].g/255.0;
         b = Pixels[i*Width+j].b/255.0;
         newBuffer -> setPixel((int)j, Height-i, ColorData(r,g,b));
-
-        /*
-        std::cout << "r " << r << " g " <<  g << " b " << b << std::endl;
-        ColorData colorTest = buffer -> getPixel((int)j, (int)i);
-        std::cout << "set r " << colorTest.getRed() << " g " <<  colorTest.getGreen() << " b " << colorTest.getBlue() << std::endl;
-         std::cout << "r " << r << " g " <<  g << " b " << b << std::endl;
-        }*/
     }
-    //buffer = new PixelBuffer(Width, Height, ColorData(255,255,255));
-    //buffer = *newBuffer;
   /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
   png_read_end(png_ptr, info_ptr);
 
@@ -298,92 +288,29 @@ PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width)
 * \void
 */
 void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* buffer) {
-    /* This struct contains the JPEG compression parameters and pointers to
-   * working space (which is allocated as needed by the JPEG library).
-   * It is possible to have several such structures, representing multiple
-   * compression/decompression processes, in existence at once.  We refer
-   * to any one struct (and its associated working data) as a "JPEG object".
-   */
   struct jpeg_compress_struct cinfo;
-  /* This struct represents a JPEG error handler.  It is declared separately
-   * because applications often want to supply a specialized error handler
-   * (see the second half of this file for an example).  But here we just
-   * take the easy way out and use the standard error handler, which will
-   * print a message on stderr and call exit() if compression fails.
-   * Note that this struct must live as long as the main JPEG parameter
-   * struct, to avoid dangling-pointer problems.
-   */
   struct jpeg_error_mgr jerr;
-  /* More stuff */
-    //JSAMPROW buffer;
   int row_stride;		/* physical row width in image buffer */
-
-  /* Step 1: allocate and initialize JPEG compression object */
-
-  /* We have to set up the error handler first, in case the initialization
-   * step fails.  (Unlikely, but it could happen if you are out of memory.)
-   * This routine fills in the contents of struct jerr, and returns jerr's
-   * address which we place into the link field in cinfo.
-   */
   cinfo.err = jpeg_std_error(&jerr);
-  /* Now we can initialize the JPEG compression object. */
   jpeg_create_compress(&cinfo);
 
-  /* Step 2: specify data destination (eg, a file) */
-  /* Note: steps 2 and 3 can be done in either order. */
-
-  /* Here we use the library-supplied code to send compressed data to a
-   * stdio stream.  You can also write your own code to do something else.
-   * VERY IMPORTANT: use "b" option to fopen() if you are on a machine that
-   * requires it in order to write binary files.
-   */
   if (outfile == NULL) {
     exit(1);
   }
   jpeg_stdio_dest(&cinfo, outfile);
 
-  /* Step 3: set parameters for compression */
-
-  /* First we supply a description of the input image.
-   * Four fields of the cinfo struct must be filled in:
-   */
-  cinfo.image_width = width; 	/* image width and height, in pixels */
+  cinfo.image_width = width; 	
   cinfo.image_height = height;
-  cinfo.input_components = 3;		/* # of color components per pixel */
-  cinfo.in_color_space = JCS_RGB; 	/* colorspace of input image */
-  /* Now use the library's routine to set default compression parameters.
-   * (You must set at least cinfo.in_color_space before calling this,
-   * since the defaults depend on the source color space.)
-   */
+  cinfo.input_components = 3;		
+  cinfo.in_color_space = JCS_RGB; 	
   jpeg_set_defaults(&cinfo);
-  /* Now you can set any non-default parameters you wish to.
-   * Here we just illustrate the use of quality (quantization table) scaling:
-   */
-  jpeg_set_quality(&cinfo, 100, TRUE /* limit to baseline-JPEG values */);
-
-  /* Step 4: Start compressor */
-
-  /* TRUE ensures that we will write a complete interchange-JPEG file.
-   * Pass TRUE unless you are very sure of what you're doing.
-   */
+  jpeg_set_quality(&cinfo, 100, TRUE);
   jpeg_start_compress(&cinfo, TRUE);
 
-  /* Step 5: while (scan lines remain to be written) */
-  /*           jpeg_write_scanlines(...); */
-
-  /* Here we use the library's state variable cinfo.next_scanline as the
-   * loop counter, so that we don't have to keep track ourselves.
-   * To keep things simple, we pass one scanline per call; you can pass
-   * more if you wish, though.
-   */
   row_stride = width * 3;	/* JSAMPLEs per row in image_buffer */
-    unsigned char *raw_image = NULL;
-    raw_image = (unsigned char *)malloc(row_stride);
+  unsigned char *raw_image = NULL;
+  raw_image = (unsigned char *)malloc(row_stride);
   while (cinfo.next_scanline < cinfo.image_height) {
-    /* jpeg_write_scanlines expects an array of pointers to scanlines.
-     * Here the array is only one element long, but you could pass
-     * more than one scanline at a time if that's more convenient.
-     */
       int w,r,g,b;
       ColorData color;
       for (w = 0; w < width; w++) {
@@ -399,15 +326,9 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
     (void) jpeg_write_scanlines(&cinfo, &raw_image, 1);
   }
 
-  /* Step 6: Finish compression */
-
+  free(raw_image);
   jpeg_finish_compress(&cinfo);
-  /* After finish_compress, we can close the output file. */
   fclose(outfile);
-
-  /* Step 7: release JPEG compression object */
-
-  /* This is an important step since it will release a good deal of memory. */
   jpeg_destroy_compress(&cinfo);
 
   /* And we're done! */
@@ -415,6 +336,10 @@ void ImageHandler::savejpg(FILE* outfile, int height, int width, PixelBuffer* bu
 
 bool ImageHandler::isjpeg(const std::string & name) {
     return hasSuffix(name, ".jpg")|| hasSuffix(name, ".jpeg");
+}
+
+bool ImageHandler::ispng(const std::string & name) {
+    return hasSuffix(name, ".png");
 }
 
 bool ImageHandler::hasSuffix(const std::string & str, const std::string & suffix){

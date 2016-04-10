@@ -97,5 +97,5 @@ $(PNG_LIB):
 	$(MAKE) -C $(PNG_PATH) install
 
 $(JPEG_LIB):
-	cd $(JPEG_PATH); ./configure --prefix=${PWD}/$(JPEG_PATH) --enable-shared=no
+	cd $(JPEG_PATH); ./configure --prefix=${PWD}/${JPEG_PATH) --enable-shared=no
 	$(MAKE) -C $(JPEG_PATH) install

@@ -457,7 +457,7 @@ configure:13018: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:49:6: warning: conflicting types for built-in function 'pow' [enabled by default]
  char pow ();
       ^
-/tmp/ccco5N8r.o: In function `main':
+/tmp/cc5c2aXX.o: In function `main':
 /home/jasper/Desktop/school/3081W/repo-group-TwelfthNight/libpng/conftest.c:60: undefined reference to `pow'
 collect2: error: ld returned 1 exit status
 configure:13018: $? = 1
@@ -576,6 +576,7 @@ config.status:1127: creating Makefile
 config.status:1127: creating libpng.pc
 config.status:1127: creating libpng-config
 config.status:1127: creating config.h
+config.status:1308: config.h is unchanged
 config.status:1356: executing depfiles commands
 config.status:1356: executing libtool commands
 

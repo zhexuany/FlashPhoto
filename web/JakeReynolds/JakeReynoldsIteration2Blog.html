@@ -1,0 +1,63 @@
+<html style="background: #36454f; color: white;">
+
+<head>
+    <title>Jake Reynolds</title>
+    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; font-size: 18px; margin: 0; padding: 0;">
+    <section style="width: 100% - 10px; background: #36454f; padding: 5px; color:white">
+        <h1 style="text-align: center; font-size: 36px;">Jacob Reynolds</h1>
+        <h2 style="text-align: center;">Blog entry</h2>
+    </section>
+    <section style="padding:10px; color: white; width: 80vw; max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <h2>My contribution</h2>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;My main contributon to this project was the image library code. These libraries were a beast, but I learned a lot through implementing them.</p>
+        <hr/>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;There were a lot of headaches with the libraries and how to implement them, but I think the largest issues I had was with linking them. The Makefile needs to be able to configure the libraries if they are not installed, so I think my favorite part of this code was figuring out how to do the line "--prefix=actual prefix". I achieved this by using this command in the Makefile. <span style="color:white; background: #5E2750;">cd $(PNG_PATH); ./configure --prefix=${PWD}/$(PNG_PATH) --enable-shared=no"</span>. This uses the current working directory (ignoring the cd at the beginning of this command), and appends the path to the current library. There are better ways of doing this, but I did this without looking anything up, so I'm pretty happy with my solution
+        </p>
+        <hr/>
+        <span style="vertical-align:top; float:right; margin-left: 10px; margin-top: 10px;">
+            <pre class="brush: cpp">
+                ImageHandler *loader = new ImageHandler();
+
+                //Pass in height and width by reference so we can resize the window after
+                int Height, Width;
+                PixelBuffer *newBuffer = loader->loadimage(m_fileName, Height, Width);
+                if (newBuffer == NULL) {
+                    std::cout << "Error loading image" << std::endl;
+                }
+                setWindowDimensions(Width, Height);
+            </pre>
+        </span>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;Once I finished linking the libraries and making them work I had to dig through the mountains of documentation to find how to deal with these images. The TAs said we are allowed to use code found online and in the documentation for this part, so I won't talk about that code since I mostly customized pieces I found in the docs and online. The API I made for the image handling is pretty nice though. If you want to load an image you will pass it the name of a file, and two uninitialized integers for Height and Width. These integers will be set to the height and width of the new pixel buffer so that we can resize the window dimensions. I tried finding a way to pass in the setWindowsDimensions function to the loadimage call so the last part wouldn't be necessary, but was unable to find a way.
+        </p>
+        <hr/>
+        <span style="vertical-align:top; float:left; margin-right: 10px; margin-top: 10px;">
+            <pre class="brush: cpp">
+                ImageHandler *loader = new ImageHandler();
+                loader->saveimage(m_fileName, m_displayBuffer);
+            </pre>
+        </span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;The other part of the API is the save image functionality. You pass in the filename and the PixelBuffer and the api saves the current buffer for you at the given filename (assuming the filename ends in .jpeg/.jpg or .png. This should be handled by the file explorer though).</p>
+        <hr/>
+        <h2 style="align-text: bottom;">Iteration 2: This blog post is done in entirety by Jacob Reynolds.</h2>
+    </section>
+
+
+</body>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js" type="text/javascript"></script>
+
+<script>
+    SyntaxHighlighter.all()
+
+</script>
+
+
+
+</html>

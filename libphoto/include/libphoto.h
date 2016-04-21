@@ -1,6 +1,8 @@
 #ifndef LIBPHOTO_H
 #define LIBPHOTO_H
 
+#include "../BaseGfxApp.h"
+
 class ColorData{
 public:
 	ColorData();

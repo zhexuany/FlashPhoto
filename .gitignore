@@ -23,6 +23,8 @@ libpng/.libs/
 libpng/*.lo
 libpng/*.o
 libphoto/build/
+FlashPhoto/FlashPhoto
+Mia/Mia
 !Makefile
 *.o
 *.*~

@@ -1,6 +1,4 @@
 #include "MIAApp.h"
-#include "ColorData.h"
-#include "PixelBuffer.h"
 #include <sstream>
 
 using std::cout;
@@ -399,7 +397,7 @@ std::string MIAApp::getImageNamePlusSeqOffset(const std::string & currentFileNam
     
     extension = currentFileName.substr(dotPos+1);
     name = currentFileName.substr(0,dotPos);
-    if (name.length() < digitCount) {
+    if ((int)name.length() < digitCount) {
         return "";
     }
     
@@ -418,7 +416,7 @@ std::string MIAApp::getImageNamePlusSeqOffset(const std::string & currentFileNam
     
     // Append zero chars
     size_t str_length = output_number.length();
-    for (int i = 0; i < digitCount - str_length; i++)
+    for (int i = 0; i < digitCount - (int)str_length; i++)
         output_number = "0" + output_number;
 
     
@@ -467,3 +465,17 @@ void MIAApp::setImageFile(const std::string & fileName)
         m_gluiControlHooks.currentFileLabel->set_text("Will load: none");
     }
 }
+
+void MIAApp::initGraphics() {
+	// Initialize OpenGL for 2D graphics as used in the BrushWork app
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f );
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluOrtho2D(0, m_width, 0, m_height);
+	glViewport(0, 0, m_width, m_height);
+}
+

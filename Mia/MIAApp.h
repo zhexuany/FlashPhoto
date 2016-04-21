@@ -7,8 +7,8 @@
 #ifndef MIAAPP_H
 #define MIAAPP_H
 
-#include "BaseGfxApp.h"
-
+#include "libphoto.h"
+#include <iostream>
 class ColorData;
 class PixelBuffer;
 
@@ -77,6 +77,7 @@ private:
     
     
     void initGlui();
+    void initGraphics();
     void initializeBuffers(ColorData initialColor, int width, int height);
 
     

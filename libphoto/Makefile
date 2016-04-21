@@ -7,7 +7,7 @@
 EXECUTABLE = FlashPhoto
 SOURCE_DIR = .
 OBJECT_DIR = build
-
+LIB_DIR = lib
 
 # Define the list of files to compile for this project. Defaults to all
 # of the .cpp files in the source directory.
@@ -70,15 +70,19 @@ endif
 # or just remember to run "make rebuild" if you change a .h file.
 
 
-all: setup $(OBJFILES) library
+all: setup setuplib $(OBJFILES) library
 
 rebuild: clean all
 
 # Create the object_files directory only if it does not exist. 
 setup: | $(OBJECT_DIR)
+setuplib: | $(LIB_DIR)
 
 $(OBJECT_DIR):
 	mkdir -p $(OBJECT_DIR)
+
+$(LIB_DIR):
+	mkdir -p $(LIB_DIR)
 
 library:
 	ar rcs lib/libphoto.a $(OBJFILES)

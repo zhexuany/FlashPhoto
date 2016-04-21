@@ -22,6 +22,7 @@ libpng/.deps/
 libpng/.libs/
 libpng/*.lo
 libpng/*.o
+libphoto/lib/
 libphoto/build/
 FlashPhoto/FlashPhoto
 Mia/Mia

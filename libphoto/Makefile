@@ -70,14 +70,12 @@ endif
 # or just remember to run "make rebuild" if you change a .h file.
 
 
-all: setup start library
+all: setup $(OBJFILES) library
 
 rebuild: clean all
 
 # Create the object_files directory only if it does not exist. 
 setup: | $(OBJECT_DIR)
-
-start: $(OBJFILES)
 
 $(OBJECT_DIR):
 	mkdir -p $(OBJECT_DIR)

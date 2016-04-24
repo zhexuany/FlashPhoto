@@ -17,7 +17,7 @@ class PixelBuffer;
 
 class MIAApp : public BaseGfxApp {
 public:
-
+    MIAApp(int argc, char* argv[]);
     MIAApp(int argc, char* argv[], int width, int height, ColorData backgroundColor);
     virtual ~MIAApp();
 
@@ -28,6 +28,18 @@ public:
     void leftMouseUp(int x, int y);
     void display();
     void gluiControl(int controlID);
+
+    // Commandline mode functions
+    PixelBuffer* c_loadImage(const std::string & fileName);
+    void c_saveToFile(const std::string & fileName, PixelBuffer* imageBuffer);
+
+    void c_applyFilterEdgeDetect(PixelBuffer* imageBuffer);
+    void c_applyFilterSharpen(PixelBuffer* imageBuffer, int amount);
+    void c_applyFilterThreshold(PixelBuffer* imageBuffer, double amount);
+    void c_applyFilterMultiplyRGB(PixelBuffer* imageBuffer, double r, double g, double b);
+    void c_applyFilterBlur(PixelBuffer* imageBuffer, double amount);
+    void c_applyFilterQuantize(PixelBuffer* imageBuffer, int amount);
+    void c_applyFilterSaturate(PixelBuffer* imageBuffer, double amount);
 
 private:
 

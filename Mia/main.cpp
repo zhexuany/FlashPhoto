@@ -14,129 +14,242 @@
 
 using namespace std;
 
-static int help_flag;
+static int help_flag, edge_flag, comp_flag, sharpen_flag, thresh_flag, quant_flag, blur_flag, satur_flag, mult_flag;
 
 int main(int argc, char* argv[]) {
+
   if (argc < 2) {
     MIAApp *app = new MIAApp(argc, argv,
                                          800, 800, ColorData(1, 1, 0.95));
     // runMainLoop returns when the user closes the graphics window.
-    
     app->runMainLoop();
     delete app;
   } else {
+    MIAApp *app = new MIAApp(argc, argv);
+
       static struct option longopts[] =
       {
-      //  {"h",      no_argument,        &help_flag, 1},
-        {"edgedetect",  no_argument,        0, 'e'},
-        {"compare",     no_argument,        0, 'c'},
-        {"sharpen",     required_argument,  0, 's'},
-        {"thresh",      required_argument,  0, 't'},
-        {"quantize",    required_argument,  0, 'q'},
-        {"blur",        required_argument,  0, 'b'},
-        {"saturate",    required_argument,  0, 'a'},
-        {"multrgb",     required_argument,  0, 'm'},
+        {"h",           no_argument,        &help_flag, 1},
+        {"edgedetect",  no_argument,        &edge_flag, 1},
+        {"compare",     no_argument,        &comp_flag, 1},
+        {"sharpen",     required_argument,  &sharpen_flag, 1},
+        {"thresh",      required_argument,  &thresh_flag, 1},
+        {"quantize",    required_argument,  &quant_flag, 1},
+        {"blur",        required_argument,  &blur_flag, 1},
+        {"saturate",    required_argument,  &satur_flag, 1},
+        {"multrgb",     required_argument,  &mult_flag, 1},
         {0, 0, 0, 0}
       };
 
       int index = 0;
 
-
-
-      //int isFile = string(argv[1]).find("."); // if it is -1, then it is dir. Otherwise, it is image file.
-
       string firstArg, secondArg;
 
-      firstArg = string(argv[1]); // first argument
+      // first argument
+      firstArg = argv[1];
+
+      // checking the first target is file of not by finding "."
+      // if it is npos, then it is dir. Otherwise, it is image file.
+      size_t found = firstArg.find(".");
+
+      // Flag to indicate target is file or not
+      int isFile;
+
+      // Setting the flag for future use
+      if (found == string::npos) {
+        isFile = 0;
+      } else {
+        isFile = 1;
+      }
+      cout << "isFile: " << isFile << endl;
 
 
-
-
-
+      // parsing options and setting the flag
       int iarg = 0;
       while(iarg != -1) {
-        iarg = getopt_long(argc, argv, "hces:t:q:b:a:m:", longopts, &index);
-
-        switch (iarg)
-        {
-          case 'h':
-            cout << "Help!" << endl;
-            help_flag = 1;
-            break;
-          case 'e':
-            cout << "Edgedetect!" << endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call edgedetection with optarg value
-            // and saves the file name with secondArg
-            break;
-
-          case 'c':
-            cout << "Compare!" << endl;\
-            cout << optarg << endl;
-            //secondArg = optarg;
-
-            // compare secondArg with firstArg
-            break;
-
-          case 's':
-            std::cout << "Sharpen!" << std::endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call Sharpen with optarg value
-            // and saves the file name with secondArg
-            break;
-
-          case 't':
-            std::cout << "Thresh!" << std::endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call thresh with optarg value
-            // and saves the file name with secondArg
-            break;
-
-          case 'q':
-            std::cout << "Quantize!" << std::endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call quantize with optarg value
-            // and saves the file name with secondArg
-            break;
-
-          case 'b':
-            std::cout << "Blur!" << std::endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call blur with optarg value
-            // and saves the file name with secondArg
-            break;
-          case 'a':
-            std::cout << "Saturate!" << std::endl;
-            //optarg
-            secondArg = string(argv[optind]);
-            // call saturate with optarg value
-            // and saves the file name with secondArg
-            break;
-          case 'm':
-            std::cout << "Multrgb!" << std::endl;
-            //optarg // need to be parsed into three float point values
-            secondArg = string(argv[optind]);
-            // call rbb with optarg value
-            // and saves the file name with secondArg
-            break;
-          default:
-            break;
-        }
+        iarg = getopt_long_only(argc, argv, "", longopts, &index);
       }
 
+
+      // TODO: Need to check isFile flag and if it is directory, then the effect of filter need to be applied to all of the files in the directory
       if (help_flag) {
-        cout << "Usage:  [options] [target] : only single target is allowed." << endl;
-        cout << "Usage:  [options] [target] : only single target is allowed." << endl;
-        cout << "Usage:  [options] [target] : only single target is allowed." << endl;
-        cout << "Usage:  [options] [target] : only single target is allowed." << endl;
-        exit(0);
+        cout << argv[0] <<"Command line mode usage: [target] [options] [amount(optional)] [target] : amount is required for certain filters" << endl;
+          // TODO: Making helpful messages
       }
+      else if (edge_flag) {
+          cout << "Edgedetect!" << endl;
+          if (argc  == 4) {
+            secondArg = argv[3];
+            cout << "Second arg: " << secondArg<< endl;
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
 
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterEdgeDetect(imageBuffer);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (comp_flag) {
+          cout << "Compare!" << endl;
+          secondArg = argv[3];
+          cout << "Second arg: " << secondArg<< endl;
+            // TODO: compare files
+      }
+      else if (sharpen_flag) {
+          cout << "sharpen!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            cout << "Second arg: " << secondArg<< endl;
+            int amount = atoi(argv[3]);
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterSharpen(imageBuffer, amount);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (thresh_flag) {
+          cout << "Thresh!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            cout << "Second arg: " << secondArg<< endl;
+            double amount = atof(argv[3]);
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterThreshold(imageBuffer, amount);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (quant_flag) {
+          cout << "Quantize!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            cout << "Second arg: " << secondArg<< endl;
+            int amount = atoi(argv[3]);
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterQuantize(imageBuffer, amount);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (blur_flag) {
+          cout << "Blur!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            cout << "Second arg: " << secondArg<< endl;
+            double amount = atof(argv[3]);
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterBlur(imageBuffer, amount);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (satur_flag) {
+          cout << "Saturate!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            cout << "Second arg: " << secondArg<< endl;
+            double amount = atof(argv[3]);
+            PixelBuffer *imageBuffer;
+            imageBuffer = app->c_loadImage(firstArg);
+            if (imageBuffer == NULL) {
+                cout << "Error loading image. No such file exist." << endl;
+            } else {
+                cout << "image loaded" << endl;
+                app->c_applyFilterSaturate(imageBuffer, amount);
+                cout << "applying fliter" << endl;
+                app->c_saveToFile(secondArg, imageBuffer);
+                cout << "save" << endl;
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else if (mult_flag) {
+          cout << "multrgb!" << endl;
+          if (argc == 5) {
+            secondArg = argv[4];
+            char* amount = argv[2];
+            cout << "Second arg: " << secondArg<< endl;
+            double r = .0, g = .0, b = .0 ;
+            char* str;
+            str = strtok(amount," ,");
+            while (str != NULL) {
+                if (r == .0) {
+                  r = atof(str);
+                } else if (g == .0) {
+                  g = atof(str);
+                } else {
+                  b = atof(str);
+                }
+                str = strtok (NULL, " ,");
+            }
+            if (!r || !g || !b) {
+                cout << "Error getting r, g, b amount. Properly input rgb amount as <float>,<float>,<float>" << endl;
+            } else {
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterMultiplyRGB(imageBuffer, r, g, b);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
+            }
+          } else {
+              cout << "Arguments are not matched"<< endl;
+          }
+      }
+      else {
+        // TODO: convert an image in the different format
+      }
+      cout << "End of command line mode" << endl;
   }
   exit(0);
 }

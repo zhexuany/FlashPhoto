@@ -4,6 +4,11 @@
 using std::cout;
 using std::endl;
 
+
+MIAApp::MIAApp(int argc, char* argv[]) : BaseGfxApp(argc, argv, 0, 0, 0, 0, 0, false, 0, 0) {
+    initFilter();
+}
+
 MIAApp::MIAApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50)
 {
     // Set the name of the window
@@ -19,6 +24,7 @@ MIAApp::MIAApp(int argc, char* argv[], int width, int height, ColorData backgrou
     initFilter();
     m_queueSize = 20;
 }
+
 
 /*
 * \Initialize the filter on load
@@ -74,6 +80,7 @@ void MIAApp::display()
     drawPixels(0, 0, m_width, m_height, m_displayBuffer->getData());
 }
 
+
 MIAApp::~MIAApp()
 {
     if (m_displayBuffer) {
@@ -86,6 +93,7 @@ MIAApp::~MIAApp()
     }
     if(toolList) delete toolList;
 }
+
 
 
 void MIAApp::mouseDragged(int x, int y)
@@ -652,4 +660,62 @@ void MIAApp::initGraphics() {
 	glLoadIdentity();
 	gluOrtho2D(0, m_width, 0, m_height);
 	glViewport(0, 0, m_width, m_height);
+}
+
+
+// Command Line mode functions
+
+PixelBuffer* MIAApp::c_loadImage(const std::string & fileName) {
+  std::string imageFile = fileName;
+  // Checking to see if file is valid or not
+  if (!isValidImageFile(fileName)) {
+    return NULL;
+  }
+  ImageHandler *loader = new ImageHandler();
+  ColorData* color = new ColorData(0,0,0);
+  int Height, Width;
+  PixelBuffer *imageBuffer = loader->loadimage(imageFile, Height, Width, *color);
+  if (imageBuffer == NULL) {
+      std::cout << "Error loading image" << std::endl;
+  }
+  return imageBuffer;
+}
+
+void MIAApp::c_saveToFile(const std::string & fileName, PixelBuffer* imageBuffer) {
+  std::string imageFile = fileName;
+  ImageHandler *loader = new ImageHandler();
+  loader->saveimage(imageFile, imageBuffer);
+}
+
+
+void MIAApp::c_applyFilterEdgeDetect(PixelBuffer* imageBuffer) {
+    m_filters[FilterFactory::FILTER_DETECT_EDGES] -> applyFilter(imageBuffer);
+}
+
+void MIAApp::c_applyFilterSharpen(PixelBuffer* imageBuffer, int amount) {
+    m_filters[FilterFactory::FILTER_SHARPEN] -> setFilterParameter(amount);
+    m_filters[FilterFactory::FILTER_SHARPEN] -> applyFilter(imageBuffer);
+}
+
+void MIAApp::c_applyFilterThreshold(PixelBuffer* imageBuffer, double amount){
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> setFilterParameter(amount);
+    m_filters[FilterFactory::FILTER_THRESHOLD] -> applyFilter(imageBuffer);
+}
+
+void MIAApp::c_applyFilterMultiplyRGB(PixelBuffer* imageBuffer, double r, double g, double b) {
+    m_filters[FilterFactory::FILTER_CHANNEL] -> setFilterParameter(ColorData(r, g, b));
+    m_filters[FilterFactory::FILTER_CHANNEL] -> applyFilter(imageBuffer);
+}
+
+void MIAApp::c_applyFilterBlur(PixelBuffer* imageBuffer, double amount) {
+    m_filters[FilterFactory::FILTER_BLUR] -> setFilterParameter(amount);
+    m_filters[FilterFactory::FILTER_BLUR] -> applyFilter(imageBuffer);
+}
+void MIAApp::c_applyFilterQuantize(PixelBuffer* imageBuffer, int amount) {
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> setFilterParameter(amount);
+    m_filters[FilterFactory::FILTER_QUANTIZE] -> applyFilter(imageBuffer);
+}
+void MIAApp::c_applyFilterSaturate(PixelBuffer* imageBuffer, double amount) {
+    m_filters[FilterFactory::FILTER_SATURATION] -> setFilterParameter(amount);
+    m_filters[FilterFactory::FILTER_SATURATION] -> applyFilter(imageBuffer);
 }

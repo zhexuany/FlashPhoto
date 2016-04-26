@@ -1,0 +1,116 @@
+\hypertarget{classGLUI__Button}{\section{G\-L\-U\-I\-\_\-\-Button Class Reference}
+\label{classGLUI__Button}\index{G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}}
+}
+
+
+{\ttfamily \#include $<$glui.\-h$>$}
+
+Inheritance diagram for G\-L\-U\-I\-\_\-\-Button\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classGLUI__Button}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classGLUI__Button_ad049e31e22fddf61df229c6fcef80f27}{mouse\-\_\-down\-\_\-handler} (int local\-\_\-x, int local\-\_\-y)
+\item 
+int \hyperlink{classGLUI__Button_a731c78e9ae9fe92fe5e0eba47fc6c0cf}{mouse\-\_\-up\-\_\-handler} (int local\-\_\-x, int local\-\_\-y, bool inside)
+\item 
+\hypertarget{classGLUI__Button_a38e99372cc0de31dfa784b95e70d1f51}{int {\bfseries mouse\-\_\-held\-\_\-down\-\_\-handler} (int local\-\_\-x, int local\-\_\-y, bool inside)}\label{classGLUI__Button_a38e99372cc0de31dfa784b95e70d1f51}
+
+\item 
+\hypertarget{classGLUI__Button_abb99757083838d0f9c87596b512ec5e9}{int {\bfseries key\-\_\-handler} (unsigned char key, int modifiers)}\label{classGLUI__Button_abb99757083838d0f9c87596b512ec5e9}
+
+\item 
+\hypertarget{classGLUI__Button_a0b70efaf00fe4eeb26f2675c156fc48f}{void {\bfseries draw} (int x, int y)}\label{classGLUI__Button_a0b70efaf00fe4eeb26f2675c156fc48f}
+
+\item 
+\hypertarget{classGLUI__Button_a445e459227bf0019217ec05e064d3f67}{void {\bfseries draw\-\_\-pressed} (void)}\label{classGLUI__Button_a445e459227bf0019217ec05e064d3f67}
+
+\item 
+\hypertarget{classGLUI__Button_a3012a081189288aa6190258f6fd47c9c}{void {\bfseries draw\-\_\-text} (int sunken)}\label{classGLUI__Button_a3012a081189288aa6190258f6fd47c9c}
+
+\item 
+\hypertarget{classGLUI__Button_a374f9334b7a026ba6e63d4911039d456}{void {\bfseries update\-\_\-size} (void)}\label{classGLUI__Button_a374f9334b7a026ba6e63d4911039d456}
+
+\item 
+\hyperlink{classGLUI__Button_ab7ddf8c8d6c6c3dcab55b1738b1e7b8d}{G\-L\-U\-I\-\_\-\-Button} (\hyperlink{classGLUI__Node}{G\-L\-U\-I\-\_\-\-Node} $\ast$parent, const char $\ast$\hyperlink{classGLUI__Control_aa95b97d50df45335fc33f0af03958eb3}{name}, int id=-\/1, \hyperlink{classGLUI__CB}{G\-L\-U\-I\-\_\-\-C\-B} cb=\hyperlink{classGLUI__CB}{G\-L\-U\-I\-\_\-\-C\-B}())
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGLUI__Button_aa7267a5e210893367862d9d96888eb41}{bool {\bfseries currently\-\_\-inside}}\label{classGLUI__Button_aa7267a5e210893367862d9d96888eb41}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGLUI__Button_ac840fd31bb87ab5c4448f772759cf1b6}{void {\bfseries common\-\_\-init} (void)}\label{classGLUI__Button_ac840fd31bb87ab5c4448f772759cf1b6}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An onscreen, clickable button--an outlined label that can be clicked. When clicked, a button calls its \hyperlink{classGLUI__CB}{G\-L\-U\-I\-\_\-\-C\-B} callback with its I\-D. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGLUI__Button_ab7ddf8c8d6c6c3dcab55b1738b1e7b8d}{\index{G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}!G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}}
+\index{G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}!GLUI_Button@{G\-L\-U\-I\-\_\-\-Button}}
+\subsubsection[{G\-L\-U\-I\-\_\-\-Button}]{\setlength{\rightskip}{0pt plus 5cm}G\-L\-U\-I\-\_\-\-Button\-::\-G\-L\-U\-I\-\_\-\-Button (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-L\-U\-I\-\_\-\-Node} $\ast$}]{parent, }
+\item[{const char $\ast$}]{name, }
+\item[{int}]{id = {\ttfamily -\/1}, }
+\item[{{\bf G\-L\-U\-I\-\_\-\-C\-B}}]{cb = {\ttfamily {\bf G\-L\-U\-I\-\_\-\-C\-B}()}}
+\end{DoxyParamCaption}
+)}}\label{classGLUI__Button_ab7ddf8c8d6c6c3dcab55b1738b1e7b8d}
+Create a new button.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The panel our object is inside; or the main \hyperlink{classGLUI}{G\-L\-U\-I} object. \\
+\hline
+{\em name} & The text inside the button. \\
+\hline
+{\em id} & Optional I\-D number, to pass to the optional callback function. \\
+\hline
+{\em callback} & Optional callback function, taking either the int I\-D or control. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGLUI__Button_ad049e31e22fddf61df229c6fcef80f27}{\index{G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}!mouse\-\_\-down\-\_\-handler@{mouse\-\_\-down\-\_\-handler}}
+\index{mouse\-\_\-down\-\_\-handler@{mouse\-\_\-down\-\_\-handler}!GLUI_Button@{G\-L\-U\-I\-\_\-\-Button}}
+\subsubsection[{mouse\-\_\-down\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}int G\-L\-U\-I\-\_\-\-Button\-::mouse\-\_\-down\-\_\-handler (
+\begin{DoxyParamCaption}
+\item[{int}]{local\-\_\-x, }
+\item[{int}]{local\-\_\-y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classGLUI__Button_ad049e31e22fddf61df229c6fcef80f27}
+A button always in unpressed before here, so now we invariably set it to 'depressed' 
+
+Reimplemented from \hyperlink{classGLUI__Control}{G\-L\-U\-I\-\_\-\-Control}.
+
+\hypertarget{classGLUI__Button_a731c78e9ae9fe92fe5e0eba47fc6c0cf}{\index{G\-L\-U\-I\-\_\-\-Button@{G\-L\-U\-I\-\_\-\-Button}!mouse\-\_\-up\-\_\-handler@{mouse\-\_\-up\-\_\-handler}}
+\index{mouse\-\_\-up\-\_\-handler@{mouse\-\_\-up\-\_\-handler}!GLUI_Button@{G\-L\-U\-I\-\_\-\-Button}}
+\subsubsection[{mouse\-\_\-up\-\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}int G\-L\-U\-I\-\_\-\-Button\-::mouse\-\_\-up\-\_\-handler (
+\begin{DoxyParamCaption}
+\item[{int}]{local\-\_\-x, }
+\item[{int}]{local\-\_\-y, }
+\item[{bool}]{inside}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classGLUI__Button_a731c78e9ae9fe92fe5e0eba47fc6c0cf}
+A button always turns off after you press it 
+
+Reimplemented from \hyperlink{classGLUI__Control}{G\-L\-U\-I\-\_\-\-Control}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+glui/include/\-G\-L/glui.\-h\item 
+glui/src/glui\-\_\-button.\-cpp\end{DoxyCompactItemize}

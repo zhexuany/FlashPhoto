@@ -1,0 +1,110 @@
+\hypertarget{classGLUI__Rollout}{\section{G\-L\-U\-I\-\_\-\-Rollout Class Reference}
+\label{classGLUI__Rollout}\index{G\-L\-U\-I\-\_\-\-Rollout@{G\-L\-U\-I\-\_\-\-Rollout}}
+}
+
+
+{\ttfamily \#include $<$glui.\-h$>$}
+
+Inheritance diagram for G\-L\-U\-I\-\_\-\-Rollout\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classGLUI__Rollout}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGLUI__Rollout_a24c6af54874ab79245debf924048bee2}{G\-L\-U\-I\-\_\-\-Rollout} (\hyperlink{classGLUI__Node}{G\-L\-U\-I\-\_\-\-Node} $\ast$parent, const char $\ast$\hyperlink{classGLUI__Control_aa95b97d50df45335fc33f0af03958eb3}{name}, int open=true, int type=G\-L\-U\-I\-\_\-\-P\-A\-N\-E\-L\-\_\-\-E\-M\-B\-O\-S\-S\-E\-D)
+\item 
+void \hyperlink{classGLUI__Rollout_ae3ff0bbeb04f22aa5489cf542b6e3fbb}{draw} (int x, int y)
+\item 
+\hypertarget{classGLUI__Rollout_aa3fbc3548f10ee8209d2eb0b46c05b6d}{void {\bfseries draw\-\_\-pressed} (void)}\label{classGLUI__Rollout_aa3fbc3548f10ee8209d2eb0b46c05b6d}
+
+\item 
+\hypertarget{classGLUI__Rollout_abbd554515b6f0136f6aa89d260b826e5}{int {\bfseries mouse\-\_\-down\-\_\-handler} (int local\-\_\-x, int local\-\_\-y)}\label{classGLUI__Rollout_abbd554515b6f0136f6aa89d260b826e5}
+
+\item 
+\hypertarget{classGLUI__Rollout_ac7df2e007640c4a21deb494c8eb8ca03}{int {\bfseries mouse\-\_\-up\-\_\-handler} (int local\-\_\-x, int local\-\_\-y, bool inside)}\label{classGLUI__Rollout_ac7df2e007640c4a21deb494c8eb8ca03}
+
+\item 
+\hypertarget{classGLUI__Rollout_a55eb4c45f7857bbae04e857aadf2b505}{int {\bfseries mouse\-\_\-held\-\_\-down\-\_\-handler} (int local\-\_\-x, int local\-\_\-y, bool inside)}\label{classGLUI__Rollout_a55eb4c45f7857bbae04e857aadf2b505}
+
+\item 
+\hypertarget{classGLUI__Rollout_a431c2fee6adb56c18d0ed8ac9a01eacb}{void {\bfseries open} (void)}\label{classGLUI__Rollout_a431c2fee6adb56c18d0ed8ac9a01eacb}
+
+\item 
+\hypertarget{classGLUI__Rollout_a16ff61e6541e9872fc82f91c75263e16}{void {\bfseries close} (void)}\label{classGLUI__Rollout_a16ff61e6541e9872fc82f91c75263e16}
+
+\item 
+\hypertarget{classGLUI__Rollout_af6f664a8ca31757bc1e5926d5eaf2827}{void {\bfseries update\-\_\-size} (void)}\label{classGLUI__Rollout_af6f664a8ca31757bc1e5926d5eaf2827}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGLUI__Rollout_aa9896aa7e1ee76ac8b4d84573da7e6fb}{bool {\bfseries currently\-\_\-inside}}\label{classGLUI__Rollout_aa9896aa7e1ee76ac8b4d84573da7e6fb}
+
+\item 
+\hypertarget{classGLUI__Rollout_ad9d35f15e7df49dc27fdc5ab571e0e17}{bool {\bfseries initially\-\_\-inside}}\label{classGLUI__Rollout_ad9d35f15e7df49dc27fdc5ab571e0e17}
+
+\item 
+\hypertarget{classGLUI__Rollout_a552827a8d2ff58920457b8637b9536b0}{\hyperlink{classGLUI__Button}{G\-L\-U\-I\-\_\-\-Button} {\bfseries button}}\label{classGLUI__Rollout_a552827a8d2ff58920457b8637b9536b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGLUI__Rollout_aaf1aa792f0fd5a90822e13ecd2797736}{void {\bfseries common\-\_\-init} ()}\label{classGLUI__Rollout_aaf1aa792f0fd5a90822e13ecd2797736}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A rollout contains a set of controls, like a panel, but can be collapsed to just the name. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGLUI__Rollout_a24c6af54874ab79245debf924048bee2}{\index{G\-L\-U\-I\-\_\-\-Rollout@{G\-L\-U\-I\-\_\-\-Rollout}!G\-L\-U\-I\-\_\-\-Rollout@{G\-L\-U\-I\-\_\-\-Rollout}}
+\index{G\-L\-U\-I\-\_\-\-Rollout@{G\-L\-U\-I\-\_\-\-Rollout}!GLUI_Rollout@{G\-L\-U\-I\-\_\-\-Rollout}}
+\subsubsection[{G\-L\-U\-I\-\_\-\-Rollout}]{\setlength{\rightskip}{0pt plus 5cm}G\-L\-U\-I\-\_\-\-Rollout\-::\-G\-L\-U\-I\-\_\-\-Rollout (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-L\-U\-I\-\_\-\-Node} $\ast$}]{parent, }
+\item[{const char $\ast$}]{name, }
+\item[{int}]{open = {\ttfamily true}, }
+\item[{int}]{type = {\ttfamily GLUI\-\_\-PANEL\-\_\-EMBOSSED}}
+\end{DoxyParamCaption}
+)}}\label{classGLUI__Rollout_a24c6af54874ab79245debf924048bee2}
+Create a new rollout. A rollout contains a set of controls, like a panel, but can be collapsed to just the name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The panel our object is inside; or the main \hyperlink{classGLUI}{G\-L\-U\-I} object. \\
+\hline
+{\em name} & String to show at the top of the rollout. \\
+\hline
+{\em open} & Optional boolean. If true (the default), the rollout's controls are displayed. If false, the rollout is closed to display only the name. \\
+\hline
+{\em type} & Optional style to display the panel with--G\-L\-U\-I\-\_\-\-P\-A\-N\-E\-L\-\_\-\-E\-M\-B\-O\-S\-S\-E\-D by default. G\-L\-U\-I\-\_\-\-P\-A\-N\-E\-L\-\_\-\-R\-A\-I\-S\-E\-D causes the panel to appear higher than the surroundings. G\-L\-U\-I\-\_\-\-P\-A\-N\-E\-L\-\_\-\-N\-O\-N\-E causes the panel's outline to be invisible. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGLUI__Rollout_ae3ff0bbeb04f22aa5489cf542b6e3fbb}{\index{G\-L\-U\-I\-\_\-\-Rollout@{G\-L\-U\-I\-\_\-\-Rollout}!draw@{draw}}
+\index{draw@{draw}!GLUI_Rollout@{G\-L\-U\-I\-\_\-\-Rollout}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void G\-L\-U\-I\-\_\-\-Rollout\-::draw (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classGLUI__Rollout_ae3ff0bbeb04f22aa5489cf542b6e3fbb}
+Draw '+' or '-\/' 
+
+Reimplemented from \hyperlink{classGLUI__Panel_a8038a76f6c88613735f7c65ae9466b0c}{G\-L\-U\-I\-\_\-\-Panel}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+glui/include/\-G\-L/glui.\-h\item 
+glui/src/glui\-\_\-rollout.\-cpp\end{DoxyCompactItemize}

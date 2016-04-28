@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/jasper/Desktop/repo-group-TwelfthNight/FlashPhoto/../libjpeg/lib'
+libdir='/home/jasper/Desktop/school/3081W/repo-group-TwelfthNight/./libjpeg/lib'

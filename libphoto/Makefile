@@ -66,7 +66,7 @@ endif
 # or just remember to run "make rebuild" if you change a .h file.
 
 
-all: setup setuplib OTHER_LIBS LIBRARY
+all: setup OTHER_LIBS setuplib LIBRARY
 
 rebuild: clean all
 

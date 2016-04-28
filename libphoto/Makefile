@@ -4,7 +4,6 @@
 ### Definitions Section ###
 
 # Name of the executable to create
-EXECUTABLE = FlashPhoto
 SOURCE_DIR = .
 OBJECT_DIR = build
 LIB_DIR = lib
@@ -42,7 +41,7 @@ JPEG_LIB = $(JPEG_PATH)/lib/libjpeg.a
 # For graphics support, we also need to link with the Glut and OpenGL libraries.
 # This is specified differently depending on whether we are on linux or OSX.
 UNAME = $(shell uname)
-ifeq ($(UNAME), Darwin) # Mac OSX 
+ifeq ($(UNAME), Darwin) # Mac OSX
 	LINK_LIBS += -framework glut -framework opengl
 	CFLAGS += -std=c++11
 else # LINUX
@@ -59,33 +58,31 @@ ifneq ($(NVIDIA_LIB), )
 	LINK_LIBS += -L$(NVIDIA_LIB)
 endif
 
-
-
 ### Rules Section ###
 
-
-# Note, other than each .o depending upon a corresponding .cpp there is no automatic 
+# Note, other than each .o depending upon a corresponding .cpp there is no automatic
 # dependency checking here.  You can add individual dependency rules for .h files
 # (e.g., build/ColorData.o:  src/ColorData.h src/SomethingElse.h) by hand if you want
 # or just remember to run "make rebuild" if you change a .h file.
 
 
-all: setup setuplib $(OBJFILES) library
+all: setup setuplib OTHER_LIBS LIBRARY
 
 rebuild: clean all
 
-# Create the object_files directory only if it does not exist. 
+# Create the object_files directory only if it does not exist.
 setup: | $(OBJECT_DIR)
 setuplib: | $(LIB_DIR)
 
 $(OBJECT_DIR):
 	mkdir -p $(OBJECT_DIR)
-
 $(LIB_DIR):
 	mkdir -p $(LIB_DIR)
 
-library:
+LIBRARY:
 	ar rcs lib/libphoto.a $(OBJFILES)
+
+OTHER_LIBS: $(GLUI_LIB) $(PNG_LIB) $(JPEG_LIB) $(OBJFILES)
 
 $(OBJECT_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	$(CC) $(CFLAGS) $(INCLUDE)  -o $@ $<

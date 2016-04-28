@@ -1,7 +1,5 @@
 #include "ImageHandler.h"
 #include <iostream>
-#include <stdio.h>
-#include <string.h>
 using std::cout;
 using std::endl;
 ImageHandler::ImageHandler(){}
@@ -33,7 +31,7 @@ PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, 
         PixelBuffer *newBuffer = loadjpg(fopen(filename.c_str(), "rb"), height, width, backgroundColor);
         return newBuffer;
     } else if(ispng(filename)) {
-        PixelBuffer *newBuffer = loadpng(filename, height, width, backgroundColor);
+        PixelBuffer *newBuffer = loadpng(fopen(filename.c_str(), "rb"), height, width, backgroundColor);
         return newBuffer;
     } else {
         return NULL;
@@ -123,41 +121,79 @@ void ImageHandler::savepng(FILE *fp, int height, int width, PixelBuffer* buffer)
 * \file pointer, height of image, width of image
 * \PixelBuffer containing the image
 */
-PixelBuffer* ImageHandler::loadpng(const std::string fileName, int &Height, int &Width, ColorData backgroundColor) {
-   PixelBuffer* loadedImageBuffer = NULL;
-    
-    png_image image;
-    memset(&image, 0, (sizeof image));
-    image.version = PNG_IMAGE_VERSION;
-    
-    if (png_image_begin_read_from_file(&image, fileName.c_str())) {
-        
-        loadedImageBuffer = new PixelBuffer(image.width, image.height, ColorData(0.0,0.0,0.0));
-        
-        png_bytep buffer;
-        image.format = PNG_FORMAT_RGBA;
-        buffer = new png_byte[PNG_IMAGE_SIZE(image)];
-        Height = image.height;
-		Width = image.width;
-        if (buffer && png_image_finish_read(&image, NULL, buffer, 0, NULL)) {
-            
-            for (int y = 0; y < (int)image.height; y++) {
-                for (int x = 0; x < (int)image.width; x++) {
-                    int r, g, b, a = 0;
-                    r = (int)buffer[(y*image.width*4)+(x*4)];
-                    g = (int)buffer[(y*image.width*4)+(x*4)+1];
-                    b = (int)buffer[(y*image.width*4)+(x*4)+2];
-                    a = (int)buffer[(y*image.width*4)+(x*4)+3];
-                    loadedImageBuffer->setPixel(x, image.height-(y+1), ColorData(r/255.0f,g/255.0f,b/255.0f,a/255.0f));
-                }
-            }
-            
-        }
-        
-        delete[] buffer;
+PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width, ColorData backgroundColor) {
+    struct pixel
+    {
+        unsigned char r,g,b,a;
+    };
+    struct pixel *Pixels;
+  long i,j,k;
+  png_structp png_ptr;
+  png_infop info_ptr;
+  png_uint_32 width, height;
+  png_bytep *row_pointers;
+  int bit_depth, color_type;
+  int interlace_type, compression_type, filter_type;
+
+
+  /* create the png data structures */
+  png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+  if (!png_ptr) return 0;
+
+  info_ptr = png_create_info_struct(png_ptr);
+  if (!info_ptr) {
+    png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
+    return 0;
+  }
+  /* allocate the memory to hold a row of the image */
+  row_pointers = (png_bytep *)malloc(height*sizeof(png_bytep));
+  for (i = 0; i < height; i++)
+    row_pointers[i] = (png_bytep)malloc(png_get_rowbytes(png_ptr, info_ptr));
+
+  png_read_image(png_ptr, row_pointers);
+
+  /* malloc pixmap data */
+  Width = width;
+  Height = height;
+  PixelBuffer *newBuffer = new PixelBuffer(Width, Height, backgroundColor);
+  Pixels = (struct pixel *)malloc((size_t)Width*
+                                         (size_t)Height*
+                                         sizeof(struct pixel));
+  k=0;
+  for (i=0;i<Height;i++)
+    for (j=0;j<Width;j++) {
+      Pixels[k].r = row_pointers[i][4*j];
+      Pixels[k].g = row_pointers[i][4*j+1];
+      Pixels[k].b = row_pointers[i][4*j+2];
+      Pixels[k++].a = row_pointers[i][4*j+3];
     }
-    
-    return loadedImageBuffer;
+
+  double r,g,b,a;
+  ColorData newAlpha = backgroundColor;
+  newAlpha.setAlpha(0.00f);
+  for (i=0;i<Height;i++)
+    for (j=0;j<Width;j++) {
+        r = Pixels[i*Width+j].r/255.0;
+        g = Pixels[i*Width+j].g/255.0;
+        b = Pixels[i*Width+j].b/255.0;
+        a = Pixels[i*Width+j].a/255.0;
+        if (a==0.0) {
+            newBuffer -> setPixel((int)j, Height-1-i, newAlpha);
+        } else {
+            newBuffer -> setPixel((int)j, Height-1-i, ColorData(r,g,b,a));
+        }
+    }
+  /* read rest of file, and get additional chunks in info_ptr - REQUIRED */
+  png_read_end(png_ptr, info_ptr);
+
+  /* clean up after the read, and free any memory allocated - REQUIRED */
+  png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+
+  //TODO put this into deconstructor
+  for (i = 0; i < height; i++)
+    free(row_pointers[i]);
+  free(row_pointers);
+  return newBuffer;
 }
 
 /*

@@ -145,6 +145,50 @@ PixelBuffer* ImageHandler::loadpng(FILE *fp, int &Height, int &Width, ColorData 
     png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
     return 0;
   }
+
+  if (setjmp(png_jmpbuf(png_ptr))) {
+    png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+    return 0;
+  }
+
+  png_init_io(png_ptr, fp);
+
+  png_read_info(png_ptr, info_ptr);
+
+  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type,
+               &interlace_type, &compression_type, &filter_type);
+
+  /* tell libpng to strip 16 bit/color files down to 8 bits/color */
+  png_set_strip_16(png_ptr);
+
+  /* Extract multiple pixels with bit depths of 1, 2, and 4 from a single
+   * byte into separate bytes (useful for paletted and grayscale images).
+   */
+  png_set_packing(png_ptr);
+
+  /* Expand grayscale images to the full 8 bits from 1, 2, or 4 bits/pixel */
+  if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+    png_set_expand(png_ptr);
+
+  /* Expand paletted colors into true RGB triplets */
+  if (color_type == PNG_COLOR_TYPE_PALETTE)
+    png_set_expand(png_ptr);
+
+  /* Expand paletted or RGB images with transparency to full alpha channels
+   * so the data will be available as RGBA quartets.
+   */
+  if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+    png_set_expand(png_ptr);
+
+  /* Add filler (or alpha) byte (before/after each RGB triplet) */
+/*    if (bit_depth == 8 &&  */
+/*        (color_type == PNG_COLOR_TYPE_RGB||color_type == PNG_COLOR_TYPE_GRAY)) */
+  png_set_filler(png_ptr, 0x000000ff, PNG_FILLER_AFTER);
+
+  /* update info_ptr from the transforms. used to get a correct value for
+   * png_get_rowbytes */
+  png_read_update_info(png_ptr, info_ptr);
+
   /* allocate the memory to hold a row of the image */
   row_pointers = (png_bytep *)malloc(height*sizeof(png_bytep));
   for (i = 0; i < height; i++)

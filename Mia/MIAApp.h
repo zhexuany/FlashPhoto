@@ -32,6 +32,8 @@ public:
     // Commandline mode functions
     PixelBuffer* c_loadImage(const std::string & fileName);
     void c_saveToFile(const std::string & fileName, PixelBuffer* imageBuffer);
+    bool c_isValidImageFile(const std::string & name);
+    std::string c_getImageNamePlusSeqOffset(const std::string & currentFileName, int offset);
 
     void c_applyFilterEdgeDetect(PixelBuffer* imageBuffer);
     void c_applyFilterSharpen(PixelBuffer* imageBuffer, int amount);

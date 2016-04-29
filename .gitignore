@@ -3,7 +3,6 @@ CMakeLists.txt
 #Exclude executable files and directory
 build/
 log.md
-test/
 glui/build/
 glui/lib/
 libjpeg/bin/

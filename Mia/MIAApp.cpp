@@ -86,9 +86,11 @@ MIAApp::~MIAApp()
     if (m_displayBuffer) {
         delete m_displayBuffer;
     }if(m_tool) delete m_tool;
-    for(int i = 0; i < 2; i++){
-      if(toolList[i]){
-        delete toolList[i];
+    if(toolList){
+      for(int i = 0; i < 2; i++){
+        if(toolList[i]){
+          delete toolList[i];
+        }
       }
     }
     if(toolList) delete toolList;
@@ -687,6 +689,62 @@ void MIAApp::c_saveToFile(const std::string & fileName, PixelBuffer* imageBuffer
   loader->saveimage(imageFile, imageBuffer);
 }
 
+bool MIAApp::c_isValidImageFile(const std::string & name) {
+
+    FILE *f;
+    bool isValid = false;
+    if (isValidImageFileName(name)) {
+        if ((f = fopen( name.c_str(), "r"))) {
+            isValid = true;
+            fclose(f);
+        }
+    }
+
+
+    return isValid;
+}
+
+std::string MIAApp::c_getImageNamePlusSeqOffset(const std::string & currentFileName, int offset)
+{
+
+    int digitCount = 3;
+
+    std::string extension, name, number;
+    size_t dotPos = currentFileName.find_last_of(".");
+    if (dotPos ==  std::string::npos || dotPos == 0) {
+        return "";
+    }
+
+    extension = currentFileName.substr(dotPos+1);
+    name = currentFileName.substr(0,dotPos);
+    if ((int)name.length() < digitCount) {
+        return "";
+    }
+
+    number = name.substr(name.length()-digitCount);
+    name = name.substr(0,name.length()-digitCount);
+    int num;
+    std::istringstream ( number ) >> num;
+    int output_num = num +offset;
+    if (output_num < 0) {
+        return "";
+    }
+    std::stringstream ss;
+    ss << output_num;
+    std::string output_number;
+    ss >> output_number;
+
+    // Append zero chars
+    size_t str_length = output_number.length();
+    for (int i = 0; i < digitCount - (int)str_length; i++)
+        output_number = "0" + output_number;
+
+
+
+
+
+    return (name + output_number + "." + extension);
+}
 
 void MIAApp::c_applyFilterEdgeDetect(PixelBuffer* imageBuffer) {
     m_filters[FilterFactory::FILTER_DETECT_EDGES] -> applyFilter(imageBuffer);

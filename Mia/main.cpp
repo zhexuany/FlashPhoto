@@ -5,6 +5,7 @@
 
 #include "MIAApp.h"
 #include "libphoto.h"
+#include <sys/stat.h>
 #include <unistd.h>
 #include <getopt.h>
 #include <string>
@@ -17,7 +18,6 @@ using namespace std;
 static int help_flag, edge_flag, comp_flag, sharpen_flag, thresh_flag, quant_flag, blur_flag, satur_flag, mult_flag;
 
 int main(int argc, char* argv[]) {
-
   if (argc < 2) {
     MIAApp *app = new MIAApp(argc, argv,
                                          800, 800, ColorData(1, 1, 0.95));
@@ -50,16 +50,16 @@ int main(int argc, char* argv[]) {
 
       // checking the first target is file of not by finding "."
       // if it is npos, then it is dir. Otherwise, it is image file.
-      size_t found = firstArg.find(".");
+      size_t found = firstArg.find("/");
 
       // Flag to indicate target is file or not
       int isFile;
 
       // Setting the flag for future use
       if (found == string::npos) {
-        isFile = 0;
-      } else {
         isFile = 1;
+      } else {
+        isFile = 0;
       }
       cout << "isFile: " << isFile << endl;
 
@@ -79,19 +79,48 @@ int main(int argc, char* argv[]) {
       else if (edge_flag) {
           cout << "Edgedetect!" << endl;
           if (argc  == 4) {
-            secondArg = argv[3];
-            cout << "Second arg: " << secondArg<< endl;
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+              if (!isFile) {
+                cout << "It is Directory!" << endl;
+                secondArg = argv[3];
+                string dir = secondArg.substr(0, secondArg.find("/"));
+                const char * directory = dir.c_str();
+                if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                    cout << "Error on making directory" << endl;
+                    exit(-1);
+                };
+                cout << "directory: " << directory << " is created" << endl;
+                while (app->c_isValidImageFile(firstArg)) {
+                    cout << "Second arg: " << secondArg<< endl;
+                    PixelBuffer *imageBuffer;
+                    imageBuffer = app->c_loadImage(firstArg);
+                    if (imageBuffer == NULL) {
+                        cout << "Error loading image. No such file exist." << endl;
+                        break;
+                    } else {
+                        cout << "image loaded" << endl;
+                        app->c_applyFilterEdgeDetect(imageBuffer);
+                        cout << "applying fliter" << endl;
+                        app->c_saveToFile(secondArg, imageBuffer);
+                        cout << "save" << endl;
+                    }
+                    firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                    secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+                }
+              } else {
+                secondArg = argv[3];
+                cout << "Second arg: " << secondArg<< endl;
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
 
-            } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterEdgeDetect(imageBuffer);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterEdgeDetect(imageBuffer);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -106,19 +135,49 @@ int main(int argc, char* argv[]) {
       else if (sharpen_flag) {
           cout << "sharpen!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            cout << "Second arg: " << secondArg<< endl;
-            int amount = atoi(argv[3]);
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[3];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              int amount = atoi(argv[3]);
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterSharpen(imageBuffer, amount);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterSharpen(imageBuffer, amount);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                secondArg = argv[4];
+                cout << "Second arg: " << secondArg<< endl;
+                int amount = atoi(argv[3]);
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterSharpen(imageBuffer, amount);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -127,19 +186,49 @@ int main(int argc, char* argv[]) {
       else if (thresh_flag) {
           cout << "Thresh!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            cout << "Second arg: " << secondArg<< endl;
-            double amount = atof(argv[3]);
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[3];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              double amount = atof(argv[3]);
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterThreshold(imageBuffer, amount);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterThreshold(imageBuffer, amount);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                secondArg = argv[4];
+                cout << "Second arg: " << secondArg<< endl;
+                double amount = atof(argv[3]);
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterThreshold(imageBuffer, amount);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -148,19 +237,49 @@ int main(int argc, char* argv[]) {
       else if (quant_flag) {
           cout << "Quantize!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            cout << "Second arg: " << secondArg<< endl;
-            int amount = atoi(argv[3]);
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[3];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              int amount = atoi(argv[3]);
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterQuantize(imageBuffer, amount);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterQuantize(imageBuffer, amount);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                secondArg = argv[4];
+                cout << "Second arg: " << secondArg<< endl;
+                int amount = atoi(argv[3]);
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterQuantize(imageBuffer, amount);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -169,19 +288,49 @@ int main(int argc, char* argv[]) {
       else if (blur_flag) {
           cout << "Blur!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            cout << "Second arg: " << secondArg<< endl;
-            double amount = atof(argv[3]);
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[3];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              double amount = atof(argv[3]);
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterBlur(imageBuffer, amount);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterBlur(imageBuffer, amount);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                secondArg = argv[4];
+                cout << "Second arg: " << secondArg<< endl;
+                double amount = atof(argv[3]);
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterBlur(imageBuffer, amount);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -190,19 +339,49 @@ int main(int argc, char* argv[]) {
       else if (satur_flag) {
           cout << "Saturate!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            cout << "Second arg: " << secondArg<< endl;
-            double amount = atof(argv[3]);
-            PixelBuffer *imageBuffer;
-            imageBuffer = app->c_loadImage(firstArg);
-            if (imageBuffer == NULL) {
-                cout << "Error loading image. No such file exist." << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[3];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              double amount = atof(argv[3]);
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterSaturate(imageBuffer, amount);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                cout << "image loaded" << endl;
-                app->c_applyFilterSaturate(imageBuffer, amount);
-                cout << "applying fliter" << endl;
-                app->c_saveToFile(secondArg, imageBuffer);
-                cout << "save" << endl;
+                secondArg = argv[4];
+                cout << "Second arg: " << secondArg<< endl;
+                double amount = atof(argv[3]);
+                PixelBuffer *imageBuffer;
+                imageBuffer = app->c_loadImage(firstArg);
+                if (imageBuffer == NULL) {
+                    cout << "Error loading image. No such file exist." << endl;
+                } else {
+                    cout << "image loaded" << endl;
+                    app->c_applyFilterSaturate(imageBuffer, amount);
+                    cout << "applying fliter" << endl;
+                    app->c_saveToFile(secondArg, imageBuffer);
+                    cout << "save" << endl;
+                }
             }
           } else {
               cout << "Arguments are not matched"<< endl;
@@ -211,35 +390,82 @@ int main(int argc, char* argv[]) {
       else if (mult_flag) {
           cout << "multrgb!" << endl;
           if (argc == 5) {
-            secondArg = argv[4];
-            char* amount = argv[2];
-            cout << "Second arg: " << secondArg<< endl;
-            double r = .0, g = .0, b = .0 ;
-            char* str;
-            str = strtok(amount," ,");
-            while (str != NULL) {
-                if (r == .0) {
-                  r = atof(str);
-                } else if (g == .0) {
-                  g = atof(str);
-                } else {
-                  b = atof(str);
-                }
-                str = strtok (NULL, " ,");
-            }
-            if (!r || !g || !b) {
-                cout << "Error getting r, g, b amount. Properly input rgb amount as <float>,<float>,<float>" << endl;
+            if (!isFile) {
+              cout << "It is Directory!" << endl;
+              secondArg = argv[4];
+              string dir = secondArg.substr(0, secondArg.find("/"));
+              const char * directory = dir.c_str();
+              if (mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0) {
+                  cout << "Error on making directory" << endl;
+                  exit(-1);
+              };
+              cout << "directory: " << directory << " is created" << endl;
+              char* amount = argv[2];
+              double r = .0, g = .0, b = .0 ;
+              char* str;
+              str = strtok(amount," ,");
+              while (str != NULL) {
+                  if (r == .0) {
+                    r = atof(str);
+                  } else if (g == .0) {
+                    g = atof(str);
+                  } else {
+                    b = atof(str);
+                  }
+                  str = strtok (NULL, " ,");
+              }
+              if (!r || !g || !b) {
+                  cout << "Error getting r, g, b amount. Properly input rgb amount as <float>,<float>,<float>" << endl;
+                  exit(-1);
+              }
+              while (app->c_isValidImageFile(firstArg)) {
+                  cout << "Second arg: " << secondArg<< endl;
+                  PixelBuffer *imageBuffer;
+                  imageBuffer = app->c_loadImage(firstArg);
+                  if (imageBuffer == NULL) {
+                      cout << "Error loading image. No such file exist." << endl;
+                      break;
+                  } else {
+                      cout << "image loaded" << endl;
+                      app->c_applyFilterMultiplyRGB(imageBuffer, r, g, b);
+                      cout << "applying fliter" << endl;
+                      app->c_saveToFile(secondArg, imageBuffer);
+                      cout << "save" << endl;
+                  }
+                  firstArg = app->c_getImageNamePlusSeqOffset(firstArg, 1);
+                  secondArg = app->c_getImageNamePlusSeqOffset(secondArg, 1);
+              }
             } else {
-                PixelBuffer *imageBuffer;
-                imageBuffer = app->c_loadImage(firstArg);
-                if (imageBuffer == NULL) {
-                    cout << "Error loading image. No such file exist." << endl;
+                secondArg = argv[4];
+                char* amount = argv[2];
+                cout << "Second arg: " << secondArg<< endl;
+                double r = .0, g = .0, b = .0 ;
+                char* str;
+                str = strtok(amount," ,");
+                while (str != NULL) {
+                    if (r == .0) {
+                      r = atof(str);
+                    } else if (g == .0) {
+                      g = atof(str);
+                    } else {
+                      b = atof(str);
+                    }
+                    str = strtok (NULL, " ,");
+                }
+                if (!r || !g || !b) {
+                    cout << "Error getting r, g, b amount. Properly input rgb amount as <float>,<float>,<float>" << endl;
                 } else {
-                    cout << "image loaded" << endl;
-                    app->c_applyFilterMultiplyRGB(imageBuffer, r, g, b);
-                    cout << "applying fliter" << endl;
-                    app->c_saveToFile(secondArg, imageBuffer);
-                    cout << "save" << endl;
+                    PixelBuffer *imageBuffer;
+                    imageBuffer = app->c_loadImage(firstArg);
+                    if (imageBuffer == NULL) {
+                        cout << "Error loading image. No such file exist." << endl;
+                    } else {
+                        cout << "image loaded" << endl;
+                        app->c_applyFilterMultiplyRGB(imageBuffer, r, g, b);
+                        cout << "applying fliter" << endl;
+                        app->c_saveToFile(secondArg, imageBuffer);
+                        cout << "save" << endl;
+                    }
                 }
             }
           } else {
@@ -250,6 +476,7 @@ int main(int argc, char* argv[]) {
         // TODO: convert an image in the different format
       }
       cout << "End of command line mode" << endl;
+      delete app;
   }
   exit(0);
 }

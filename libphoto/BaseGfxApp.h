@@ -21,7 +21,9 @@ class BaseGfxApp{
 public:
 	BaseGfxApp(int argc, char* argv[], int width, int height, int x, int y, int glutFlags,
 		bool createGLUIWin, int gluiWinX, int gluiWinY);
+		
 	virtual ~BaseGfxApp();
+
 
 	void setCaption(const std::string& caption);
 	void setWindowDimensions(int width, int height);

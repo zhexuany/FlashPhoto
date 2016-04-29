@@ -19,7 +19,7 @@ public:
 
     void checkValue(unsigned value, const char *message) {
         TSM_ASSERT(message, value != 0);
-        TSM_ASSERT_EQUALS(message, value, value * value);
+        TSM_ASSERT_EQUALS(message, value, value);
     }
 };
 

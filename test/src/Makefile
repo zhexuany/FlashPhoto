@@ -5,6 +5,7 @@
 # COMPILER for CPP
 CXXC = g++
 CPPFLAGS = -Wall -W -Werror -I. -I../cxxtest
+LIBPHOTOFLAGS = -I../../libphoto
 TESTGEN = ../cxxtest/bin/cxxtestgen
 
 TARGETS = error_printer stdio_printer yes_no_runner file_printer aborter only

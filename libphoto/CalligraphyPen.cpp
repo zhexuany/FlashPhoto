@@ -20,3 +20,7 @@ void CalligraphyPen::fillInfluence(){
   }
 
 }
+
+string CalligraphyPen::getName(){
+  return "CalligraphyPen";
+}

@@ -11,6 +11,7 @@ public:
   ~Eraser();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
+  string getName();
 };
 
 #endif

@@ -17,7 +17,7 @@ public:
     virtual void fillInfluence();
     virtual void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
     virtual void applyInfluence(int x, int y, PixelBuffer* buffer);
-    virtual string getName()=0;
+    virtual string getName() = 0;
     Mask const * getMask() const;
     ColorData const * getToolColor() const;
     void setToolColor(ColorData* color);

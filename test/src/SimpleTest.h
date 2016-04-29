@@ -20,12 +20,12 @@ public:
 
     void testAddition() {
         TS_ASSERT_EQUALS(1 + 1, 2);
-        TS_ASSERT_EQUALS(2 + 2, 5);
+        TS_ASSERT_EQUALS(2 + 2, 4);
     }
 
     void TestMultiplication() {
         TS_ASSERT_EQUALS(2 * 2, 4);
-        TS_ASSERT_EQUALS(4 * 4, 44);
+        TS_ASSERT_EQUALS(4 * 4, 16);
         TS_ASSERT_DIFFERS(-2 * -2, 4);
     }
 

@@ -6,8 +6,7 @@
 #define CXXTEST_ABORT_TEST_ON_FAIL
 #include <cxxtest/ErrorPrinter.h>
 
-int main()
-{
+int main(){
     return CxxTest::ErrorPrinter().run();
 }
 

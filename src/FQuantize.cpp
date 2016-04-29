@@ -20,7 +20,6 @@ void FQuantize::applyFilter(PixelBuffer* imageBuffer){
       ColorData currPixel = imageBuffer -> getPixel(i, j);
       float newRed = std::round(currPixel.getRed()*quantize_bins)/(float)quantize_bins;
       float newGreen = std::round(currPixel.getGreen()*quantize_bins)/(float)quantize_bins;
-
       float newBlue = std::round(currPixel.getBlue()*quantize_bins)/(float)quantize_bins;
       imageBuffer -> setPixel(i, j, ColorData(newRed, newGreen, newBlue));
     }

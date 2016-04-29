@@ -38,3 +38,7 @@ void Stamp::applyInfluence(int x, int y, PixelBuffer* buffer){
     }
   }
 }
+
+string Stamp::getName(){
+  return "Stamp";
+}

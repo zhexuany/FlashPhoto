@@ -50,3 +50,6 @@ bool FillTool::compareColorData(ColorData x, ColorData y) {
 	}
 }
 
+string FillTool::getName(){
+  return "FillTool";
+}

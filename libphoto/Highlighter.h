@@ -10,5 +10,6 @@ class Highlighter : public DrawTool {
   ~Highlighter();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  string getName();
 };
 #endif

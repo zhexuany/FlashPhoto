@@ -11,6 +11,7 @@ class Crayon : public DrawTool {
   Crayon(ColorData* toolColor, int radius);
   ~Crayon();
   void fillInfluence();
+  string getName();
 };
 
 #endif

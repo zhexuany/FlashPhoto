@@ -10,6 +10,7 @@ class WaterColor : public DrawTool {
   WaterColor(ColorData* toolColor, int radius);
   ~WaterColor();
   void fillInfluence();
+  string getName();
 };
 
 #endif // WATERCOLOR_H

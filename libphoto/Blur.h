@@ -12,6 +12,7 @@ class Blur : public DrawTool {
   ~Blur();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  string getName();
 };
 
 

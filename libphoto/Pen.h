@@ -6,5 +6,6 @@ class Pen : public DrawTool {
   Pen(ColorData* toolColor, int radius);
   ~Pen();
   void fillInfluence();
+  string getName();
 };
 #endif

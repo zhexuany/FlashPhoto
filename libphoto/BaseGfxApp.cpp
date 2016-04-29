@@ -15,36 +15,35 @@ bool BaseGfxApp::s_glutInitialized = false;
 #define INIT_HEIGHT 600
 
 BaseGfxApp::BaseGfxApp(int argc, char* argv[], int width, int height, int x, int y, int glutFlags, bool createGLUIWin, int gluiWinX, int gluiWinY) {
-    s_currentApp = this;
-    m_glui = NULL;
-    m_drag = false;
-    m_width = width;
-    m_height = height;
-
-    // Set window size and position
-    glutInitWindowSize(width, height);
-    glutInitWindowPosition(x, y);
-    glutInitDisplayMode(glutFlags);
-
-    if (! s_glutInitialized) {
-        glutInit(&argc, argv);
-        s_glutInitialized = true;
-    }
-
-    m_glutWindowHandle = glutCreateWindow("Graphics Window");
-
-    glutReshapeFunc(s_reshape);
-    glutKeyboardFunc(s_keyboard);
-    glutKeyboardUpFunc(s_keyboardup);
-    glutSpecialFunc(s_keyboardspecial);
-    glutSpecialUpFunc(s_keyboardspecialup);
-    glutMotionFunc(s_mousemotion);
-    glutPassiveMotionFunc(s_mousemotion);
-    glutMouseFunc(s_mousebtn);
-    glutDisplayFunc(s_draw);
-    glutIdleFunc(s_idle);
-
     if (createGLUIWin) {
+        s_currentApp = this;
+        m_glui = NULL;
+        m_drag = false;
+        m_width = width;
+        m_height = height;
+
+        // Set window size and position
+        glutInitWindowSize(width, height);
+        glutInitWindowPosition(x, y);
+        glutInitDisplayMode(glutFlags);
+
+        if (! s_glutInitialized) {
+            glutInit(&argc, argv);
+            s_glutInitialized = true;
+        }
+
+        m_glutWindowHandle = glutCreateWindow("Graphics Window");
+
+        glutReshapeFunc(s_reshape);
+        glutKeyboardFunc(s_keyboard);
+        glutKeyboardUpFunc(s_keyboardup);
+        glutSpecialFunc(s_keyboardspecial);
+        glutSpecialUpFunc(s_keyboardspecialup);
+        glutMotionFunc(s_mousemotion);
+        glutPassiveMotionFunc(s_mousemotion);
+        glutMouseFunc(s_mousebtn);
+        glutDisplayFunc(s_draw);
+        glutIdleFunc(s_idle);
         m_glui = GLUI_Master.create_glui("Controls", 0, gluiWinX, gluiWinY);
         m_glui->set_main_gfx_window(m_glutWindowHandle);
         // Note: if using a glut idle func, it may need to be registered with glui rather than glut.
@@ -52,9 +51,12 @@ BaseGfxApp::BaseGfxApp(int argc, char* argv[], int width, int height, int x, int
     }
 }
 
+
+
 BaseGfxApp::~BaseGfxApp() {
     s_currentApp = NULL;
-    glutDestroyWindow(m_glutWindowHandle);
+    if(m_glutWindowHandle)
+      glutDestroyWindow(m_glutWindowHandle);
 }
 
 void BaseGfxApp::setCaption(const std::string& caption) {
@@ -189,4 +191,3 @@ void BaseGfxApp::setWindowDimensions(int width, int height) {
     m_width = width;
     glutReshapeWindow(m_width, m_height);
 }
-

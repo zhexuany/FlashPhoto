@@ -141,3 +141,7 @@ void DrawTool::fillInfluence(){
     }
   }
 }
+
+string DrawTool::getName(){
+  return "DrawTool";
+}

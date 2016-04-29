@@ -2,8 +2,8 @@
 # Makefile for UN*X-like systems
 #
 
-# Change this line if you want a different compiler
-CXXC = c++
+# COMPILER for CPP
+CXXC = g++
 CPPFLAGS = -Wall -W -Werror -I. -I../cxxtest
 TESTGEN = ../cxxtest/bin/cxxtestgen
 

@@ -7,8 +7,7 @@
 #include <cxxtest/StdioPrinter.h>
 #include <stdio.h>
 
-int main( int argc, char *argv[] )
-{
+int main( int argc, char *argv[] ){
     if ( argc != 2 ) {
         fprintf( stderr, "Usage: %s <output file name>\n", argv[0] );
         return -1;

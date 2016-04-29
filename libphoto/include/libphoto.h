@@ -114,7 +114,7 @@ public:
     virtual void fillInfluence();
     virtual void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
     virtual void applyInfluence(int x, int y, PixelBuffer* buffer);
-    virtual string getName() = 0;
+    virtual std::string getName();
     Mask const * getMask() const;
     ColorData const * getToolColor() const;
     void setToolColor(ColorData* color);
@@ -159,32 +159,41 @@ public:
   static int getNumFilters();
   static Filter* createFilter(int filterID);
 };
+
 class Blur : public DrawTool {
  public :
   Blur(int radius);
   ~Blur();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  std::string getName();
 };
+
 class CalligraphyPen : public DrawTool {
  public :
   CalligraphyPen(ColorData* toolColor, int height, int width);
   ~CalligraphyPen();
   void fillInfluence();
+  std::string getName();
 };
+
 class Crayon : public DrawTool {
  public :
   Crayon(ColorData* toolColor, int radius);
   ~Crayon();
   void fillInfluence();
+  std::string getName();
 };
+
 class Eraser : public DrawTool{
 public:
   Eraser(int radius);
   ~Eraser();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
+  std::string getName();
 };
+
 class FBlur : public Filter{
 public:
   typedef std::vector<float> kernelRow;
@@ -203,6 +212,7 @@ public:
 private:
   kernelType kernel;
 };
+
 class FChannel : public Filter{
 public:
   FChannel();
@@ -210,6 +220,7 @@ public:
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
 };
+
 class FEdgeDetection : public FBlur{
 public:
   FEdgeDetection();
@@ -226,6 +237,7 @@ public:
 private:
   const int size = 3;
 };
+
 class FillTool : public DrawTool{
 public:
   FillTool(ColorData* toolColor, int height, int width);
@@ -233,9 +245,11 @@ public:
   void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
   void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
+  std::string getName();
 private:
   bool compareColorData(ColorData x, ColorData y);
 };
+
 class FMotionBlur : public FBlur{
 public:
   FMotionBlur();
@@ -250,6 +264,7 @@ private:
     DIR_NW_SE
   };
 };
+
 class FQuantize : public Filter{
 public:
   FQuantize();
@@ -258,6 +273,7 @@ public:
   std::string getName();
 private:
 };
+
 class FSaturation : public Filter{
 public:
   FSaturation();
@@ -265,6 +281,7 @@ public:
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
 };
+
 class FSharpen : public FBlur{
 public:
   FSharpen();
@@ -295,6 +312,7 @@ class Highlighter : public DrawTool {
   ~Highlighter();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  std::string getName();
 };
 class ImageHandler{
 public :
@@ -318,6 +336,7 @@ class Pen : public DrawTool {
   Pen(ColorData* toolColor, int radius);
   ~Pen();
   void fillInfluence();
+  std::string getName();
 };
 class SprayCan : public DrawTool{
  public :
@@ -325,6 +344,7 @@ class SprayCan : public DrawTool{
   ~SprayCan();
   void fillInfluence();
   void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
+  std::string getName();
 };
 
 class Stamp : public DrawTool {
@@ -333,19 +353,13 @@ class Stamp : public DrawTool {
   ~Stamp();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  std::string getName();
 };
 class WaterColor : public DrawTool {
  public :
   WaterColor(ColorData* toolColor, int radius);
   ~WaterColor();
   void fillInfluence();
+  std::string getName();
 };
-
-
-
-
-
-
-
-
 #endif

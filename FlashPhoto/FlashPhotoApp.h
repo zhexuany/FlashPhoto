@@ -7,6 +7,7 @@
 #define FLASHPHOTOAPP_H
 
 #include "libphoto.h"
+#include "libphotogui.h"
 #include <cmath>
 #include <iostream>
 

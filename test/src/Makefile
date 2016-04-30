@@ -4,11 +4,18 @@
 
 # COMPILER for CPP
 CXXC = g++
-CPPFLAGS = -Wall -W -Werror -I. -I../cxxtest
-LIBPHOTOFLAGS = -I../../libphoto
+CPPFLAGS = -Wall -W -Werror -I. -I../cxxtest -Wunused-parameter
+PHOTO_PATH = ../../libphoto
+GLUI_PATH = ../../glui
+PNG_PATH = ../../libpng
+JPEG_PATH = ../../libjpeg
+INCLUDE += -I$(PHOTO_PATH)
+# -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
+LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PHOTO_PATH)/lib/ -lphoto -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg -lz
+PHOTO_LIB = $(PHOTO_PATH)/lib/libphoto.a
 TESTGEN = ../cxxtest/bin/cxxtestgen
 
-TARGETS = error_printer stdio_printer yes_no_runner file_printer aborter only
+TARGETS = error_printer
 TESTS = *.h
 
 all: $(TARGETS)
@@ -20,47 +27,17 @@ clean:
 distclean: clean
 	rm -f Makefile
 
-run: error_printer
+all: error_printer
 	./error_printer
 
 error_printer.cpp: $(TESTS)
 	$(TESTGEN) -o $@ --error-printer $(TESTS)
 
-stdio_printer.cpp: $(TESTS)
-	$(TESTGEN) -o $@ --runner=StdioPrinter $(TESTS)
-
-file_printer.cpp: file_printer.tpl $(TESTS)
-	$(TESTGEN) -o $@ --template=file_printer.tpl $(TESTS)
-
-aborter.cpp: aborter.tpl $(TESTS)
-	$(TESTGEN) -o $@ --template=aborter.tpl $(TESTS)
-
-only.cpp: only.tpl $(TESTS)
-	$(TESTGEN) -o $@ --template=only.tpl $(TESTS)
-
 tests.cpp: $(TESTS)
 	$(TESTGEN) -o $@ $(TESTS)
 
-x11_runner.cpp: $(GUI_TESTS)
-	$(TESTGEN) -o $@ --gui=X11Gui $(GUI_TESTS)
-
-qt_runner.cpp: $(GUI_TESTS)
-	$(TESTGEN) -o $@ --gui=QtGui $(GUI_TESTS)
-
 %: %.cpp
-	$(CXXC) $(CPPFLAGS) -o $@ $<
+	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $<
 
 yes_no_runner: yes_no_runner.cpp tests.cpp
-	$(CXXC) $(CPPFLAGS) -o $@ $^
-
-x11_runner: x11_runner.cpp
-	$(CXXC) -o $@ $^ $(X11_FLAGS)
-
-qt_runner: qt_runner.cpp
-	$(CXXC) -o $@ $^ $(QT_FLAGS)
-
-#
-# Local Variables:
-# compile-command: "make -fMakefile.unix"
-# End:
-#
+	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $^

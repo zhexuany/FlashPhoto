@@ -24,10 +24,7 @@ clean:
 	rm -f *~ *.o *.obj $(TARGETS) $(GUI_TARGETS)
 	rm -f tests.cpp error_printer.cpp stdio_printer.cpp file_printer.cpp aborter.cpp only.cpp
 
-distclean: clean
-	rm -f Makefile
-
-run: error_printer
+run:
 	./error_printer
 
 error_printer.cpp: $(TESTS)

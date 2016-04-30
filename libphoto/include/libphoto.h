@@ -7,7 +7,7 @@
 
 #include "../PixelBuffer.h"
 #include "../ColorData.h"
-#include "../DrawTool.h"
+#include "../Drawtool.h"
 #include "../Pen.h"
 #include "../Eraser.h"
 #include "../Mask.h"

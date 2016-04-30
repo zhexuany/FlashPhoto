@@ -45,7 +45,7 @@ PHOTO_LIB = $(PHOTO_PATH)/lib/libphoto.a
 # For graphics support, we also need to link with the Glut and OpenGL libraries.
 # This is specified differently depending on whether we are on linux or OSX.
 UNAME = $(shell uname)
-ifeq ($(UNAME), Darwin) # Mac OSX 
+ifeq ($(UNAME), Darwin) # Mac OSX
 	LINK_LIBS += -framework glut -framework opengl
 	CFLAGS += -std=c++11
 else # LINUX

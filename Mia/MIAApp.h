@@ -8,6 +8,7 @@
 #define MIAAPP_H
 
 #include "libphoto.h"
+#include "libphotogui.h"
 #include <iostream>
 #include <cmath>
 #include <deque>

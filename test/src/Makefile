@@ -10,7 +10,8 @@ PNG_PATH = ../../libpng
 JPEG_PATH = ../../libjpeg
 INCLUDE += -I$(PHOTO_PATH)/include
 # -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
-LINK_LIBS += -L$(PHOTO_PATH)/lib/ -lphoto -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg -lz
+LINK_LIBS += -L$(PHOTO_PATH)/lib/  -L$(PNG_PATH)/lib/  -L$(JPEG_PATH)/lib/
+LDFLAGS += -lpng -lz -ljpeg -lphoto
 PHOTO_LIB = $(PHOTO_PATH)/lib/libphoto.a
 TESTGEN = ../cxxtest/bin/cxxtestgen
 
@@ -36,4 +37,4 @@ tests.cpp: $(TESTS)
 	$(TESTGEN) -o $@ $(TESTS)
 
 %: %.cpp
-	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $<
+	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $< $(LDFLAGS)

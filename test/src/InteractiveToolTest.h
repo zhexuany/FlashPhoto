@@ -2,20 +2,7 @@
 #define __PENTEST_H
 
 #include <cxxtest/TestSuite.h>
-#include "PixelBuffer.h"
-#include "ColorData.h"
-#include "DrawTool.h"
-#include "Pen.h"
-#include "Eraser.h"
-#include "Mask.h"
-#include "SprayCan.h"
-#include "Blur.h"
-#include "Crayon.h"
-#include "FillTool.h"
-#include "Highlighter.h"
-#include "Stamp.h"
-#include "CalligraphyPen.h"
-#include "WaterColor.h"
+#include <libphoto.h>
 
 //
 // A simple test suite: Just inherit CxxTest::TestSuite and write tests!

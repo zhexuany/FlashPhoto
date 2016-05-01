@@ -24,8 +24,9 @@ TEST_MIA_COMMAND_LINE = MIACommandLineTest.h
 all: $(TARGETS) run
 
 clean:
-	rm -f *~ *.o *.obj $(TARGETS) 
+	rm -f *~ *.o *.obj $(TARGETS)
 	rm -f *.cpp
+	rm -f output/*
 
 run:
 	./test_interactive_tool

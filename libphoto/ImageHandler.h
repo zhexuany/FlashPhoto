@@ -23,7 +23,7 @@ private :
   bool hasSuffix(const std::string & str, const std::string & suffix);
   void savepng(FILE* file, int height, int width, PixelBuffer *buffer);
   void savejpg(FILE* infile, int height, int width, PixelBuffer *buffer);
-  PixelBuffer* loadpng(FILE *fp, int &height, int &width, ColorData backgroundColor);
+  PixelBuffer* loadpng(const std::string fileName, int &height, int &width, ColorData backgroundColor);
   PixelBuffer* loadjpg(FILE *infile, int &height, int &width, ColorData backgroundColor);
 };
 

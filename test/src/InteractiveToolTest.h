@@ -5,16 +5,17 @@
 #include <libphoto.h>
 
 //
-// A simple test suite: Just inherit CxxTest::TestSuite and write tests!
+// created by Zhexuan Yang on 29/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
 //
 
 
 class InteractiveToolTest : public CxxTest::TestSuite {
+public:
   ColorData* backgroundColor;
   ColorData* toolColor;
   const Mask * mask;
   double _delta;
-public:
   //declare a temporary Pixel buffer for testing
   void setUp(){
     _delta = 0.01;

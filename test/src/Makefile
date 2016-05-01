@@ -4,7 +4,7 @@
 
 # COMPILER for CPP
 CXXC = g++
-CPPFLAGS = -Wall -W -Werror -I. -I../cxxtest -Wunused-parameter -std=c++11
+CPPFLAGS = -Wall -W -I. -I../cxxtest -std=c++11
 PHOTO_PATH = ../../libphoto
 PNG_PATH = ../../libpng
 JPEG_PATH = ../../libjpeg
@@ -15,23 +15,31 @@ LDFLAGS += -lpng -lz -ljpeg -lphoto
 PHOTO_LIB = $(PHOTO_PATH)/lib/libphoto.a
 TESTGEN = ../cxxtest/bin/cxxtestgen
 
-TARGETS = error_printer
-TESTS = *.h
+#TODO need add mia_command_tool
+TARGETS = test_interactive_tool test_filter_tool
+TEST_INTERACTIVE_TOOL = InteractiveToolTest.h
+TEST_FILTER_TOOL = FilterToolTest.h
+TEST_MIA_COMMAND_LINE = MIACommandLineTest.h
 
 all: $(TARGETS) run
 
 clean:
-	rm -f *~ *.o *.obj $(TARGETS) $(GUI_TARGETS)
-	rm -f tests.cpp error_printer.cpp stdio_printer.cpp file_printer.cpp aborter.cpp only.cpp
+	rm -f *~ *.o *.obj $(TARGETS) 
+	rm -f *.cpp
 
 run:
-	./error_printer
+	./test_interactive_tool
+	./test_filter_tool
 
-error_printer.cpp: $(TESTS)
-	$(TESTGEN) -o $@ --error-printer $(TESTS)
+test_interactive_tool.cpp: $(TEST_INTERACTIVE_TOOL)
+	$(TESTGEN) -o $@ --error-printer $(TEST_INTERACTIVE_TOOL)
 
-tests.cpp: $(TESTS)
-	$(TESTGEN) -o $@ $(TESTS)
+test_filter_tool.cpp: $(TEST_FILTER_TOOL)
+	$(TESTGEN) -o $@ --error-printer $(TEST_FILTER_TOOL)
+
+test_mia_command_line.cpp: $(TEST_MIA_COMMAND_TOOL)
+	$(TESTGEN) -o $@ --error-printer $(TEST_MIA_COMMAND_TOOL)
+
 
 %: %.cpp
 	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $< $(LDFLAGS)

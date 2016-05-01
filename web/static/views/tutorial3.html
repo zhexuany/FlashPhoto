@@ -23,7 +23,15 @@
 
 	<div class="content">
 		<h1>Converting and Segmenting a CT Scan Using Mia</h1>
-		<h2>Sub Header</h2>
+		<p>Since you are dealing with converting and segmenting stack of CT images at one time, you should use command line mode of Mia. It is simple, and powerful since it can apply every filter at one time with one line of command.</p>
+		<h3>1. Slightly blur stack of CT images to reduce noise</h2>
+		<p>On the bash shell line, you can simply type  ./Mia [First CT images with directory path] -blur 5.0 [output CT images' file name with directory path]  to apply the blur filter to every CT image in the directory.
+		<p>EXAMPLE) ./Mia brainstack/mrbrain-8bit001.png -blur 5.0 brainstack/mrbrain-8bit001.png
+		<p>Mia will automatically apply the blur to a stack of images and save the output images in the same directory.</p>
+		<h3>2. Quantize the result into 4 segments.</h2>
+		<p>On the bash shell line, you can simply type  ./Mia [First CT images with directory path] -quantize 4 [output CT images' file name with directory path]  to quantize every CT image in the directory by 4.
+		<p>EXAMPLE) ./Mia brainstack/mrbrain-8bit001.png -quantize 4 output_brainstack/mrbrain-8bit001.png
+		<p>Mia will automatically quantize every image by 4 and save the output images in a new directory.</p>
 	</div>
 
 	<div class="footer">

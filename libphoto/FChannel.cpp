@@ -9,7 +9,8 @@
 #include "PixelBuffer.h"
 FChannel::FChannel(){
 }
-
+FChannel::~FChannel(){
+}
 void FChannel::applyFilter(PixelBuffer* imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();

@@ -10,7 +10,7 @@
 #include "PixelBuffer.h"
 
 FSharpen::FSharpen(){}
-
+FSharpen::~FSharpen(){}
 /*
  *\parama radius: the size of the kernel matrix
  *\return a kernel matirx will userd for convolution-based filter

@@ -127,6 +127,10 @@ FlashPhotoApp::~FlashPhotoApp(){
       }
     }
     if(toolList) delete toolList;
+    for(int i = 0; i < FilterFactory::getNumFilters(); i++){
+      delete m_filters[i];
+    }
+     
 }
 
 

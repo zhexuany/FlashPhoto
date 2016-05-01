@@ -10,6 +10,8 @@
 #include "PixelBuffer.h"
 FMotionBlur::FMotionBlur(){
 }
+FMotionBlur::~FMotionBlur(){
+}
 
 kernelType FMotionBlur::buildKernel(int radius){
   kernelType kernel = emptyFilter(radius);

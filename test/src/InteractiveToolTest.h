@@ -12,19 +12,25 @@
 class InteractiveToolTest : public CxxTest::TestSuite {
   PixelBuffer *buffer;
   ColorData* backgroundColor;
+  ColorData* color;
   const Mask * mask;
+  double _delta;
   int size;
 public:
   //declare a temporary Pixel buffer for testing
   void setUp(){
+    _delta = 0.001;
     size = 30;
-    backgroundColor = new ColorData(1, 1, 0.95);
-    buffer = new PixelBuffer(50, 50, ColorData(1, 1, 0.95));
+    backgroundColor = new ColorData(1, 1, 0.9);
+    buffer = new PixelBuffer(50, 50, ColorData(1, 1, 0.9));
+    color = new ColorData(0, 0, 0);
   }
 
   //delete buffer
   void tearDown(){
     delete buffer;
+    delete backgroundColor;
+    delete color;
   }
 
   void testBlur(){
@@ -52,15 +58,22 @@ public:
 
   void testPen(){
     //default backgroundColor data is (0, 0, 0)
-    DrawTool* pen = new Pen(backgroundColor, 3);
+    DrawTool* pen = new Pen(color, 3);
     mask = pen -> getMask();
+    //pen -> printfInfluence();
+    float** influence = mask -> getInfluence();
     TS_ASSERT_EQUALS(mask -> getHeight(), 3);
-    // apply mask at 25 25
-    pen -> paint(25, 25, 20, 20, buffer);
-    ColorData res = buffer -> getPixel(25, 25);
-    testColorData(res);
-    res = buffer -> getPixel(20, 20);
-}
+    // apply mask at 25 25 with radius 3
+    pen -> applyInfluence(25, 25, buffer);
+    for(int i = 0; i < mask -> getWidth()/2; i++){
+      for(int j = 0; j < mask -> getHeight()/2; j++){
+        ColorData currentColor = buffer -> getPixel(25 + i, 25 + j);
+        ColorData newColor =((*color)*influence[i][j])
+          + currentColor*(1 - influence[i][j]);
+        testColorData(currentColor, newColor);
+      }
+    }
+  }
 
   void testSparyCan(){
     DrawTool* sparyCan = new SprayCan(backgroundColor, 41);
@@ -97,16 +110,16 @@ public:
   void testMask(){
   }
 
-  void testColorData(ColorData res){
-    TS_ASSERT_EQUALS(backgroundColor -> getRed(), res.getRed());
-    TS_ASSERT_EQUALS(backgroundColor -> getBlue(), res.getBlue());
-    TS_ASSERT_EQUALS(backgroundColor -> getGreen(), res.getGreen());
+  void testColorData(ColorData src, ColorData dst){
+    TS_ASSERT_DELTA( src.getRed(), dst.getRed(), _delta);
+    TS_ASSERT_DELTA( src.getGreen(), dst.getGreen(), _delta);
+    TS_ASSERT_DELTA( src.getBlue(), dst.getBlue(), _delta);
   }
 
   void testColorData(){
-    TS_ASSERT_EQUALS(backgroundColor -> getRed(), 0);
-    TS_ASSERT_EQUALS(backgroundColor -> getBlue(), 0);
-    TS_ASSERT_EQUALS(backgroundColor -> getGreen(), 0);
+    TS_ASSERT_DELTA(backgroundColor -> getRed(), 1, _delta);
+    TS_ASSERT_DELTA(backgroundColor -> getGreen(), 1, _delta);
+    TS_ASSERT_DELTA(backgroundColor -> getBlue(), .9, _delta);
   }
 };
 #endif // __PENTEST_H

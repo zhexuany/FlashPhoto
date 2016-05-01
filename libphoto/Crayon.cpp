@@ -32,3 +32,7 @@ void Crayon::fillInfluence() {
     }
   }
 }
+
+string Crayon::getName(){
+  return "Crayon";
+}

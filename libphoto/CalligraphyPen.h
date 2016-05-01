@@ -10,6 +10,7 @@ class CalligraphyPen : public DrawTool {
   CalligraphyPen(ColorData* toolColor, int height, int width);
   ~CalligraphyPen();
   void fillInfluence();
+  string getName();
 };
 
 #endif // CALLIGRAPHYPEN_H

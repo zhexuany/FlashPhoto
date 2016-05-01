@@ -29,3 +29,7 @@ void WaterColor::fillInfluence(){
   }
 
 }
+
+string WaterColor::getName(){
+  return "WaterColor";
+}

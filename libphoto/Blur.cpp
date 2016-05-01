@@ -81,3 +81,7 @@ void Blur::applyInfluence(int x, int y, PixelBuffer* buffer){
     }
   }
 }
+
+string Blur::getName(){
+  return "Blur";
+}

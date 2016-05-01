@@ -1,6 +1,7 @@
 //
 //  MIAApp.h
 //  Originally created by the CSci-3081W TAs.
+//  Modified by Juhwan Park
 //
 
 
@@ -8,6 +9,7 @@
 #define MIAAPP_H
 
 #include "libphoto.h"
+#include "libphotogui.h"
 #include <iostream>
 #include <cmath>
 #include <deque>

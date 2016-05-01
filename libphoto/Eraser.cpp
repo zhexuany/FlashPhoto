@@ -46,3 +46,7 @@ void Eraser::applyInfluence(int x, int y, PixelBuffer* buffer){
     }
   }
 }
+
+string Eraser::getName(){
+  return "Eraser";
+}

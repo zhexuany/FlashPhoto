@@ -1,7 +1,7 @@
 //
 //  main.cpp
+//  Modified by Juhwan Park
 //
-
 
 #include "MIAApp.h"
 #include "libphoto.h"
@@ -61,8 +61,6 @@ int main(int argc, char* argv[]) {
       } else {
         isFile = 0;
       }
-      cout << "isFile: " << isFile << endl;
-
 
       // parsing options and setting the flag
       int iarg = 0;
@@ -71,10 +69,24 @@ int main(int argc, char* argv[]) {
       }
 
 
-      // TODO: Need to check isFile flag and if it is directory, then the effect of filter need to be applied to all of the files in the directory
       if (help_flag) {
-        cout << argv[0] <<"Command line mode usage: [target] [options] [amount(optional)] [target] : amount is required for certain filters" << endl;
-          // TODO: Making helpful messages
+        cout <<"Command line mode usage of " << argv[0] <<" [Target(optional)] [Options] [Amount(optional)] [Target(optional)]" << endl;
+        cout <<"-----------------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout <<"[Target]:                         <Directory of jpeg or png images> | <Jpeg or png image file> " << endl;
+        cout <<"                                  Second target should match with first target." << endl;
+        cout <<"                                  Ex) Dir : Dir or image : image" << endl;
+        cout <<"-----------------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout <<"[Options]:" << endl;
+        cout <<"-h:                               Print this help. [Target], [Amount] doesn't requird." << endl;
+        cout <<"-edgedetect:                      Finds edges in image and returns the result. [Amount] doesn't required." <<endl;
+        cout <<"-compare:                         Compare two target images and return 1 if the two images are identical. [Amount] doesn't requird." << endl;
+        cout <<"-sharpen <integer>:               Sharpen an image by <integer> value. " << endl;
+        cout <<"-thresh <float>:                  Threshold an image by <float> value." << endl;
+        cout <<"-quantize <integer>:              Quantize an image by <integer> value." << endl;
+        cout <<"-blur <float>:                    Blur an image by <float> value." << endl;
+        cout <<"-saturate <float>:                Saturate an image by <float> value." << endl;
+        cout <<"-multrgb <float>,<float>,<float>: Multiply an image by <r>,<g>,<b> value." << endl;
+        cout <<"-----------------------------------------------------------------------------------------------------------------------------------" << endl;
       }
       else if (edge_flag) {
           cout << "Edgedetect!" << endl;
@@ -128,9 +140,50 @@ int main(int argc, char* argv[]) {
       }
       else if (comp_flag) {
           cout << "Compare!" << endl;
-          secondArg = argv[3];
-          cout << "Second arg: " << secondArg<< endl;
-            // TODO: compare files
+          if (argc == 4) {
+              if (!isFile) {
+                  cout << "Directory cannot be compared"<< endl;
+              } else {
+                  secondArg = argv[3];
+                  if (!app->c_isValidImageFile(firstArg) || !app->c_isValidImageFile(secondArg)) {
+                      cout << "Input or Output file is not valid image file." << endl;
+                      exit(-1);
+                  }
+                  PixelBuffer *firstBuffer, *secondBuffer;
+                  firstBuffer = app->c_loadImage(firstArg);
+                  secondBuffer = app->c_loadImage(secondArg);
+
+                  int firstHeight, secondHeight, firstWidth, secondWidth;
+                  firstHeight = firstBuffer -> getHeight();
+                  secondHeight = secondBuffer -> getHeight();
+                  firstWidth = firstBuffer -> getWidth();
+                  secondWidth = secondBuffer -> getWidth();
+
+                  // Compare dimensions first to see if two image has same dimensions
+                  if (firstHeight != secondHeight || firstWidth != secondWidth) {
+                      cout << "Dimension dismatch." << endl;
+                      cout << "0" << endl;
+                      exit(0);
+                  }
+
+                  // Compare each pixel's r,g,b value to determine if two images identical.
+                  ColorData firstPixelColor, secondPixelColor;
+                  for(int i = 0; i < firstWidth; i++){
+                      for(int j = 0; j < firstHeight; j++){
+                          firstPixelColor = firstBuffer -> getPixel(i, j);
+                          secondPixelColor = secondBuffer -> getPixel(i, j);
+                          if (firstPixelColor.getRed() != secondPixelColor.getRed() || firstPixelColor.getGreen() != secondPixelColor.getGreen() || firstPixelColor.getBlue() != secondPixelColor.getBlue()) {
+                              cout << "R,G,B value dismatch." << endl;
+                              cout << "0" << endl;
+                              exit(0);
+                          }
+                      }
+                  }
+
+                  cout << "Images are identical in every pixel and dimension." << endl;
+                  cout << "1" << endl;
+              }
+          }
       }
       else if (sharpen_flag) {
           cout << "sharpen!" << endl;
@@ -473,7 +526,42 @@ int main(int argc, char* argv[]) {
           }
       }
       else {
-        // TODO: convert an image in the different format
+        if (argc == 3) {
+            if (!isFile) {
+                cout << "Multiple files in directory cannot be converted." << endl;
+            } else {
+                if(!app->c_isValidImageFile(firstArg)){
+                    cout << "Input image is not valid image file format." << endl;
+                } else {
+                    secondArg = argv[2];
+
+                    // Check first and second targets file format to see if they are identical
+                    // If identical, print error message and exit with -1.
+                    if (firstArg.find(".jpg") != string::npos || firstArg.find(".jpeg") != string::npos) {
+                        if (secondArg.find(".jpg") != string::npos || secondArg.find(".jpeg") != string::npos) {
+                            cout << "Cannot convert to same image file format." << endl;
+                            exit(-1);
+                        }
+                    } else {
+                        if (secondArg.find(".png") != string::npos) {
+                            cout << "Cannot convert to same image file format." << endl;
+                            exit(-1);
+                        }
+                    }
+
+                    if(!app->c_isValidImageFile(secondArg)){
+                        cout << "Output image is not valid image file format." << endl;
+                        exit(-1);
+                    }
+
+                    PixelBuffer *imageBuffer;
+                    imageBuffer = app->c_loadImage(firstArg);
+                    app->c_saveToFile(secondArg, imageBuffer);
+                }
+            }
+        } else {
+            cout << "Arguments are not matched"<< endl;
+        }
       }
       cout << "End of command line mode" << endl;
       delete app;

@@ -39,3 +39,7 @@ void Highlighter::applyInfluence(int x, int y, PixelBuffer* buffer){
       }
     }
 }
+
+string Highlighter::getName(){
+  return "Highlighter";
+}

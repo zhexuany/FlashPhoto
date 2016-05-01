@@ -12,6 +12,7 @@ class Stamp : public DrawTool {
   ~Stamp();
   void fillInfluence();
   void applyInfluence(int x, int y, PixelBuffer* buffer);
+  string getName();
 };
 
 #endif

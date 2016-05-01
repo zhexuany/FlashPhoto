@@ -10,6 +10,7 @@ public:
   void paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer);
   void applyInfluence(int x, int y, PixelBuffer* buffer);
   void fillInfluence();
+  string getName();
 private:
   bool compareColorData(ColorData x, ColorData y);
 };

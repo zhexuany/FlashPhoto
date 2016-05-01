@@ -7,6 +7,7 @@
 #define FLASHPHOTOAPP_H
 
 #include "libphoto.h"
+#include "libphotogui.h"
 #include <cmath>
 #include <iostream>
 
@@ -137,10 +138,8 @@ private:
         GLUI_Spinner *spinnerRed;
         GLUI_Spinner *spinnerGreen;
         GLUI_Spinner *spinnerBlue;
-
-
-
     } m_gluiControlHooks;
+
     int m_queueSize;
     std::deque<PixelBuffer*> undoQueue;
     std::deque<PixelBuffer*> redoQueue;

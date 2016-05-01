@@ -40,3 +40,6 @@ void SprayCan::fillInfluence(){
 
 }
 
+string SprayCan::getName(){
+  return "SprayCan";
+}

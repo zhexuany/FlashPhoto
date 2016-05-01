@@ -31,3 +31,7 @@ void Pen:: fillInfluence(){
     }
   }
 }
+
+string Pen::getName(){
+  return "Pen";
+}

@@ -129,8 +129,9 @@ int main(int ac, char* av[]) {
         // if the input is just a file, then return itself
         vector<string> inputFiles = getFilesFromPath(input);
         //create output directories
-        createDirs(output);
         bool isDirectory = (inputFiles.size() > 1) ? true : false;
+        if(isDirectory)
+          createDirs(output);
         for(auto file : inputFiles){
           //need read file to commApp first
           commApp -> readFile(file);

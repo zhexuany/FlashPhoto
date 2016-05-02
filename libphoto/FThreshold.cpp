@@ -11,6 +11,9 @@
 FThreshold::FThreshold(){
 }
 
+FThreshold::~FThreshold(){
+}
+
 void FThreshold::applyFilter(PixelBuffer * imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();

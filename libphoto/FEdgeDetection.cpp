@@ -8,6 +8,9 @@
 FEdgeDetection::FEdgeDetection(){
 }
 
+FEdgeDetection::~FEdgeDetection(){
+}
+
 kernelType FEdgeDetection::buildKernel(int radius){
   setFilterParameter(size);
   kernelType kernel(size, kernelRow(size));

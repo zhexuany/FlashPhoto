@@ -52,6 +52,7 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
     }
   }
   newImageBuffer -> copyPixelBuffer(newImageBuffer, imageBuffer);
+  delete newImageBuffer;
 }
 
 kernelType FBlur::emptyFilter(int radius){

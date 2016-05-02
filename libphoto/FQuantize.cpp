@@ -8,9 +8,8 @@
 #include "FQuantize.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
-FQuantize::FQuantize(){
-}
-
+FQuantize::FQuantize(){}
+FQuantize::~FQuantize(){}
 void FQuantize::applyFilter(PixelBuffer* imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();

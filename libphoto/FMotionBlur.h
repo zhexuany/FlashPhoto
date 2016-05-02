@@ -17,7 +17,7 @@ public:
   ~FMotionBlur();
   std::string getName();
   kernelType buildKernel(int radius);
-private:
+
   enum MotionBlurDirections {
     DIR_N_S,
     DIR_E_W,

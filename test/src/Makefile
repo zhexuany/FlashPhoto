@@ -42,4 +42,4 @@ test_mia_command_line.cpp: $(TEST_MIA_COMMAND_TOOL)
 
 
 %: %.cpp
-	$(CXXC) $(CPPFLAGS) $(INCLUDE) $(LINK_LIBS) -o $@ $< $(LDFLAGS)
+	$(CXXC) $(CPPFLAGS) $(INCLUDE) -o $@ $< $(LINK_LIBS) $(LDFLAGS)

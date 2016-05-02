@@ -20,7 +20,10 @@ TEST_INTERACTIVE_TOOL = InteractiveToolTest.h
 TEST_FILTER_TOOL = FilterToolTest.h
 TEST_MIA_COMMAND_LINE = MIACommandLineTest.h
 
-all: $(TARGETS) run
+all: setup $(TARGETS) run
+
+setup:
+	mkdir -p output
 
 clean:
 	rm -f *~ *.o *.obj $(TARGETS)

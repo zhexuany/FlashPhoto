@@ -62,7 +62,8 @@ void createDirs(string output){
   for(size_t i = 1; i < strs.size(); i++){
     fs::create_directory(strs.at(i - 1));
   }
-  //fs::create_directory(strs.at(0));
+  if(!isValidImageFile(strs.at(0)))
+    fs::create_directory(strs.at(0));
 }
 //split input as token "/" if size is 1 then input is file, so does outputPath
 string getOutputFilePath(string input, string outputPath){
@@ -182,12 +183,13 @@ int main(int ac, char* av[]) {
 
           if(vm.count("compare")){
             //need check input or output are file or not
-            if(fs::is_regular_file(fs::path(file))
-               && fs::is_regular_file(fs::path(output)))
-              cout << commApp -> handleCompare(file, output) << endl;
-            else {
-              cerr << "ERROR: input and output are not regular file" << endl;
-            }
+            //sometime, outfile is not existed yet, we can think it 
+            // if(fs::is_regular_file(fs::path(file))
+               // && (fs::is_regular_file(fs::path(output))) || !fs::exists(fs::path(output)))
+            cout << commApp -> handleCompare(file, output) << endl;
+            // else {
+              // cerr << "ERROR: input and output are not regular file" << endl;
+            // }
           }
           if(isDirectory)
             commApp -> writeFile(getOutputFilePath(file, output));

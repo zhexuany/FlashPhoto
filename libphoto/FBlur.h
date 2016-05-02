@@ -20,7 +20,7 @@ class PixelBuffer;
 class FBlur : public Filter{
 public:
   FBlur();
-  virtual ~FBlur();
+  ~FBlur();
   void applyFilter(PixelBuffer* imageBuffer);
   std::string getName();
   virtual kernelType buildKernel(int radius);

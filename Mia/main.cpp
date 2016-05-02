@@ -164,7 +164,7 @@ int main(int ac, char* av[]) {
 
           if(vm.count("thresh")){
             float para = vm["thresh"].as<float>();
-            cout << "Threshold enabled. Level is"<< para << endl;
+            cout << "Threshold enabled. Level is "<< para << endl;
             commApp -> handleThresh(para);
           }
 

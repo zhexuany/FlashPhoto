@@ -62,7 +62,7 @@ void createDirs(string output){
   for(size_t i = 1; i < strs.size(); i++){
     fs::create_directory(strs.at(i - 1));
   }
-  fs::create_directory(strs.at(0));
+  //fs::create_directory(strs.at(0));
 }
 //split input as token "/" if size is 1 then input is file, so does outputPath
 string getOutputFilePath(string input, string outputPath){
@@ -130,8 +130,7 @@ int main(int ac, char* av[]) {
         vector<string> inputFiles = getFilesFromPath(input);
         //create output directories
         bool isDirectory = (inputFiles.size() > 1) ? true : false;
-        if(isDirectory)
-          createDirs(output);
+        createDirs(output);
         for(auto file : inputFiles){
           //need read file to commApp first
           commApp -> readFile(file);

@@ -8,11 +8,10 @@ CPPFLAGS = -Wall -W -I. -I../cxxtest -std=c++11
 PHOTO_PATH = ../../libphoto
 PNG_PATH = ../../libpng
 JPEG_PATH = ../../libjpeg
-INCLUDE += -I$(PHOTO_PATH)/include
-# -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
-LINK_LIBS += -L$(PHOTO_PATH)/lib/  -L$(PNG_PATH)/lib/  -L$(JPEG_PATH)/lib/
-LDFLAGS += -lpng -lz -ljpeg -lphoto
-PHOTO_LIB = $(PHOTO_PATH)/lib/libphoto.a
+INCLUDE += -I$(PHOTO_PATH)/include -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
+LINK_LIBS += -L$(PHOTO_PATH)/lib/  -lphoto -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg
+LDFLAGS += -lz
+
 TESTGEN = ../cxxtest/bin/cxxtestgen
 
 #TODO need add mia_command_tool

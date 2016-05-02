@@ -73,19 +73,19 @@ void PixelBuffer::setBackgroundColor(ColorData* color) {
     m_backgroundColor = new ColorData(*color);
 }
 
-bool operator== (const PixelBuffer& a, const PixelBuffer& b){
-  if(b.getWidth() != a.getWidth()) return false;
-  if(b.getHeight() != a.getHeight()) return false;
-  for(int i = 0; i < b.getWidth(); i++){
-    for(int j = 0; j < b.getWidth(); j++){
-      if(b.getPixel(i, j) != a.getPixel(i, j))
+bool PixelBuffer::operator == (const PixelBuffer& a) const{
+  if(this -> getWidth() != a.getWidth()) return false;
+  if(this -> getHeight() != a.getHeight()) return false;
+  for(int i = 0; i < this -> getWidth(); i++){
+    for(int j = 0; j < this -> getWidth(); j++){
+      if(this -> getPixel(i, j) != a.getPixel(i, j))
         return false;
     }
   }
   return true;
 }
-bool operator!= (const PixelBuffer& a, const PixelBuffer& b){
-  return !(b == a);
+bool PixelBuffer::operator != (const PixelBuffer& a) const{
+  return !(*this == a);
 }
 
 void PixelBuffer::fillPixelBufferWithColor(ColorData color) {

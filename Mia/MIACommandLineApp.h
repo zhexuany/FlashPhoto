@@ -24,7 +24,7 @@ public:
   void handleBlur(float parameter);
   void handleSatur(float parameter);
   void handleThresh(float parameter);
-  void handleSharpen(float parameter);
+  void handleSharpen(int parameter);
   int handleCompare(string input, string ouput);
   void handleMultgb(ColorData color);
   void handleQuant(int parameter);

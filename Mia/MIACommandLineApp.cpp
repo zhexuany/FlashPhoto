@@ -55,7 +55,7 @@ void MIACommandLineApp::handleSatur(float parameter){
 }
 
 
-void MIACommandLineApp::handleSharpen(float parameter){
+void MIACommandLineApp::handleSharpen(int parameter){
   Filter *sharpen = new FSharpen();
   sharpen -> setFilterParameter(parameter);
   sharpen -> applyFilter(m_buffer);

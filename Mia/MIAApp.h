@@ -31,20 +31,6 @@ public:
     void display();
     void gluiControl(int controlID);
 
-    // Commandline mode functions
-    PixelBuffer* c_loadImage(const std::string & fileName);
-    void c_saveToFile(const std::string & fileName, PixelBuffer* imageBuffer);
-    bool c_isValidImageFile(const std::string & name);
-    std::string c_getImageNamePlusSeqOffset(const std::string & currentFileName, int offset);
-
-    void c_applyFilterEdgeDetect(PixelBuffer* imageBuffer);
-    void c_applyFilterSharpen(PixelBuffer* imageBuffer, int amount);
-    void c_applyFilterThreshold(PixelBuffer* imageBuffer, double amount);
-    void c_applyFilterMultiplyRGB(PixelBuffer* imageBuffer, double r, double g, double b);
-    void c_applyFilterBlur(PixelBuffer* imageBuffer, double amount);
-    void c_applyFilterQuantize(PixelBuffer* imageBuffer, int amount);
-    void c_applyFilterSaturate(PixelBuffer* imageBuffer, double amount);
-
 private:
 
     // GLUI INTERFACE ELEMENTS

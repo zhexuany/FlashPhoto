@@ -72,13 +72,13 @@ echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1
 
 echo -e "\n"
 echo TEST compare flag
-echo ./Mia -i brainstack/mrbrain-8bit023.png -o brainstack/mrbrain-8bit023.png -c
-./Mia -i brainstack/mrbrain-8bit023.png -o brainstack/mrbrain-8bit023.png -c
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/mrbrain-8bit023.png -c
+./Mia -i brainstack/mrbrain-8bit023.png -o output/mrbrain-8bit023.png -c
 
 echo -e "\n"
 echo TEST compare flag
-echo ./Mia -i brainstack/mrbrain-8bit023.png -o brainstack/mrbrain-8bit023.png -c
-./Mia -i brainstack/mrbrain-8bit023.png -o brainstack/mrbrain-8bit024.png -c
+echo ./Mia -i brainstack/mrbrain-8bit024.png -o output/mrbrain-8bit023.png -c
+./Mia -i brainstack/mrbrain-8bit024.png -o output/mrbrain-8bit023.png -c
 
 
 echo -e "\n"

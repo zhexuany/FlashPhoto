@@ -171,5 +171,17 @@ public:
     TS_ASSERT_DELTA(backgroundColor -> getGreen(), 1, _delta);
     TS_ASSERT_DELTA(backgroundColor -> getBlue(), .9, _delta);
   }
+
+  void testColorDataOperator(){
+    ColorData a = ColorData();
+    ColorData b = ColorData();
+    TS_ASSERT_EQUALS(a, b);
+  }
+
+  void testPixelBuffer(){
+    PixelBuffer a = PixelBuffer(80, 80, ColorData());
+    PixelBuffer b = PixelBuffer(80, 80, ColorData());
+    TS_ASSERT_EQUALS(a, b);
+  }
 };
 #endif // __PENTEST_H

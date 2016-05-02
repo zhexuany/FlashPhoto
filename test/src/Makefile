@@ -32,7 +32,7 @@ clean:
 run:
 	./test_interactive_tool
 	./test_filter_tool
-	./test_mia_command_line
+	./test_mia_command_line.sh
 
 test_interactive_tool.cpp: $(TEST_INTERACTIVE_TOOL)
 	$(TESTGEN) -o $@ --error-printer $(TEST_INTERACTIVE_TOOL)

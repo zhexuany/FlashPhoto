@@ -6,9 +6,9 @@ all: build
 
 build:
 	cd $(PHOTO_PATH); make
-	cd  $(TEST_PATH); make
 	cd $(FLASH_PATH); make
 	cd $(MIA_PATH); make
+	cd $(TEST_PATH); make
 
 clean:
 	cd $(PHOTO_PATH); make clean

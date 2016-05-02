@@ -25,6 +25,7 @@ libphoto/lib/
 libphoto/build/
 FlashPhoto/FlashPhoto
 Mia/Mia
+test/src/output
 !Makefile
 *.o
 *.*~

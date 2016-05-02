@@ -43,6 +43,9 @@ public:
     static void copyPixelBuffer(PixelBuffer sourceBuffer, PixelBuffer * destinationBuffer);
     void setBackgroundColor(ColorData* color);
 
+	friend bool operator== (const PixelBuffer& a, const PixelBuffer& b);
+	friend bool operator!= (const PixelBuffer& a, const PixelBuffer& b);
+
 private:
 
 	// Array of pixel colors

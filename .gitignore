@@ -30,7 +30,7 @@ test/src/test_filter_tool
 test/src/test_filter_tool.cpp
 test/src/test_interactive_tool
 test/src/test_interactive_tool.cpp
-
+text/cxxtest/python/cxxtest/*.pyc
 !Makefile
 *.o
 *.*~

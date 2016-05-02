@@ -82,3 +82,13 @@ ColorData operator- (const ColorData& a, const ColorData& b) {
     return ColorData(a.m_red - b.m_red, a.m_green - b.m_green, a.m_blue - b.m_blue, a.m_alpha - b.m_alpha);
 }
 
+bool operator== (const ColorData& a, const ColorData& b){
+  return (b.getRed() == a.getRed()) &&
+    (b.getGreen() == a.getGreen())&&
+    (b.getBlue() == a.getBlue());
+}
+
+bool operator!= (const ColorData& a, const ColorData& b){
+  return !(b == a);
+}
+

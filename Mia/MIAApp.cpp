@@ -1,9 +1,3 @@
-//
-//  MIAApp.cpps
-//  Originally created by the CSci-3081W TAs.
-//  Modified by Juhwan Park
-//
-
 #include "MIAApp.h"
 #include <sstream>
 
@@ -100,6 +94,9 @@ MIAApp::~MIAApp()
       }
     }
     if(toolList) delete toolList;
+    for(int i = 0; i < FilterFactory::getNumFilters(); i++){
+      delete m_filters[i];
+    }
 }
 
 

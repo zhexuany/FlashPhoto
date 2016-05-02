@@ -36,7 +36,9 @@ GLUI_PATH = ../glui
 PNG_PATH = ../libpng
 JPEG_PATH = ../libjpeg
 INCLUDE += -I$(GLUI_PATH)/include -I$(PHOTO_PATH)/include -I$(PNG_PATH)/include -I$(JPEG_PATH)/include
-LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PHOTO_PATH)/lib/ -lphoto -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg -lz
+LINK_LIBS +=  -L$(GLUI_PATH)/lib/ -lglui -lpthread -L$(PHOTO_PATH)/lib/ -lphoto -L$(PNG_PATH)/lib/ -lpng -L$(JPEG_PATH)/lib/ -ljpeg -lz  -lboost_program_options -lboost_filesystem -lboost_system
+
+
 GLUI_LIB = $(GLUI_PATH)/lib/libglui.a
 PNG_LIB = $(PNG_PATH)/lib/libpng.a
 JPEG_LIB = $(JPEG_PATH)/lib/libjpeg.a

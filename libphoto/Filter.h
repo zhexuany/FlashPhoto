@@ -14,6 +14,8 @@
 class PixelBuffer;
 class Filter {
 public:
+  Filter(){};
+  virtual ~Filter(){};
   virtual void applyFilter(PixelBuffer* imageBuffer) = 0;
   virtual std::string getName() = 0;
   virtual void setFilterParameter(float parameter){ f_parameter = parameter;}

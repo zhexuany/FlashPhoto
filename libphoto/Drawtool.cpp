@@ -78,8 +78,7 @@ void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
     float distance = sqrt(std::abs(pow(x-prevX, 2) + pow(y-prevY,2)));
     float xDiff = (x-prevX)/distance;
     float yDiff = (y-prevY)/distance;
-    int i;
-    for (i = 0; i < distance; i++) {
+    for (int i = 0; i < distance; i++) {
         applyInfluence(xIncrement, yIncrement, buffer);
         xIncrement += xDiff;
         yIncrement += yDiff;

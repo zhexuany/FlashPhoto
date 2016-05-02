@@ -8,6 +8,8 @@
 #include "FSaturation.h"
 FSaturation::FSaturation(){
 }
+FSaturation::~FSaturation(){
+}
 
 void FSaturation::applyFilter(PixelBuffer* imageBuffer){
   int width = imageBuffer -> getWidth();

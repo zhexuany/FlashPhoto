@@ -19,24 +19,19 @@
       <p> The part of iteration 3 that I wrote that I tried to put effort on was the Mia.
         Mia can be used to apply every filter FlashPhoto previously supports to single image file or stack of image files, and also, it has command line mode without opening GUI.
         Since Mia is used for medical image analysis, it will usually deal with a stack of CT image files. Thus, both modes will be very useful to analyze and handle medical images effectively.
-        </p>
-      <p><img class="imgleft" src="../files/main_code.png" width="400" height="600" alt="" />
-        This snippet is the main code for Mia, which is for the parsing the command line arguments.
- I decided to use getopt functions which automate some of the chore involved in parsing typical Unix command line options. With this function,
-  I was able to parse options passed by a user and set the appropriate flag to decide which function should Mia use to handle target image(s).
-  Since we are only using long option names for each filter, I used getopt_long_only to handle every filter options appropriately.  </p>
+      </p>
+      <p><img class="imgleft" src="../files/Mia_tools.png" width="550" height="600" alt="" />
+        This snippet is the code from MIAAPP.cpp, which I refactored and implemented every functionality for Mia.
+        I hardcoded the pen tool to be red pen tool by passing red RGB color which is useful for annotating medical images.
+        Also, I hardcoded the stamp function to make arrow tools to only stamp given arrow marker.png file.With this hardcoded stamp tool, I was able to make a red arrow tool for annotating medical images.
+        By hardcoding some functionality into Mia, Mia will contain a subset of tools and filters which are supported by FlashPhoto.
+      </p>
       </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
-      <p> This snippet is the main code for Mia, which is help messages if user types -h option to see how to use command line mode of Mia.
-        If you see the code, it uses help_flag to see if the flag is set by the getopt_long_only function which used to parse command line arguments passed by a user.
-        Once user typed -h option, the getopt_long_only function will parse the arguments and set help_flag as 1.
-        After parsing and setting the flag done, it will pass each flag's functionality of Mia and do appropriate actions.
-        In this case, every help messages will be printed on the bash shell to address how to use Mia's command line mode.
-      </p>
-      <img class="imgleft" src="../files/help_message.png" width="900" height="300" alt="" />
-        </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-      <p>This screenshot is the result of running command line mode with -h flag on the bash shell.</p>
-      <p><img class="imgleft" src="../files/test_command.png" width="900" height="300" alt="" /><p/>
+      <p>In this way, these subset tools contain hardcoded image pixel buffer from marker.png which is given the file, and ready to stamp a red arrow on the image file based on mouse pointer.
+        Also, the pen tool will be initialized as the red pen to be useful for annotating medical images.
+        This screenshot is the result of running Mia's arrow and pen tool.</p>
+      <p><img class="imgleft" src="../files/test_Mia.png" width="700" height="300" alt="" /><p/>
     </div>
   </div>
   <div id="footer"> All contents of Author: Juhwan Park</a><br />

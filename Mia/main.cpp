@@ -81,17 +81,16 @@ int main(int ac, char* av[]) {
     delete app;
   } else {
     //enter command line mode
-
     try{
       po::options_description desc("Allowed options");
       desc.add_options()
         ("help,h", "print help message")
-        ("input,i", po::value<string>() -> required(), "Specified input file/directory path")
-        ("output,o", po::value<string>() -> required(),"Specified output file/directory path")
+        ("input,i", po::value<string>(), "Specified input file/directory path")
+        ("output,o", po::value<string>(), "Specified output file/directory path")
         ("edgedetect,e", "Detect edge of a picture")
-        ("compare,c", "Compare two picture.")
+        ("compare,c", "Compare two pictures. 1 means identical, 0 means different")
         ("sharpen", po::value<int>(), "Sharpen a picture or directory")
-        ("thresh,t", po::value<int>(), "Threshold an image by <float> value")
+        ("thresh,t", po::value<float>(), "Threshold an image by <float> value")
         ("quantize,q", po::value<int>(), "Quantize an image by <integer> value.")
         ("blur,b", po::value<float>(), "Blur an image by <float> value" )
         ("saturate", po::value<float>(), "Saturate an image by <float> value")
@@ -176,7 +175,7 @@ int main(int ac, char* av[]) {
           }
 
           if(vm.count("sharpen")){
-            float para = vm["sharpen"].as<float>();
+            int para = vm["sharpen"].as<int>();
             cout << "Sharpen enabled. Level is " << para << endl;
             commApp -> handleSharpen(para);
           }
@@ -200,7 +199,9 @@ int main(int ac, char* av[]) {
         cerr << "ERROR: input and output file/directory must be specified" << endl;
       }
     } catch(const po::required_option& e){
-      throw e;
+      string errorINFO = e.what();
+      boost::algorithm::replace_all (errorINFO, "--", "-");
+      cerr << errorINFO << endl;
       return 0;
     } catch(const po::error& e){
       string errorINFO = e.what();

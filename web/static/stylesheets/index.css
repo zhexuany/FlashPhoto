@@ -1,0 +1,21 @@
+#experience {
+	width: 100%;
+	text-align: center;
+}
+#experience button {
+	border-radius: 15px;
+	border: none;
+	padding: 10px;
+	width: 100px;
+	background: lightblue;
+	transition: all .5s ease;
+}
+.center {
+	text-align: center;
+}
+#experience button:hover {
+	background: DarkSeaGreen;
+}
+#experience button:focus {
+	outline: 0;
+}

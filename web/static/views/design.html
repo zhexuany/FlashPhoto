@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Design and Coding Style Guide</title>
+	<link class="page" rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css">
+
+</head>
+
+<body>
+
+
+	<div class="content">
+		<nav>
+			<a href="../../index.html" class="page"> Home </a> |
+			<a href="../views/usersupport.html" class="page"> User Support </a> |
+			<a href="../views/developersupport.html" class="page"> Developer Support</a>
+		</nav>
+	</div>
+
+	<div class="content">
+		<h1>Design and Coding Style Guide</h1>
+		<h2>Project Design</h2>
+		<p>This project follows standard coding practices that include, but are not limited to, inheritance, abstraction, encapsulation, and polymorphism. Try to keep a design oriented mind when adding new code to the repository. For a full overview of the current project design please see the <a target="_blank" href="../../../designDocumentation/DesignExport.jpg"> UML diagram.</a></p>
+		<p>The major class is FlashPhotoApp which contains the main handling logic for the program. This class handles all of our filters, tools, and UI interactions. After parsing the information from the UI it then hands off the hard work to the libphoto library. </p>
+		<p>Each class in the library is either an interface for a toolset (filter/brush), or a class that inherits from these interfaces. Please reference the UML for any questions on the structure of these classes.</p>
+		<h2>Adding a new brush</h2>
+		<p>Adding a new brush is fairly simple. The brushes are built off of a mask structure, which is an MxN matrix, that is applied from the center of the click. This mask is made on creation of the object by a call to new coolTool(color, width, height). In the inherited class coolTool you will then specify a function called FillInfluence. This function will create the MxN matrix, and tell it the values for the intensity the color should be applied at each matrix-relative point. You will then have to add the tool to the UI and the ToolList in FlashPhotoApp. To see how to add it to the UI please see the section "Adding to the UI". Reference any of the preexisting classes that inherit from DrawTool for more information.</p>
+		<h2>Adding a new filter</h2>
+		<p>Much like adding a brush, adding a filter is based off of an inherited class structure. They all inherit from Filter.h. A new filter will need to have a function called ApplyFilter which contains the logic for sweeping through the pixelBuffer and applying logic to each pixel. The logic will vary depending on the filter being implemented. This filter will then need to be added to the FilterFactory, as well as to the UI. To see how to add it to the UI please see the section "Adding to the UI".</p>
+		<h2>Adding to the UI</h2>
+		<p>There are two ways of adding something to the UI. For a brush add the brush to the updateCurrentTool() call back handler. For a filter add it to the gluiControl() callback function. Also be sure to add the filter to the UI_CONTROL_TYPE enum and any brush to the ToolType enum.</p>
+		<h2>Coding Style</h2>
+		<p>There are a few strict rules for coding on this project, outside of that the best design practice is preferred. For any conditional statements (eg, if, for, while) this is the preferred format:
+			<br>
+			<br>if (statement) {
+			<br> &nbsp;&nbsp;&nbsp;&nbsp;//code
+			<br> } else {
+			<br> &nbsp;&nbsp;&nbsp;&nbsp;//code
+			<br> }
+			<br>
+			<br> The preferred comment structure should precede every function as follows:
+			<br>
+			<br> /* Function description
+			<br> * Parameter description
+			<br> * Return description */
+			<br>
+			<br> All variable and function names should be camelCase. For all other practices please use common sense and best practices.
+		</p>
+	</div>
+
+	<div class="footer">
+		<!-- You can change the copyright! -->
+		<span class="copyright">&copy; 2015, CSCI 3081 Guru</span>
+	</div>
+
+
+</body>
+
+</html>

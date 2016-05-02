@@ -179,9 +179,14 @@ public:
   }
 
   void testPixelBuffer(){
-    PixelBuffer a = PixelBuffer(80, 80, ColorData());
-    PixelBuffer b = PixelBuffer(80, 80, ColorData());
-    TS_ASSERT_EQUALS(a, b);
+    PixelBuffer* a = new PixelBuffer(80, 80, ColorData());
+    PixelBuffer* b = new PixelBuffer(80, 80, ColorData());
+    if(a == b)
+      TS_ASSERT_EQUALS(1, 1);
+    else
+      TS_ASSERT_EQUALS(1, 0);
+    delete a;
+    delete b;
   }
 };
 #endif // __PENTEST_H

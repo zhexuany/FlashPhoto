@@ -59,7 +59,7 @@ vector<string> getFilesFromPath(string input){
 void createDirs(string output){
   vector<string> strs;
   boost::split(strs, output, boost::is_any_of("/"));
-  for(int i = 1; i < strs.size(); i++){
+  for(size_t i = 1; i < strs.size(); i++){
     fs::create_directory(strs.at(i - 1));
   }
   fs::create_directory(strs.at(0));

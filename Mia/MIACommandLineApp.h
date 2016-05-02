@@ -10,8 +10,8 @@ public:
   ~MIACommandLineApp();
   PixelBuffer* readFile(string file){
     int height, width;
-    //if(m_buffer != nullptr)
-    // delete m_buffer;
+    if(m_buffer != nullptr)
+    delete m_buffer;
     m_buffer = m_loader -> loadimage(file, height, width, ColorData());
     return m_buffer;
   }

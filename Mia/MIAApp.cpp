@@ -46,13 +46,13 @@ void MIAApp::initDrawTool(){
   toolList = new DrawTool*[1];
   ImageHandler *loader = new ImageHandler();
   int Height, Width;
-  ColorData* color = new ColorData(1,0,0);
+  ColorData* red = new ColorData(1,0,0);
+  ColorData dark = ColorData(0, 0, 0);
   PixelBuffer* init = loader->loadimage("marker.png", Height, Width, m_displayBuffer->getBackgroundColor());
   m_stampHeight = Height;
   m_stampWidth = Width;
-
-  m_tool = new DrawTool(color, 0, 0);
-  toolList[0] = new Pen(color, 3);
+  m_tool = new DrawTool(red, 0, 0);
+  toolList[0] = new Pen(red, 3);
   toolList[1] = new Stamp(init, m_stampWidth, m_stampHeight);
   m_tool = toolList[0];
 }

@@ -27,14 +27,17 @@ void Stamp::applyInfluence(int x, int y, PixelBuffer* buffer){
   int height = mask -> getHeight();
   int width = mask -> getWidth();
   int bufferHeight = buffer -> getHeight();
-  ColorData currentPixelColor;
+  ColorData stampPixelColor ;
+  //x and y is buffer location
+  //i  and j are the location of mask
   x -= width/2;
   y = bufferHeight - y - height/2;
-
   for(int i = 0; i < width; i++){
     for(int j = 0; j < height; j++){
-      currentPixelColor = imageBuffer -> getPixel(i,j);
-      buffer -> setPixel(x + i, y + j, currentPixelColor);
+      stampPixelColor = imageBuffer -> getPixel(i,j);
+      float alpha = stampPixelColor.getAlpha();
+      ColorData currentPixelColor = buffer -> getPixel(x + i, y + j);
+        buffer -> setPixel(x + i, y + j, stampPixelColor*alpha + currentPixelColor*(1 - alpha));
     }
   }
 }

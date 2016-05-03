@@ -21,7 +21,7 @@ private :
   bool isValidImageFileName(const std::string & name);
   bool isValidFile(const std::string & name);
   bool hasSuffix(const std::string & str, const std::string & suffix);
-  void savepng(FILE* file, int height, int width, PixelBuffer *buffer);
+  void savepng(const std::string fileName, int height, int width, PixelBuffer *buffer);
   void savejpg(FILE* infile, int height, int width, PixelBuffer *buffer);
   PixelBuffer* loadpng(const std::string fileName, int &height, int &width, ColorData backgroundColor);
   PixelBuffer* loadjpg(FILE *infile, int &height, int &width, ColorData backgroundColor);

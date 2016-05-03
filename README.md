@@ -7,6 +7,10 @@ Build the code by running
 
 `$ make`
 
+To run tests type
+
+`$ make testcase`
+
 Section #: 13
 
 Group #: TwelfthNight

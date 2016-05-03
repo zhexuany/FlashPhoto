@@ -10,7 +10,6 @@ sleep 1
 echo -e "\n"
 cd $MIA_PATH;
 echo Now It is time to build Mia from source
-cd $MIA_PATH;
 make
 
 echo -e "\n"
@@ -156,24 +155,32 @@ echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -q 8.0
 echo -e "\n"
 echo compare flag need two image file both existed
 echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/100.png -c
-./Mia brainstack/mrbrain-8bit023.png -o output/100.png -c
+./Mia -i brainstack/mrbrain-8bit023.png -o output/100.png -c
 
+
+sleep 2
 echo -e "\n"
 echo compare flag specified. Other flag does not work
 echo copy file first
 echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png
-./Mia brainstack/mrbrain-8bit023.png -o output/1.png
+./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png
 sleep 1
 echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -c -e
-./Mia brainstack/mrbrain-8bit023.png -o output/100.png -c -e
+./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -c -e
 echo EXPECTED 1
 
+
+sleep 2
 echo -e "\n"
 echo test without input or output path
 echo ./Mie -e
+./Mie -e
 echo ./Mia -i brainstack
+./Mia -i brainstack
 echo ./Mia -o output
+./Mia -o output
 
+echo -e "\n"
 echo END of test case.
 
 

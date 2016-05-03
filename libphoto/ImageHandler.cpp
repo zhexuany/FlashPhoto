@@ -97,7 +97,7 @@ PixelBuffer* ImageHandler::loadpng(const std::string fileName, int &Height, int 
         image.format = PNG_FORMAT_RGBA;
         buffer = new png_byte[PNG_IMAGE_SIZE(image)];
         Height = image.height;
-		Width = image.width;
+        Width = image.width;
         if (buffer && png_image_finish_read(&image, NULL, buffer, 0, NULL)) {
             
             for (int y = 0; y < (int)image.height; y++) {

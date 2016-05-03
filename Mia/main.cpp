@@ -31,6 +31,7 @@ ostream& operator<<(ostream& os, const vector<T>& v){
   copy(v.begin(), v.end(), ostream_iterator<T>(os, " "));
   return os;
 }
+
 bool hasSuffix(const string& str, const string& suffix){
   return str.find(suffix,str.length()-suffix.length()) != string::npos;
 }

@@ -40,11 +40,11 @@ public:
 
     // A static method to copy one pixel buffer to another
 	static void copyPixelBuffer(PixelBuffer * sourceBuffer, PixelBuffer * destinationBuffer);
-    static void copyPixelBuffer(PixelBuffer sourceBuffer, PixelBuffer * destinationBuffer);
-    void setBackgroundColor(ColorData* color);
+  static void copyPixelBuffer(PixelBuffer sourceBuffer, PixelBuffer * destinationBuffer);
+  void setBackgroundColor(ColorData* color);
 
-	bool operator == (const PixelBuffer& a) const;
-	bool operator != (const PixelBuffer& a) const;
+  friend bool operator== (const PixelBuffer& a, const PixelBuffer& b);
+	friend bool operator!= (const PixelBuffer& a, const PixelBuffer& b);
 
 private:
 

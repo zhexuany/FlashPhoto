@@ -124,7 +124,11 @@ int main(int ac, char* av[]) {
       if(vm.count("input") && vm.count("output")) {
         string input = vm["input"].as<string>();
         string output = vm["output"].as<string>();
-
+        // check input file exist or not
+        if(!fs::exists(fs::path(input))){
+          cerr << "ERROR. File or directory: "+ input + " does not existed" << endl;
+          return 0;
+        }
         //If the input is directory, call this function to get all files in that
         //directory.
         // if the input is just a file, then return itself
@@ -134,67 +138,73 @@ int main(int ac, char* av[]) {
         createDirs(output);
         for(auto file : inputFiles){
           //need read file to commApp first
-          commApp -> readFile(file);
-
-          if(vm.count("multrgb")){
-            vector<float> rgbs = vm["multrgb"].as<vector<float>>();
-            if(rgbs.size() != 3) {
-              cerr << "ERROR: Illgeal usage. Need 3 float, but provided "
-                   << rgbs.size() << " parameters" << endl;
+          if(vm.count("compare")){
+            if(!fs::exists(fs::path(output))){
+              cerr << "ERROR. File or directory: "+ output + " does not existed" << endl;
               return 0;
             }
-            ColorData color = ColorData(rgbs.at(0), rgbs.at(1) , rgbs.at(2));
-            commApp -> handleMultgb(color);
-          }
-
-          if(vm.count("edgedetect")){
-            commApp -> handleEdgeDetect();
-          }
-
-          if(vm.count("quantize")){
-            int para = vm["quantize"].as<int>();
-            cout << "quantize enabled. Level is " << para << endl;
-            commApp -> handleQuant(para);
-          }
-
-          if(vm.count("blur")){
-            float para = vm["blur"].as<float>();
-            cout << "blur enabled. Level is " << para << endl;
-            commApp -> handleBlur(para);
-          }
-
-          if(vm.count("thresh")){
-            float para = vm["thresh"].as<float>();
-            cout << "Threshold enabled. Level is "<< para << endl;
-            commApp -> handleThresh(para);
-          }
-
-          if(vm.count("saturate")){
-            float para = vm["saturate"].as<float>();
-            cout << "Saturation enabled. Level is " << para << endl;
-            commApp -> handleSatur(para);
-          }
-
-          if(vm.count("sharpen")){
-            int para = vm["sharpen"].as<int>();
-            cout << "Sharpen enabled. Level is " << para << endl;
-            commApp -> handleSharpen(para);
-          }
-
-          if(vm.count("compare")){
             //need check input or output are file or not
-            //sometime, outfile is not existed yet, we can think it 
-            // if(fs::is_regular_file(fs::path(file))
-               // && (fs::is_regular_file(fs::path(output))) || !fs::exists(fs::path(output)))
-            cout << commApp -> handleCompare(file, output) << endl;
-            // else {
-              // cerr << "ERROR: input and output are not regular file" << endl;
-            // }
+            //sometime, outfile is not existed yet, we can think it
+            if(fs::is_regular_file(fs::path(file))
+               && (fs::is_regular_file(fs::path(output))))
+              cout << commApp -> handleCompare(file, output) << endl;
+            else {
+              cerr << "ERROR: input and output are not regular file" << endl;
+              return 0;
+            }
           }
-          if(isDirectory)
-            commApp -> writeFile(getOutputFilePath(file, output));
-          else
-            commApp -> writeFile(output);
+          else {
+            commApp -> readFile(file);
+            if(vm.count("multrgb")){
+              vector<float> rgbs = vm["multrgb"].as<vector<float>>();
+              if(rgbs.size() != 3) {
+                cerr << "ERROR: Illgeal usage. Need 3 float, but provided "
+                     << rgbs.size() << " parameters" << endl;
+                return 0;
+              }
+              ColorData color = ColorData(rgbs.at(0), rgbs.at(1) , rgbs.at(2));
+              commApp -> handleMultgb(color);
+            }
+
+            if(vm.count("edgedetect")){
+              commApp -> handleEdgeDetect();
+            }
+
+            if(vm.count("quantize")){
+              int para = vm["quantize"].as<int>();
+              cout << "quantize enabled. Level is " << para << endl;
+              commApp -> handleQuant(para);
+            }
+
+            if(vm.count("blur")){
+              float para = vm["blur"].as<float>();
+              cout << "blur enabled. Level is " << para << endl;
+              commApp -> handleBlur(para);
+            }
+
+            if(vm.count("thresh")){
+              float para = vm["thresh"].as<float>();
+              cout << "Threshold enabled. Level is "<< para << endl;
+              commApp -> handleThresh(para);
+            }
+
+            if(vm.count("saturate")){
+              float para = vm["saturate"].as<float>();
+              cout << "Saturation enabled. Level is " << para << endl;
+              commApp -> handleSatur(para);
+            }
+
+            if(vm.count("sharpen")){
+              int para = vm["sharpen"].as<int>();
+              cout << "Sharpen enabled. Level is " << para << endl;
+              commApp -> handleSharpen(para);
+            }
+
+            if(isDirectory)
+              commApp -> writeFile(getOutputFilePath(file, output));
+            else
+              commApp -> writeFile(output);
+          }
         }
       }
       else{

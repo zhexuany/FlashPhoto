@@ -181,12 +181,27 @@ public:
   void testPixelBuffer(){
     PixelBuffer* a = new PixelBuffer(80, 80, ColorData());
     PixelBuffer* b = new PixelBuffer(80, 80, ColorData());
-    if(a == b)
+    //testPixel(*a, *b)
+    if(*a == *b){
       TS_ASSERT_EQUALS(1, 1);
-    else
+    }
+    else{
       TS_ASSERT_EQUALS(1, 0);
+    }
     delete a;
     delete b;
+  }
+
+  bool testPixel(PixelBuffer&a, PixelBuffer&b){
+    if(b.getWidth() != a.getWidth()) return false;
+    if(b.getHeight() != a.getHeight()) return false;
+    for(int i = 0; i < b.getWidth(); i++){
+      for(int j = 0; j < b.getWidth(); j++){
+        if(b.getPixel(i, j) != a.getPixel(i, j))
+          return false;
+      }
+    }
+    return true;
   }
 };
 #endif // __PENTEST_H

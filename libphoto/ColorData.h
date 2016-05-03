@@ -40,7 +40,7 @@ public:
 	friend ColorData operator- (const ColorData& a, const ColorData& b);
   friend bool operator== (const ColorData& a, const ColorData& b);
   friend bool operator!= (const ColorData& a, const ColorData& b);
- 
+
 private:
 
 	// General helper function for clamping values between 0 and 1

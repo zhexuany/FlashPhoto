@@ -17,11 +17,16 @@ void MIACommandLineApp::handleBlur(float parameter){
 
 
 int MIACommandLineApp::handleCompare(string input, string output){
-  PixelBuffer* inBuffer = readFile(input);
-  PixelBuffer* outBuffer = readFile(output);
+  int height, width;
+  PixelBuffer* inBuffer = m_loader -> loadimage(input, width, height, ColorData());
+  PixelBuffer* outBuffer = m_loader -> loadimage(output, width, height, ColorData());
   if(inBuffer == nullptr || outBuffer == nullptr) return 0;
-  if(inBuffer != outBuffer) return 0;
-  return 1;
+  int res = 1;
+  if(*inBuffer != *outBuffer)
+    res = 0;
+  delete inBuffer;
+  delete outBuffer;
+  return res;
 }
 
 

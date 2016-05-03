@@ -30,14 +30,82 @@ public:
   }
 
   void testBlur(){
+    PixelBuffer *buffer = new PixelBuffer(800, 800, ColorData(1, 1, 0.9));
+    int filterHeight = 3;
+    int filterWidth = 3;
+    float filter[3][3] =
+      {
+        {0.0, 0.2, 0.0},
+        {0.2, 0.2, 0.2},
+        {0.0, 0.2, 0.0}
+      };
     DrawTool* blur = new Blur(30);
     mask = blur -> getMask();
     TS_ASSERT_EQUALS(mask -> getHeight(), 30);
+    int x = 25, y = 25;
+    blur -> applyInfluence(x, y, buffer);
+    int height = mask -> getHeight();
+    int width = mask -> getWidth();
+    int bufferHeight = buffer -> getHeight(); // canvas's buffer's height
+    int bufferWidth = buffer -> getWidth();
+    x -= width/2;
+    y = bufferHeight - y - height/2;
+    float** influence = mask -> getInfluence();
+
+    for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+
+        float red = 0.0, green = 0.0, blue = 0.0;
+
+        for (int filterY = 0; filterY < filterHeight; filterY++) {
+          for (int filterX = 0; filterX < filterWidth; filterX++) {
+            int X = x + ((i - filterWidth / 2 + filterX + width) % width);
+            int Y = y + ((j - filterHeight / 2 + filterY + height) % height);
+
+            if (X < 0 || X >= bufferWidth || Y < 0 || Y >= bufferHeight) {
+              continue;
+            }
+            //for testing, currentPixelColor is just backgroundColor
+            ColorData currentPixelColor = *backgroundColor;
+            red += (float) (currentPixelColor.getRed() * filter[filterY][filterX]);
+            green += (float) (currentPixelColor.getGreen() * filter[filterY][filterX]);
+            blue += (float) (currentPixelColor.getBlue() * filter[filterY][filterX]);
+          }
+        }
+
+        ColorData newPixel = ColorData(red, green, blue);
+        newPixel = newPixel.clampedColor();
+
+        if (influence[i][j] > 0.0) {
+          if (x + i > 0 && x + i < bufferWidth -1 && y + j > 0 && y + j < bufferHeight -1) {
+            testColorData(newPixel, buffer -> getPixel(x + i, y + j));
+          }
+        }
+      }
+    }
+    delete buffer;
   }
 
   void testStamp(){
-    //PixelBuffer* init = new PixelBuffer(0, 0, *backgroundColor);
-    //DrawTool* stamp = new Stamp(init, 0, 0);
+    ColorData color = ColorData(0.2, 0.2, 0.2);
+    PixelBuffer* init = new PixelBuffer(30, 30, color);
+    PixelBuffer *buffer = new PixelBuffer(800, 800, ColorData(1, 1, 0.9));
+    DrawTool* stamp = new Stamp(init, 30, 30);
+    int x = 25, y = 25;
+    stamp -> applyInfluence(x, y, buffer);
+    mask = stamp -> getMask();
+    int height = mask -> getHeight();
+    int width = mask -> getWidth();
+    int bufferHeight = buffer -> getHeight();
+    ColorData currentPixelColor;
+    x -= width/2;
+    y = bufferHeight - y - height/2;
+
+    for(int i = 0; i < width; i++){
+      for(int j = 0; j < height; j++){
+        testColorData(color, buffer -> getPixel(x + i, y + j));
+      }
+    }
   }
 
   void testCrayon(){
@@ -47,6 +115,8 @@ public:
     TS_ASSERT_EQUALS(mask -> getHeight(), 20);
     crayon -> applyInfluence(25, 25, buffer);
     testBuffer(25, 25, buffer);
+    crayon -> applyInfluence(125, 25, buffer);
+    testBuffer(125, 25, buffer);
     delete buffer;
   }
 
@@ -74,6 +144,8 @@ public:
     // apply mask at 25 25 with radius 3
     pen -> applyInfluence(25, 25, buffer);
     testBuffer(25, 25, buffer);
+    pen -> applyInfluence(125, 25, buffer);
+    testBuffer(125, 25, buffer);
     delete buffer;
   }
 
@@ -85,6 +157,8 @@ public:
     TS_ASSERT_EQUALS(mask -> getHeight(), width);
     sparyCan -> applyInfluence(25, 25, buffer);
     testBuffer(25, 25, buffer);
+    sparyCan -> applyInfluence(125, 25, buffer);
+    testBuffer(125, 25, buffer);
     delete buffer;
   }
 
@@ -118,6 +192,8 @@ public:
     TS_ASSERT_EQUALS(mask -> getWidth(), 5);
     calligraphyPen -> applyInfluence(25, 25, buffer);
     testBuffer(25, 25, buffer);
+    calligraphyPen -> applyInfluence(125, 25, buffer);
+    testBuffer(125, 25, buffer);
     delete buffer;
   }
 
@@ -127,8 +203,11 @@ public:
     mask = highlighter -> getMask();
     TS_ASSERT_EQUALS(mask -> getHeight(), 15);
     TS_ASSERT_EQUALS(mask -> getWidth(), 5);
+    //we check two seperate position
     highlighter -> applyInfluence(25, 25, buffer);
     testBuffer(25, 25, buffer);
+    highlighter -> applyInfluence(100, 25, buffer);
+    testBuffer(100, 25, buffer);
     delete buffer;
   }
 
@@ -192,16 +271,5 @@ public:
     delete b;
   }
 
-  bool testPixel(PixelBuffer&a, PixelBuffer&b){
-    if(b.getWidth() != a.getWidth()) return false;
-    if(b.getHeight() != a.getHeight()) return false;
-    for(int i = 0; i < b.getWidth(); i++){
-      for(int j = 0; j < b.getWidth(); j++){
-        if(b.getPixel(i, j) != a.getPixel(i, j))
-          return false;
-      }
-    }
-    return true;
-  }
 };
 #endif // __PENTEST_H

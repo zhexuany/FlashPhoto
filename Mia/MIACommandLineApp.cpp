@@ -1,5 +1,8 @@
 #include "MIACommandLineApp.h"
-
+//
+// created by Zhexuan Yang on 29/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
+//
 MIACommandLineApp::MIACommandLineApp(){
   m_buffer = new PixelBuffer(0, 0, ColorData());
   m_loader = new ImageHandler();

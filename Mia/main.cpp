@@ -1,6 +1,6 @@
 //
-//  main.cpp
-//  Modified by Juhwan Park
+// created by Zhexuan Yang on 29/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
 //
 
 #include "MIAApp.h"

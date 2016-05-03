@@ -2,6 +2,10 @@
 #define MIACOMMANDLINEAPP_H
 #include "MIAApp.h"
 #include "libphoto.h"
+//
+// created by Zhexuan Yang on 29/4/2016
+// Copyright (c) 2016 Zhexuan Yang. All rights reserved.
+//
 using std::string;
 using std::vector;
 class MIACommandLineApp {

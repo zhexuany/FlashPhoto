@@ -8,10 +8,15 @@ build:
 	cd $(PHOTO_PATH); make
 	cd $(FLASH_PATH); make
 	cd $(MIA_PATH); make
-	cd $(TEST_PATH); make
 
 clean:
 	cd $(PHOTO_PATH); make clean
-	cd  $(TEST_PATH); make clean
 	cd $(FLASH_PATH); make clean
 	cd $(MIA_PATH); make clean
+
+testcase:
+	cd $(TEST_PATH); make
+
+testckean:
+	cd  $(TEST_PATH); make clean
+

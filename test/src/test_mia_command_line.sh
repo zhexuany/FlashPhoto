@@ -26,10 +26,6 @@ echo -e "\n"
 echo TEST input and output flag
 echo ./Mia -i brainstack -o output
 ./Mia -i brainstack -o output
-rc=$?
-if [[ $rc != 0 ]];
-then echo ERROR on input or output flag;
-fi
 
 sleep 1
 echo -e "\n"
@@ -63,7 +59,6 @@ echo TEST saturate flag
 echo ./Mia -i brainstack -o output -saturate 5.0
 ./Mia -i brainstack -o output -saturate 5.0
 
-
 echo -e "\n"
 echo TEST multrgb flag
 echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1
@@ -74,12 +69,17 @@ echo -e "\n"
 echo TEST compare flag
 echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/mrbrain-8bit023.png -c
 ./Mia -i brainstack/mrbrain-8bit023.png -o output/mrbrain-8bit023.png -c
+echo EXPECTED 0
 
 echo -e "\n"
 echo TEST compare flag
+echo COPY file first
+echo cp brainstack/mrbrain-8bit024.png output/mrbrain-8bit023.png
+cp brainstack/mrbrain-8bit024.png output/mrbrain-8bit023.png
+sleep 1
 echo ./Mia -i brainstack/mrbrain-8bit024.png -o output/mrbrain-8bit023.png -c
 ./Mia -i brainstack/mrbrain-8bit024.png -o output/mrbrain-8bit023.png -c
-
+echo EXPECTED 1
 
 echo -e "\n"
 echo Now start to TEST combination of flags
@@ -97,7 +97,7 @@ echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -saturate 5.0
 ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -saturate 5.0
 
 echo -e "\n"
-echo TEST multirgb and blur flag 
+echo TEST multirgb and blur flag
 echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -b 5.0
 ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -b 5.0
 
@@ -117,23 +117,67 @@ echo TEST multirgb and sharpen flag
 echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -sharpen 5
 ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -sharpen 5
 
-echo TEST all flags except compare flag
+echo -e "\n"
+echo TEST all flags with directory
 echo ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0
 ./Mia -i brainstack -o output -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0
 
-
-echo TEST all flags 
-echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0 -c
-./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0 -c
-
-
-
-
-
-
-
-
 echo -e "\n"
+echo TEST all flags with a file
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0
+./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -m 0.1 0.1 0.1 -sharpen 5 -t 5.0 -e -saturate 5.0 -q 8 -b 5.0
+
 echo DELETE output directory
 echo rm -rf output
 rm -rf output
+
+echo -e "\n"
+echo START to test bad user input
+echo -e "\n"
+sleep 3
+
+echo -e "\n"
+echo input file does existed
+echo ./Mia -i dedede -o output
+./Mia -i dedede -o output
+
+
+echo -e "\n"
+echo SHARPEN flag can only accpet int but type float
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -sharpen 5.0
+./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -sharpen 5.0
+
+echo -e "\n"
+echo QUAT flag can only accpet int but type flaot
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -q 8.0
+./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -q 8.0
+
+
+echo -e "\n"
+echo compare flag need two image file both existed
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/100.png -c
+./Mia brainstack/mrbrain-8bit023.png -o output/100.png -c
+
+echo -e "\n"
+echo compare flag specified. Other flag does not work
+echo copy file first
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png
+./Mia brainstack/mrbrain-8bit023.png -o output/1.png
+sleep 1
+echo ./Mia -i brainstack/mrbrain-8bit023.png -o output/1.png -c -e
+./Mia brainstack/mrbrain-8bit023.png -o output/100.png -c -e
+echo EXPECTED 1
+
+echo -e "\n"
+echo test without input or output path
+echo ./Mie -e
+echo ./Mia -i brainstack
+echo ./Mia -o output
+
+echo END of test case.
+
+
+
+
+
+

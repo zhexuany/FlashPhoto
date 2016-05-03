@@ -1,0 +1,45 @@
+<html style="background: #36454f; color: white;">
+
+<head>
+	<title>Jake Reynolds</title>
+	<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; font-size: 18px; margin: 0; padding: 0;">
+	<section style="width: 100% - 10px; background: #36454f; padding: 5px; color:white">
+		<h1 style="text-align: center; font-size: 36px;">Jacob Reynolds</h1>
+		<h2 style="text-align: center;">Blog entry for Iteration 3</h2>
+	</section>
+	<section style="padding:10px; color: white; width: 80vw; max-width: 1200px; margin-left: auto; margin-right: auto;">
+		<h2>My contribution</h2>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;My main contributon to this project was the image code and the product documentation. Each proposed their own set of challenges, but by taking my time they did not cause too much pain.</p>
+		<hr/>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;There were a lot of headaches with making the library. Makefiles are definitely not my strong suit so I had to learn a lot about static and dynamic library linking. The biggest issue was knowing what order to link the libraries in, as well as if they should be linked in applications using libphoto. This piece of code is what ended up being my savior
+			<span style="color:white; background: #5E2750;">OTHER_LIBS: $(GLUI_LIB) $(PNG_LIB) $(JPEG_LIB) $(OBJFILES)</span>. Insert this in "Make all" before the call to "ar rcs". This allows the libraries to be referenced in the object files for libphoto and solved all of my headaches. This is the proper linking order and now when we want to use libphoto we only need to have a line similar to that in the compilation of the project.
+		</p>
+		<hr/>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;The other part of the project I did was the documentation. While there isn't a lot to talk about I did learn some things. There are parts of this application I didn't know, so I took those as a learning opportunity. I talked with my group memebers and learned about those parts and then tried to reflect those questions in the documentation. Simple things like what/where is a certain button, or what kind of inputs does MIA expect. This helped to put me in the shoes of a user and I believe made the documentation better suited to teach the basic concepts of our applications.</p>
+		<hr/>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;This blog post is a little short because I did not do a lot of the highly technical work for this iteration, but it gave me experience with documenting code and using things like Doxygen. I learned that it is better to document code as you go, so that more confusing sections won't have to be dug through later for the sake of documenting. It is also important to fully understand the dependencies of your project, so that if changes do need to be made you won't have to waste time looking through header files to find makefile dependencies.
+		</p>
+		<h2 style="align-text: bottom;">Iteration 3: This blog post is done in entirety by Jacob Reynolds.</h2>
+	</section>
+
+
+</body>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js" type="text/javascript"></script>
+
+<script>
+	SyntaxHighlighter.all()
+
+</script>
+
+
+
+</html>

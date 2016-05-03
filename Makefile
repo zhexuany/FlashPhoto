@@ -17,6 +17,6 @@ clean:
 testcase:
 	cd $(TEST_PATH); make
 
-testckean:
+testclean:
 	cd  $(TEST_PATH); make clean
 

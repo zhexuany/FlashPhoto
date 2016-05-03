@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,88 +90,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="libphoto_2ColorData_8h_source.html">ColorData.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="ColorData_8h_source.html">ColorData.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a920b0332685ef72147fe19020fdac5d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a920b0332685ef72147fe19020fdac5d6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b)</td></tr>
-<tr class="separator:a920b0332685ef72147fe19020fdac5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ecce2c6c597d9379ebb329883298dfd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ecce2c6c597d9379ebb329883298dfd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b, float a)</td></tr>
-<tr class="separator:a0ecce2c6c597d9379ebb329883298dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e401956936f87a560b8f579514bf69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2e401956936f87a560b8f579514bf69"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRed</b> (float r)</td></tr>
-<tr class="separator:aa2e401956936f87a560b8f579514bf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bbba90cac0bc1b3bd01d4aecc16477"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlue</b> (float b)</td></tr>
-<tr class="separator:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a7833dfef4a33eee3857de09a72aee1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a7833dfef4a33eee3857de09a72aee1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setGreen</b> (float g)</td></tr>
-<tr class="separator:a4a7833dfef4a33eee3857de09a72aee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a547fb7bd1616e8657a825cb9a34c43c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAlpha</b> (float a)</td></tr>
-<tr class="separator:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7066467c08dfad868fc4b1add70c2f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7066467c08dfad868fc4b1add70c2f2"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getRed</b> () const </td></tr>
-<tr class="separator:ab7066467c08dfad868fc4b1add70c2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9c600256c8abefdd76209fc1f68fcb5"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getBlue</b> () const </td></tr>
-<tr class="separator:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e2e03b8e1e3270f33c4e4a69c00dbd6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getGreen</b> () const </td></tr>
-<tr class="separator:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198c4490b4f1c512d2bc174418dc892a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a198c4490b4f1c512d2bc174418dc892a"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getAlpha</b> () const </td></tr>
-<tr class="separator:a198c4490b4f1c512d2bc174418dc892a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6a0100e4e5fe7bbd00fb4defd6e4a43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6a0100e4e5fe7bbd00fb4defd6e4a43"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getLuminance</b> () const </td></tr>
-<tr class="separator:ae6a0100e4e5fe7bbd00fb4defd6e4a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f0f9e50c730eb653efd800070cf448c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f0f9e50c730eb653efd800070cf448c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getColorSum</b> () const </td></tr>
-<tr class="separator:a3f0f9e50c730eb653efd800070cf448c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5479f50514f714dc9c738a50b7b86365"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5479f50514f714dc9c738a50b7b86365"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clampedColor</b> () const </td></tr>
-<tr class="separator:a5479f50514f714dc9c738a50b7b86365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a920b0332685ef72147fe19020fdac5d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a920b0332685ef72147fe19020fdac5d6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b)</td></tr>
-<tr class="separator:a920b0332685ef72147fe19020fdac5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ecce2c6c597d9379ebb329883298dfd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ecce2c6c597d9379ebb329883298dfd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b, float a)</td></tr>
-<tr class="separator:a0ecce2c6c597d9379ebb329883298dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e401956936f87a560b8f579514bf69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2e401956936f87a560b8f579514bf69"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRed</b> (float r)</td></tr>
-<tr class="separator:aa2e401956936f87a560b8f579514bf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bbba90cac0bc1b3bd01d4aecc16477"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlue</b> (float b)</td></tr>
-<tr class="separator:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a7833dfef4a33eee3857de09a72aee1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a7833dfef4a33eee3857de09a72aee1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setGreen</b> (float g)</td></tr>
-<tr class="separator:a4a7833dfef4a33eee3857de09a72aee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a547fb7bd1616e8657a825cb9a34c43c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAlpha</b> (float a)</td></tr>
-<tr class="separator:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7066467c08dfad868fc4b1add70c2f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7066467c08dfad868fc4b1add70c2f2"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getRed</b> () const </td></tr>
-<tr class="separator:ab7066467c08dfad868fc4b1add70c2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9c600256c8abefdd76209fc1f68fcb5"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getBlue</b> () const </td></tr>
-<tr class="separator:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e2e03b8e1e3270f33c4e4a69c00dbd6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getGreen</b> () const </td></tr>
-<tr class="separator:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198c4490b4f1c512d2bc174418dc892a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a198c4490b4f1c512d2bc174418dc892a"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getAlpha</b> () const </td></tr>
-<tr class="separator:a198c4490b4f1c512d2bc174418dc892a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6a0100e4e5fe7bbd00fb4defd6e4a43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6a0100e4e5fe7bbd00fb4defd6e4a43"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getLuminance</b> () const </td></tr>
-<tr class="separator:ae6a0100e4e5fe7bbd00fb4defd6e4a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f0f9e50c730eb653efd800070cf448c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f0f9e50c730eb653efd800070cf448c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getColorSum</b> () const </td></tr>
-<tr class="separator:a3f0f9e50c730eb653efd800070cf448c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5479f50514f714dc9c738a50b7b86365"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5479f50514f714dc9c738a50b7b86365"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clampedColor</b> () const </td></tr>
-<tr class="separator:a5479f50514f714dc9c738a50b7b86365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a920b0332685ef72147fe19020fdac5d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a920b0332685ef72147fe19020fdac5d6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b)</td></tr>
 <tr class="separator:a920b0332685ef72147fe19020fdac5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,42 +148,23 @@ Friends</h2></td></tr>
 <tr class="memitem:a799bd54f65a61569b5b968062ac0d37e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a799bd54f65a61569b5b968062ac0d37e"></a>
 <a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
 <tr class="separator:a799bd54f65a61569b5b968062ac0d37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf9a770243996e50282d248a4327f351"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf9a770243996e50282d248a4327f351"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, float f)</td></tr>
-<tr class="separator:adf9a770243996e50282d248a4327f351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc3e8e6338798779739352e6bdfa42b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdc3e8e6338798779739352e6bdfa42b"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:afdc3e8e6338798779739352e6bdfa42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afee00faf26189979b72f3854a17200ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afee00faf26189979b72f3854a17200ae"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:afee00faf26189979b72f3854a17200ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a799bd54f65a61569b5b968062ac0d37e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a799bd54f65a61569b5b968062ac0d37e"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:a799bd54f65a61569b5b968062ac0d37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf9a770243996e50282d248a4327f351"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf9a770243996e50282d248a4327f351"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, float f)</td></tr>
-<tr class="separator:adf9a770243996e50282d248a4327f351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdc3e8e6338798779739352e6bdfa42b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdc3e8e6338798779739352e6bdfa42b"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:afdc3e8e6338798779739352e6bdfa42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afee00faf26189979b72f3854a17200ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afee00faf26189979b72f3854a17200ae"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:afee00faf26189979b72f3854a17200ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a799bd54f65a61569b5b968062ac0d37e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a799bd54f65a61569b5b968062ac0d37e"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
-<tr class="separator:a799bd54f65a61569b5b968062ac0d37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dae9e77610393d100312c9d248f09cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dae9e77610393d100312c9d248f09cc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
+<tr class="separator:a9dae9e77610393d100312c9d248f09cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698ac263a286afe37e3b9ed0c5882c8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a698ac263a286afe37e3b9ed0c5882c8c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
+<tr class="separator:a698ac263a286afe37e3b9ed0c5882c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This color data class stores color in floating point format. The Red, Green, Blue, and Alpha channels range from 0.0 to 1.0. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>libphoto/<a class="el" href="libphoto_2ColorData_8h_source.html">ColorData.h</a></li>
-<li>libphoto/include/<a class="el" href="libphoto_8h_source.html">libphoto.h</a></li>
+<li>libphoto/<a class="el" href="ColorData_8h_source.html">ColorData.h</a></li>
 <li>libphoto/ColorData.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 26 2016 15:13:18 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 2 2016 20:22:19 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

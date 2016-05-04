@@ -211,6 +211,7 @@ int main(int ac, char* av[]) {
       else{
         cerr << "ERROR: input and output file/directory must be specified" << endl;
       }
+    delete commApp;
     } catch(const po::required_option& e){
       string errorINFO = e.what();
       boost::algorithm::replace_all (errorINFO, "--", "-");

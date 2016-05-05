@@ -16,6 +16,7 @@ kernelType FBlur::buildKernel(int radius){
   return boxFilter(radius);
 }
 
+///apply filter effect to the PixelBuffer* buffer passed into this function
 void FBlur::applyFilter(PixelBuffer* imageBuffer){
   // if kernel is already initialized, do not need initialize it again.
   kernel = buildKernel(std::round(getFloatParameter()));
@@ -57,6 +58,7 @@ void FBlur::applyFilter(PixelBuffer* imageBuffer){
   delete newImageBuffer;
 }
 
+/// This will empty kernel matrix create when constructing FBlur instance
 kernelType FBlur::emptyFilter(int radius){
   //any integer divied by 2 will give us another integer.
   //multiply it by 2 and puls 1 will give us a odd number
@@ -70,6 +72,7 @@ kernelType FBlur::emptyFilter(int radius){
   return filter;
 }
 
+///
 kernelType FBlur::boxFilter(int radius){
   //any integer divided by 2 will give us another integer.
   //multiply it by 2 and plus 1 will give us a odd number
@@ -83,6 +86,7 @@ kernelType FBlur::boxFilter(int radius){
   }
   return filter;
 }
+
 //TODO need fix a bug on this function
 kernelType FBlur::GaussianBlur(float sigma){
   int kSize = 2*std::round(std::sqrt(-std::log(0.3)*2*sigma*sigma)) + 1;
@@ -98,6 +102,7 @@ kernelType FBlur::GaussianBlur(float sigma){
   return gaussianKernel;
 }
 
+
 void FBlur::printKernel(){
   for(size_t i = 0; i < kernel.size(); i++){
     for(size_t j = 0; j < kernel.size(); j++){
@@ -107,6 +112,7 @@ void FBlur::printKernel(){
   }
 }
 
+///get class name for filter
 std::string FBlur::getName(){
   return "FBlur";
 }

@@ -13,7 +13,7 @@ This is the FSharpen class, it is used for the quantize image filters.  It inher
 */
 FSharpen::FSharpen(){}
 FSharpen::~FSharpen(){}
-/*
+/**
  *\parama radius: the size of the kernel matrix
  *\return a kernel matirx will userd for convolution-based filter
  */
@@ -28,6 +28,7 @@ kernelType FSharpen::buildKernel(int radius){
   return kernel;
 }
 
+///get class name for filter
 std::string FSharpen::getName(){
   return "FSharpen";
 }

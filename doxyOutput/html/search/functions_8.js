@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['leftmousedown',['leftMouseDown',['../classFlashPhotoApp.html#a2c348ddcc15b6a21972bc6aac98c5442',1,'FlashPhotoApp']]],
-  ['leftmouseup',['leftMouseUp',['../classFlashPhotoApp.html#ae3a2f37b7c3657dcb5c16402c6d25519',1,'FlashPhotoApp']]],
-  ['loadimage',['loadimage',['../classImageHandler.html#a0042244c7f1462f4ffc2403f139bf286',1,'ImageHandler']]],
-  ['loadimagetocanvas',['loadImageToCanvas',['../classFlashPhotoApp.html#a7cc9f1383c18cb7eebc255d3c377adb0',1,'FlashPhotoApp']]],
-  ['loadjpg',['loadjpg',['../classImageHandler.html#a84ff67cb9c77f69cf3a66bdcd4e3f977',1,'ImageHandler']]],
-  ['loadpng',['loadpng',['../classImageHandler.html#a0812c8e895f28203138d8e67f3be2418',1,'ImageHandler']]]
+  ['imagehandler',['ImageHandler',['../classImageHandler.html#a86d8324568727c2799a54a43d7296ddb',1,'ImageHandler']]],
+  ['initdrawtool',['initDrawTool',['../classFlashPhotoApp.html#a29383606562f09ba623209581f92f5e5',1,'FlashPhotoApp::initDrawTool()'],['../classMIAApp.html#ae9f573664b63d839f34a97a55cfc305a',1,'MIAApp::initDrawTool()']]],
+  ['initfilter',['initFilter',['../classFlashPhotoApp.html#aeaf85d6ead6ca4b3905701db12ceaf68',1,'FlashPhotoApp::initFilter()'],['../classMIAApp.html#a5f25e06a32d646e407474f24b8ecf43d',1,'MIAApp::initFilter()']]]
 ];

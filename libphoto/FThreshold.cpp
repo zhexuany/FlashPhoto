@@ -16,6 +16,7 @@ FThreshold::FThreshold(){
 FThreshold::~FThreshold(){
 }
 
+///apply filter effect to PixelBuffer* buffer passed into this function
 void FThreshold::applyFilter(PixelBuffer * imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
@@ -34,6 +35,7 @@ void FThreshold::applyFilter(PixelBuffer * imageBuffer){
   }
 }
 
+///get class name for filter
 std::string FThreshold::getName(){
   return "FThreshold";
 }

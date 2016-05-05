@@ -1,4 +1,5 @@
 var searchData=
 [
+  ['applyfilter',['applyFilter',['../classFBlur.html#a20d9f9bb8f2b787273a860779853a8fd',1,'FBlur::applyFilter()'],['../classFChannel.html#a74a786921c11b3d82119b74f05d3d0c0',1,'FChannel::applyFilter()'],['../classFSaturation.html#a9e35fd05500411807bfcbe36b8f24a55',1,'FSaturation::applyFilter()'],['../classFSpecial.html#ad5af4242e35da376aeb628e6a7cabc5e',1,'FSpecial::applyFilter()'],['../classFThreshold.html#a324dadf15c23bd2d2edf6ea32e3d87f6',1,'FThreshold::applyFilter()']]],
   ['applyinfluence',['applyInfluence',['../classBlur.html#a74a6e5acef4b46edc5c79e909296ff53',1,'Blur::applyInfluence()'],['../classDrawTool.html#ac60a70d91e81163d413b99382ac4255b',1,'DrawTool::applyInfluence()'],['../classEraser.html#a195eeec6843317ee33e0e51fccb3daff',1,'Eraser::applyInfluence()'],['../classFillTool.html#a8ad4d0d5b2a5379be3720c89a102ddb3',1,'FillTool::applyInfluence()'],['../classHighlighter.html#a28e750d99d9aa85521427001ef73be0d',1,'Highlighter::applyInfluence()'],['../classStamp.html#ab41c9de007e2ad05a6b47e62b41fd7df',1,'Stamp::applyInfluence()']]]
 ];

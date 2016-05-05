@@ -15,6 +15,8 @@ FChannel::FChannel(){
 }
 FChannel::~FChannel(){
 }
+
+///apply channel filter effect to the PixelBuffer* buffer passed into this function
 void FChannel::applyFilter(PixelBuffer* imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
@@ -28,6 +30,7 @@ void FChannel::applyFilter(PixelBuffer* imageBuffer){
   }
 }
 
+///get class name for filter
 std::string FChannel::getName(){
   return "FChannel";
 }

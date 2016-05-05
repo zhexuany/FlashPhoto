@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,27 +89,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This is the complete list of members for <a class="el" href="classEraser.html">Eraser</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>allowDrag</b> (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>applyInfluence</b>(int x, int y, PixelBuffer *buffer) (defined in <a class="el" href="classEraser.html">Eraser</a>)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>DrawTool</b>(ColorData *toolColor, int width, int height) (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>DrawTool</b>(int width, int height) (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classEraser.html#a195eeec6843317ee33e0e51fccb3daff">applyInfluence</a>(int x, int y, PixelBuffer *buffer)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDrawTool.html#aa21e3a5373ba9e4e43d6e56eec82b32d">DrawTool</a>(ColorData *toolColor, int width, int height)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDrawTool.html#aa1816d6699a835d9c7619ee5c97be9d1">DrawTool</a>(int width, int height)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>DrawTool</b>(PixelBuffer *newBuffer, int width, int height) (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Eraser</b>(int radius) (defined in <a class="el" href="classEraser.html">Eraser</a>)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>fillInfluence</b>() (defined in <a class="el" href="classEraser.html">Eraser</a>)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getMask</b>() const  (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classEraser.html#a60abccb4522452a4cdfb714eafbc9c16">Eraser</a>(int radius)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classEraser.html#ad718ebd5796e0a83dbd94aa4f0ce2921">fillInfluence</a>()</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classDrawTool.html#ad11d4e44fcd2caf774e18ce5b2986865">getMask</a>() const </td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getName</b>() (defined in <a class="el" href="classEraser.html">Eraser</a>)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getToolColor</b>() const  (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDrawTool.html#a00485271784acd5acc75840a7a17eb2e">getToolColor</a>() const </td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>imageBuffer</b> (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>m_mask</b> (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_toolColor</b> (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>paint</b>(int x, int y, int prevX, int prevY, PixelBuffer *buffer) (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>printfInfluence</b>() (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setToolColor</b>(ColorData *color) (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~DrawTool</b>() (defined in <a class="el" href="classDrawTool.html">DrawTool</a>)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classDrawTool.html#a65dbb2f006efc9c6053d01df75eff5a9">paint</a>(int x, int y, int prevX, int prevY, PixelBuffer *buffer)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDrawTool.html#a04f57381cb6c71d90a66e905b46f424c">printfInfluence</a>()</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classDrawTool.html#a7f7097be5f6beb7b3f6ce437785cac7a">setToolColor</a>(ColorData *color)</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classDrawTool.html#ac07eb21dc6dfc99b7e3e7a6e3b9548f3">~DrawTool</a>()</td><td class="entry"><a class="el" href="classDrawTool.html">DrawTool</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~Eraser</b>() (defined in <a class="el" href="classEraser.html">Eraser</a>)</td><td class="entry"><a class="el" href="classEraser.html">Eraser</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:06 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:30 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

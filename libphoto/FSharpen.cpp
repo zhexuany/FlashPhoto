@@ -8,7 +8,9 @@
 #include "FSharpen.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
-
+/**
+This is the FSharpen class, it is used for the quantize image filters.  It inherits from the FBlur class, so it only needs to buildKernel, not apply it.
+*/
 FSharpen::FSharpen(){}
 FSharpen::~FSharpen(){}
 /*

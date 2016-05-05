@@ -13,13 +13,45 @@ Inheritance diagram for Pen\-:\begin{figure}[H]
 \hypertarget{classPen_aae1e2ae7aead4ede7484af6554fd93d7}{{\bfseries Pen} (\hyperlink{classColorData}{Color\-Data} $\ast$tool\-Color, int radius)}\label{classPen_aae1e2ae7aead4ede7484af6554fd93d7}
 
 \item 
-\hypertarget{classPen_a3a09d9bed4cefec347fb4dd759faf44a}{void {\bfseries fill\-Influence} ()}\label{classPen_a3a09d9bed4cefec347fb4dd759faf44a}
-
+\hyperlink{classPen_a6c57ef2ef6c352e676bcf77239315605}{$\sim$\-Pen} ()
+\begin{DoxyCompactList}\small\item\em For function descriptions please see the \hyperlink{classBlur}{Blur} class. \end{DoxyCompactList}\item 
+void \hyperlink{classPen_a3a09d9bed4cefec347fb4dd759faf44a}{fill\-Influence} ()
 \item 
 \hypertarget{classPen_afece6e7d7f6e22da50d45c585a7ad6b2}{string {\bfseries get\-Name} ()}\label{classPen_afece6e7d7f6e22da50d45c585a7ad6b2}
 
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPen_a6c57ef2ef6c352e676bcf77239315605}{\index{Pen@{Pen}!$\sim$\-Pen@{$\sim$\-Pen}}
+\index{$\sim$\-Pen@{$\sim$\-Pen}!Pen@{Pen}}
+\subsubsection[{$\sim$\-Pen}]{\setlength{\rightskip}{0pt plus 5cm}Pen\-::$\sim$\-Pen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classPen_a6c57ef2ef6c352e676bcf77239315605}
+
+
+For function descriptions please see the \hyperlink{classBlur}{Blur} class. 
+
+This is the pen class. It inherits from the \hyperlink{classDrawTool}{Draw\-Tool} and only needs to deal with loading the influence matrix. \hyperlink{classDrawTool}{Draw\-Tool} applies the influence. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classPen_a3a09d9bed4cefec347fb4dd759faf44a}{\index{Pen@{Pen}!fill\-Influence@{fill\-Influence}}
+\index{fill\-Influence@{fill\-Influence}!Pen@{Pen}}
+\subsubsection[{fill\-Influence}]{\setlength{\rightskip}{0pt plus 5cm}void Pen\-::fill\-Influence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPen_a3a09d9bed4cefec347fb4dd759faf44a}
+Virtual function to set influence on the mask, should be overrode in sub class \par
+ none \par
+ void \par
+
+
+Reimplemented from \hyperlink{classDrawTool_ae202bc193ba721452e81f34b6c2e6e35}{Draw\-Tool}.
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

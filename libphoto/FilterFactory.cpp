@@ -15,11 +15,14 @@
 #include "FSaturation.h"
 #include "FSpecial.h"
 #include "PixelBuffer.h"
-
+/**
+This is the FilterFactory class, it is used to control the selection logic for filters.
+*/
 int FilterFactory::getNumFilters() {return NUMFILTERS;}
-/*
- *\parama filterID which filter you want to created
- *\return a filter instance
+/**
+ Creates a filter for the given ID \n
+ param filterID which filter you want to created \n
+ *return a filter instance \n
  */
 Filter* FilterFactory::createFilter(int filterID){
     Filter* filter = NULL;

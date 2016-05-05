@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,21 +95,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// mask for eraser is cycle with 21 pixel</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classEraser.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEraser.html">Eraser</a> : <span class="keyword">public</span> <a class="code" href="classDrawTool.html">DrawTool</a>{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="classEraser.html">Eraser</a>(<span class="keywordtype">int</span> radius);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="classEraser.html#a60abccb4522452a4cdfb714eafbc9c16">Eraser</a>(<span class="keywordtype">int</span> radius);</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  ~<a class="code" href="classEraser.html">Eraser</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">void</span> applyInfluence(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> fillInfluence();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEraser.html#a195eeec6843317ee33e0e51fccb3daff">applyInfluence</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEraser.html#ad718ebd5796e0a83dbd94aa4f0ce2921">fillInfluence</a>();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">string</span> getName();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classEraser_html_ad718ebd5796e0a83dbd94aa4f0ce2921"><div class="ttname"><a href="classEraser.html#ad718ebd5796e0a83dbd94aa4f0ce2921">Eraser::fillInfluence</a></div><div class="ttdeci">void fillInfluence()</div><div class="ttdoc">Linear falloff circle pattern. </div><div class="ttdef"><b>Definition:</b> Eraser.cpp:16</div></div>
 <div class="ttc" id="classDrawTool_html"><div class="ttname"><a href="classDrawTool.html">DrawTool</a></div><div class="ttdef"><b>Definition:</b> Drawtool.h:11</div></div>
+<div class="ttc" id="classEraser_html_a60abccb4522452a4cdfb714eafbc9c16"><div class="ttname"><a href="classEraser.html#a60abccb4522452a4cdfb714eafbc9c16">Eraser::Eraser</a></div><div class="ttdeci">Eraser(int radius)</div><div class="ttdoc">For function descriptions please see the Blur class. </div><div class="ttdef"><b>Definition:</b> Eraser.cpp:6</div></div>
+<div class="ttc" id="classEraser_html_a195eeec6843317ee33e0e51fccb3daff"><div class="ttname"><a href="classEraser.html#a195eeec6843317ee33e0e51fccb3daff">Eraser::applyInfluence</a></div><div class="ttdeci">void applyInfluence(int x, int y, PixelBuffer *buffer)</div><div class="ttdoc">Custom apply influence function since we are &quot;erasing&quot; the background. </div><div class="ttdef"><b>Definition:</b> Eraser.cpp:37</div></div>
 <div class="ttc" id="classEraser_html"><div class="ttname"><a href="classEraser.html">Eraser</a></div><div class="ttdef"><b>Definition:</b> Eraser.h:8</div></div>
 <div class="ttc" id="classPixelBuffer_html"><div class="ttname"><a href="classPixelBuffer.html">PixelBuffer</a></div><div class="ttdef"><b>Definition:</b> PixelBuffer.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -13,16 +13,63 @@ Inheritance diagram for Highlighter\-:\begin{figure}[H]
 \hypertarget{classHighlighter_aec9c28167c01f98e3da6eb38e64e6c67}{{\bfseries Highlighter} (\hyperlink{classColorData}{Color\-Data} $\ast$tool\-Color, int width, int height)}\label{classHighlighter_aec9c28167c01f98e3da6eb38e64e6c67}
 
 \item 
-\hypertarget{classHighlighter_ab2d858cc3fbddace3f64688293cad8e1}{void {\bfseries fill\-Influence} ()}\label{classHighlighter_ab2d858cc3fbddace3f64688293cad8e1}
-
+\hyperlink{classHighlighter_a3c339de18ac3c2334b69480baee54dd5}{$\sim$\-Highlighter} ()
+\begin{DoxyCompactList}\small\item\em For function descriptions please see the \hyperlink{classBlur}{Blur} class. \end{DoxyCompactList}\item 
+void \hyperlink{classHighlighter_ab2d858cc3fbddace3f64688293cad8e1}{fill\-Influence} ()
 \item 
-\hypertarget{classHighlighter_a28e750d99d9aa85521427001ef73be0d}{void {\bfseries apply\-Influence} (int x, int y, \hyperlink{classPixelBuffer}{Pixel\-Buffer} $\ast$buffer)}\label{classHighlighter_a28e750d99d9aa85521427001ef73be0d}
-
+void \hyperlink{classHighlighter_a28e750d99d9aa85521427001ef73be0d}{apply\-Influence} (int x, int y, \hyperlink{classPixelBuffer}{Pixel\-Buffer} $\ast$buffer)
 \item 
 \hypertarget{classHighlighter_aab9bc271db3cc23737e7604a9ab29211}{string {\bfseries get\-Name} ()}\label{classHighlighter_aab9bc271db3cc23737e7604a9ab29211}
 
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHighlighter_a3c339de18ac3c2334b69480baee54dd5}{\index{Highlighter@{Highlighter}!$\sim$\-Highlighter@{$\sim$\-Highlighter}}
+\index{$\sim$\-Highlighter@{$\sim$\-Highlighter}!Highlighter@{Highlighter}}
+\subsubsection[{$\sim$\-Highlighter}]{\setlength{\rightskip}{0pt plus 5cm}Highlighter\-::$\sim$\-Highlighter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classHighlighter_a3c339de18ac3c2334b69480baee54dd5}
+
+
+For function descriptions please see the \hyperlink{classBlur}{Blur} class. 
+
+This is the highlighter \hyperlink{classDrawTool}{Draw\-Tool}. It inherits from \hyperlink{classDrawTool}{Draw\-Tool} and deals with applying the influence for the highlighter to the pixelbuffer. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classHighlighter_a28e750d99d9aa85521427001ef73be0d}{\index{Highlighter@{Highlighter}!apply\-Influence@{apply\-Influence}}
+\index{apply\-Influence@{apply\-Influence}!Highlighter@{Highlighter}}
+\subsubsection[{apply\-Influence}]{\setlength{\rightskip}{0pt plus 5cm}void Highlighter\-::apply\-Influence (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf Pixel\-Buffer} $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHighlighter_a28e750d99d9aa85521427001ef73be0d}
+Apply the mask to the buffer centered at x,y \par
+ x coord, y coord, buffer to draw on \par
+ void \par
+
+
+Reimplemented from \hyperlink{classDrawTool_ac60a70d91e81163d413b99382ac4255b}{Draw\-Tool}.
+
+\hypertarget{classHighlighter_ab2d858cc3fbddace3f64688293cad8e1}{\index{Highlighter@{Highlighter}!fill\-Influence@{fill\-Influence}}
+\index{fill\-Influence@{fill\-Influence}!Highlighter@{Highlighter}}
+\subsubsection[{fill\-Influence}]{\setlength{\rightskip}{0pt plus 5cm}void Highlighter\-::fill\-Influence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHighlighter_ab2d858cc3fbddace3f64688293cad8e1}
+Virtual function to set influence on the mask, should be overrode in sub class \par
+ none \par
+ void \par
+
+
+Reimplemented from \hyperlink{classDrawTool_ae202bc193ba721452e81f34b6c2e6e35}{Draw\-Tool}.
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

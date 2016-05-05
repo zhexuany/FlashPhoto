@@ -2,7 +2,9 @@
 
 #define filterWidth 3
 #define filterHeight 3
-
+/**
+This is a base class that inherits from DrawTool.  This is used for the blur tool.
+*/
 Blur::Blur(int radius)
   : DrawTool(radius, radius){
   fillInfluence();
@@ -11,7 +13,7 @@ Blur::Blur(int radius)
 Blur::~Blur(){
 }
 
-
+///This creates a 2D matrix, the values at each index refer to the strength at which the color at that relative pixel should be applied.
 void Blur::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();
@@ -32,6 +34,7 @@ void Blur::fillInfluence(){
   }
 }
 
+///This applies the influence matrix, the values at each index refer to the strength at which the color at that relative pixel should be applied.
 void Blur::applyInfluence(int x, int y, PixelBuffer* buffer){
   float filter[filterHeight][filterWidth] =
   {
@@ -82,6 +85,7 @@ void Blur::applyInfluence(int x, int y, PixelBuffer* buffer){
   }
 }
 
+///The publically viewable name the user sees
 string Blur::getName(){
   return "Blur";
 }

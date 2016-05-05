@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,6 +83,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classFlashPhotoApp-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">FlashPhotoApp Class Reference</div>  </div>
@@ -99,20 +103,23 @@ Inheritance diagram for FlashPhotoApp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a944931218613603cfb6bda6113971382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a944931218613603cfb6bda6113971382"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FlashPhotoApp</b> (int argc, char *argv[], int width, int height, <a class="el" href="classColorData.html">ColorData</a> backgroundColor)</td></tr>
+<tr class="memitem:a944931218613603cfb6bda6113971382"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a944931218613603cfb6bda6113971382">FlashPhotoApp</a> (int argc, char *argv[], int width, int height, <a class="el" href="classColorData.html">ColorData</a> backgroundColor)</td></tr>
 <tr class="separator:a944931218613603cfb6bda6113971382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29505b498fac898e099cfd1b8590c91a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29505b498fac898e099cfd1b8590c91a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseDragged</b> (int x, int y)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a29505b498fac898e099cfd1b8590c91a">mouseDragged</a> (int x, int y)</td></tr>
+<tr class="memdesc:a29505b498fac898e099cfd1b8590c91a"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the mouse is dragged this function is called. <br/></td></tr>
 <tr class="separator:a29505b498fac898e099cfd1b8590c91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf5a4cc5b76bb676d337758543bfdcc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf5a4cc5b76bb676d337758543bfdcc4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMoved</b> (int x, int y)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#acf5a4cc5b76bb676d337758543bfdcc4">mouseMoved</a> (int x, int y)</td></tr>
+<tr class="memdesc:acf5a4cc5b76bb676d337758543bfdcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the mouse if moved this function is called. <br/></td></tr>
 <tr class="separator:acf5a4cc5b76bb676d337758543bfdcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c348ddcc15b6a21972bc6aac98c5442"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c348ddcc15b6a21972bc6aac98c5442"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>leftMouseDown</b> (int x, int y)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a2c348ddcc15b6a21972bc6aac98c5442">leftMouseDown</a> (int x, int y)</td></tr>
+<tr class="memdesc:a2c348ddcc15b6a21972bc6aac98c5442"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the left mouse button is pressed this function is called. <br/></td></tr>
 <tr class="separator:a2c348ddcc15b6a21972bc6aac98c5442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3a2f37b7c3657dcb5c16402c6d25519"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3a2f37b7c3657dcb5c16402c6d25519"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>leftMouseUp</b> (int x, int y)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#ae3a2f37b7c3657dcb5c16402c6d25519">leftMouseUp</a> (int x, int y)</td></tr>
+<tr class="memdesc:ae3a2f37b7c3657dcb5c16402c6d25519"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the left mouse button is let go this function is called. <br/></td></tr>
 <tr class="separator:ae3a2f37b7c3657dcb5c16402c6d25519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dedc84bbc9ea0cf0718b8d0d0f414a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dedc84bbc9ea0cf0718b8d0d0f414a5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></tr>
@@ -182,6 +189,305 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> ()</td></tr
 GLUI *&#160;</td><td class="memItemRight" valign="bottom"><b>glui</b> ()</td></tr>
 <tr class="separator:ac721a0fedce80308c5c0e5695016e95d inherit pub_methods_classBaseGfxApp"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a0c9137aecfb6a08bd53335d6b6a5c678"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>UIControlType</b> { <br/>
+&#160;&#160;<b>UI_TOOLTYPE</b>, 
+<b>UI_COLOR_R</b>, 
+<b>UI_COLOR_G</b>, 
+<b>UI_COLOR_B</b>, 
+<br/>
+&#160;&#160;<b>UI_PRESET_RED</b>, 
+<b>UI_PRESET_ORANGE</b>, 
+<b>UI_PRESET_YELLOW</b>, 
+<b>UI_PRESET_GREEN</b>, 
+<br/>
+&#160;&#160;<b>UI_PRESET_BLUE</b>, 
+<b>UI_PRESET_PURPLE</b>, 
+<b>UI_PRESET_WHITE</b>, 
+<b>UI_PRESET_BLACK</b>, 
+<br/>
+&#160;&#160;<b>UI_FILE_BROWSER</b>, 
+<b>UI_LOAD_CANVAS_BUTTON</b>, 
+<b>UI_LOAD_STAMP_BUTTON</b>, 
+<b>UI_SAVE_CANVAS_BUTTON</b>, 
+<br/>
+&#160;&#160;<b>UI_FILE_NAME</b>, 
+<b>UI_APPLY_BLUR</b>, 
+<b>UI_APPLY_SHARP</b>, 
+<b>UI_APPLY_EDGE</b>, 
+<br/>
+&#160;&#160;<b>UI_APPLY_THRESHOLD</b>, 
+<b>UI_APPLY_DITHER</b>, 
+<b>UI_APPLY_SATURATE</b>, 
+<b>UI_APPLY_CHANNEL</b>, 
+<br/>
+&#160;&#160;<b>UI_APPLY_QUANTIZE</b>, 
+<b>UI_APPLY_MOTION_BLUR</b>, 
+<b>UI_APPLY_SPECIAL_FILTER</b>, 
+<b>UI_UNDO</b>, 
+<br/>
+&#160;&#160;<b>UI_REDO</b>, 
+<b>UI_CLEAR</b>, 
+<b>UI_QUIT</b>
+<br/>
+ }</td></tr>
+<tr class="separator:a0c9137aecfb6a08bd53335d6b6a5c678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aedac4056fe1e7836cde2e4986de312"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>UIMotionBlurDirections</b> { <b>DIR_N_S</b>, 
+<b>DIR_E_W</b>, 
+<b>DIR_NE_SW</b>, 
+<b>DIR_NW_SE</b>
+ }</td></tr>
+<tr class="separator:a3aedac4056fe1e7836cde2e4986de312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa599903c439e7def0e3c95263111f1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>ToolType</b> { <br/>
+&#160;&#160;<b>PEN</b>, 
+<b>ERASER</b>, 
+<b>SPRAYCAN</b>, 
+<b>CALIGRAPHYPEN</b>, 
+<br/>
+&#160;&#160;<b>HIGHLIGHTER</b>, 
+<b>WATERCOLOR</b>, 
+<b>FILLTOOL</b>, 
+<b>CRAYON</b>, 
+<br/>
+&#160;&#160;<b>STAMP</b>, 
+<b>BLUR</b>
+<br/>
+ }</td></tr>
+<tr class="separator:aefa599903c439e7def0e3c95263111f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a262d3fad41e5feb441b4ea431c65f8c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a262d3fad41e5feb441b4ea431c65f8c1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setImageFile</b> (const std::string &amp;filepath)</td></tr>
+<tr class="separator:a262d3fad41e5feb441b4ea431c65f8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05fb136c74949eb11f07f161e18b0e44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05fb136c74949eb11f07f161e18b0e44"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isValidImageFileName</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:a05fb136c74949eb11f07f161e18b0e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9f413e89445c3a0210e69d542affd67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9f413e89445c3a0210e69d542affd67"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isValidImageFile</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:af9f413e89445c3a0210e69d542affd67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a346a7760598d8dd3c6ddb0630b1e51b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a346a7760598d8dd3c6ddb0630b1e51b6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSuffix</b> (const std::string &amp;str, const std::string &amp;suffix)</td></tr>
+<tr class="separator:a346a7760598d8dd3c6ddb0630b1e51b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886a76eaa5e30c1708a96cc62cd98887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a886a76eaa5e30c1708a96cc62cd98887"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>buttonEnabled</b> (GLUI_Button *button, bool enabled)</td></tr>
+<tr class="separator:a886a76eaa5e30c1708a96cc62cd98887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ceaa973c4cd8b953e4e09d0a5a81ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4ceaa973c4cd8b953e4e09d0a5a81ff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>undoEnabled</b> (bool enabled)</td></tr>
+<tr class="separator:aa4ceaa973c4cd8b953e4e09d0a5a81ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e224580f502076a6c498a35fb8069f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03e224580f502076a6c498a35fb8069f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>redoEnabled</b> (bool enabled)</td></tr>
+<tr class="separator:a03e224580f502076a6c498a35fb8069f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af370462c4a82dd932ae7364fc58e3959"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af370462c4a82dd932ae7364fc58e3959"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveCanvasEnabled</b> (bool enabled)</td></tr>
+<tr class="separator:af370462c4a82dd932ae7364fc58e3959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04f2738fdb07a7eaa86f146c7537a70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa04f2738fdb07a7eaa86f146c7537a70"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadCanvasEnabled</b> (bool enabled)</td></tr>
+<tr class="separator:aa04f2738fdb07a7eaa86f146c7537a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e58a2c36d94fcbe376f3cb5b75ad5e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e58a2c36d94fcbe376f3cb5b75ad5e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadStampEnabled</b> (bool enabled)</td></tr>
+<tr class="separator:a9e58a2c36d94fcbe376f3cb5b75ad5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad554624b8359abe270e5c6e76634ff48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad554624b8359abe270e5c6e76634ff48"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>updateColors</b> ()</td></tr>
+<tr class="separator:ad554624b8359abe270e5c6e76634ff48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29383606562f09ba623209581f92f5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a29383606562f09ba623209581f92f5e5">initDrawTool</a> ()</td></tr>
+<tr class="separator:a29383606562f09ba623209581f92f5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf85d6ead6ca4b3905701db12ceaf68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#aeaf85d6ead6ca4b3905701db12ceaf68">initFilter</a> ()</td></tr>
+<tr class="separator:aeaf85d6ead6ca4b3905701db12ceaf68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52eb2524a928df150d75492d96a3d49c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a52eb2524a928df150d75492d96a3d49c">updateCurrentTool</a> ()</td></tr>
+<tr class="separator:a52eb2524a928df150d75492d96a3d49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc9f1383c18cb7eebc255d3c377adb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a7cc9f1383c18cb7eebc255d3c377adb0">loadImageToCanvas</a> ()</td></tr>
+<tr class="separator:a7cc9f1383c18cb7eebc255d3c377adb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87aee2ef5baef954b682c67e3d5118da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87aee2ef5baef954b682c67e3d5118da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadImageToStamp</b> ()</td></tr>
+<tr class="separator:a87aee2ef5baef954b682c67e3d5118da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0389fb3c2c64e0e3312880e745b7070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#ab0389fb3c2c64e0e3312880e745b7070">saveCanvasToFile</a> ()</td></tr>
+<tr class="separator:ab0389fb3c2c64e0e3312880e745b7070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16ff3baa9c0d97d8e4f292acb4ebbfac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16ff3baa9c0d97d8e4f292acb4ebbfac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterBlur</b> ()</td></tr>
+<tr class="separator:a16ff3baa9c0d97d8e4f292acb4ebbfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d45a9f24245024cba2c9090d7acb528"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d45a9f24245024cba2c9090d7acb528"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterSharpen</b> ()</td></tr>
+<tr class="separator:a9d45a9f24245024cba2c9090d7acb528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99c135d287d07e01ccd1637cba0d347"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af99c135d287d07e01ccd1637cba0d347"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterMotionBlur</b> ()</td></tr>
+<tr class="separator:af99c135d287d07e01ccd1637cba0d347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7360d5fc26c2789d0126defb1c30e9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7360d5fc26c2789d0126defb1c30e9f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterEdgeDetect</b> ()</td></tr>
+<tr class="separator:ae7360d5fc26c2789d0126defb1c30e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316479ee5fc48b785c266953147de63e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a316479ee5fc48b785c266953147de63e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterThreshold</b> ()</td></tr>
+<tr class="separator:a316479ee5fc48b785c266953147de63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8d8c714d059083f49e1e0cd1336321"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c8d8c714d059083f49e1e0cd1336321"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterChannel</b> ()</td></tr>
+<tr class="separator:a8c8d8c714d059083f49e1e0cd1336321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabd2e2b487ebe038cbcbfa700d5951f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabd2e2b487ebe038cbcbfa700d5951f9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterSaturate</b> ()</td></tr>
+<tr class="separator:aabd2e2b487ebe038cbcbfa700d5951f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9c62db1aa83250b4f95c94f5dac762"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a9c62db1aa83250b4f95c94f5dac762"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterQuantize</b> ()</td></tr>
+<tr class="separator:a5a9c62db1aa83250b4f95c94f5dac762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b1664e842e4a0a16cf7c340e126de17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b1664e842e4a0a16cf7c340e126de17"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilterSpecial</b> ()</td></tr>
+<tr class="separator:a7b1664e842e4a0a16cf7c340e126de17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad33153aceb1cca61bb682c00ae8e22ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad33153aceb1cca61bb682c00ae8e22ff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>undoOperation</b> ()</td></tr>
+<tr class="separator:ad33153aceb1cca61bb682c00ae8e22ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad1a00932e723e17c39f6959c42d9f5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad1a00932e723e17c39f6959c42d9f5f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>redoOperation</b> ()</td></tr>
+<tr class="separator:aad1a00932e723e17c39f6959c42d9f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af90d307fdc027a037816a63757a17120"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#af90d307fdc027a037816a63757a17120">updateCanvas</a> (std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt; &amp;alpha, std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt; &amp;beta, bool isUndo)</td></tr>
+<tr class="separator:af90d307fdc027a037816a63757a17120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8360b752328c423d850d819361e18a12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8360b752328c423d850d819361e18a12"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initGlui</b> ()</td></tr>
+<tr class="separator:a8360b752328c423d850d819361e18a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a786ee86c70c142fd957421f9354996"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a786ee86c70c142fd957421f9354996"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initGraphics</b> ()</td></tr>
+<tr class="separator:a9a786ee86c70c142fd957421f9354996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed06134c0c49494fb5055a93dc8423f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afed06134c0c49494fb5055a93dc8423f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeBuffers</b> (<a class="el" href="classColorData.html">ColorData</a> initialColor, int width, int height)</td></tr>
+<tr class="separator:afed06134c0c49494fb5055a93dc8423f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc3dd9da509fb67ab5ae61b6a8d9c03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2dc3dd9da509fb67ab5ae61b6a8d9c03"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isjpeg</b> (const std::string &amp;name)</td></tr>
+<tr class="separator:a2dc3dd9da509fb67ab5ae61b6a8d9c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53b230edec12feb0ed4e5531cdd760e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa53b230edec12feb0ed4e5531cdd760e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>loadpng</b> (FILE *fp)</td></tr>
+<tr class="separator:aa53b230edec12feb0ed4e5531cdd760e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc31c434067d59fa14d40e22a21d66c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a7dc31c434067d59fa14d40e22a21d66c">clearPixelBuffer</a> ()</td></tr>
+<tr class="separator:a7dc31c434067d59fa14d40e22a21d66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae578c10b12f1f39d52d2fe2e4f0f5b96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae578c10b12f1f39d52d2fe2e4f0f5b96"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>updateUndo</b> ()</td></tr>
+<tr class="separator:ae578c10b12f1f39d52d2fe2e4f0f5b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:adc1082b61b8e0650f8dba72e0ac9c90d"><td class="memItemLeft" ><a class="anchor" id="adc1082b61b8e0650f8dba72e0ac9c90d"></a>
+struct {</td></tr>
+<tr class="memitem:a0a81e7666fa7216689e7a948f2050165"><td class="memItemLeft" ><a class="anchor" id="a24bac49f0d04130b0012f82c7683afac"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>channel_colorRed</b></td></tr>
+<tr class="separator:a0a81e7666fa7216689e7a948f2050165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18efd5e9f14ddec4bf75d65f4140ac80"><td class="memItemLeft" ><a class="anchor" id="ac18742e7fcb8534d9476c100d742358d"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>channel_colorGreen</b></td></tr>
+<tr class="separator:a18efd5e9f14ddec4bf75d65f4140ac80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab283e32fc4eab6cc160af0ebf6cb4df1"><td class="memItemLeft" ><a class="anchor" id="aaad046817775345700256c63ee69a066"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>channel_colorBlue</b></td></tr>
+<tr class="separator:ab283e32fc4eab6cc160af0ebf6cb4df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cfa1e059edf66f784a592de219e158b"><td class="memItemLeft" ><a class="anchor" id="a507851bce4f4af02c093a1d28a088da7"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>saturation_amount</b></td></tr>
+<tr class="separator:a2cfa1e059edf66f784a592de219e158b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a75bdc157acaed5d71ce91336ddf3e"><td class="memItemLeft" ><a class="anchor" id="a47e02008d3de690cd60c97df03e4d8fd"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>threshold_amount</b></td></tr>
+<tr class="separator:aa7a75bdc157acaed5d71ce91336ddf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0fa80463d99bd3d9141cb7260ec149e"><td class="memItemLeft" ><a class="anchor" id="abe620dc3be32a15e2a87426eae4b9429"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>blur_amount</b></td></tr>
+<tr class="separator:ac0fa80463d99bd3d9141cb7260ec149e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7fca7f8aec5b7ff4210cc17d1db1c9"><td class="memItemLeft" ><a class="anchor" id="ab8ddc9587fc24a36c5eb1ddf1380ef99"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>sharpen_amount</b></td></tr>
+<tr class="separator:aae7fca7f8aec5b7ff4210cc17d1db1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab5c155f44f1fce5aa0288061a5d2dcb"><td class="memItemLeft" ><a class="anchor" id="a224bd3b1ac652128da1736dbd855a467"></a>
+&#160;&#160;&#160;float&#160;&#160;&#160;<b>motionBlur_amount</b></td></tr>
+<tr class="separator:aab5c155f44f1fce5aa0288061a5d2dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7ae1f740ca19475a1dabeb3cc8d162"><td class="memItemLeft" ><a class="anchor" id="a37732ed053efaac3198792777abc537a"></a>
+&#160;&#160;&#160;int&#160;&#160;&#160;<b>motionBlur_direction</b></td></tr>
+<tr class="separator:a2b7ae1f740ca19475a1dabeb3cc8d162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948bf7fbe2a198bd0127a18809b28297"><td class="memItemLeft" ><a class="anchor" id="a21466a62d5a49b29052541c1bdaaff82"></a>
+&#160;&#160;&#160;int&#160;&#160;&#160;<b>quantize_bins</b></td></tr>
+<tr class="separator:a948bf7fbe2a198bd0127a18809b28297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1082b61b8e0650f8dba72e0ac9c90d"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>m_filterParameters</b></td></tr>
+<tr class="separator:adc1082b61b8e0650f8dba72e0ac9c90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ed03c8eea24f9b2193fe98f02a78b7"><td class="memItemLeft" ><a class="anchor" id="a26ed03c8eea24f9b2193fe98f02a78b7"></a>
+struct {</td></tr>
+<tr class="memitem:ac787b0b336439cbcad4c84342982c0e3"><td class="memItemLeft" ><a class="anchor" id="a6e190905f22d88f7155b5e4fea7e82e2"></a>
+&#160;&#160;&#160;GLUI_FileBrowser *&#160;&#160;&#160;<b>fileBrowser</b></td></tr>
+<tr class="separator:ac787b0b336439cbcad4c84342982c0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a091d9de286ddf9939c354128dab0f67f"><td class="memItemLeft" ><a class="anchor" id="a568203b21cda88b7f64a5339064a7d18"></a>
+&#160;&#160;&#160;GLUI_Button *&#160;&#160;&#160;<b>loadCanvasButton</b></td></tr>
+<tr class="separator:a091d9de286ddf9939c354128dab0f67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d1bcc817150a52d81403998a6074c3"><td class="memItemLeft" ><a class="anchor" id="aa4aa83844dfbaac5e2601d9ecf252e60"></a>
+&#160;&#160;&#160;GLUI_Button *&#160;&#160;&#160;<b>loadStampButton</b></td></tr>
+<tr class="separator:af9d1bcc817150a52d81403998a6074c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0956fb2598d0d630ecf5a5d7f2dd438"><td class="memItemLeft" ><a class="anchor" id="a1b1c7930ccf25d66161aa0bd0926f885"></a>
+&#160;&#160;&#160;GLUI_Button *&#160;&#160;&#160;<b>saveCanvasButton</b></td></tr>
+<tr class="separator:ac0956fb2598d0d630ecf5a5d7f2dd438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebc568b6ae04832ee3d24e7263e95051"><td class="memItemLeft" ><a class="anchor" id="a96d62cf788203344f8941b79170fc346"></a>
+&#160;&#160;&#160;GLUI_Button *&#160;&#160;&#160;<b>redoButton</b></td></tr>
+<tr class="separator:aebc568b6ae04832ee3d24e7263e95051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ce92c0d15dc152720e55b63f88698b"><td class="memItemLeft" ><a class="anchor" id="abce09e914786f07c8de6e675574e7681"></a>
+&#160;&#160;&#160;GLUI_Button *&#160;&#160;&#160;<b>undoButton</b></td></tr>
+<tr class="separator:a41ce92c0d15dc152720e55b63f88698b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f03b2e917a1f32281380efe4b7966d"><td class="memItemLeft" ><a class="anchor" id="af6bf7b007ec57149ac322bb039b36448"></a>
+&#160;&#160;&#160;GLUI_StaticText *&#160;&#160;&#160;<b>currentFileLabel</b></td></tr>
+<tr class="separator:a43f03b2e917a1f32281380efe4b7966d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb0f64736088cb04d9efb2d88aa001b"><td class="memItemLeft" ><a class="anchor" id="abe3d1fbda64a09063e4d3a5f33c1d860"></a>
+&#160;&#160;&#160;GLUI_EditText *&#160;&#160;&#160;<b>fileNameBox</b></td></tr>
+<tr class="separator:a3bb0f64736088cb04d9efb2d88aa001b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d9dddc0ed1b8146c768f035cfad217"><td class="memItemLeft" ><a class="anchor" id="a830a100998dba74fbb5c71566ae20460"></a>
+&#160;&#160;&#160;GLUI_StaticText *&#160;&#160;&#160;<b>saveFileLabel</b></td></tr>
+<tr class="separator:aa9d9dddc0ed1b8146c768f035cfad217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b1c42430dc5607591cb23bb84e711e"><td class="memItemLeft" ><a class="anchor" id="a54d8c8487ee6d847b9dc38f3f03f78db"></a>
+&#160;&#160;&#160;GLUI_Spinner *&#160;&#160;&#160;<b>spinnerRed</b></td></tr>
+<tr class="separator:a04b1c42430dc5607591cb23bb84e711e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc202fb818e10d1a10313cf38380196c"><td class="memItemLeft" ><a class="anchor" id="ac912473a2801aa9bfe9fcf1072e48627"></a>
+&#160;&#160;&#160;GLUI_Spinner *&#160;&#160;&#160;<b>spinnerGreen</b></td></tr>
+<tr class="separator:adc202fb818e10d1a10313cf38380196c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf5c012ac0da0c1e66a5ea2f84f1a489"><td class="memItemLeft" ><a class="anchor" id="acc6dc220ee767f7b5b113e26ddbc18b9"></a>
+&#160;&#160;&#160;GLUI_Spinner *&#160;&#160;&#160;<b>spinnerBlue</b></td></tr>
+<tr class="separator:adf5c012ac0da0c1e66a5ea2f84f1a489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ed03c8eea24f9b2193fe98f02a78b7"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>m_gluiControlHooks</b></td></tr>
+<tr class="separator:a26ed03c8eea24f9b2193fe98f02a78b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae45bc3761686cbb4d5f9c01b048816c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae45bc3761686cbb4d5f9c01b048816c0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_queueSize</b></td></tr>
+<tr class="separator:ae45bc3761686cbb4d5f9c01b048816c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb0f4d46432039c14d5816abb019fa7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdb0f4d46432039c14d5816abb019fa7"></a>
+std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>undoQueue</b></td></tr>
+<tr class="separator:abdb0f4d46432039c14d5816abb019fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67142e2e575f5c63666b3e750279fd4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67142e2e575f5c63666b3e750279fd4f"></a>
+std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>redoQueue</b></td></tr>
+<tr class="separator:a67142e2e575f5c63666b3e750279fd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7552f6cf6441c53d020e5a0124031bcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7552f6cf6441c53d020e5a0124031bcb"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_prevX</b></td></tr>
+<tr class="separator:a7552f6cf6441c53d020e5a0124031bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9759bdfbdf16bf0091f1694604a64a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a9759bdfbdf16bf0091f1694604a64a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_prevY</b></td></tr>
+<tr class="separator:a6a9759bdfbdf16bf0091f1694604a64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e397b37bfb3ea981efc795b7a2a9e9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e397b37bfb3ea981efc795b7a2a9e9e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_stampHeight</b></td></tr>
+<tr class="separator:a2e397b37bfb3ea981efc795b7a2a9e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dab8bf3eb60e4c99310660c9c32f3a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dab8bf3eb60e4c99310660c9c32f3a5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_stampWidth</b></td></tr>
+<tr class="separator:a7dab8bf3eb60e4c99310660c9c32f3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9662e1dbd6e003a62179eecba827e910"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9662e1dbd6e003a62179eecba827e910"></a>
+<a class="el" href="classPixelBuffer.html">PixelBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_displayBuffer</b></td></tr>
+<tr class="separator:a9662e1dbd6e003a62179eecba827e910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752ba29ca132a3fd4deaa3727946f7f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a752ba29ca132a3fd4deaa3727946f7f6"></a>
+<a class="el" href="classDrawTool.html">DrawTool</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>toolList</b></td></tr>
+<tr class="separator:a752ba29ca132a3fd4deaa3727946f7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d8dcf7147882964a6d2832bbab67e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69d8dcf7147882964a6d2832bbab67e2"></a>
+<a class="el" href="classDrawTool.html">DrawTool</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_tool</b></td></tr>
+<tr class="separator:a69d8dcf7147882964a6d2832bbab67e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe8a885ae7b5e698c40a7585b4e292d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fe8a885ae7b5e698c40a7585b4e292d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_curTool</b></td></tr>
+<tr class="separator:a4fe8a885ae7b5e698c40a7585b4e292d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ef9e2d21c3f80cee59be363e21b9bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40ef9e2d21c3f80cee59be363e21b9bc"></a>
+<a class="el" href="classFilter.html">Filter</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>m_filters</b></td></tr>
+<tr class="separator:a40ef9e2d21c3f80cee59be363e21b9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584dd16d8f2aad51028759a1dd94c83f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a584dd16d8f2aad51028759a1dd94c83f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_curFilter</b></td></tr>
+<tr class="separator:a584dd16d8f2aad51028759a1dd94c83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4b0ca13b038233f14563c79f7201ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e4b0ca13b038233f14563c79f7201ae"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_curColorRed</b></td></tr>
+<tr class="separator:a6e4b0ca13b038233f14563c79f7201ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3af18066365495dda69e11a3b5116ee6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3af18066365495dda69e11a3b5116ee6"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_curColorGreen</b></td></tr>
+<tr class="separator:a3af18066365495dda69e11a3b5116ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c7b40fbfe40343ff9653120b6925f09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c7b40fbfe40343ff9653120b6925f09"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_curColorBlue</b></td></tr>
+<tr class="separator:a1c7b40fbfe40343ff9653120b6925f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110a669df9d98f66a68b9d2eec6a9748"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a110a669df9d98f66a68b9d2eec6a9748"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_fileName</b></td></tr>
+<tr class="separator:a110a669df9d98f66a68b9d2eec6a9748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_static_methods_classBaseGfxApp"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_classBaseGfxApp')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classBaseGfxApp.html">BaseGfxApp</a></td></tr>
@@ -242,6 +548,259 @@ static <a class="el" href="classBaseGfxApp.html">BaseGfxApp</a> *&#160;</td><td 
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>s_glutInitialized</b> = false</td></tr>
 <tr class="separator:afa4690383ea27713016ef75b9fb1e42f inherit pro_static_attribs_classBaseGfxApp"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a944931218613603cfb6bda6113971382"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FlashPhotoApp::FlashPhotoApp </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classColorData.html">ColorData</a>&#160;</td>
+          <td class="paramname"><em>backgroundColor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is the FlashPhoto class. This class contains all of the main UI login for the application. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7dc31c434067d59fa14d40e22a21d66c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::clearPixelBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clear the pixel buffer back to the default buffer color <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a29383606562f09ba623209581f92f5e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::initDrawTool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initialize the draw tool on load <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aeaf85d6ead6ca4b3905701db12ceaf68"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::initFilter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initialize the filter on load <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7cc9f1383c18cb7eebc255d3c377adb0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::loadImageToCanvas </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Load an image on to the canvas <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0389fb3c2c64e0e3312880e745b7070"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::saveCanvasToFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Save a canvas to file <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af90d307fdc027a037816a63757a17120"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::updateCanvas </td>
+          <td>(</td>
+          <td class="paramtype">std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isUndo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Update the canvas with the top of the alpha deque, push current buffer onto beta deque <br/>
+deque to pop from, deque to push to, if it is an undo <br/>
+void <br/>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a52eb2524a928df150d75492d96a3d49c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlashPhotoApp::updateCurrentTool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Update the current tool that is selected in the UI (stored in m_curTool) <br/>
+none <br/>
+void <br/>
+</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>FlashPhoto/<a class="el" href="FlashPhotoApp_8h_source.html">FlashPhotoApp.h</a></li>
 <li>FlashPhoto/FlashPhotoApp.cpp</li>
@@ -249,7 +808,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>s_glutInitiali
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:07 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:31 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

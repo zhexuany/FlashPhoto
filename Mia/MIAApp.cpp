@@ -26,10 +26,10 @@ MIAApp::MIAApp(int argc, char* argv[], int width, int height, ColorData backgrou
 }
 
 
-/*
-* \Initialize the filter on load
-* \none
-* \void
+/**
+ Initialize the filter on load \n
+* none \n
+* void \n
 */
 void MIAApp::initFilter(){
   m_filters = new Filter* [FilterFactory::getNumFilters()];
@@ -37,10 +37,10 @@ void MIAApp::initFilter(){
     m_filters[i] = FilterFactory::createFilter(i);
   }
 }
-/*
-* \Initialize the draw tool on load
-* \none
-* \void
+/**
+ Initialize the draw tool on load \n
+* none \n
+* void \n
 */
 void MIAApp::initDrawTool(){
   toolList = new DrawTool*[1];
@@ -57,10 +57,10 @@ void MIAApp::initDrawTool(){
   m_tool = toolList[0];
 }
 
-/*
-* Update the current tool that is selected in the UI (stored in m_curTool)
-* \none
-* \void
+/**
+ Update the current tool that is selected in the UI (stored in m_curTool) \n
+* none \n
+* void \n
 */
 void MIAApp::updateCurrentTool() {
     switch (m_curTool) {

@@ -6,6 +6,9 @@
 
 
 #include "FSpecial.h"
+/**
+This is the FSharpen class, it is used for the special filter.  This turns the image to grayscale.
+*/
 FSpecial::FSpecial(){
 }
 

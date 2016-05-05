@@ -1,5 +1,10 @@
 #include "SprayCan.h"
 using std::cerr;
+
+/**
+This is the spray can class, it inherits from the DrawTool class.  It has special handling so that we don't fill gaps in between mouse drags.
+*/
+///For function descriptions please see the Blur class
 SprayCan::SprayCan(ColorData* toolColor, int radius)
     :DrawTool(toolColor, radius, radius){
   fillInfluence();

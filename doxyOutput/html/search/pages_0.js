@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flashphoto',['FlashPhoto',['../md_README.html',1,'']]]
+  ['welcome',['Welcome',['../index.html',1,'']]]
 ];

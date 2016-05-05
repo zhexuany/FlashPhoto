@@ -4,13 +4,17 @@
 #include <string.h>
 using std::cout;
 using std::endl;
+
+/**
+This is the ImageHandler class.  This contains all of the logic for saving/loading jpegs/pngs.
+*/
 ImageHandler::ImageHandler(){}
 ImageHandler::~ImageHandler(){}
 
-/*
-* \Save an image to the file
-* \filename, height of image, width of image, image
-* \void
+/**
+  Save an image to the file \n
+* filename, height of image, width of image, image \n
+* void \n
 */
 void ImageHandler::saveimage(const std::string & filename, PixelBuffer* buffer) {
     if (isjpeg(filename)) {
@@ -22,10 +26,10 @@ void ImageHandler::saveimage(const std::string & filename, PixelBuffer* buffer) 
     }
 }
 
-/*
-* \Load an image in to the pixel buffer
-* \filename, height reference, width reference
-* \The pixel buffer with the image loaded
+/**
+  Load an image in to the pixel buffer \n
+* filename, height reference, width reference \n
+* The pixel buffer with the image loaded \n
 */
 PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, int &width, ColorData backgroundColor) {
   //TODO need write a function call ispng
@@ -40,10 +44,10 @@ PixelBuffer* ImageHandler::loadimage(const std::string & filename, int &height, 
     }
 }
 
-/*
-* \Save a png to the file
-* \file pointer, height of image, width of image, image
-* \void
+/**
+  Save a png to the file \n
+* file pointer, height of image, width of image, image \n
+* void \n
 */
 void ImageHandler::savepng(const std::string fileName, int height, int width, PixelBuffer* bufferToSave) {
 		//Taken from iteration 2 solution
@@ -77,10 +81,10 @@ void ImageHandler::savepng(const std::string fileName, int height, int width, Pi
     return;
 }
 
-/*
-* \Load a png from the file
-* \file pointer, height of image, width of image
-* \PixelBuffer containing the image
+/**
+  Load a png from the file \n
+* file pointer, height of image, width of image \n
+* PixelBuffer containing the image \n
 */
 PixelBuffer* ImageHandler::loadpng(const std::string fileName, int &Height, int &Width, ColorData backgroundColor) {
    PixelBuffer* loadedImageBuffer = NULL;
@@ -119,10 +123,10 @@ PixelBuffer* ImageHandler::loadpng(const std::string fileName, int &Height, int 
     return loadedImageBuffer;
 }
 
-/*
-* \Load a jpg from the file
-* \file pointer, height of image, width of image
-* \PixelBuffer containing the image
+/**
+  Load a jpg from the file \n
+* file pointer, height of image, width of image \n
+* PixelBuffer containing the image \n
 */
 PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width, ColorData backgroundColor)
 {
@@ -169,10 +173,10 @@ PixelBuffer* ImageHandler::loadjpg(FILE* infile, int& Height, int& Width, ColorD
     return newBuffer;
 }
 
-/*
-* \save a jpg to the file
-* \file pointer, height of image, width of image, image
-* \void
+/**
+  save a jpg to the file \n
+* file pointer, height of image, width of image, image \n
+* void \n
 */
 void ImageHandler::savejpg(FILE* outfile, int Height, int Width, PixelBuffer* bufferToSave) {
 	//Taken from iteration 2 solution

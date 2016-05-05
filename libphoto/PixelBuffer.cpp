@@ -12,6 +12,9 @@ using std::cerr;
 using std::endl;
 using std::fill;
 
+/**
+This is the pixelbuffer class.  This is the screen the user sees.  Use the encapsulated functions, they help a lot.
+*/
 PixelBuffer::PixelBuffer(int w, int h, ColorData backgroundColor) : m_width(w), m_height(h) {
     m_backgroundColor = new ColorData(backgroundColor);
     m_defaultBackgroundColor = new ColorData(backgroundColor);
@@ -24,7 +27,7 @@ PixelBuffer::~PixelBuffer() {
     delete m_backgroundColor;
     delete m_defaultBackgroundColor;
 }
-
+///Get the pixel at the x and y coordinates
 ColorData PixelBuffer::getPixel(int x, int y) const {
     ColorData pixelData;
 
@@ -37,7 +40,7 @@ ColorData PixelBuffer::getPixel(int x, int y) const {
     }
     return pixelData;
 }
-
+///Set the pixel at the x and y coordinates to the newPixel value
 void PixelBuffer::setPixel(int x, int y, const ColorData& newPixel) {
     if ((x < 0) || (x >= m_width) || (y < 0) || (y >= m_height)) {
         //cerr << "setPixel: x,y out of range: " << x << " " << y << endl;
@@ -47,7 +50,7 @@ void PixelBuffer::setPixel(int x, int y, const ColorData& newPixel) {
         m_pixels[index] = newPixel;
     }
 }
-
+///Get the pixel array
 ColorData const * PixelBuffer::getData() const {
     return m_pixels;
 }

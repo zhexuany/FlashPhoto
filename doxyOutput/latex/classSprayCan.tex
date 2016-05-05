@@ -10,19 +10,66 @@ Inheritance diagram for Spray\-Can\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classSprayCan_a5491c5e7346fb7126b45405664b22f5d}{{\bfseries Spray\-Can} (\hyperlink{classColorData}{Color\-Data} $\ast$tool\-Color, int radius)}\label{classSprayCan_a5491c5e7346fb7126b45405664b22f5d}
-
+\hyperlink{classSprayCan_a5491c5e7346fb7126b45405664b22f5d}{Spray\-Can} (\hyperlink{classColorData}{Color\-Data} $\ast$tool\-Color, int radius)
+\begin{DoxyCompactList}\small\item\em For function descriptions please see the \hyperlink{classBlur}{Blur} class. \end{DoxyCompactList}\item 
+void \hyperlink{classSprayCan_a86321320d34fdc49c754ce6d1ff324fd}{fill\-Influence} ()
 \item 
-\hypertarget{classSprayCan_a86321320d34fdc49c754ce6d1ff324fd}{void {\bfseries fill\-Influence} ()}\label{classSprayCan_a86321320d34fdc49c754ce6d1ff324fd}
-
-\item 
-\hypertarget{classSprayCan_ade6115cd8e7f277c74b0c6ade3547e2c}{void {\bfseries paint} (int x, int y, int prev\-X, int prev\-Y, \hyperlink{classPixelBuffer}{Pixel\-Buffer} $\ast$buffer)}\label{classSprayCan_ade6115cd8e7f277c74b0c6ade3547e2c}
-
+void \hyperlink{classSprayCan_ade6115cd8e7f277c74b0c6ade3547e2c}{paint} (int x, int y, int prev\-X, int prev\-Y, \hyperlink{classPixelBuffer}{Pixel\-Buffer} $\ast$buffer)
 \item 
 \hypertarget{classSprayCan_a6be9bc1725f16fdb0e6f3610fe60e22c}{string {\bfseries get\-Name} ()}\label{classSprayCan_a6be9bc1725f16fdb0e6f3610fe60e22c}
 
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSprayCan_a5491c5e7346fb7126b45405664b22f5d}{\index{Spray\-Can@{Spray\-Can}!Spray\-Can@{Spray\-Can}}
+\index{Spray\-Can@{Spray\-Can}!SprayCan@{Spray\-Can}}
+\subsubsection[{Spray\-Can}]{\setlength{\rightskip}{0pt plus 5cm}Spray\-Can\-::\-Spray\-Can (
+\begin{DoxyParamCaption}
+\item[{{\bf Color\-Data} $\ast$}]{tool\-Color, }
+\item[{int}]{radius}
+\end{DoxyParamCaption}
+)}}\label{classSprayCan_a5491c5e7346fb7126b45405664b22f5d}
+
+
+For function descriptions please see the \hyperlink{classBlur}{Blur} class. 
+
+This is the spray can class, it inherits from the \hyperlink{classDrawTool}{Draw\-Tool} class. It has special handling so that we don't fill gaps in between mouse drags. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSprayCan_a86321320d34fdc49c754ce6d1ff324fd}{\index{Spray\-Can@{Spray\-Can}!fill\-Influence@{fill\-Influence}}
+\index{fill\-Influence@{fill\-Influence}!SprayCan@{Spray\-Can}}
+\subsubsection[{fill\-Influence}]{\setlength{\rightskip}{0pt plus 5cm}void Spray\-Can\-::fill\-Influence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSprayCan_a86321320d34fdc49c754ce6d1ff324fd}
+Virtual function to set influence on the mask, should be overrode in sub class \par
+ none \par
+ void \par
+
+
+Reimplemented from \hyperlink{classDrawTool_ae202bc193ba721452e81f34b6c2e6e35}{Draw\-Tool}.
+
+\hypertarget{classSprayCan_ade6115cd8e7f277c74b0c6ade3547e2c}{\index{Spray\-Can@{Spray\-Can}!paint@{paint}}
+\index{paint@{paint}!SprayCan@{Spray\-Can}}
+\subsubsection[{paint}]{\setlength{\rightskip}{0pt plus 5cm}void Spray\-Can\-::paint (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{prev\-X, }
+\item[{int}]{prev\-Y, }
+\item[{{\bf Pixel\-Buffer} $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSprayCan_ade6115cd8e7f277c74b0c6ade3547e2c}
+Apply the mask to the buffer at x,y and fill gap from prev\-X, prev\-Y \par
+ x coord, y coord, previous x coord, previous y coord, the pixel buffer to draw on \par
+ void \par
+
+
+Reimplemented from \hyperlink{classDrawTool_a65dbb2f006efc9c6053d01df75eff5a9}{Draw\-Tool}.
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

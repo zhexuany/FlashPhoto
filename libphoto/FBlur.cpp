@@ -6,7 +6,9 @@
 #include "FBlur.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
-
+/**
+This is the FBlur class, it is used for all of the blur image filters .  applyFilter describes how this filter will be applied to every pixel in the image.
+*/
 FBlur::FBlur(){}
 FBlur::~FBlur(){}
 
@@ -69,8 +71,8 @@ kernelType FBlur::emptyFilter(int radius){
 }
 
 kernelType FBlur::boxFilter(int radius){
-  //any integer divied by 2 will give us another integer.
-  //multiply it by 2 and puls 1 will give us a odd number
+  //any integer divided by 2 will give us another integer.
+  //multiply it by 2 and plus 1 will give us a odd number
   int kSize = 2*(radius/2)+1;
   kernelType filter(kSize, kernelRow(kSize));
   float factor =(float) kSize*kSize;

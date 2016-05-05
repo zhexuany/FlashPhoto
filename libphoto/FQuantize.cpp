@@ -8,6 +8,10 @@
 #include "FQuantize.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
+
+/**
+This is the FQuantize class, it is used for the quantize image filters.  This does not use kernels so it only has to deal with applying the filter
+*/
 FQuantize::FQuantize(){}
 FQuantize::~FQuantize(){}
 void FQuantize::applyFilter(PixelBuffer* imageBuffer){

@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -154,9 +154,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> nextImageEnabled(<span class="keywordtype">bool</span> enabled);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> initDrawTool();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> initFilter();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> updateCurrentTool();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMIAApp.html#ae9f573664b63d839f34a97a55cfc305a">initDrawTool</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMIAApp.html#a5f25e06a32d646e407474f24b8ecf43d">initFilter</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMIAApp.html#aef9e427d5b1279cf9e6fe4d17570a828">updateCurrentTool</a>();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> loadImageToCanvas();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> saveCanvasToFile();</div>
@@ -245,16 +245,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classMIAApp_html_ae9f573664b63d839f34a97a55cfc305a"><div class="ttname"><a href="classMIAApp.html#ae9f573664b63d839f34a97a55cfc305a">MIAApp::initDrawTool</a></div><div class="ttdeci">void initDrawTool()</div><div class="ttdef"><b>Definition:</b> MIAApp.cpp:45</div></div>
+<div class="ttc" id="classMIAApp_html_aef9e427d5b1279cf9e6fe4d17570a828"><div class="ttname"><a href="classMIAApp.html#aef9e427d5b1279cf9e6fe4d17570a828">MIAApp::updateCurrentTool</a></div><div class="ttdeci">void updateCurrentTool()</div><div class="ttdef"><b>Definition:</b> MIAApp.cpp:65</div></div>
 <div class="ttc" id="classDrawTool_html"><div class="ttname"><a href="classDrawTool.html">DrawTool</a></div><div class="ttdef"><b>Definition:</b> Drawtool.h:11</div></div>
 <div class="ttc" id="classColorData_html"><div class="ttname"><a href="classColorData.html">ColorData</a></div><div class="ttdef"><b>Definition:</b> ColorData.h:11</div></div>
 <div class="ttc" id="classFilter_html"><div class="ttname"><a href="classFilter.html">Filter</a></div><div class="ttdef"><b>Definition:</b> Filter.h:15</div></div>
+<div class="ttc" id="classMIAApp_html_a5f25e06a32d646e407474f24b8ecf43d"><div class="ttname"><a href="classMIAApp.html#a5f25e06a32d646e407474f24b8ecf43d">MIAApp::initFilter</a></div><div class="ttdeci">void initFilter()</div><div class="ttdef"><b>Definition:</b> MIAApp.cpp:34</div></div>
 <div class="ttc" id="classMIAApp_html"><div class="ttname"><a href="classMIAApp.html">MIAApp</a></div><div class="ttdef"><b>Definition:</b> MIAApp.h:20</div></div>
 <div class="ttc" id="classBaseGfxApp_html"><div class="ttname"><a href="classBaseGfxApp.html">BaseGfxApp</a></div><div class="ttdef"><b>Definition:</b> BaseGfxApp.h:20</div></div>
 <div class="ttc" id="classPixelBuffer_html"><div class="ttname"><a href="classPixelBuffer.html">PixelBuffer</a></div><div class="ttdef"><b>Definition:</b> PixelBuffer.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

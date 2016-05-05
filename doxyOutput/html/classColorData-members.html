@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,29 +89,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This is the complete list of members for <a class="el" href="classColorData.html">ColorData</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>clampedColor</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ColorData</b>() (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ColorData</b>(float r, float g, float b) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ColorData</b>(float r, float g, float b, float a) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getAlpha</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getBlue</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getColorSum</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getGreen</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getLuminance</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getRed</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator!=</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>clampValue</b>(float input, float a, float b) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#accf4e0c0d4549051a46783e964c95164">ColorData</a>()</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>ColorData</b>(float r, float g, float b) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ColorData</b>(float r, float g, float b, float a) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getAlpha</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#ad9c600256c8abefdd76209fc1f68fcb5">getBlue</a>() const </td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getColorSum</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#a7e2e03b8e1e3270f33c4e4a69c00dbd6">getGreen</a>() const </td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>getLuminance</b>() const  (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#ab7066467c08dfad868fc4b1add70c2f2">getRed</a>() const </td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>m_alpha</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_blue</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>m_green</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_red</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator!=</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#adf9a770243996e50282d248a4327f351">operator*</a>(const ColorData &amp;a, float f)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>operator*</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator*</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator+</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator-</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator==</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setAlpha</b>(float a) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setBlue</b>(float b) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setGreen</b>(float g) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setRed</b>(float r) (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator+</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator-</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator==</b> (defined in <a class="el" href="classColorData.html">ColorData</a>)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classColorData.html#a547fb7bd1616e8657a825cb9a34c43c1">setAlpha</a>(float a)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#a01bbba90cac0bc1b3bd01d4aecc16477">setBlue</a>(float b)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classColorData.html#a4a7833dfef4a33eee3857de09a72aee1">setGreen</a>(float g)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classColorData.html#aa2e401956936f87a560b8f579514bf69">setRed</a>(float r)</td><td class="entry"><a class="el" href="classColorData.html">ColorData</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:06 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:30 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

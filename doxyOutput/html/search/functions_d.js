@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unhide_5finternal',['unhide_internal',['../classGLUI__Control.html#a73192b0fdcaa75eb04d43fa70abe246f',1,'GLUI_Control']]]
+  ['watercolor',['WaterColor',['../classWaterColor.html#ac61121474a9faeabc3610be7c6dd24b6',1,'WaterColor']]]
 ];

@@ -6,6 +6,9 @@
 
 
 #include "FSaturation.h"
+/**
+This is the FSaturation class, it is used for the saturation image filters.  This does not use kernels so it only has to deal with applying the filter
+*/
 FSaturation::FSaturation(){
 }
 FSaturation::~FSaturation(){

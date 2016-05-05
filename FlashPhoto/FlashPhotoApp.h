@@ -140,6 +140,7 @@ private:
         GLUI_Spinner *spinnerBlue;
     } m_gluiControlHooks;
 
+	///The size of the undo queue
     int m_queueSize;
     std::deque<PixelBuffer*> undoQueue;
     std::deque<PixelBuffer*> redoQueue;
@@ -147,23 +148,28 @@ private:
     bool isjpeg(const std::string & name);
     int loadpng(FILE *fp);
     void clearPixelBuffer();
-    //Stores previous x and y positions
+    ///Stores previously clicked x position for comparing mouse movement
     int m_prevX;
-    int m_prevY;
-    //Stroes stamp image's height and width
+	///Stores previously clicked y position for comparing mouse movement
+	int m_prevY;
+    ///Stores stamp image's height
     int m_stampHeight;
+    ///Stores stamp image's width
     int m_stampWidth;
     // This is the pointer to the buffer where the display PixelBuffer is stored
     PixelBuffer* m_displayBuffer;
     void updateUndo();
 
-    // These are used to store the selections from the GLUI user interface
+    ///These are used to store the selections from the GLUI user interface
     DrawTool** toolList;
+	///The current tool selected by the user
     DrawTool* m_tool;
+	///Callback value for user tool selection
     int m_curTool;
     Filter** m_filters;
+	///Callback value for user filter selection
     int m_curFilter;
-    float m_curColorRed, m_curColorGreen, m_curColorBlue;
+	float m_curColorRed, m_curColorGreen, m_curColorBlue;
     std::string m_fileName;
     // const int value use for switch current tool
     enum ToolType{

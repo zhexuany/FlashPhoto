@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -437,7 +437,8 @@ struct {</td></tr>
 <tr class="memitem:a26ed03c8eea24f9b2193fe98f02a78b7"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>m_gluiControlHooks</b></td></tr>
 <tr class="separator:a26ed03c8eea24f9b2193fe98f02a78b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae45bc3761686cbb4d5f9c01b048816c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae45bc3761686cbb4d5f9c01b048816c0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_queueSize</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#ae45bc3761686cbb4d5f9c01b048816c0">m_queueSize</a></td></tr>
+<tr class="memdesc:ae45bc3761686cbb4d5f9c01b048816c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the undo queue. <br/></td></tr>
 <tr class="separator:ae45bc3761686cbb4d5f9c01b048816c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb0f4d46432039c14d5816abb019fa7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdb0f4d46432039c14d5816abb019fa7"></a>
 std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>undoQueue</b></td></tr>
@@ -446,34 +447,42 @@ std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt;
 std::deque&lt; <a class="el" href="classPixelBuffer.html">PixelBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>redoQueue</b></td></tr>
 <tr class="separator:a67142e2e575f5c63666b3e750279fd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7552f6cf6441c53d020e5a0124031bcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7552f6cf6441c53d020e5a0124031bcb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_prevX</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a7552f6cf6441c53d020e5a0124031bcb">m_prevX</a></td></tr>
+<tr class="memdesc:a7552f6cf6441c53d020e5a0124031bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores previously clicked x position for comparing mouse movement. <br/></td></tr>
 <tr class="separator:a7552f6cf6441c53d020e5a0124031bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a9759bdfbdf16bf0091f1694604a64a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a9759bdfbdf16bf0091f1694604a64a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_prevY</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a6a9759bdfbdf16bf0091f1694604a64a">m_prevY</a></td></tr>
+<tr class="memdesc:a6a9759bdfbdf16bf0091f1694604a64a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores previously clicked y position for comparing mouse movement. <br/></td></tr>
 <tr class="separator:a6a9759bdfbdf16bf0091f1694604a64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e397b37bfb3ea981efc795b7a2a9e9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e397b37bfb3ea981efc795b7a2a9e9e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_stampHeight</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a2e397b37bfb3ea981efc795b7a2a9e9e">m_stampHeight</a></td></tr>
+<tr class="memdesc:a2e397b37bfb3ea981efc795b7a2a9e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores stamp image's height. <br/></td></tr>
 <tr class="separator:a2e397b37bfb3ea981efc795b7a2a9e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dab8bf3eb60e4c99310660c9c32f3a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dab8bf3eb60e4c99310660c9c32f3a5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_stampWidth</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a7dab8bf3eb60e4c99310660c9c32f3a5">m_stampWidth</a></td></tr>
+<tr class="memdesc:a7dab8bf3eb60e4c99310660c9c32f3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores stamp image's width. <br/></td></tr>
 <tr class="separator:a7dab8bf3eb60e4c99310660c9c32f3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9662e1dbd6e003a62179eecba827e910"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9662e1dbd6e003a62179eecba827e910"></a>
 <a class="el" href="classPixelBuffer.html">PixelBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_displayBuffer</b></td></tr>
 <tr class="separator:a9662e1dbd6e003a62179eecba827e910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752ba29ca132a3fd4deaa3727946f7f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a752ba29ca132a3fd4deaa3727946f7f6"></a>
-<a class="el" href="classDrawTool.html">DrawTool</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>toolList</b></td></tr>
+<a class="el" href="classDrawTool.html">DrawTool</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a752ba29ca132a3fd4deaa3727946f7f6">toolList</a></td></tr>
+<tr class="memdesc:a752ba29ca132a3fd4deaa3727946f7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">These are used to store the selections from the GLUI user interface. <br/></td></tr>
 <tr class="separator:a752ba29ca132a3fd4deaa3727946f7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69d8dcf7147882964a6d2832bbab67e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69d8dcf7147882964a6d2832bbab67e2"></a>
-<a class="el" href="classDrawTool.html">DrawTool</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_tool</b></td></tr>
+<a class="el" href="classDrawTool.html">DrawTool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a69d8dcf7147882964a6d2832bbab67e2">m_tool</a></td></tr>
+<tr class="memdesc:a69d8dcf7147882964a6d2832bbab67e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current tool selected by the user. <br/></td></tr>
 <tr class="separator:a69d8dcf7147882964a6d2832bbab67e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fe8a885ae7b5e698c40a7585b4e292d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fe8a885ae7b5e698c40a7585b4e292d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_curTool</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a4fe8a885ae7b5e698c40a7585b4e292d">m_curTool</a></td></tr>
+<tr class="memdesc:a4fe8a885ae7b5e698c40a7585b4e292d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback value for user tool selection. <br/></td></tr>
 <tr class="separator:a4fe8a885ae7b5e698c40a7585b4e292d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ef9e2d21c3f80cee59be363e21b9bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40ef9e2d21c3f80cee59be363e21b9bc"></a>
 <a class="el" href="classFilter.html">Filter</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>m_filters</b></td></tr>
 <tr class="separator:a40ef9e2d21c3f80cee59be363e21b9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a584dd16d8f2aad51028759a1dd94c83f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a584dd16d8f2aad51028759a1dd94c83f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_curFilter</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashPhotoApp.html#a584dd16d8f2aad51028759a1dd94c83f">m_curFilter</a></td></tr>
+<tr class="memdesc:a584dd16d8f2aad51028759a1dd94c83f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback value for user filter selection. <br/></td></tr>
 <tr class="separator:a584dd16d8f2aad51028759a1dd94c83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4b0ca13b038233f14563c79f7201ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e4b0ca13b038233f14563c79f7201ae"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>m_curColorRed</b></td></tr>
@@ -808,7 +817,7 @@ void <br/>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 22:27:31 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:33:19 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

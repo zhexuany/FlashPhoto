@@ -7,6 +7,10 @@
 
 #include "FChannel.h"
 #include "PixelBuffer.h"
+
+/**
+This is the FChannel class, it is used for all the channel image filters .  applyFilter describes how this filter will be applied to every pixel in the image.
+*/
 FChannel::FChannel(){
 }
 FChannel::~FChannel(){

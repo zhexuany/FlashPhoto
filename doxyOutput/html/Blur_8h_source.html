@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,22 +96,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classBlur.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBlur.html">Blur</a> : <span class="keyword">public</span> <a class="code" href="classDrawTool.html">DrawTool</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; <span class="keyword">public</span> :</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classBlur.html">Blur</a>(<span class="keywordtype">int</span> radius);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classBlur.html#a4cf976a139e3745e022c6b4fb7b18efb">Blur</a>(<span class="keywordtype">int</span> radius);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  ~<a class="code" href="classBlur.html">Blur</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> fillInfluence();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> applyInfluence(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">string</span> getName();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBlur.html#a6db41e9d70814abd7d188eee08779c7a">fillInfluence</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classBlur.html#a74a6e5acef4b46edc5c79e909296ff53">applyInfluence</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">string</span> <a class="code" href="classBlur.html#ad04ff612443d12024ae057ae757e6271">getName</a>();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classDrawTool_html"><div class="ttname"><a href="classDrawTool.html">DrawTool</a></div><div class="ttdef"><b>Definition:</b> Drawtool.h:11</div></div>
+<div class="ttc" id="classBlur_html_a6db41e9d70814abd7d188eee08779c7a"><div class="ttname"><a href="classBlur.html#a6db41e9d70814abd7d188eee08779c7a">Blur::fillInfluence</a></div><div class="ttdeci">void fillInfluence()</div><div class="ttdoc">This creates a 2D matrix, the values at each index refer to the strength at which the color at that r...</div><div class="ttdef"><b>Definition:</b> Blur.cpp:17</div></div>
+<div class="ttc" id="classBlur_html_a4cf976a139e3745e022c6b4fb7b18efb"><div class="ttname"><a href="classBlur.html#a4cf976a139e3745e022c6b4fb7b18efb">Blur::Blur</a></div><div class="ttdeci">Blur(int radius)</div><div class="ttdef"><b>Definition:</b> Blur.cpp:8</div></div>
+<div class="ttc" id="classBlur_html_a74a6e5acef4b46edc5c79e909296ff53"><div class="ttname"><a href="classBlur.html#a74a6e5acef4b46edc5c79e909296ff53">Blur::applyInfluence</a></div><div class="ttdeci">void applyInfluence(int x, int y, PixelBuffer *buffer)</div><div class="ttdoc">This applies the influence matrix, the values at each index refer to the strength at which the color ...</div><div class="ttdef"><b>Definition:</b> Blur.cpp:38</div></div>
+<div class="ttc" id="classBlur_html_ad04ff612443d12024ae057ae757e6271"><div class="ttname"><a href="classBlur.html#ad04ff612443d12024ae057ae757e6271">Blur::getName</a></div><div class="ttdeci">string getName()</div><div class="ttdoc">The publically viewable name the user sees. </div><div class="ttdef"><b>Definition:</b> Blur.cpp:89</div></div>
 <div class="ttc" id="classBlur_html"><div class="ttname"><a href="classBlur.html">Blur</a></div><div class="ttdef"><b>Definition:</b> Blur.h:9</div></div>
 <div class="ttc" id="classPixelBuffer_html"><div class="ttname"><a href="classPixelBuffer.html">PixelBuffer</a></div><div class="ttdef"><b>Definition:</b> PixelBuffer.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

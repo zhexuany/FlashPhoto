@@ -1,5 +1,8 @@
 #include "Eraser.h"
-
+/**
+This is the eraser pen class, it inherits from DrawTool and is used for the eraser 
+*/
+///For function descriptions please see the Blur class
 Eraser::Eraser(int radius)
     : DrawTool(radius, radius){
   fillInfluence();
@@ -9,6 +12,7 @@ Eraser::Eraser(int radius)
 Eraser::~Eraser(){
 }
 
+///Linear falloff circle pattern
 void Eraser::fillInfluence(){
   Mask const * mask = getMask();
   float** influence = mask -> getInfluence();
@@ -29,6 +33,7 @@ void Eraser::fillInfluence(){
   }
 }
 
+///Custom apply influence function since we are "erasing" the background
 void Eraser::applyInfluence(int x, int y, PixelBuffer* buffer){
   Mask const * mask = getMask();
   int height = mask -> getHeight();

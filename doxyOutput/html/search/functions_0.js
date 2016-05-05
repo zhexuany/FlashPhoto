@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['activate_5fcontrol',['activate_control',['../classGLUI__Main.html#aafe506d2f17957f0ff81b7168d12428a',1,'GLUI_Main']]],
-  ['add_5fchild_5fto_5fcontrol',['add_child_to_control',['../classGLUI__Node.html#a52432c3a1f3783b5f47aa3ab3dae4435',1,'GLUI_Node']]],
-  ['add_5fcontrol',['add_control',['../classGLUI__Node.html#afa7031b826994d524f219ea5016c113c',1,'GLUI_Node::add_control()'],['../classGLUI.html#a94398f830a14babcd93ac109082a221e',1,'GLUI::add_control()']]],
-  ['add_5fitem',['add_item',['../classGLUI__List.html#ac26dc37467a0c3ddb0952f1321c4f703',1,'GLUI_List::add_item()'],['../classGLUI__Listbox.html#a173e91d0db2dc5af267e79a592c2af13',1,'GLUI_Listbox::add_item()']]]
+  ['applyinfluence',['applyInfluence',['../classBlur.html#a74a6e5acef4b46edc5c79e909296ff53',1,'Blur::applyInfluence()'],['../classDrawTool.html#ac60a70d91e81163d413b99382ac4255b',1,'DrawTool::applyInfluence()'],['../classEraser.html#a195eeec6843317ee33e0e51fccb3daff',1,'Eraser::applyInfluence()'],['../classFillTool.html#a8ad4d0d5b2a5379be3720c89a102ddb3',1,'FillTool::applyInfluence()'],['../classHighlighter.html#a28e750d99d9aa85521427001ef73be0d',1,'Highlighter::applyInfluence()'],['../classStamp.html#ab41c9de007e2ad05a6b47e62b41fd7df',1,'Stamp::applyInfluence()']]]
 ];

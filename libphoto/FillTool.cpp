@@ -1,5 +1,8 @@
 #include "FillTool.h"
-
+/**
+This is the FillTool class, it is used for all of custom fill tool.
+*/
+///For function descriptions please see the Blur class
 FillTool::FillTool(ColorData* toolColor, int width, int height)
     : DrawTool(toolColor, width, height){
   fillInfluence();
@@ -21,11 +24,13 @@ void FillTool::fillInfluence(){
   }
 }
 
+///Special paint override since this technically applies to the entire buffer, not just the mask area
 void FillTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer) {
   applyInfluence(x, y, buffer);
   buffer -> setBackgroundColor(m_toolColor);
 }
 
+///Apply to the entire buffer, the mask should be equivalent to the buffer
 void FillTool::applyInfluence(int x, int y, PixelBuffer* buffer){
   Mask const * mask = getMask();
   int height = mask -> getHeight();
@@ -42,6 +47,7 @@ void FillTool::applyInfluence(int x, int y, PixelBuffer* buffer){
   }
 }
 
+///Tells you if x and y are equal colors
 bool FillTool::compareColorData(ColorData x, ColorData y) {
 	if (x.getRed() == y.getRed() && x.getBlue() == y.getBlue() && x.getGreen() == y.getGreen()) {
 		return true;

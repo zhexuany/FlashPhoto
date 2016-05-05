@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['recalculate_5fitem_5fwidth',['recalculate_item_width',['../classGLUI__Listbox.html#a2d7f6743dea0483354ba495eedfd7d5e',1,'GLUI_Listbox']]],
-  ['redraw',['redraw',['../classGLUI__Control.html#a7777125cd866884377899df625bad6cd',1,'GLUI_Control']]],
-  ['redraw_5fwindow',['redraw_window',['../classGLUI__Control.html#aecb4bacd8f4ff12de6ffcecc166d3adc',1,'GLUI_Control']]],
-  ['refresh',['refresh',['../classGLUI__Main.html#acd1e25e989f0f1820c496d4b8b9ee422',1,'GLUI_Main']]],
-  ['reset',['reset',['../classGLUI__Rotation.html#ab6ce638fa62a697b3eb177a7ac879919',1,'GLUI_Rotation']]],
-  ['restore_5fdraw_5fbuffer',['restore_draw_buffer',['../classGLUI__Main.html#a56523ef45aea9c350009c6d91a67a028',1,'GLUI_Main']]]
+  ['savecanvastofile',['saveCanvasToFile',['../classFlashPhotoApp.html#ab0389fb3c2c64e0e3312880e745b7070',1,'FlashPhotoApp']]],
+  ['saveimage',['saveimage',['../classImageHandler.html#ace874907681fc4970f6a2ae2377833b9',1,'ImageHandler']]],
+  ['savejpg',['savejpg',['../classImageHandler.html#a93c1210df4b0b9d673e3ba99f1452d60',1,'ImageHandler']]],
+  ['savepng',['savepng',['../classImageHandler.html#afa5073aef96331be8b7c3e8fe8fbd373',1,'ImageHandler']]],
+  ['setalpha',['setAlpha',['../classColorData.html#a547fb7bd1616e8657a825cb9a34c43c1',1,'ColorData']]],
+  ['setblue',['setBlue',['../classColorData.html#a01bbba90cac0bc1b3bd01d4aecc16477',1,'ColorData']]],
+  ['setgreen',['setGreen',['../classColorData.html#a4a7833dfef4a33eee3857de09a72aee1',1,'ColorData']]],
+  ['setpixel',['setPixel',['../classPixelBuffer.html#abe673364dfceec95783e1dfb00ec9bd1',1,'PixelBuffer']]],
+  ['setred',['setRed',['../classColorData.html#aa2e401956936f87a560b8f579514bf69',1,'ColorData']]],
+  ['settoolcolor',['setToolColor',['../classDrawTool.html#a7f7097be5f6beb7b3f6ce437785cac7a',1,'DrawTool']]],
+  ['spraycan',['SprayCan',['../classSprayCan.html#a5491c5e7346fb7126b45405664b22f5d',1,'SprayCan']]],
+  ['stamp',['Stamp',['../classStamp.html#a92ac49815361090e983b1adf13451dc5',1,'Stamp']]]
 ];

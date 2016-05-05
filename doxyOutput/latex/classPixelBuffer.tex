@@ -8,24 +8,23 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classPixelBuffer_ae373904fcdd3c820677b959354b75410}{{\bfseries Pixel\-Buffer} (int w, int h, \hyperlink{classColorData}{Color\-Data} background\-Color)}\label{classPixelBuffer_ae373904fcdd3c820677b959354b75410}
-
+\hyperlink{classPixelBuffer_ae373904fcdd3c820677b959354b75410}{Pixel\-Buffer} (int w, int h, \hyperlink{classColorData}{Color\-Data} background\-Color)
 \item 
-\hypertarget{classPixelBuffer_abe673364dfceec95783e1dfb00ec9bd1}{void {\bfseries set\-Pixel} (int x, int y, const \hyperlink{classColorData}{Color\-Data} \&color)}\label{classPixelBuffer_abe673364dfceec95783e1dfb00ec9bd1}
+\hypertarget{classPixelBuffer_abe673364dfceec95783e1dfb00ec9bd1}{void \hyperlink{classPixelBuffer_abe673364dfceec95783e1dfb00ec9bd1}{set\-Pixel} (int x, int y, const \hyperlink{classColorData}{Color\-Data} \&color)}\label{classPixelBuffer_abe673364dfceec95783e1dfb00ec9bd1}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Set the pixel at the x and y coordinates to the new\-Pixel value. \end{DoxyCompactList}\item 
 \hypertarget{classPixelBuffer_a1bdab74553ab7d569629a42a808b4785}{void {\bfseries fill\-Pixel\-Buffer\-With\-Color} (\hyperlink{classColorData}{Color\-Data} color)}\label{classPixelBuffer_a1bdab74553ab7d569629a42a808b4785}
 
 \item 
 \hypertarget{classPixelBuffer_a73f0518c147ad7900a64b4ffa205b9fc}{void {\bfseries convert\-To\-Luminance} ()}\label{classPixelBuffer_a73f0518c147ad7900a64b4ffa205b9fc}
 
 \item 
-\hypertarget{classPixelBuffer_ae01450fb4e9824c1e93e92f4377e9924}{\hyperlink{classColorData}{Color\-Data} {\bfseries get\-Pixel} (int x, int y) const }\label{classPixelBuffer_ae01450fb4e9824c1e93e92f4377e9924}
+\hypertarget{classPixelBuffer_ae01450fb4e9824c1e93e92f4377e9924}{\hyperlink{classColorData}{Color\-Data} \hyperlink{classPixelBuffer_ae01450fb4e9824c1e93e92f4377e9924}{get\-Pixel} (int x, int y) const }\label{classPixelBuffer_ae01450fb4e9824c1e93e92f4377e9924}
 
-\item 
-\hypertarget{classPixelBuffer_a4b9ebe9181f451aa7c9858e400245e73}{\hyperlink{classColorData}{Color\-Data} const $\ast$ {\bfseries get\-Data} () const }\label{classPixelBuffer_a4b9ebe9181f451aa7c9858e400245e73}
+\begin{DoxyCompactList}\small\item\em Get the pixel at the x and y coordinates. \end{DoxyCompactList}\item 
+\hypertarget{classPixelBuffer_a4b9ebe9181f451aa7c9858e400245e73}{\hyperlink{classColorData}{Color\-Data} const $\ast$ \hyperlink{classPixelBuffer_a4b9ebe9181f451aa7c9858e400245e73}{get\-Data} () const }\label{classPixelBuffer_a4b9ebe9181f451aa7c9858e400245e73}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Get the pixel array. \end{DoxyCompactList}\item 
 \hypertarget{classPixelBuffer_a7eadc0d458fec5d0e0f502d279b86ea7}{\hyperlink{classColorData}{Color\-Data} {\bfseries get\-Background\-Color} ()}\label{classPixelBuffer_a7eadc0d458fec5d0e0f502d279b86ea7}
 
 \item 
@@ -50,6 +49,24 @@
 \hypertarget{classPixelBuffer_a91bfa4c461b467c0504601a7bc6e29b2}{static void {\bfseries copy\-Pixel\-Buffer} (\hyperlink{classPixelBuffer}{Pixel\-Buffer} source\-Buffer, \hyperlink{classPixelBuffer}{Pixel\-Buffer} $\ast$destination\-Buffer)}\label{classPixelBuffer_a91bfa4c461b467c0504601a7bc6e29b2}
 
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPixelBuffer_abea92f97fac02c482e18497b71581e58}{\hyperlink{classColorData}{Color\-Data} $\ast$ {\bfseries m\-\_\-pixels}}\label{classPixelBuffer_abea92f97fac02c482e18497b71581e58}
+
+\item 
+\hypertarget{classPixelBuffer_a60fc7997d72641d0b49740b93f509dbb}{\hyperlink{classColorData}{Color\-Data} $\ast$ {\bfseries m\-\_\-background\-Color}}\label{classPixelBuffer_a60fc7997d72641d0b49740b93f509dbb}
+
+\item 
+\hypertarget{classPixelBuffer_aa14c833de33709f460035710f6af9689}{\hyperlink{classColorData}{Color\-Data} $\ast$ {\bfseries m\-\_\-default\-Background\-Color}}\label{classPixelBuffer_aa14c833de33709f460035710f6af9689}
+
+\item 
+\hypertarget{classPixelBuffer_a1eaf71f503d8808235a62787c03282a0}{const int {\bfseries m\-\_\-width}}\label{classPixelBuffer_a1eaf71f503d8808235a62787c03282a0}
+
+\item 
+\hypertarget{classPixelBuffer_a27122520f190977dc995cc32e806caa4}{const int {\bfseries m\-\_\-height}}\label{classPixelBuffer_a27122520f190977dc995cc32e806caa4}
+
+\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,6 +80,18 @@
 
 \subsection{Detailed Description}
 The \hyperlink{classPixelBuffer}{Pixel\-Buffer} class stores an array of \hyperlink{classColorData}{Color\-Data}, such as an image that can be drawn to the screen. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPixelBuffer_ae373904fcdd3c820677b959354b75410}{\index{Pixel\-Buffer@{Pixel\-Buffer}!Pixel\-Buffer@{Pixel\-Buffer}}
+\index{Pixel\-Buffer@{Pixel\-Buffer}!PixelBuffer@{Pixel\-Buffer}}
+\subsubsection[{Pixel\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}Pixel\-Buffer\-::\-Pixel\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{w, }
+\item[{int}]{h, }
+\item[{{\bf Color\-Data}}]{background\-Color}
+\end{DoxyParamCaption}
+)}}\label{classPixelBuffer_ae373904fcdd3c820677b959354b75410}
+This is the pixelbuffer class. This is the screen the user sees. Use the encapsulated functions, they help a lot. 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

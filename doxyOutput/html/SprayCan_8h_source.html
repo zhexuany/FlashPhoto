@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,22 +91,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;Drawtool.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classSprayCan.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSprayCan.html">SprayCan</a> : <span class="keyword">public</span> <a class="code" href="classDrawTool.html">DrawTool</a>{</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; <span class="keyword">public</span> :</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <a class="code" href="classSprayCan.html">SprayCan</a>(<a class="code" href="classColorData.html">ColorData</a>* toolColor, <span class="keywordtype">int</span> radius);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <a class="code" href="classSprayCan.html#a5491c5e7346fb7126b45405664b22f5d">SprayCan</a>(<a class="code" href="classColorData.html">ColorData</a>* toolColor, <span class="keywordtype">int</span> radius);</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  ~<a class="code" href="classSprayCan.html">SprayCan</a>();</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordtype">void</span> fillInfluence();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordtype">void</span> paint(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> prevX, <span class="keywordtype">int</span> prevY, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSprayCan.html#a86321320d34fdc49c754ce6d1ff324fd">fillInfluence</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSprayCan.html#ade6115cd8e7f277c74b0c6ade3547e2c">paint</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> prevX, <span class="keywordtype">int</span> prevY, <a class="code" href="classPixelBuffer.html">PixelBuffer</a>* buffer);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">string</span> getName();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif // SPRAYCAN_H</span></div>
+<div class="ttc" id="classSprayCan_html_ade6115cd8e7f277c74b0c6ade3547e2c"><div class="ttname"><a href="classSprayCan.html#ade6115cd8e7f277c74b0c6ade3547e2c">SprayCan::paint</a></div><div class="ttdeci">void paint(int x, int y, int prevX, int prevY, PixelBuffer *buffer)</div><div class="ttdef"><b>Definition:</b> SprayCan.cpp:19</div></div>
 <div class="ttc" id="classSprayCan_html"><div class="ttname"><a href="classSprayCan.html">SprayCan</a></div><div class="ttdef"><b>Definition:</b> SprayCan.h:4</div></div>
+<div class="ttc" id="classSprayCan_html_a5491c5e7346fb7126b45405664b22f5d"><div class="ttname"><a href="classSprayCan.html#a5491c5e7346fb7126b45405664b22f5d">SprayCan::SprayCan</a></div><div class="ttdeci">SprayCan(ColorData *toolColor, int radius)</div><div class="ttdoc">For function descriptions please see the Blur class. </div><div class="ttdef"><b>Definition:</b> SprayCan.cpp:8</div></div>
 <div class="ttc" id="classDrawTool_html"><div class="ttname"><a href="classDrawTool.html">DrawTool</a></div><div class="ttdef"><b>Definition:</b> Drawtool.h:11</div></div>
 <div class="ttc" id="classColorData_html"><div class="ttname"><a href="classColorData.html">ColorData</a></div><div class="ttdef"><b>Definition:</b> ColorData.h:11</div></div>
+<div class="ttc" id="classSprayCan_html_a86321320d34fdc49c754ce6d1ff324fd"><div class="ttname"><a href="classSprayCan.html#a86321320d34fdc49c754ce6d1ff324fd">SprayCan::fillInfluence</a></div><div class="ttdeci">void fillInfluence()</div><div class="ttdef"><b>Definition:</b> SprayCan.cpp:23</div></div>
 <div class="ttc" id="classPixelBuffer_html"><div class="ttname"><a href="classPixelBuffer.html">PixelBuffer</a></div><div class="ttdef"><b>Definition:</b> PixelBuffer.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

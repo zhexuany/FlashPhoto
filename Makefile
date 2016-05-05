@@ -9,6 +9,9 @@ build:
 	cd $(FLASH_PATH); make
 	cd $(MIA_PATH); make
 
+documentation:
+	doxygen Doxyfile
+
 clean:
 	cd $(PHOTO_PATH); make clean
 	cd $(FLASH_PATH); make clean

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['width',['width',['../classGLUI__StdBitmaps.html#ad3a2b8300692f83de6329545f716597f',1,'GLUI_StdBitmaps']]]
+  ['_7edrawtool',['~DrawTool',['../classDrawTool.html#ac07eb21dc6dfc99b7e3e7a6e3b9548f3',1,'DrawTool']]],
+  ['_7ehighlighter',['~Highlighter',['../classHighlighter.html#a3c339de18ac3c2334b69480baee54dd5',1,'Highlighter']]],
+  ['_7epen',['~Pen',['../classPen.html#a6c57ef2ef6c352e676bcf77239315605',1,'Pen']]]
 ];

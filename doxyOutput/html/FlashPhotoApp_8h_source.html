@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,13 +107,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classFlashPhotoApp.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashPhotoApp.html">FlashPhotoApp</a> : <span class="keyword">public</span> <a class="code" href="classBaseGfxApp.html">BaseGfxApp</a> {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classFlashPhotoApp.html">FlashPhotoApp</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[], <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <a class="code" href="classColorData.html">ColorData</a> backgroundColor);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classFlashPhotoApp.html#a944931218613603cfb6bda6113971382">FlashPhotoApp</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[], <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <a class="code" href="classColorData.html">ColorData</a> backgroundColor);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classFlashPhotoApp.html">FlashPhotoApp</a>();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> mouseDragged(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) ;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> mouseMoved(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> leftMouseDown(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> leftMouseUp(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a29505b498fac898e099cfd1b8590c91a">mouseDragged</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) ;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#acf5a4cc5b76bb676d337758543bfdcc4">mouseMoved</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a2c348ddcc15b6a21972bc6aac98c5442">leftMouseDown</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#ae3a2f37b7c3657dcb5c16402c6d25519">leftMouseUp</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> display();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> gluiControl(<span class="keywordtype">int</span> controlID);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
@@ -164,12 +164,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> loadStampEnabled(<span class="keywordtype">bool</span> enabled);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> updateColors();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// function for load picture files</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> initDrawTool();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> initFilter();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> updateCurrentTool();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> loadImageToCanvas();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a29383606562f09ba623209581f92f5e5">initDrawTool</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#aeaf85d6ead6ca4b3905701db12ceaf68">initFilter</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a52eb2524a928df150d75492d96a3d49c">updateCurrentTool</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a7cc9f1383c18cb7eebc255d3c377adb0">loadImageToCanvas</a>();</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> loadImageToStamp();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> saveCanvasToFile();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#ab0389fb3c2c64e0e3312880e745b7070">saveCanvasToFile</a>();</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// function for filter operation</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> applyFilterBlur();</div>
@@ -186,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> undoOperation();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> redoOperation();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> updateCanvas(std::deque&lt;PixelBuffer*&gt; &amp;alpha, std::deque&lt;PixelBuffer*&gt; &amp;beta, <span class="keywordtype">bool</span> isUndo);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#af90d307fdc027a037816a63757a17120">updateCanvas</a>(std::deque&lt;PixelBuffer*&gt; &amp;alpha, std::deque&lt;PixelBuffer*&gt; &amp;beta, <span class="keywordtype">bool</span> isUndo);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> initGlui();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> initGraphics();</div>
@@ -234,7 +234,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">//TODO move isjpeg function into ImageHandler function.</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">bool</span> isjpeg(<span class="keyword">const</span> std::string &amp; name);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">int</span> loadpng(FILE *fp);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> clearPixelBuffer();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashPhotoApp.html#a7dc31c434067d59fa14d40e22a21d66c">clearPixelBuffer</a>();</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">//Stores previous x and y positions</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordtype">int</span> m_prevX;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">int</span> m_prevY;</div>
@@ -271,15 +271,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classDrawTool_html"><div class="ttname"><a href="classDrawTool.html">DrawTool</a></div><div class="ttdef"><b>Definition:</b> Drawtool.h:11</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a7cc9f1383c18cb7eebc255d3c377adb0"><div class="ttname"><a href="classFlashPhotoApp.html#a7cc9f1383c18cb7eebc255d3c377adb0">FlashPhotoApp::loadImageToCanvas</a></div><div class="ttdeci">void loadImageToCanvas()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:518</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a2c348ddcc15b6a21972bc6aac98c5442"><div class="ttname"><a href="classFlashPhotoApp.html#a2c348ddcc15b6a21972bc6aac98c5442">FlashPhotoApp::leftMouseDown</a></div><div class="ttdeci">void leftMouseDown(int x, int y)</div><div class="ttdoc">When the left mouse button is pressed this function is called. </div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:156</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a29505b498fac898e099cfd1b8590c91a"><div class="ttname"><a href="classFlashPhotoApp.html#a29505b498fac898e099cfd1b8590c91a">FlashPhotoApp::mouseDragged</a></div><div class="ttdeci">void mouseDragged(int x, int y)</div><div class="ttdoc">When the mouse is dragged this function is called. </div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:140</div></div>
 <div class="ttc" id="classColorData_html"><div class="ttname"><a href="classColorData.html">ColorData</a></div><div class="ttdef"><b>Definition:</b> ColorData.h:11</div></div>
 <div class="ttc" id="classFilter_html"><div class="ttname"><a href="classFilter.html">Filter</a></div><div class="ttdef"><b>Definition:</b> Filter.h:15</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_ae3a2f37b7c3657dcb5c16402c6d25519"><div class="ttname"><a href="classFlashPhotoApp.html#ae3a2f37b7c3657dcb5c16402c6d25519">FlashPhotoApp::leftMouseUp</a></div><div class="ttdeci">void leftMouseUp(int x, int y)</div><div class="ttdoc">When the left mouse button is let go this function is called. </div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:184</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a944931218613603cfb6bda6113971382"><div class="ttname"><a href="classFlashPhotoApp.html#a944931218613603cfb6bda6113971382">FlashPhotoApp::FlashPhotoApp</a></div><div class="ttdeci">FlashPhotoApp(int argc, char *argv[], int width, int height, ColorData backgroundColor)</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:8</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a7dc31c434067d59fa14d40e22a21d66c"><div class="ttname"><a href="classFlashPhotoApp.html#a7dc31c434067d59fa14d40e22a21d66c">FlashPhotoApp::clearPixelBuffer</a></div><div class="ttdeci">void clearPixelBuffer()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:194</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a52eb2524a928df150d75492d96a3d49c"><div class="ttname"><a href="classFlashPhotoApp.html#a52eb2524a928df150d75492d96a3d49c">FlashPhotoApp::updateCurrentTool</a></div><div class="ttdeci">void updateCurrentTool()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:62</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_aeaf85d6ead6ca4b3905701db12ceaf68"><div class="ttname"><a href="classFlashPhotoApp.html#aeaf85d6ead6ca4b3905701db12ceaf68">FlashPhotoApp::initFilter</a></div><div class="ttdeci">void initFilter()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:27</div></div>
 <div class="ttc" id="classFlashPhotoApp_html"><div class="ttname"><a href="classFlashPhotoApp.html">FlashPhotoApp</a></div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.h:19</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_af90d307fdc027a037816a63757a17120"><div class="ttname"><a href="classFlashPhotoApp.html#af90d307fdc027a037816a63757a17120">FlashPhotoApp::updateCanvas</a></div><div class="ttdeci">void updateCanvas(std::deque&lt; PixelBuffer * &gt; &amp;alpha, std::deque&lt; PixelBuffer * &gt; &amp;beta, bool isUndo)</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:658</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_acf5a4cc5b76bb676d337758543bfdcc4"><div class="ttname"><a href="classFlashPhotoApp.html#acf5a4cc5b76bb676d337758543bfdcc4">FlashPhotoApp::mouseMoved</a></div><div class="ttdeci">void mouseMoved(int x, int y)</div><div class="ttdoc">When the mouse if moved this function is called. </div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:149</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_ab0389fb3c2c64e0e3312880e745b7070"><div class="ttname"><a href="classFlashPhotoApp.html#ab0389fb3c2c64e0e3312880e745b7070">FlashPhotoApp::saveCanvasToFile</a></div><div class="ttdeci">void saveCanvasToFile()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:563</div></div>
 <div class="ttc" id="classBaseGfxApp_html"><div class="ttname"><a href="classBaseGfxApp.html">BaseGfxApp</a></div><div class="ttdef"><b>Definition:</b> BaseGfxApp.h:20</div></div>
 <div class="ttc" id="classPixelBuffer_html"><div class="ttname"><a href="classPixelBuffer.html">PixelBuffer</a></div><div class="ttdef"><b>Definition:</b> PixelBuffer.h:13</div></div>
+<div class="ttc" id="classFlashPhotoApp_html_a29383606562f09ba623209581f92f5e5"><div class="ttname"><a href="classFlashPhotoApp.html#a29383606562f09ba623209581f92f5e5">FlashPhotoApp::initDrawTool</a></div><div class="ttdeci">void initDrawTool()</div><div class="ttdef"><b>Definition:</b> FlashPhotoApp.cpp:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

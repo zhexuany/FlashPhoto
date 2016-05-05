@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,6 +83,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classColorData-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -93,6 +96,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:accf4e0c0d4549051a46783e964c95164"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#accf4e0c0d4549051a46783e964c95164">ColorData</a> ()</td></tr>
+<tr class="separator:accf4e0c0d4549051a46783e964c95164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a920b0332685ef72147fe19020fdac5d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a920b0332685ef72147fe19020fdac5d6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b)</td></tr>
 <tr class="separator:a920b0332685ef72147fe19020fdac5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,25 +105,32 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ColorData</b> (float r, float g, float b, float a)</td></tr>
 <tr class="separator:a0ecce2c6c597d9379ebb329883298dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2e401956936f87a560b8f579514bf69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2e401956936f87a560b8f579514bf69"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRed</b> (float r)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#aa2e401956936f87a560b8f579514bf69">setRed</a> (float r)</td></tr>
+<tr class="memdesc:aa2e401956936f87a560b8f579514bf69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the red value of the current object. <br/></td></tr>
 <tr class="separator:aa2e401956936f87a560b8f579514bf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bbba90cac0bc1b3bd01d4aecc16477"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlue</b> (float b)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#a01bbba90cac0bc1b3bd01d4aecc16477">setBlue</a> (float b)</td></tr>
+<tr class="memdesc:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the blue value of the current object. <br/></td></tr>
 <tr class="separator:a01bbba90cac0bc1b3bd01d4aecc16477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a7833dfef4a33eee3857de09a72aee1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a7833dfef4a33eee3857de09a72aee1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setGreen</b> (float g)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#a4a7833dfef4a33eee3857de09a72aee1">setGreen</a> (float g)</td></tr>
+<tr class="memdesc:a4a7833dfef4a33eee3857de09a72aee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the green value of the current object. <br/></td></tr>
 <tr class="separator:a4a7833dfef4a33eee3857de09a72aee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a547fb7bd1616e8657a825cb9a34c43c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAlpha</b> (float a)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#a547fb7bd1616e8657a825cb9a34c43c1">setAlpha</a> (float a)</td></tr>
+<tr class="memdesc:a547fb7bd1616e8657a825cb9a34c43c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the alpha value of the current object. <br/></td></tr>
 <tr class="separator:a547fb7bd1616e8657a825cb9a34c43c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7066467c08dfad868fc4b1add70c2f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7066467c08dfad868fc4b1add70c2f2"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getRed</b> () const </td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#ab7066467c08dfad868fc4b1add70c2f2">getRed</a> () const </td></tr>
+<tr class="memdesc:ab7066467c08dfad868fc4b1add70c2f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the red value of the current object. <br/></td></tr>
 <tr class="separator:ab7066467c08dfad868fc4b1add70c2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9c600256c8abefdd76209fc1f68fcb5"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getBlue</b> () const </td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#ad9c600256c8abefdd76209fc1f68fcb5">getBlue</a> () const </td></tr>
+<tr class="memdesc:ad9c600256c8abefdd76209fc1f68fcb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the blue value of the current object. <br/></td></tr>
 <tr class="separator:ad9c600256c8abefdd76209fc1f68fcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e2e03b8e1e3270f33c4e4a69c00dbd6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getGreen</b> () const </td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#a7e2e03b8e1e3270f33c4e4a69c00dbd6">getGreen</a> () const </td></tr>
+<tr class="memdesc:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the green value of the current object. <br/></td></tr>
 <tr class="separator:a7e2e03b8e1e3270f33c4e4a69c00dbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a198c4490b4f1c512d2bc174418dc892a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a198c4490b4f1c512d2bc174418dc892a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>getAlpha</b> () const </td></tr>
@@ -133,10 +145,32 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getColorSum</b> () c
 <a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>clampedColor</b> () const </td></tr>
 <tr class="separator:a5479f50514f714dc9c738a50b7b86365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a2e6ef72b4053a043ac66f3c53556b89c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e6ef72b4053a043ac66f3c53556b89c"></a>
+static float&#160;</td><td class="memItemRight" valign="bottom"><b>clampValue</b> (float input, float a, float b)</td></tr>
+<tr class="separator:a2e6ef72b4053a043ac66f3c53556b89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab085dd5021fee2698e03baf20d89bfc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab085dd5021fee2698e03baf20d89bfc4"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_red</b></td></tr>
+<tr class="separator:ab085dd5021fee2698e03baf20d89bfc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a594f89816d552a2cfcb91fe0ce8df2ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a594f89816d552a2cfcb91fe0ce8df2ce"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_green</b></td></tr>
+<tr class="separator:a594f89816d552a2cfcb91fe0ce8df2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811102de4cfed5429beedcc67714520f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a811102de4cfed5429beedcc67714520f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_blue</b></td></tr>
+<tr class="separator:a811102de4cfed5429beedcc67714520f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8318f47f7ba2a9e2fd70b7dd03ef672"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8318f47f7ba2a9e2fd70b7dd03ef672"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_alpha</b></td></tr>
+<tr class="separator:ae8318f47f7ba2a9e2fd70b7dd03ef672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:adf9a770243996e50282d248a4327f351"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf9a770243996e50282d248a4327f351"></a>
-<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, float f)</td></tr>
+<a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classColorData.html#adf9a770243996e50282d248a4327f351">operator*</a> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, float f)</td></tr>
+<tr class="memdesc:adf9a770243996e50282d248a4327f351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply component-wise arithmatic operations. <br/></td></tr>
 <tr class="separator:adf9a770243996e50282d248a4327f351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdc3e8e6338798779739352e6bdfa42b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdc3e8e6338798779739352e6bdfa42b"></a>
 <a class="el" href="classColorData.html">ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="classColorData.html">ColorData</a> &amp;a, const <a class="el" href="classColorData.html">ColorData</a> &amp;b)</td></tr>
@@ -156,14 +190,31 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This color data class stores color in floating point format. The Red, Green, Blue, and Alpha channels range from 0.0 to 1.0. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="accf4e0c0d4549051a46783e964c95164"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ColorData::ColorData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is the color data class. Every pixel contains a colordata object detailing the r,g,b, and sometimes a values. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>libphoto/<a class="el" href="ColorData_8h_source.html">ColorData.h</a></li>
 <li>libphoto/ColorData.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:06 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:30 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

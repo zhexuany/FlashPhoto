@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,21 +93,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>copyPixelBuffer</b>(PixelBuffer sourceBuffer, PixelBuffer *destinationBuffer) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>fillPixelBufferWithColor</b>(ColorData color) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getBackgroundColor</b>() (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getData</b>() const  (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPixelBuffer.html#a4b9ebe9181f451aa7c9858e400245e73">getData</a>() const </td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getDefaultBackgroundColor</b>() (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>getHeight</b>() const  (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getPixel</b>(int x, int y) const  (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPixelBuffer.html#ae01450fb4e9824c1e93e92f4377e9924">getPixel</a>(int x, int y) const </td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>getWidth</b>() const  (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator!=</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator==</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>PixelBuffer</b>(int w, int h, ColorData backgroundColor) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setBackgroundColor</b>(ColorData *color) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setPixel</b>(int x, int y, const ColorData &amp;color) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~PixelBuffer</b>() (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_backgroundColor</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>m_defaultBackgroundColor</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_height</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>m_pixels</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_width</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator!=</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator==</b> (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPixelBuffer.html#ae373904fcdd3c820677b959354b75410">PixelBuffer</a>(int w, int h, ColorData backgroundColor)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setBackgroundColor</b>(ColorData *color) (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPixelBuffer.html#abe673364dfceec95783e1dfb00ec9bd1">setPixel</a>(int x, int y, const ColorData &amp;color)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~PixelBuffer</b>() (defined in <a class="el" href="classPixelBuffer.html">PixelBuffer</a>)</td><td class="entry"><a class="el" href="classPixelBuffer.html">PixelBuffer</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:09 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:33 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

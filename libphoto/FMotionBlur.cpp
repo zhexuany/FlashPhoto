@@ -8,6 +8,10 @@
 #include "FMotionBlur.h"
 #include "ColorData.h"
 #include "PixelBuffer.h"
+
+/**
+This is the FMotion class, it is used for the motion blur image filters.  It inherits from the FBlur class, so it only needs to buildKernel, not apply it.
+*/
 FMotionBlur::FMotionBlur(){
 }
 FMotionBlur::~FMotionBlur(){

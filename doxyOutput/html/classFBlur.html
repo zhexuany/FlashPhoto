@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classFBlur-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">FBlur Class Reference</div>  </div>
@@ -102,6 +104,8 @@ Inheritance diagram for FBlur:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a21af159e46bb29908e80b73f09a159df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFBlur.html#a21af159e46bb29908e80b73f09a159df">FBlur</a> ()</td></tr>
+<tr class="separator:a21af159e46bb29908e80b73f09a159df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20d9f9bb8f2b787273a860779853a8fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d9f9bb8f2b787273a860779853a8fd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>applyFilter</b> (<a class="el" href="classPixelBuffer.html">PixelBuffer</a> *imageBuffer)</td></tr>
 <tr class="separator:a20d9f9bb8f2b787273a860779853a8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,7 +149,30 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getFloatParameter</b
 <tr class="memitem:a465a168fc580c773e58d4df2f3db5968 inherit pub_methods_classFilter"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a465a168fc580c773e58d4df2f3db5968"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getBlurDiection</b> ()</td></tr>
 <tr class="separator:a465a168fc580c773e58d4df2f3db5968 inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac55d5345ed37b22e9bacb492629c5c49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac55d5345ed37b22e9bacb492629c5c49"></a>
+kernelType&#160;</td><td class="memItemRight" valign="bottom"><b>kernel</b></td></tr>
+<tr class="separator:ac55d5345ed37b22e9bacb492629c5c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a21af159e46bb29908e80b73f09a159df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FBlur::FBlur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is the <a class="el" href="classFBlur.html">FBlur</a> class, it is used for all of the blur image filters . applyFilter describes how this filter will be applied to every pixel in the image. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>libphoto/<a class="el" href="FBlur_8h_source.html">FBlur.h</a></li>
 <li>libphoto/FBlur.cpp</li>
@@ -153,7 +180,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getBlurDiection</b> ()
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:07 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:31 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -5,6 +5,10 @@ Pen::Pen(ColorData* toolColor, int radius)
   fillInfluence();
 }
 
+/**
+This is the pen class.  It inherits from the DrawTool and only needs to deal with loading the influence matrix.  DrawTool applies the influence.
+*/
+///For function descriptions please see the Blur class
 Pen::~Pen(){
 }
 

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['name',['name',['../classGLUI__Control.html#aa95b97d50df45335fc33f0af03958eb3',1,'GLUI_Control']]],
-  ['ninebytes',['NineBytes',['../structDefaultTraits_1_1NineBytes.html',1,'DefaultTraits']]],
-  ['noeh',['NoEh',['../classNoEh.html',1,'']]],
-  ['notshorterthan',['NotShorterThan',['../classFactor_1_1NotShorterThan.html',1,'Factor']]],
-  ['nullcreate',['NullCreate',['../classNullCreate.html',1,'']]]
+  ['updatecanvas',['updateCanvas',['../classFlashPhotoApp.html#af90d307fdc027a037816a63757a17120',1,'FlashPhotoApp']]],
+  ['updatecurrenttool',['updateCurrentTool',['../classFlashPhotoApp.html#a52eb2524a928df150d75492d96a3d49c',1,'FlashPhotoApp::updateCurrentTool()'],['../classMIAApp.html#aef9e427d5b1279cf9e6fe4d17570a828',1,'MIAApp::updateCurrentTool()']]]
 ];

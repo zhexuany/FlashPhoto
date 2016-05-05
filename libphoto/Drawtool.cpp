@@ -3,10 +3,11 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
-/*
-* \Overloaded constructor taking in a color
-* \color for tool, width of drawtool, height of drawtool
-* \constructor
+/**
+This is the DrawTool class.  Every DrawTool inherits from here, this is used for all pens in the UI.
+* Overloaded constructor taking in a color \n
+* color for tool, width of drawtool, height of drawtool \n
+* constructor \n
 */
 DrawTool::DrawTool(ColorData* toolColor, int width, int height){
   m_toolColor = toolColor;
@@ -14,10 +15,10 @@ DrawTool::DrawTool(ColorData* toolColor, int width, int height){
   allowDrag = true;
   fillInfluence();
 }
-/*
-* \Overloaded constructor with a default color of black
-* \width of drawtool, height of drawtool
-* \constructor
+/**
+* Overloaded constructor with a default color of black \n
+* width of drawtool, height of drawtool \n
+* constructor \n
 */
 DrawTool::DrawTool(int width, int height){
   m_toolColor = new ColorData(0, 0, 0);
@@ -33,43 +34,43 @@ DrawTool::DrawTool(PixelBuffer* newBuffer, int width, int height){
   fillInfluence();
 
 }
-/*
-* \Destructor for the drawtool
-* \none
-* \destructor
+/**
+ Destructor for the drawtool \n
+* none \n
+* destructor \n
 */
 DrawTool::~DrawTool(){
   delete m_toolColor;
   delete m_mask;
 }
-/*
-* \Gets the current mask for the draw tool
-* \none
-* \Returns a const pointer to the mask
+/**
+ Gets the current mask for the draw tool \n
+* none \n
+* Returns a const pointer to the mask \n
 */
 Mask const * DrawTool::getMask() const {
   return m_mask;
 }
-/*
-* \Gets the tool color
-* \none
-* \Const pointer to the ColorData of the current tool
+/**
+ Gets the tool color \n
+* none \n
+* Const pointer to the ColorData of the current tool \n
 */
 ColorData const * DrawTool::getToolColor() const{
   return m_toolColor;
 }
-/*
-* \Sets the tool color
-* \The ColorData to change the tool to
-* \void
+/**
+ Sets the tool color \n
+* The ColorData to change the tool to \n
+* void \n
 */
 void DrawTool::setToolColor(ColorData* color){
   m_toolColor = color;
 }
-/*
-* \Apply the mask to the buffer at x,y and fill gap from prevX, prevY
-* \x coord, y coord, previous x coord, previous y coord, the pixel buffer to draw on
-* \void
+/**
+ Apply the mask to the buffer at x,y and fill gap from prevX, prevY \n
+* x coord, y coord, previous x coord, previous y coord, the pixel buffer to draw on \n
+* void \n
 */
 void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
     applyInfluence(x, y, buffer);
@@ -84,10 +85,10 @@ void DrawTool::paint(int x, int y, int prevX, int prevY, PixelBuffer* buffer){
         yIncrement += yDiff;
     }
 }
-/*
-* \Apply the mask to the buffer centered at x,y
-* \x coord, y coord, buffer to draw on
-* \void
+/**
+ Apply the mask to the buffer centered at x,y \n
+* x coord, y coord, buffer to draw on \n
+* void \n
 */
 void DrawTool::applyInfluence(int x, int y, PixelBuffer* buffer) {
   int height = m_mask-> getHeight();
@@ -107,10 +108,10 @@ void DrawTool::applyInfluence(int x, int y, PixelBuffer* buffer) {
   }
 }
 
-/*
-* Print the influence of the current mask
-* \none
-* \void
+/**
+ Print the influence of the current mask \n
+* none \n
+* void \n
 */
 void DrawTool::printfInfluence(){
   Mask const* mask = getMask();
@@ -124,10 +125,10 @@ void DrawTool::printfInfluence(){
     cout << endl;
   }
 }
-/*
-* \Virtual function to set influence on the mask, should be overrode in sub class
-* \none
-* \void
+/**
+ Virtual function to set influence on the mask, should be overrode in sub class \n
+* none \n
+* void \n
 */
 void DrawTool::fillInfluence(){
   Mask const * mask = getMask();

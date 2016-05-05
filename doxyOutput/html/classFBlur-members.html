@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr bgcolor="#f0f0f0"><td class="entry"><b>boxFilter</b>(int radius) (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>buildKernel</b>(int radius) (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>emptyFilter</b>(int radius) (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>FBlur</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFBlur.html#a21af159e46bb29908e80b73f09a159df">FBlur</a>()</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Filter</b>() (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>GaussianBlur</b>(float sigma) (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>getBlurDiection</b>() (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
@@ -99,16 +100,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr bgcolor="#f0f0f0"><td class="entry"><b>getFloatParameter</b>() (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getKernel</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>getName</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>printKernel</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setBlurDirection</b>(int direction) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setFilterParameter</b>(float parameter) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setFilterParameter</b>(ColorData parameter) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~FBlur</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Filter</b>() (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>kernel</b> (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>printKernel</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setBlurDirection</b>(int direction) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>setFilterParameter</b>(float parameter) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setFilterParameter</b>(ColorData parameter) (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~FBlur</b>() (defined in <a class="el" href="classFBlur.html">FBlur</a>)</td><td class="entry"><a class="el" href="classFBlur.html">FBlur</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~Filter</b>() (defined in <a class="el" href="classFilter.html">Filter</a>)</td><td class="entry"><a class="el" href="classFilter.html">Filter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 4 2016 21:08:07 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 4 2016 22:27:31 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

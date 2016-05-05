@@ -1,5 +1,9 @@
 #include "CalligraphyPen.h"
 
+/**
+This is the calligraphy pen class, it inherits from DrawTool and is used for the Calligraphy pen 
+*/
+///For function descriptions please see the Blur class
 CalligraphyPen::CalligraphyPen(ColorData* toolColor, int width, int height)
     : DrawTool(toolColor, width, height){
   fillInfluence();

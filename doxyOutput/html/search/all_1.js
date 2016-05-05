@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['calligraphypen',['CalligraphyPen',['../classCalligraphyPen.html',1,'']]],
-  ['colordata',['ColorData',['../classColorData.html',1,'']]],
-  ['crayon',['Crayon',['../classCrayon.html',1,'']]]
+  ['basegfxapp',['BaseGfxApp',['../classBaseGfxApp.html',1,'']]],
+  ['blur',['Blur',['../classBlur.html',1,'Blur'],['../classBlur.html#a4cf976a139e3745e022c6b4fb7b18efb',1,'Blur::Blur()']]]
 ];

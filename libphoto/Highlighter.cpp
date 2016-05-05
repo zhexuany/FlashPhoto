@@ -5,6 +5,10 @@ Highlighter::Highlighter(ColorData* toolColor, int width, int height)
   fillInfluence();
 }
 
+/**
+This is the highlighter DrawTool.  It inherits from DrawTool and deals with applying the influence for the highlighter to the pixelbuffer.
+*/
+///For function descriptions please see the Blur class
 Highlighter::~Highlighter(){
 }
 void Highlighter::fillInfluence(){

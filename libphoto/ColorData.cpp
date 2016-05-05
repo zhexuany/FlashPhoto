@@ -5,7 +5,9 @@
 
 #include "ColorData.h"
 
-
+/**
+This is the color data class.  Every pixel contains a colordata object detailing the r,g,b, and sometimes a values.
+*/
 ColorData::ColorData() : m_red(1), m_green(1), m_blue(1), m_alpha(1) {
 }
 
@@ -15,35 +17,42 @@ ColorData::ColorData(float r, float g, float b ) : m_red(r), m_green(g), m_blue(
 ColorData::ColorData(float r, float g, float b, float a) : m_red(r), m_green(g), m_blue(b), m_alpha(a)  {
 }
 
+///Set the red value of the current object
 void ColorData::setRed(float r) {
     m_red = r;
 }
 
+///Set the green value of the current object
 void ColorData::setGreen(float g) {
     m_green = g;
 }
 
+///Set the blue value of the current object
 void ColorData::setBlue(float b) {
     m_blue = b;
 }
 
+///Set the alpha value of the current object
 void ColorData::setAlpha(float a) {
     m_alpha = a;
 }
 
-
+///Get the red value of the current object
 float ColorData::getRed() const {
     return m_red;
 }
 
+///Get the green value of the current object
 float ColorData::getGreen() const {
     return m_green;
 }
 
+///Get the blue value of the current object
 float ColorData::getBlue() const {
     return m_blue;
 }
 
+//Get the alpha value of the current object
 float ColorData::getAlpha() const {
     return m_alpha;
 }
@@ -65,7 +74,7 @@ ColorData ColorData::clampedColor() const {
 }
 
 
-// Apply component-wise arithmatic operations
+/// Apply component-wise arithmatic operations
 ColorData operator* (const ColorData& a, float f) {
     return ColorData(a.m_red*f, a.m_green*f, a.m_blue*f, a.m_alpha*f);
 }

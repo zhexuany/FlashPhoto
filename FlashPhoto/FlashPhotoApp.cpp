@@ -2,6 +2,9 @@
 using std::cout;
 using std::endl;
 
+/**
+This is the FlashPhoto class.  This class contains all of the main UI login for the application.
+*/
 FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, ColorData backgroundColor) : BaseGfxApp(argc, argv, width, height, 50, 50, GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH, true, width+51, 50){
     // Set the name of the window
     setCaption("FlashPhoto");
@@ -16,10 +19,10 @@ FlashPhotoApp::FlashPhotoApp(int argc, char* argv[], int width, int height, Colo
     m_queueSize = 20;
 }
 
-/*
-* \Initialize the filter on load
-* \none
-* \void
+/**
+  Initialize the filter on load \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::initFilter(){
   m_filters = new Filter* [FilterFactory::getNumFilters()];
@@ -27,10 +30,10 @@ void FlashPhotoApp::initFilter(){
     m_filters[i] = FilterFactory::createFilter(i);
   }
 }
-/*
-* \Initialize the draw tool on load
-* \none
-* \void
+/**
+  Initialize the draw tool on load \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::initDrawTool(){
   toolList = new DrawTool*[9];
@@ -51,10 +54,10 @@ void FlashPhotoApp::initDrawTool(){
 }
 
 
-/*
-* Update the current tool that is selected in the UI (stored in m_curTool)
-* \none
-* \void
+/**
+  Update the current tool that is selected in the UI (stored in m_curTool) \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::updateCurrentTool(){
     ColorData* toolColor = new ColorData(m_curColorRed, m_curColorGreen, m_curColorBlue);
@@ -133,7 +136,7 @@ FlashPhotoApp::~FlashPhotoApp(){
      
 }
 
-
+///When the mouse is dragged this function is called
 void FlashPhotoApp::mouseDragged(int x, int y){
     if (m_tool -> allowDrag) {
         m_tool -> paint(x, y, m_prevX, m_prevY, m_displayBuffer);
@@ -142,12 +145,14 @@ void FlashPhotoApp::mouseDragged(int x, int y){
     }
 }
 
+///When the mouse if moved this function is called
 void FlashPhotoApp::mouseMoved(int x, int y){
     if(m_drag){
       mouseDragged(x, y);
     }
 }
 
+///When the left mouse button is pressed this function is called
 void FlashPhotoApp::leftMouseDown(int x, int y){
     updateUndo();
     m_prevX = x;
@@ -175,15 +180,16 @@ void FlashPhotoApp::updateUndo(){
     undoQueue.push_front(newBuffer);
 }
 
+///When the left mouse button is let go this function is called
 void FlashPhotoApp::leftMouseUp(int x, int y)
 {
     m_drag = false;
 }
 
-/*
-* \Clear the pixel buffer back to the default buffer color
-* \none
-* \void
+/**
+  Clear the pixel buffer back to the default buffer color \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::clearPixelBuffer() {
     ColorData newBackground = m_displayBuffer -> getDefaultBackgroundColor();
@@ -504,10 +510,10 @@ void FlashPhotoApp::gluiControl(int controlID){
 // for how FlashPhotoApp should respond to the
 // button presses.
 
-/*
-* \Load an image on to the canvas
-* \none
-* \void
+/**
+  Load an image on to the canvas \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::loadImageToCanvas(){
     updateUndo();
@@ -549,10 +555,10 @@ void FlashPhotoApp::loadImageToStamp(){
     if (m_curTool == STAMP) m_tool = toolList[8];
 }
 
-/*
-* \Save a canvas to file
-* \none
-* \void
+/**
+  Save a canvas to file \n
+* none \n
+* void \n
 */
 void FlashPhotoApp::saveCanvasToFile(){
     cout << "Save Canvas been clicked for file " << m_fileName << endl;
@@ -644,12 +650,10 @@ void FlashPhotoApp::redoOperation()
     updateCanvas(redoQueue, undoQueue, false);
 }
 
-/*
-*Update the canvas with the top of the alpha deque, push current buffer onto beta deque
-*deque to pop from, deque to push to, if it is an undo
-*void
-*TODO: there is currently no size limiting on the queue, I have not run into
-*issues with size so far but it could be an issue in the future.
+/**
+ Update the canvas with the top of the alpha deque, push current buffer onto beta deque \n
+*deque to pop from, deque to push to, if it is an undo \n
+*void \n
 */
 void FlashPhotoApp::updateCanvas(std::deque<PixelBuffer*> &alpha, std::deque<PixelBuffer*> &beta, bool isUndo) {
     if (alpha.size() > 0) {

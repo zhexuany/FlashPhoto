@@ -1,6 +1,9 @@
 #include "Stamp.h"
 
-
+/**
+This is the Stamp class, it inherits from DrawTool.  This will take a loaded image and apply it to the canvas.  The image is loaded in the mask variable
+*/
+///For function descriptions please see the Blur class
 Stamp::Stamp(PixelBuffer* newBuffer, int stampWidth, int stampHeight)
   : DrawTool(newBuffer, stampWidth, stampHeight){
   fillInfluence();

@@ -1,0 +1,22 @@
+/** \mainpage Welcome
+
+<h1>Introduction</h1>
+The documentation for the libphoto library, the FlashPhoto application, as well as the Mia application can be found here.<br>
+Along the top of the page you can navigate to the various class structures as well as a listing of all files in the project.
+
+<h1>Practices</h1>
+As described on the <a href='../../web/static/views/design.html'>Design and Coding Style Guide</a> page, this project follows standard coding practices that include, but are not limited to, inheritance, abstraction, encapsulation, and polymorphism.  These should be reflected in the following pages.<br>
+
+<h1>Documentation</h1>
+Many function comments will be in the form of three lines.  The form is this: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function description<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Function parameters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;What the function returns
+
+<h1>Help</h1>
+For any issues pertaining to the use of this documentation please reference <a href='www.doxygen.org/'>here</a>.
+
+If you would like to go back to the documentation please click <a href='../../web/index.html'>here</a>.
+
+
+*/

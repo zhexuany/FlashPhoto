@@ -7,7 +7,9 @@
 #ifndef FTHRESHOLD_H
 #define FTHRESHOLD_H
 #include "FThreshold.h"
-
+/**
+This is the FThreshold class, it is used for the quantize image filters.  This does not use kernels so it only has to deal with applying the filter.
+*/
 FThreshold::FThreshold(){
 }
 

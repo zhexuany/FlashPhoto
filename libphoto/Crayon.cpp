@@ -1,6 +1,9 @@
 #include "Crayon.h"
 
-
+/**
+This is the Crayon pen class, it inherits from DrawTool and is used for the Crayon pen 
+*/
+///For function descriptions please see the Blur class
 Crayon::Crayon(ColorData* toolColor, int radius)
   : DrawTool(toolColor, radius, radius){
   fillInfluence();

@@ -5,6 +5,9 @@
 // Copyright (c) 2016 Zhexuan Yang. All rights reserved.
 #include "FEdgeDetection.h"
 
+/**
+This is the FEdgeDetection class, it is used for all of the edge detection image filter.  This inherits from the FBlur class since the applyFilter function is the same due to kernels.
+*/
 FEdgeDetection::FEdgeDetection(){
 }
 

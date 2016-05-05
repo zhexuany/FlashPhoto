@@ -14,6 +14,7 @@ FEdgeDetection::FEdgeDetection(){
 FEdgeDetection::~FEdgeDetection(){
 }
 
+///create kernel matrix for edge detecting
 kernelType FEdgeDetection::buildKernel(int radius){
   setFilterParameter(size);
   kernelType kernel(size, kernelRow(size));
@@ -25,6 +26,8 @@ kernelType FEdgeDetection::buildKernel(int radius){
   kernel[size/2][size/2] = 8.0;
   return kernel;
 }
+
+///get class name for filter
 std::string FEdgeDetection::getName(){
   return "FEdgeDetection";
 }

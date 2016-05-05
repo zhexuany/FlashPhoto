@@ -17,6 +17,7 @@ FMotionBlur::FMotionBlur(){
 FMotionBlur::~FMotionBlur(){
 }
 
+///create kernel matrix for Motion Blur filter effect
 kernelType FMotionBlur::buildKernel(int radius){
   kernelType kernel = emptyFilter(radius);
   int size = kernel.size();
@@ -46,6 +47,7 @@ kernelType FMotionBlur::buildKernel(int radius){
   return kernel;
 }
 
+///get class name for filter
 std::string FMotionBlur::getName(){
   return "FMotionBlur";
 }

@@ -30,6 +30,7 @@ void FQuantize::applyFilter(PixelBuffer* imageBuffer){
   }
 }
 
+///get class name for filter
 std::string FQuantize::getName(){
   return "FQuantize";
 }

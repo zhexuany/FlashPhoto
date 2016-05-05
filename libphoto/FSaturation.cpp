@@ -13,7 +13,7 @@ FSaturation::FSaturation(){
 }
 FSaturation::~FSaturation(){
 }
-
+///apply filter effect to PixelBuffer* buffer passed into this function
 void FSaturation::applyFilter(PixelBuffer* imageBuffer){
   int width = imageBuffer -> getWidth();
   int height = imageBuffer -> getHeight();
@@ -31,6 +31,7 @@ void FSaturation::applyFilter(PixelBuffer* imageBuffer){
   }
 }
 
+///get class name for filter
 std::string FSaturation::getName(){
   return "FSaturation";
 }

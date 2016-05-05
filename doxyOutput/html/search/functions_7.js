@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['imagehandler',['ImageHandler',['../classImageHandler.html#a86d8324568727c2799a54a43d7296ddb',1,'ImageHandler']]],
-  ['initdrawtool',['initDrawTool',['../classFlashPhotoApp.html#a29383606562f09ba623209581f92f5e5',1,'FlashPhotoApp::initDrawTool()'],['../classMIAApp.html#ae9f573664b63d839f34a97a55cfc305a',1,'MIAApp::initDrawTool()']]],
-  ['initfilter',['initFilter',['../classFlashPhotoApp.html#aeaf85d6ead6ca4b3905701db12ceaf68',1,'FlashPhotoApp::initFilter()'],['../classMIAApp.html#a5f25e06a32d646e407474f24b8ecf43d',1,'MIAApp::initFilter()']]]
+  ['handleblur',['handleBlur',['../classMIACommandLineApp.html#a9be162f864792a003931a33d24e1fa52',1,'MIACommandLineApp']]],
+  ['handlecompare',['handleCompare',['../classMIACommandLineApp.html#afc01f09633833fa92beedb52f2098ca7',1,'MIACommandLineApp']]],
+  ['handleedgedetect',['handleEdgeDetect',['../classMIACommandLineApp.html#ad7e4e22804b01321b8366627297d3915',1,'MIACommandLineApp']]],
+  ['handlemultgb',['handleMultgb',['../classMIACommandLineApp.html#ab3837792e96c27534b0290e7b7bdd5cc',1,'MIACommandLineApp']]],
+  ['handlequant',['handleQuant',['../classMIACommandLineApp.html#a7dd611671ab000d8c7975d4b9b2f125b',1,'MIACommandLineApp']]],
+  ['handlesatur',['handleSatur',['../classMIACommandLineApp.html#a3a3cd95334889d1c5ae8f0871080bd18',1,'MIACommandLineApp']]],
+  ['handlesharpen',['handleSharpen',['../classMIACommandLineApp.html#ae231f6b1b186a3f4ae7d168175e7fac4',1,'MIACommandLineApp']]],
+  ['handlethresh',['handleThresh',['../classMIACommandLineApp.html#a80568f718b9ed0d0b520cc5f1fb72ca0',1,'MIACommandLineApp']]]
 ];

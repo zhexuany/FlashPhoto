@@ -15,13 +15,12 @@ FSpecial::FSpecial(){
 FSpecial::~FSpecial(){
 }
 
-/*
- *\parama imageBuffer:current canvas buffer
- */
+///apply filter effect to PixelBuffer* buffer passed into this function
 void FSpecial::applyFilter(PixelBuffer* imageBuffer){
   imageBuffer -> convertToLuminance();
 }
 
+///get class name for filter
 std::string FSpecial::getName(){
   return "FSpecial";
 }

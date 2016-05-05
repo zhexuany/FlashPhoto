@@ -108,8 +108,7 @@ int main(int ac, char* av[]) {
       po::notify(vm);
 
       // Do we need check file path is valid image or not? Answer is no.
-      // ImageHandler
-      // will return NULL if the file is not a valid image. In this case,
+      // ImageHandler will return NULL if the file is not a valid image. In this case,
       // we simplely exit and report to user
       MIACommandLineApp* commApp = new MIACommandLineApp();
       if(vm.count("help")){

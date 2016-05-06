@@ -173,8 +173,8 @@ echo EXPECTED 1
 sleep 2
 echo -e "\n"
 echo test without input or output path
-echo ./Mie -e
-./Mie -e
+echo ./Mia -e
+./Mia -e
 echo ./Mia -i brainstack
 ./Mia -i brainstack
 echo ./Mia -o output

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['watercolor',['WaterColor',['../classWaterColor.html',1,'']]]
+  ['watercolor',['WaterColor',['../class_water_color.html',1,'']]]
 ];

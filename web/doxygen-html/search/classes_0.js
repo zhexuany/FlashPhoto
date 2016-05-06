@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['basegfxapp',['BaseGfxApp',['../classBaseGfxApp.html',1,'']]],
-  ['blur',['Blur',['../classBlur.html',1,'']]]
+  ['basegfxapp',['BaseGfxApp',['../class_base_gfx_app.html',1,'']]],
+  ['blur',['Blur',['../class_blur.html',1,'']]]
 ];

@@ -1,7 +1,7 @@
-FlashPhoto
+FlashPhoto and MIA
 =========
 
-Support code for CSci-3081W project iteration #2.
+Support code for CSci-3081W project iteration #3.
 
 Build the code by running
 

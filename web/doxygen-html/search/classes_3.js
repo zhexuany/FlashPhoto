@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eraser',['Eraser',['../classEraser.html',1,'']]]
+  ['eraser',['Eraser',['../class_eraser.html',1,'']]]
 ];

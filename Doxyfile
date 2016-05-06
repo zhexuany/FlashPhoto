@@ -1,8 +1,8 @@
-PROJECT_NAME = 3081W FlashPhoto
+PROJECT_NAME = 3081W FlashPhoto and MIA
 INPUT = ./ web/mainpage.dox
 OUTPUT_DIRECTORY = web
 HTML_OUTPUT = doxygen-html
 GENERATE_LATEX = NO
 RECURSIVE = yes
-EXCLUDE = libpng libjpeg test glui
+EXCLUDE = libpng libjpeg test glui web/ZhexuanYang README.md
 EXTRACT_PRIVATE = yes

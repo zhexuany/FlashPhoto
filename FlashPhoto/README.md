@@ -1,4 +1,4 @@
-FlashPhoto and MIA
+FlashPhoto
 =========
 
 Support code for CSci-3081W project iteration #3.
@@ -6,10 +6,6 @@ Support code for CSci-3081W project iteration #3.
 Build the code by running
 
 `$ make`
-
-To run tests type
-
-`$ make testcase`
 
 Section #: 13
 

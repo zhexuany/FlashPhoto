@@ -41,36 +41,42 @@ bool isValidImageFile(const string& name){
 }
 //A helper function to append all files in the input director to a vector container
 // if the input is regular file, then just add the one into vector
-vector<string> getFilesFromPath(string input){
-  vector<string> res;
+void getFilesFromPath(string input, vector<string>& res){
   fs::path p(input);
   if(fs::is_directory(p)){
-    // if the input is directory, then we need create a directory for output
+    //if the input is a directory, then it is possible that input has mulitiple directories
     for(auto& entry : boost::make_iterator_range(fs::directory_iterator(p), {})){
       if(isValidImageFile(entry.path().string()))
         res.push_back(entry.path().string());
+      else if (fs::is_directory(entry.path())){
+        getFilesFromPath(entry.path().string(), res);
+      }
     }
   }
   else {
     res.push_back(input);
   }
-  return res;
 }
 
 void createDirs(string output){
   vector<string> strs;
-  boost::split(strs, output, boost::is_any_of("/"));
-  for(size_t i = 1; i < strs.size(); i++){
-    fs::create_directory(strs.at(i - 1));
-  }
-  if(!isValidImageFile(strs.at(0)))
-    fs::create_directory(strs.at(0));
+  auto const pos = output.find_last_of('/');
+  if(pos != string::npos)
+    fs::create_directories(output.substr(0,pos));
+  else
+    if(!isValidImageFile(output))
+      fs::create_directory(output);
 }
 //split input as token "/" if size is 1 then input is file, so does outputPath
 string getOutputFilePath(string input, string outputPath){
   vector<string> strs;
   boost::split(strs, input, boost::is_any_of("/"));
-  return outputPath+ "/" + strs.back();
+  string suffixPath;
+  for(int i = 1; i < strs.size(); i++){
+    suffixPath += "/";
+    suffixPath += strs.at(i);
+  }
+  return outputPath + suffixPath;
 }
 
 int main(int ac, char* av[]) {
@@ -132,10 +138,10 @@ int main(int ac, char* av[]) {
         //If the input is directory, call this function to get all files in that
         //directory.
         // if the input is just a file, then return itself
-        vector<string> inputFiles = getFilesFromPath(input);
+        vector<string> inputFiles;
+        getFilesFromPath(input, inputFiles);
         //create output directories
         bool isDirectory = (inputFiles.size() > 1) ? true : false;
-        createDirs(output);
         for(auto file : inputFiles){
           //need read file to commApp first
           if(vm.count("compare")){
@@ -200,10 +206,15 @@ int main(int ac, char* av[]) {
               commApp -> handleSharpen(para);
             }
 
-            if(isDirectory)
-              commApp -> writeFile(getOutputFilePath(file, output));
-            else
+            if(isDirectory){
+              string outputPath = getOutputFilePath(file, output);
+              createDirs(outputPath);
+              commApp -> writeFile(outputPath);
+            }
+            else{
+              createDirs(output);
               commApp -> writeFile(output);
+            }
           }
         }
       }

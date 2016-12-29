@@ -31,3 +31,6 @@ Comment Style:
 * \return
 */
 ```
+
+apt-get install freeglut3-dev
+sudo apt-get install libboost-all-dev

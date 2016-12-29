@@ -1,4 +1,4 @@
-prefix=/home/jasper/Desktop/school/3081W/repo-group-TwelfthNight/./libpng
+prefix=/home/dev-super/FlashPhoto/libphoto/../libpng
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include/libpng16
